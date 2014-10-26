@@ -1,0 +1,4 @@
+include/avl.h
+lib/libavl.so
+lib/libavl.so.1
+lib/libavl.so.1.5
