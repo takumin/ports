@@ -30,4 +30,8 @@ LIB_DEPENDS=	libantlr3c.so:${PORTSDIR}/devel/libantlr3c \
 		libunistring.so:${PORTSDIR}/devel/libunistring
 
 .include <bsd.port.pre.mk>
+
+port-patch:
+	@${REINPLACE_CMD} -e 's@\(AC_CHECK_PROG.*\)antlr3\(.*\)antlr3@\1antlr\2antlr@' ${WRKSRC}/configure.ac
+
 .include <bsd.port.post.mk>
