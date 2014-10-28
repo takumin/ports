@@ -16,7 +16,6 @@ GH_COMMIT=	61a4da2
 WRKSRC=		${WRKDIR}/${GH_ACCOUNT}-${PORTNAME}-fc0a2e9
 
 USES=		autoreconf gettext gmake gperf iconv libtool
-GNU_CONFIGURE=	yes
 BUILD_DEPENDS=	antlr:${PORTSDIR}/devel/antlr
 LIB_DEPENDS=	libantlr3c.so:${PORTSDIR}/devel/libantlr3c \
 		libavahi-client.so:${PORTSDIR}/net/avahi-app \
@@ -29,9 +28,13 @@ LIB_DEPENDS=	libantlr3c.so:${PORTSDIR}/devel/libantlr3c \
 		libgcrypt.so:${PORTSDIR}/security/libgcrypt \
 		libunistring.so:${PORTSDIR}/devel/libunistring
 
+GNU_CONFIGURE=	yes
+CONFIGURE_ARGS+=${ICONV_CONFIGURE_ARG} \
+		--with-libunistring-prefix=${LOCALBASE}
+
 .include <bsd.port.pre.mk>
 
 port-patch:
-	@${REINPLACE_CMD} -e 's@\(AC_CHECK_PROG.*\)antlr3\(.*\)antlr3@\1antlr\2antlr@' ${WRKSRC}/configure.ac
+	@${REINPLACE_CMD} -e 's@[antlr3]@[antlr]@g' ${WRKSRC}/configure.ac
 
 .include <bsd.port.post.mk>
