@@ -13,12 +13,22 @@ LICENSE=	GPLv3
 
 USES=		gmake libtool pkgconfig iconv
 USE_GNOME=	libxml2
+USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
-CONFIGURE_ARGS=	--without-ntfs-3g \
-		--without-libcrypto
+CONFIGURE_ARGS=	--without-libcrypto
 INSTALL_TARGET=	install-strip
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib ${ICONV_LIB}
 
-.include <bsd.port.pre.mk>
-.include <bsd.port.post.mk>
+OPTIONS_DEFINE=	FUSE NTFS
+OPTIONS_DEFAULT=FUSE NTFS
+FUSE_DESC=	Enable libfuse
+NTFS_DESC=	Enable libntfs-3g
+
+FUSE_CONFIGURE_WITH=	fuse
+FUSE_USE=		fuse
+
+NTFS_CONFIGURE_WITH=	ntfs-3g
+NTFS_LIB_DEPENDS=	libntfs-3g.so:${PORTSDIR}/sysutils/fusefs-ntfs
+
+.include <bsd.port.mk>
