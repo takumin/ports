@@ -28,9 +28,12 @@ LIB_DEPENDS=	libantlr3c.so:${PORTSDIR}/devel/libantlr3c \
 		libgcrypt.so:${PORTSDIR}/security/libgcrypt \
 		libunistring.so:${PORTSDIR}/devel/libunistring
 
+USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
-CONFIGURE_ARGS+=${ICONV_CONFIGURE_ARG} \
+CONFIGURE_ARGS=	${ICONV_CONFIGURE_ARG} \
 		--with-libunistring-prefix=${LOCALBASE}
+CPPFLAGS+=	-I${LOCALBASE}/include
+LDFLAGS+=	-L${LOCALBASE}/lib
 
 .include <bsd.port.pre.mk>
 
