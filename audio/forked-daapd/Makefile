@@ -15,7 +15,7 @@ GH_ACCOUNT=	ejurgensen
 GH_COMMIT=	61a4da2
 WRKSRC=		${WRKDIR}/${GH_ACCOUNT}-${PORTNAME}-fc0a2e9
 
-USES=		autoreconf gettext gmake gperf iconv
+USES=		autoreconf gettext gmake gperf iconv libtool
 GNU_CONFIGURE=	yes
 BUILD_DEPENDS=	antlr:${PORTSDIR}/devel/antlr
 LIB_DEPENDS=	libantlr3c.so:${PORTSDIR}/devel/libantlr3c \
