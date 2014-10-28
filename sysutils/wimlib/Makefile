@@ -11,7 +11,7 @@ COMMENT=	Library to create, extract, and modify Windows Imaging (WIM) files
 
 LICENSE=	GPLv3
 
-USES=		gmake pkgconfig
+USES=		gmake libtool pkgconfig
 USE_GNOME=	libxml2
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--without-ntfs-3g \
