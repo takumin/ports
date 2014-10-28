@@ -35,6 +35,6 @@ CONFIGURE_ARGS+=${ICONV_CONFIGURE_ARG} \
 .include <bsd.port.pre.mk>
 
 post-patch:
-	@${REINPLACE_CMD} -e 's@[antlr3]@[antlr]@g' ${WRKSRC}/configure.ac
+	@${REINPLACE_CMD} -e 's@\[antlr3\]@\[antlr\]@g' ${WRKSRC}/configure.ac
 
 .include <bsd.port.post.mk>
