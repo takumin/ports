@@ -11,21 +11,14 @@ COMMENT=	Library to create, extract, and modify Windows Imaging (WIM) files
 
 LICENSE=	GPLv3
 
-USES=		autoreconf gmake libtool pkgconfig iconv
+USES=		gmake pkgconfig iconv
 USE_GNOME=	libxml2
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
-#CONFIGURE_ARGS=	--without-libcrypto
+CONFIGURE_ARGS=	--without-libcrypto \
+		--without-ntfs-3g
 INSTALL_TARGET=	install-strip
 CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib ${ICONV_LIB}
-
-OPTIONS_DEFINE=	NTFS
-OPTIONS_DEFAULT=NTFS
-NTFS_DESC=	Enable libntfs-3g
-
-NTFS_CONFIGURE_WITH=	ntfs-3g
-NTFS_LIB_DEPENDS=	libntfs-3g.so:${PORTSDIR}/sysutils/fusefs-ntfs
-NTFS_CPPFLAGS=		
+LDFLAGS+=	-L${LOCALBASE}/lib
 
 .include <bsd.port.mk>
