@@ -30,8 +30,7 @@ LIB_DEPENDS=	libantlr3c.so:${PORTSDIR}/devel/libantlr3c \
 
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
-CONFIGURE_ARGS=	${ICONV_CONFIGURE_ARG} \
-		--with-libunistring-prefix=${LOCALBASE}
+CONFIGURE_ARGS=	${ICONV_CONFIGURE_ARG}
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 
