@@ -26,7 +26,7 @@ FUSE_DESC=	Enable libfuse
 NTFS_DESC=	Enable libntfs-3g
 
 FUSE_CONFIGURE_WITH=	fuse
-FUSE_USE=		fuse
+FUSE_USES=		fuse
 
 NTFS_CONFIGURE_WITH=	ntfs-3g
 NTFS_LIB_DEPENDS=	libntfs-3g.so:${PORTSDIR}/sysutils/fusefs-ntfs
