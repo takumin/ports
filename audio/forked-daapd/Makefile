@@ -13,6 +13,7 @@ LICENSE=	GPLv2
 USE_GITHUB=	yes
 GH_ACCOUNT=	ejurgensen
 GH_COMMIT=	61a4da2
+WRKSRC=		${WRKDIR}/${GH_ACCOUNT}-${PORTNAME}-fc0a2e9
 
 USES=		autoreconf gettext gmake gperf iconv
 GNU_CONFIGURE=	yes
