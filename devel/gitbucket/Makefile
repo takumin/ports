@@ -13,6 +13,8 @@ EXTRACT_ONLY=
 MAINTAINER=	takumiiinn@gmail.com
 COMMENT=	GitBucket is the easily installable Github clone written with Scala.
 
+LICENSE=	APACHE20
+
 USE_JAVA=	yes
 JAVA_VERSION=	1.7+
 

@@ -17,11 +17,4 @@ The current version of GitBucket provides a basic features below:
 - LDAP integration
 - Gravatar support
 
-Following features are not implemented, but we will make them in the future release!
-
-- Comment for the changeset
-- Network graph
-- Statistics
-- Watch / Star
-
 WWW: https://github.com/takezoe/gitbucket
