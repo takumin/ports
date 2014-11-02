@@ -1,2 +1,2 @@
 %%DATADIR%%/gitbucket.war
-@dir(%%GITBUECKET_USER%%,%%GITBUECKET_GROUP%%,) gitbucket
+@dir(%%GITBUCKET_USER%%,%%GITBUCKET_GROUP%%,) gitbucket
