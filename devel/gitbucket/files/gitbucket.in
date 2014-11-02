@@ -13,21 +13,6 @@
 #   Set to "NO" by default.
 #   Set it to "YES" to enable gitbucket
 #
-# gitbucket_args (str):
-#   Extra arguments passed to start command
-#
-# gitbucket_home (str)
-#   Set to "%%GITBUCKET_HOME%%" by default.
-#   Set the GITBUCKET_HOME variable for gitbucket process
-#
-# gitbucket_java_home (str):
-#   Set to "%%JAVA_HOME%%" by default.
-#   Set the Java virtual machine to run gitbucket
-#
-# gitbucket_java_opts (str):
-#   Set to "" by default.
-#   Java VM args to use.
-#
 # gitbucket_user (str):
 #   Set to "%%GITBUCKET_USER%%" by default.
 #   User to run gitbucket as.
@@ -35,6 +20,21 @@
 # gitbucket_group (str):
 #   Set to "%%GITBUCKET_GROUP%%" by default.
 #   Group for data file ownership.
+#
+# gitbucket_home (str)
+#   Set to "%%GITBUCKET_HOME%%" by default.
+#   Set the GITBUCKET_HOME variable for gitbucket process
+#
+# gitbucket_args (str):
+#   Extra arguments passed to start command
+#
+# gitbucket_java_home (str):
+#   Set to "%%JAVA_HOME%%" by default.
+#   Set the Java virtual machine to run gitbucket
+#
+# gitbucket_java_opts (str):
+#   Set to "-Dmail.smtp.starttls.enable=true" by default.
+#   Java VM args to use.
 #
 
 . /etc/rc.subr
@@ -45,29 +45,24 @@ rcvar=gitbucket_enable
 load_rc_config "${name}"
 
 : ${gitbucket_enable="NO"}
+: ${gitbucket_user="%%GITBUCKET_USER%%"}
+: ${gitbucket_group="%%GITBUCKET_GROUP%%"}
 : ${gitbucket_home="%%GITBUCKET_HOME%%"}
-: ${gitbucket_args="--webroot=${gitbucket_home}/war --httpListenAddress=127.0.0.1 --httpPort=8180 --ajp13ListenAddress=127.0.0.1 --ajp13Port=8009 --prefix=/gitbucket"}
+: ${gitbucket_args="--host=0.0.0.0 --port=8280 --prefix=/gitbucket --gitbucket.home=%%GITBUCKET_HOME%%"}
 : ${gitbucket_java_home="%%JAVA_HOME%%"}
-: ${gitbucket_user="%%gitbucket_USER%%"}
-: ${gitbucket_group="%%gitbucket_GROUP%%"}
-: ${gitbucket_log_file="%%gitbucket_LOG_FILE%%"}
+: ${gitbucket_java_opts="-Dmail.smtp.starttls.enable=true"}
 
 pidfile="/var/run/gitbucket/gitbucket.pid"
 command="/usr/sbin/daemon"
 java_cmd="${gitbucket_java_home}/bin/java"
 procname="${java_cmd}"
-command_args="-p ${pidfile} ${java_cmd} -Dgitbucket_HOME=${gitbucket_home} ${gitbucket_java_opts} -jar %%DATADIR%%/gitbucket.war ${gitbucket_args} > ${gitbucket_log_file} 2>&1"
+command_args="-p ${pidfile} ${java_cmd} ${gitbucket_java_opts} -jar %%DATADIR%%/gitbucket.war ${gitbucket_args}"
 required_files="${java_cmd}"
 
 start_precmd="gitbucket_prestart"
 start_cmd="gitbucket_start"
 
 gitbucket_prestart() {
-	if [ ! -f "${gitbucket_log_file}" ]; then
-		touch "${gitbucket_log_file}"
-		chown "${gitbucket_user}:${gitbucket_group}" "${gitbucket_log_file}"
-		chmod 640 "${gitbucket_log_file}"
-	fi
 	if [ ! -d "/var/run/gitbucket" ]; then
 		install -d -o "${gitbucket_user}" -g "${gitbucket_group}" -m 750 "/var/run/gitbucket"
 	fi
