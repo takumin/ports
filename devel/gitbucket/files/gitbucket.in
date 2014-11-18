@@ -36,6 +36,10 @@
 #   Set to "-Dmail.smtp.starttls.enable=true" by default.
 #   Java VM args to use.
 #
+# gitbucket_log_file (str):
+#   Set to "/var/log/gitbucket.log" by default.
+#   Log file location.
+#
 
 . /etc/rc.subr
 
@@ -51,6 +55,7 @@ load_rc_config "${name}"
 : ${gitbucket_args="--host=0.0.0.0 --port=8280 --prefix=/gitbucket --gitbucket.home=%%GITBUCKET_HOME%%"}
 : ${gitbucket_java_home="%%JAVA_HOME%%"}
 : ${gitbucket_java_opts="-Dmail.smtp.starttls.enable=true"}
+: ${gitbucket_log_file="/var/log/gitbucket.log"}
 
 pidfile="/var/run/gitbucket/gitbucket.pid"
 command="/usr/sbin/daemon"
@@ -63,6 +68,11 @@ start_precmd="gitbucket_prestart"
 start_cmd="gitbucket_start"
 
 gitbucket_prestart() {
+	if [ ! -f "${gitbucket_log_file}" ]; then
+		touch "${gitbucket_log_file}"
+		chown "${gitbucket_user}:${gitbucket_group}" "${gitbucket_log_file}"
+		chmod 640 "${gitbucket_log_file}"
+	fi
 	if [ ! -d "/var/run/gitbucket" ]; then
 		install -d -o "${gitbucket_user}" -g "${gitbucket_group}" -m 750 "/var/run/gitbucket"
 	fi

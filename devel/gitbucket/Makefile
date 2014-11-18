@@ -3,6 +3,7 @@
 
 PORTNAME=	gitbucket
 PORTVERSION=	2.5
+PORTREVISION=	1
 CATEGORIES=	devel java
 MASTER_SITES=	https://github.com/takezoe/gitbucket/releases/download/${PORTVERSION}/
 DISTNAME=	${PORTNAME}
