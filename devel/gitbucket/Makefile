@@ -3,7 +3,6 @@
 
 PORTNAME=	gitbucket
 PORTVERSION=	2.5
-PORTREVISION=	1
 CATEGORIES=	devel java
 MASTER_SITES=	https://github.com/takezoe/gitbucket/releases/download/${PORTVERSION}/
 DISTNAME=	${PORTNAME}
@@ -33,9 +32,6 @@ USERS=	gitbucket
 .if ${GITBUCKET_GROUP} == "gitbucket"
 GROUPS=	gitbucket
 .endif
-
-UID_FILES?=	${.CURDIR}/UIDs
-GID_FILES?=	${.CURDIR}/GIDs
 
 SUB_LIST+=	GITBUCKET_HOME=${GITBUCKET_HOME} \
 		GITBUCKET_USER=${GITBUCKET_USER} \

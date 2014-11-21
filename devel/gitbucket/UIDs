@@ -1,2 +1,0 @@
-# $FreeBSD$
-gitbucket:*:830:830::0:0:GitBueckt Github clone:/usr/local/gitbucket:/bin/sh
