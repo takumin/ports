@@ -10,7 +10,7 @@ MAINTAINER=	takumiiinn@gmail.com
 COMMENT=	Better Sass integration with Sprockets 2.x
 
 RUN_DEPENDS=	rubygem-sprockets>=2.0:${PORTSDIR}/devel/rubygem-sprockets \
-		rubygem-tilt>=1.1:${PORTSDIR}/devel/rubygem-tilt1
+		rubygem-tilt1>=1.1:${PORTSDIR}/devel/rubygem-tilt1
 
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes
