@@ -1,7 +1,7 @@
 # Created by: Takumi Takahashi <takumiiinn@gmail.com>
 # $FreeBSD$
 
-PORTNAME=	middleman
+PORTNAME=	middleman-core
 PORTVERSION=	3.3.7
 CATEGORIES=	www rubygems
 MASTER_SITES=	RG
