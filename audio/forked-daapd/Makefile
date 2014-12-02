@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	forked-daapd
-PORTVERSION=	22.0
+PORTVERSION=	22.1
 CATEGORIES=	audio
 
 MAINTAINER=	takumiiinn@gmail.com
@@ -12,8 +12,8 @@ LICENSE=	GPLv2
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	ejurgensen
-GH_COMMIT=	61a4da2
-WRKSRC=		${WRKDIR}/${GH_ACCOUNT}-${PORTNAME}-fc0a2e9
+#GH_COMMIT=	6489d71
+#WRKSRC=		${WRKDIR}/${GH_ACCOUNT}-${PORTNAME}-fc0a2e9
 
 USES=		autoreconf gettext gmake gperf iconv libtool
 BUILD_DEPENDS=	antlr:${PORTSDIR}/devel/antlr
@@ -30,6 +30,7 @@ LIB_DEPENDS=	libantlr3c.so:${PORTSDIR}/devel/libantlr3c \
 
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
+CFLAGS+=	-I${LOCALBASE}/include
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 
