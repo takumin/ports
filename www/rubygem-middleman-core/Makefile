@@ -19,7 +19,6 @@ RUN_DEPENDS=	rubygem-activesupport4>=4.1.0:${PORTSDIR}/devel/rubygem-activesuppo
 
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes
-USE_RAKE=	yes
 RUBYGEM_AUTOPLIST=	yes
 
 .include <bsd.port.mk>
