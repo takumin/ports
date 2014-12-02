@@ -21,7 +21,7 @@ RUN_DEPENDS=	rubygem-activesupport4>=4.1.0:${PORTSDIR}/devel/rubygem-activesuppo
 		rubygem-rack>=1.4.5:${PORTSDIR}/www/rubygem-rack \
 		rubygem-rack-test>=0.6.2:${PORTSDIR}/www/rubygem-rack-test \
 		rubygem-thor>=0.15.2:${PORTSDIR}/devel/rubygem-thor \
-		rubygem-tilt>=1.4.1:${PORTSDIR}/devel/rubygem-tilt1
+		rubygem-tilt1>=1.4.1:${PORTSDIR}/devel/rubygem-tilt1
 
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes
