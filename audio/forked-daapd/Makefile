@@ -12,8 +12,6 @@ LICENSE=	GPLv2
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	ejurgensen
-#GH_COMMIT=	6489d71
-#WRKSRC=		${WRKDIR}/${GH_ACCOUNT}-${PORTNAME}-fc0a2e9
 
 USES=		autoreconf gettext gmake gperf iconv libtool
 BUILD_DEPENDS=	antlr:${PORTSDIR}/devel/antlr
