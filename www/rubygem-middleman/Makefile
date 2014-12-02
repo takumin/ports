@@ -26,4 +26,6 @@ USE_RUBY=	yes
 USE_RUBYGEMS=	yes
 RUBYGEM_AUTOPLIST=	yes
 
+PLIST_FILES=	bin/middleman
+
 .include <bsd.port.mk>
