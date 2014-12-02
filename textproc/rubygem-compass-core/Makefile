@@ -1,8 +1,8 @@
 # Created by: Takumi Takahashi <takumiiinn@gmail.com>
 # $FreeBSD$
 
-PORTNAME=	compass-import-once
-PORTVERSION=	1.0.5
+PORTNAME=	compass-core
+PORTVERSION=	1.0.1
 CATEGORIES=	www rubygems
 MASTER_SITES=	RG
 
@@ -11,7 +11,8 @@ COMMENT=	Middleman is a static site generator
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-sass>=3.2:${PORTSDIR}/textproc/rubygem-sass
+RUN_DEPENDS=	rubygem-sass>=3.3:${PORTSDIR}/textproc/rubygem-sass \
+		rubygem-multi_json>=1.0:${PORTSDIR}/devel/rubygem-multi_json
 
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes
