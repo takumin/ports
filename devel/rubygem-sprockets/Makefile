@@ -3,7 +3,7 @@
 
 PORTNAME=	middleman-sprockets
 PORTVERSION=	3.3.10
-CATEGORIES=	www rubygems
+CATEGORIES=	devel rubygems
 MASTER_SITES=	RG
 
 MAINTAINER=	takumiiinn@gmail.com
