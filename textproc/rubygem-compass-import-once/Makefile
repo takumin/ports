@@ -7,7 +7,7 @@ CATEGORIES=	www rubygems
 MASTER_SITES=	RG
 
 MAINTAINER=	takumiiinn@gmail.com
-COMMENT=	Middleman is a static site generator
+COMMENT=	Compass Speed up your Sass compilation
 
 LICENSE=	MIT
 
