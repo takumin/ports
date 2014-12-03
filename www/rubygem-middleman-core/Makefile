@@ -23,6 +23,11 @@ RUN_DEPENDS=	rubygem-activesupport4>=4.1.0:${PORTSDIR}/devel/rubygem-activesuppo
 		rubygem-thor>=0.15.2:${PORTSDIR}/devel/rubygem-thor \
 		rubygem-tilt1>=1.4.1:${PORTSDIR}/devel/rubygem-tilt1
 
+# rubygem-listen for FreeBSD
+RUN_DEPENDS+=	rubygem-rb-kqueue>=0.2:${PORTSDIR}/devel/rubygem-rb-kqueue \
+		rubygem-ffi>=0:${PORTSDIR}/devel/rubygem-ffi \
+		rubygem-celluloid>=0:${PORTSDIR}/devel/rubygem-celluloid
+
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes
 RUBYGEM_AUTOPLIST=	yes
