@@ -5,20 +5,31 @@ PORTNAME=	wp-cli
 PORTVERSION=	0.17.1
 CATEGORIES=	www
 MASTER_SITES=	https://github.com/wp-cli/wp-cli/releases/download/v${PORTVERSION}/
+PKGNAMEPREFIX=	php-
 DISTNAME=	${PORTNAME}
 DIST_SUBDIR=	${PORTNAME}/${PORTVERSION}
 EXTRACT_SUFX=	.phar
-EXTRACT_ONLY=
 
 MAINTAINER=	takumiiinn@gmail.com
 COMMENT=	command line interface for WordPress
 
 LICENSE=	MIT
 
+NO_BUILD=	yes
+NO_WRKSUBDIR=	yes
+USE_PHP=	phar
+
+PLIST_FILES=	bin/wp-cli \
+		bin/wp-cli.phar
+
 .include <bsd.port.pre.mk>
 
+do-extract:
+	${MKDIR} ${WRKSRC}/
+	${CP} ${_DISTDIR}/wp-cli.phar ${WRKSRC}/
+
 do-install:
-	${INSTALL_PROGRAM} ${DISTDIR}/${DIST_SUBDIR}/${DISTNAME}${EXTRACT_SUFX} \
-		${STAGEDIR}/bin
+	${INSTALL_SCRIPT} ${WRKSRC}/wp-cli.phar ${STAGEDIR}${PREFIX}/bin/
+	${LN} -s wp-cli.phar ${STAGEDIR}${PREFIX}/bin/wp-cli
 
 .include <bsd.port.post.mk>
