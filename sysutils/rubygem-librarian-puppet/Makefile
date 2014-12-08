@@ -13,6 +13,9 @@ LICENSE=	MIT
 RUN_DEPENDS=	rubygem-librarian>=0.1.2:${PORTSDIR}/devel/rubygem-librarian \
 		rubygem-puppet_forge>=0:${PORTSDIR}/devel/rubygem-puppet_forge \
 		rubygem-rsync>=0:${PORTSDIR}/devel/rubygem-rsync \
+		rubygem-rsync>=0:${PORTSDIR}/devel/rubygem-rsync \
+		ca_root_nss>=0:${PORTSDIR}/security/ca_root_nss \
+		git>=0:${PORTSDIR}/devel/git
 
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes
