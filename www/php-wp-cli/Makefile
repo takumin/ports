@@ -19,8 +19,7 @@ NO_BUILD=	yes
 NO_WRKSUBDIR=	yes
 USE_PHP=	phar
 
-PLIST_FILES=	bin/wp \
-		bin/wp-cli.phar
+PLIST_FILES=	bin/wp
 
 .include <bsd.port.pre.mk>
 
@@ -29,7 +28,6 @@ do-extract:
 	${CP} ${_DISTDIR}/wp-cli.phar ${WRKSRC}/
 
 do-install:
-	${INSTALL_SCRIPT} ${WRKSRC}/wp-cli.phar ${STAGEDIR}${PREFIX}/bin/
-	${LN} -s wp-cli.phar ${STAGEDIR}${PREFIX}/bin/wp
+	${INSTALL_SCRIPT} ${WRKSRC}/wp-cli.phar ${STAGEDIR}${PREFIX}/bin/wp
 
 .include <bsd.port.post.mk>
