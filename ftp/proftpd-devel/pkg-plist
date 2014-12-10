@@ -6,8 +6,7 @@ bin/ftpquota
 bin/ftptop
 bin/ftpwho
 bin/prxs
-%%ETCDIR%%.conf.sample
-etc/rc.d/proftpd
+@sample etc/proftpd.conf.sample
 include/proftpd/ascii.h
 include/proftpd/auth.h
 include/proftpd/bindings.h
