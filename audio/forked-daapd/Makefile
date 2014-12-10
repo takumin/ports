@@ -6,7 +6,7 @@ PORTVERSION=	22.1
 CATEGORIES=	audio
 
 MAINTAINER=	takumiiinn@gmail.com
-COMMENT=	forked-daapd is a Linux/FreeBSD DAAP (iTunes) and RSP (Roku) media server.
+COMMENT=	DAAP (iTunes) and RSP (Roku) media server
 
 LICENSE=	GPLv2
 
@@ -14,10 +14,12 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	ejurgensen
 GH_TAGNAME=	${PORTVERSION}
 GH_COMMIT=	6489d71
+WRKSRC=		${WRKDIR}/${GH_ACCOUNT}-${PORTNAME}-10f321c
 
-USES=		autoreconf gettext gmake gperf iconv libtool
-BUILD_DEPENDS=	antlr:${PORTSDIR}/devel/antlr
-LIB_DEPENDS=	libantlr3c.so:${PORTSDIR}/devel/libantlr3c \
+USES+=		autoreconf gettext gmake gperf iconv libtool
+BUILD_DEPENDS+=	antlr:${PORTSDIR}/devel/antlr \
+		gperf:${PORTSDIR}/devel/gperf
+LIB_DEPENDS+=	libantlr3c.so:${PORTSDIR}/devel/libantlr3c \
 		libavahi-client.so:${PORTSDIR}/net/avahi-app \
 		libsqlite3.so:${PORTSDIR}/databases/sqlite3 \
 		libavcodec.so:${PORTSDIR}/multimedia/libav \
@@ -30,9 +32,9 @@ LIB_DEPENDS=	libantlr3c.so:${PORTSDIR}/devel/libantlr3c \
 
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
-CFLAGS+=	-I${LOCALBASE}/include
-CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
+CFLAGS+=	"-I${LOCALBASE}/include"
+CPPFLAGS+=	"-I${LOCALBASE}/include"
+LDFLAGS+=	"-L${LOCALBASE}/lib"
 
 .include <bsd.port.pre.mk>
 
