@@ -12,6 +12,8 @@ LICENSE=	GPLv2
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	ejurgensen
+GH_TAGNAME=	${PORTVERSION}
+GH_COMMIT=	6489d71
 
 USES=		autoreconf gettext gmake gperf iconv libtool
 BUILD_DEPENDS=	antlr:${PORTSDIR}/devel/antlr
