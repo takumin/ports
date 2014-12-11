@@ -13,9 +13,8 @@ MAINTAINER=	makc@FreeBSD.org
 COMMENT=	ANother Tool for Language Recognition
 
 USE_JAVA=	yes
-
+JAVA_VERSION=	1.7+
 NO_BUILD=	yes
-
 SUB_FILES=	antlr.sh
 
 .include <bsd.port.options.mk>
