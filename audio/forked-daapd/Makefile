@@ -17,8 +17,7 @@ GH_COMMIT=	6489d71
 WRKSRC=		${WRKDIR}/${GH_ACCOUNT}-${PORTNAME}-10f321c
 
 USES+=		autoreconf gettext gmake gperf iconv libtool
-BUILD_DEPENDS+=	antlr3:${PORTSDIR}/devel/antlr3 \
-		${LOCALBASE}/lib/oss/include/sys/soundcard.h:${PORTSDIR}/audio/oss
+BUILD_DEPENDS+=	antlr3:${PORTSDIR}/devel/antlr3
 LIB_DEPENDS+=	libantlr3c.so:${PORTSDIR}/devel/libantlr3c \
 		libavahi-client.so:${PORTSDIR}/net/avahi-app \
 		libsqlite3.so:${PORTSDIR}/databases/sqlite3 \
