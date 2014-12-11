@@ -37,8 +37,4 @@ CPPFLAGS+=	"-I${LOCALBASE}/include"
 LDFLAGS+=	"-L${LOCALBASE}/lib"
 
 .include <bsd.port.pre.mk>
-
-post-patch:
-	@${REINPLACE_CMD} -e 's@\[antlr3\]@\[antlr\]@g' ${WRKSRC}/configure.ac
-
 .include <bsd.port.post.mk>
