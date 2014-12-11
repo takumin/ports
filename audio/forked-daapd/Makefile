@@ -31,16 +31,19 @@ LIB_DEPENDS+=	libantlr3c.so:${PORTSDIR}/devel/libantlr3c \
 		libunistring.so:${PORTSDIR}/devel/libunistring
 
 USE_LDCONFIG=	yes
+#CFLAGS+=	"-I${LOCALBASE}/include"
+#CFLAGS+=	"-I/usr/include"
+#CPPFLAGS+=	"-I${LOCALBASE}/include"
+#CPPFLAGS+=	"-I/usr/include"
+#LDFLAGS+=	"-L${LOCALBASE}/lib"
+#ZLIB_CFLAGS=	"-I/usr/include"
+#ZLIB_LIBS=	"-L/usr/lib"
 GNU_CONFIGURE=	yes
-CFLAGS+=	"-I${LOCALBASE}/include"
-CFLAGS+=	"-I/usr/include"
-CPPFLAGS+=	"-I${LOCALBASE}/include"
-CPPFLAGS+=	"-I/usr/include"
-LDFLAGS+=	"-L${LOCALBASE}/lib"
-LIBUNISTRING_CFLAGS=	"-I/usr/include"
-LIBUNISTRING_LIBS=	"-L/usr/lib"
-ZLIB_CFLAGS=		"-I/usr/include"
-ZLIB_LIBS=		"-L/usr/lib"
+CONFIGURE_ENV+=	CFLAGS="-I${LOCALBASE}/include -I/usr/include"
+CONFIGURE_ENV+=	LDFLAGS="-L${LOCALBASE}/lib -L/usr/lib"
+CONFIGURE_ENV+=	ZLIB_CFLAGS="-I/usr/include"
+CONFIGURE_ENV+=	ZLIB_LIBS="-L/usr/lib"
+CONFIGURE_ARGS+="--with-oss4=${LOCALBASE}/lib/oss/include/sys"
 
 .include <bsd.port.pre.mk>
 .include <bsd.port.post.mk>
