@@ -31,13 +31,6 @@ LIB_DEPENDS+=	libantlr3c.so:${PORTSDIR}/devel/libantlr3c \
 		libunistring.so:${PORTSDIR}/devel/libunistring
 
 USE_LDCONFIG=	yes
-#CFLAGS+=	"-I${LOCALBASE}/include"
-#CFLAGS+=	"-I/usr/include"
-#CPPFLAGS+=	"-I${LOCALBASE}/include"
-#CPPFLAGS+=	"-I/usr/include"
-#LDFLAGS+=	"-L${LOCALBASE}/lib"
-#ZLIB_CFLAGS=	"-I/usr/include"
-#ZLIB_LIBS=	"-L/usr/lib"
 GNU_CONFIGURE=	yes
 CONFIGURE_ENV+=	CFLAGS="-I${LOCALBASE}/include -I/usr/include"
 CONFIGURE_ENV+=	LDFLAGS="-L${LOCALBASE}/lib -L/usr/lib"
