@@ -18,7 +18,7 @@ GH_COMMIT=	c4cea47
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTNAME}-2b4e6df
 
 GNOME=		pango
-USES+=		gettext gmake iconv libtool
+USES+=		autoreconf gettext gmake iconv libtool pkgconfig python
 BUILD_DEPENDS+=	git:${PORTSDIR}/devel/git
 LIB_DEPENDS+=	libuninameslist.so:${PORTSDIR}/textproc/libuninameslist \
 		libtiff.so:${PORTSDIR}/graphics/tiff \
