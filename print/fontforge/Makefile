@@ -7,6 +7,7 @@ RELEASEDATE=	2014-11-26
 CATEGORIES=	print
 MASTER_SITES=	https://github.com/fontforge/fontforge/releases/download/${PORTVERSION}/
 DISTNAME=	${PORTNAME}-${RELEASEDATE}-Unix-Source
+WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
 
 MAINTAINER=	takumiiinn@gmail.com
 COMMENT=	Type 1/TrueType/OpenType/bitmap font editor
@@ -15,26 +16,30 @@ LICENSE=	GPLv3
 
 GNOME=		glib20 pango
 USES+=		autoreconf gettext gmake iconv libtool pkgconfig python
-LIB_DEPENDS+=	libuninameslist.so:${PORTSDIR}/textproc/libuninameslist \
-		libtiff.so:${PORTSDIR}/graphics/tiff \
+LIB_DEPENDS+=	libtiff.so:${PORTSDIR}/graphics/tiff \
 		libjpeg.so:${PORTSDIR}/graphics/jpeg \
 		libpng15.so:${PORTSDIR}/graphics/png \
 		libgif.so:${PORTSDIR}/graphics/giflib \
-		libxml2.so:${PORTSDIR}/textproc/libxml2 \
 		libspiro.so:${PORTSDIR}/graphics/libspiro \
+		libzmq.so:${PORTSDIR}/net/libzmq4 \
+		libuninameslist.so:${PORTSDIR}/textproc/libuninameslist \
+		libxml2.so:${PORTSDIR}/textproc/libxml2 \
 		libfreetype.so:${PORTSDIR}/print/freetype2
 
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
-LDFLAGS+=	-lutil
+#LDFLAGS+=	-lutil
+#LDFLAGS+=	-lintl
+ZLIB_CFLAGS=	-I/usr/include
+ZLIB_LIBS=	-L/usr/lib -lz
 
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
-CONFIGURE_ARGS+=--enable-pyextensio --enable-extra-encodings
+CONFIGURE_ARGS+=--without-x
 
 .include <bsd.port.pre.mk>
 
 pre-configure:
-	@cd ${WRKSRC} && ./bootstrap
+	@cd ${WRKSRC} && ./bootstrap --gnulib-srcdir=gnulib --skip-git --skip-po --force
 
 .include <bsd.port.post.mk>
