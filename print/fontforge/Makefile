@@ -27,7 +27,7 @@ LIB_DEPENDS+=	libuninameslist.so:${PORTSDIR}/textproc/libuninameslist \
 		libgif.so:${PORTSDIR}/graphics/giflib \
 		libxml2.so:${PORTSDIR}/textproc/libxml2 \
 		libspiro.so:${PORTSDIR}/graphics/libspiro \
-		libfreetype.so:${PORTSDIR}/print/freetype2 \
+		libfreetype.so:${PORTSDIR}/print/freetype2
 
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
