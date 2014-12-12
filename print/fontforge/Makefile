@@ -13,7 +13,7 @@ COMMENT=	Type 1/TrueType/OpenType/bitmap font editor
 
 LICENSE=	GPLv3
 
-GNOME=		pango
+GNOME=		glib20 pango
 USES+=		autoreconf gettext gmake iconv libtool pkgconfig python
 LIB_DEPENDS+=	libuninameslist.so:${PORTSDIR}/textproc/libuninameslist \
 		libtiff.so:${PORTSDIR}/graphics/tiff \
