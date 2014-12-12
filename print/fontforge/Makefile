@@ -2,11 +2,11 @@
 # $FreeBSD$
 
 PORTNAME=	fontforge
-PORTRELEASE=	2014-11-26
-PORTVERSION=	${PORTRELEASE:S/-//}
+PORTVERSION=	${RELEASEDATE:S/-//g}
+RELEASEDATE=	2014-11-26
 CATEGORIES=	print
 MASTER_SITES=	https://github.com/fontforge/fontforge/releases/download/${PORTVERSION}/
-DISTNAME=	${PORTNAME}-${PORTRELEASE}-Unix-Source
+DISTNAME=	${PORTNAME}-${RELEASEDATE}-Unix-Source
 
 MAINTAINER=	takumiiinn@gmail.com
 COMMENT=	Type 1/TrueType/OpenType/bitmap font editor
@@ -15,7 +15,6 @@ LICENSE=	GPLv3
 
 GNOME=		pango
 USES+=		autoreconf gettext gmake iconv libtool pkgconfig python
-BUILD_DEPENDS+=	git:${PORTSDIR}/devel/git
 LIB_DEPENDS+=	libuninameslist.so:${PORTSDIR}/textproc/libuninameslist \
 		libtiff.so:${PORTSDIR}/graphics/tiff \
 		libjpeg.so:${PORTSDIR}/graphics/jpeg \
