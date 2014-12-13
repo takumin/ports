@@ -17,7 +17,7 @@ LICENSE=	MIT
 
 NO_BUILD=	yes
 NO_WRKSUBDIR=	yes
-USE_PHP=	openssl phar zlib
+USE_PHP=	icov openssl phar zlib
 
 PLIST_FILES=	bin/wp
 
