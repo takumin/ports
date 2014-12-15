@@ -42,7 +42,8 @@ CONFIGURE_ARGS+=	--enable-symlink-device
 VBOX_WRKSRC=	`${MAKE} -C ${PORTSDIR}/emulators/virtualbox-ose -V WRKSRC`
 RUN_DEPENDS+=	${LOCALBASE}/lib/virtualbox/VBoxRT.so:${PORTSDIR}/emulators/virtualbox-ose
 BUILD_DEPENDS+=	${NONEXISTENT}:${PORTSDIR}/emulators/virtualbox-ose:patch
-CONFIGURE_ARGS+=	--with-vbox=${VBOX_WRKSRC}/include
+CONFIGURE_ARGS+=	--with-vbox=${VBOX_WRKSRC}/include \
+			--with-vboxlib=${LOCALBASE}/lib/virtualbox
 .endif
 
 post-extract:
