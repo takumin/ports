@@ -16,6 +16,7 @@ LICENSE=	GPLv3
 
 GNOME=		glib20 pango
 USES+=		autoreconf gettext gmake iconv libtool pkgconfig python
+BUILD_DEPENDS+=	git:${PORTSDIR}/devel/git
 LIB_DEPENDS+=	libtiff.so:${PORTSDIR}/graphics/tiff \
 		libjpeg.so:${PORTSDIR}/graphics/jpeg \
 		libpng15.so:${PORTSDIR}/graphics/png \
