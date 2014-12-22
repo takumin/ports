@@ -14,10 +14,11 @@ COMMENT=	Type 1/TrueType/OpenType/bitmap font editor
 
 LICENSE=	GPLv3
 
-GNOME=		glib20 pango
 USES+=		autoreconf gettext gmake iconv libtool pkgconfig python
 BUILD_DEPENDS+=	git:${PORTSDIR}/devel/git
-LIB_DEPENDS+=	libtiff.so:${PORTSDIR}/graphics/tiff \
+LIB_DEPENDS+=	libglib-2.0.so:${PORTSDIR}/devel/glib20 \
+		libpango-1.0.so::${PORTSDIR}/x11-toolkits/pango \
+		libtiff.so:${PORTSDIR}/graphics/tiff \
 		libjpeg.so:${PORTSDIR}/graphics/jpeg \
 		libpng15.so:${PORTSDIR}/graphics/png \
 		libgif.so:${PORTSDIR}/graphics/giflib \
