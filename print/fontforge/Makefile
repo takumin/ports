@@ -17,7 +17,7 @@ LICENSE=	GPLv3
 USES+=		autoreconf gettext gmake iconv libtool pkgconfig python
 BUILD_DEPENDS+=	git:${PORTSDIR}/devel/git
 LIB_DEPENDS+=	libglib-2.0.so:${PORTSDIR}/devel/glib20 \
-		libpango-1.0.so::${PORTSDIR}/x11-toolkits/pango \
+		libpango-1.0.so:${PORTSDIR}/x11-toolkits/pango \
 		libtiff.so:${PORTSDIR}/graphics/tiff \
 		libjpeg.so:${PORTSDIR}/graphics/jpeg \
 		libpng15.so:${PORTSDIR}/graphics/png \
