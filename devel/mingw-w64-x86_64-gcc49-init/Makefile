@@ -22,8 +22,8 @@ MINGW64_TARGET?=x86_64-w64-mingw32
 LIB_DEPENDS+=	libgmp.so:${PORTSDIR}/math/gmp \
 		libmpfr.so:${PORTSDIR}/math/mpfr \
 		libmpc.so:${PORTSDIR}/math/mpc
-BUILD_DEPENDS+=	${LOCALBASE}/bin/${MINGW64_TARGET}-as:${PORTSDIR}/devel/${PKGNAMEPREFIX}binutils
-RUN_DEPENDS+=	${LOCALBASE}/bin/${MINGW64_TARGET}-as:${PORTSDIR}/devel/${PKGNAMEPREFIX}binutils
+#BUILD_DEPENDS+=	${LOCALBASE}/bin/${MINGW64_TARGET}-as:${PORTSDIR}/devel/${PKGNAMEPREFIX}binutils
+#RUN_DEPENDS+=	${LOCALBASE}/bin/${MINGW64_TARGET}-as:${PORTSDIR}/devel/${PKGNAMEPREFIX}binutils
 
 USES=		gmake iconv perl5 tar:bzip2
 USE_BINUTILS=	yes
