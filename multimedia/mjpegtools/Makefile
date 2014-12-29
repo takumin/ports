@@ -1,5 +1,5 @@
 # Created by: Mario Sergio Fujikawa Ferreira <lioux@FreeBSD.org>
-# $FreeBSD: head/multimedia/mjpegtools/Makefile 374303 2014-12-08 16:48:38Z tijl $
+# $FreeBSD: head/multimedia/mjpegtools/Makefile 375598 2014-12-25 20:54:41Z bapt $
 
 PORTNAME=	mjpegtools
 PORTVERSION=	2.1.0
@@ -36,7 +36,7 @@ DV_LIB_DEPENDS=		libdv.so:${PORTSDIR}/multimedia/libdv
 DV_CONFIGURE_WITH=	libdv
 GTK2_USE=		GNOME=gtk20
 GTK2_CONFIGURE_WITH=	gtk
-PNG_LIB_DEPENDS=	libpng15.so:${PORTSDIR}/graphics/png
+PNG_LIB_DEPENDS=	libpng.so:${PORTSDIR}/graphics/png
 PNG_CONFIGURE_WITH=	libpng
 QUICKTIME_LIB_DEPENDS=	libquicktime.so:${PORTSDIR}/multimedia/libquicktime
 QUICKTIME_CONFIGURE_WITH=	libquicktime
