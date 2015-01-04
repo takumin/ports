@@ -68,7 +68,6 @@ include/proftpd/support.h
 include/proftpd/table.h
 include/proftpd/throttle.h
 include/proftpd/timers.h
-include/proftpd/tpl.h
 include/proftpd/trace.h
 include/proftpd/utf8.h
 include/proftpd/var.h
