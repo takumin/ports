@@ -1,7 +1,7 @@
 # $FreeBSD: head/sysutils/rubygem-librarian-puppet/Makefile 359196 2014-06-25 08:04:23Z robak $
 
 PORTNAME=	librarian-puppet
-PORTVERSION=	2.0.0
+PORTVERSION=	2.1.0
 CATEGORIES=	sysutils rubygems
 MASTER_SITES=	RG
 
@@ -10,7 +10,7 @@ COMMENT=	Tool for management and bundling Puppet modules
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-librarian>=0.1.2:${PORTSDIR}/devel/rubygem-librarian \
+RUN_DEPENDS=	rubygem-librarian>=0.5.1:${PORTSDIR}/devel/rubygem-librarian \
 		rubygem-puppet_forge>=0:${PORTSDIR}/devel/rubygem-puppet_forge \
 		rubygem-rsync>=0:${PORTSDIR}/devel/rubygem-rsync \
 		rubygem-rsync>=0:${PORTSDIR}/devel/rubygem-rsync \
