@@ -10,9 +10,8 @@ COMMENT=	Tool for management and bundling Puppet modules
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-librarian>=0.5.1:${PORTSDIR}/devel/rubygem-librarian \
+RUN_DEPENDS=	rubygem-librarianp>=0.5.1:${PORTSDIR}/devel/rubygem-librarianp \
 		rubygem-puppet_forge>=0:${PORTSDIR}/devel/rubygem-puppet_forge \
-		rubygem-rsync>=0:${PORTSDIR}/devel/rubygem-rsync \
 		rubygem-rsync>=0:${PORTSDIR}/devel/rubygem-rsync \
 		ca_root_nss>=0:${PORTSDIR}/security/ca_root_nss \
 		git>=0:${PORTSDIR}/devel/git
