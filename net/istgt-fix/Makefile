@@ -2,6 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	istgt
+PKGNAMESUFFIX=	-fix
 PORTVERSION=	20141125
 CATEGORIES=	net
 MASTER_SITES=	http://shell.peach.ne.jp/~aoyama/wordpress/download/
