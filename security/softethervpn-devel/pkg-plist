@@ -1,0 +1,15 @@
+bin/vpnbridge
+bin/vpnclient
+bin/vpncmd
+bin/vpnserver
+etc/rc.d/vpnbridge
+etc/rc.d/vpnclient
+etc/rc.d/vpnserver
+%%DATADIR%%/vpnbridge/hamcore.se2
+%%DATADIR%%/vpnbridge/vpnbridge
+%%DATADIR%%/vpnclient/hamcore.se2
+%%DATADIR%%/vpnclient/vpnclient
+%%DATADIR%%/vpncmd/hamcore.se2
+%%DATADIR%%/vpncmd/vpncmd
+%%DATADIR%%/vpnserver/hamcore.se2
+%%DATADIR%%/vpnserver/vpnserver

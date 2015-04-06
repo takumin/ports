@@ -1,0 +1,36 @@
+#!/bin/sh
+
+# $FreeBSD$
+#
+# PROVIDE: vpnserver
+# REQUIRE: LOGIN
+# KEYWORD: shutdown
+#
+# Add these lines to /etc/rc.conf.local or /etc/rc.conf
+# to enable this service:
+#
+# vpnserver_enable (bool):	Set to NO by default.
+#				Set it to YES to enable vpnserver.
+
+. /etc/rc.subr
+
+name=vpnserver
+rcvar=vpnserver_enable
+start_cmd="${name}_start"
+stop_cmd="${name}_stop"
+
+load_rc_config $name
+
+: ${vpnserver_enable:="NO"}
+
+command=%%DATADIR%%/${name}/${name}
+
+vpnserver_start() {
+	${command} start
+}
+
+vpnserver_stop() {
+	${command} stop
+}
+
+run_rc_command "$1"
