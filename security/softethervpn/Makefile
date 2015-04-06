@@ -10,6 +10,8 @@ COMMENT=	Cross-platform Multi-protocol VPN Program
 
 LICENSE=	GPLv2
 
+CONFLICTS_INSTALL=	softethervpn-devel-[0-9]*
+
 USE_GITHUB=	yes
 GH_ACCOUNT=	SoftEtherVPN
 GH_PROJECT=	SoftEtherVPN
