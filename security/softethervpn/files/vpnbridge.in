@@ -1,0 +1,26 @@
+#!/bin/sh
+
+# $FreeBSD$
+#
+# PROVIDE: vpnbridge
+# REQUIRE: LOGIN
+# KEYWORD: shutdown
+#
+# Add these lines to /etc/rc.conf.local or /etc/rc.conf
+# to enable this service:
+#
+# vpnbridge_enable (bool):	Set to NO by default.
+#				Set it to YES to enable vpnbridge.
+
+. /etc/rc.subr
+
+name=vpnbridge
+rcvar=vpnbridge_enable
+
+load_rc_config $name
+
+: ${vpnbridge_enable:="NO"}
+
+command=%%PREFIX%%/bin/${name}
+
+run_rc_command "$1"
