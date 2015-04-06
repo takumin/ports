@@ -16,7 +16,7 @@ GH_PROJECT=	SoftEtherVPN
 GH_TAGNAME=	ea38eef
 
 ONLY_FOR_ARCHS=	i386 amd64
-USES=		gmake iconv readline ncurses
+USES=		gmake iconv:wchar_t readline ncurses
 USE_OPENSSL=	yes
 USE_RC_SUBR=	vpnserver vpnbridge vpnclient
 
