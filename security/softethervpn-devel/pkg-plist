@@ -2,9 +2,6 @@ bin/vpnbridge
 bin/vpnclient
 bin/vpncmd
 bin/vpnserver
-etc/rc.d/vpnbridge
-etc/rc.d/vpnclient
-etc/rc.d/vpnserver
 %%DATADIR%%/vpnbridge/hamcore.se2
 %%DATADIR%%/vpnbridge/vpnbridge
 %%DATADIR%%/vpnclient/hamcore.se2
