@@ -38,7 +38,9 @@ MAKE_ARGS+=	INSTALL_VPNCMD_DIR=${STAGEDIR}${DATADIR}/vpncmd/
 
 post-install:
 .for f in vpnserver vpnbridge vpnclient vpncmd
-	@${LN} -sf ${DATADIR}/${f}/${f} ${STAGEDIR}${PREFIX}/bin/${f}
+	@${ECHO_CMD} '#!/bin/sh' > ${STAGEDIR}${PREFIX}/bin/${f}
+	@${ECHO_CMD} '${DATADIR}/${f}/${f} "$$@"' >> ${STAGEDIR}${PREFIX}/bin/${f}
+	@${ECHO_CMD} 'exit $$?' >> ${STAGEDIR}${PREFIX}/bin/${f}
 	@${STRIP_CMD} ${STAGEDIR}${DATADIR}/${f}/${f}
 .endfor
 
