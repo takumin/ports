@@ -16,11 +16,16 @@
 
 name=vpnserver
 rcvar=vpnserver_enable
+start_cmd="${name}_start"
 
 load_rc_config $name
 
 : ${vpnserver_enable:="NO"}
 
-command=%%PREFIX%%/bin/${name}
+command=%%DATADIR%%/${name}/${name}
+
+vpnserver_start() {
+	${command} start
+}
 
 run_rc_command "$1"

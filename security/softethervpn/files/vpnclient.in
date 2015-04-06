@@ -16,11 +16,16 @@
 
 name=vpnclient
 rcvar=vpnclient_enable
+start_cmd="${name}_start"
 
 load_rc_config $name
 
 : ${vpnclient_enable:="NO"}
 
-command=%%PREFIX%%/bin/${name}
+command=%%DATADIR%%/${name}/${name}
+
+vpnclient_start() {
+	${command} start
+}
 
 run_rc_command "$1"
