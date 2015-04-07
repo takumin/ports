@@ -7,6 +7,7 @@ bin/x86_64-w64-mingw32-gcc-nm49
 bin/x86_64-w64-mingw32-gcc-ranlib49
 bin/x86_64-w64-mingw32-gcc49
 bin/x86_64-w64-mingw32-gcov49
+@comment info/gcc%%SUFFIX%%/dir
 lib/gcc49/gcc/x86_64-w64-mingw32/%%GCC_VERSION%%/include-fixed/README
 lib/gcc49/gcc/x86_64-w64-mingw32/%%GCC_VERSION%%/include-fixed/limits.h
 lib/gcc49/gcc/x86_64-w64-mingw32/%%GCC_VERSION%%/include-fixed/syslimits.h
@@ -296,3 +297,6 @@ man/man1/x86_64-w64-mingw32-cpp49.1.gz
 man/man1/x86_64-w64-mingw32-g++49.1.gz
 man/man1/x86_64-w64-mingw32-gcc49.1.gz
 man/man1/x86_64-w64-mingw32-gcov49.1.gz
+@exec if type ccache-update-links >/dev/null 2>&1; then ccache-update-links -v; fi
+@unexec if type ccache-update-links >/dev/null 2>&1; then ccache-update-links -v; fi
+@comment Insert PLIST.lib here
