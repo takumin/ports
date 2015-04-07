@@ -15,22 +15,23 @@ COMMENT?=		MinGW-w64 for runtime and w32api
 USES=			tar:bzip2 gmake
 GNU_CONFIGURE=		yes
 GNU_CONFIGURE_PREFIX=	${PREFIX}/x86_64-w64-mingw32
+CC=			x86_64-w64-mingw32-gcc
+CXX=			x86_64-w64-mingw32-c++
 
 .include <bsd.port.pre.mk>
 
 .if ${PKGNAMESUFFIX} == "-crt"
-BUILD_DEPENDS+=		${LOCALBASE}/x86_64-w64-mingw32/include/_mingw.h:${PORTSDIR}/devel/mingw64-header
+BUILD_DEPENDS+=		${LOCALBASE}/x86_64-w64-mingw32/include/_mingw.h:${PORTSDIR}/devel/mingw64-header \
+			x86_64-w64-mingw32-gcc:${PORTSDIR}/devel/mingw64-gcc-core
 WRKSRC_SUBDIR=		mingw-w64-crt
 .else
 WRKSRC_SUBDIR=		mingw-w64-headers
 .endif
 
 .if ${ARCH} == "amd64"
-CONFIGURE_ARGS+=	--host=x86_64-w64-mingw32 \
-			--build=x86_64-portbld-freebsd${OSREL}
+CONFIGURE_ARGS+=	--host=x86_64-w64-mingw32
 .else
-CONFIGURE_ARGS+=	--host=${ARCH}-w64-mingw32 \
-			--build=${ARCH}-portbld-freebsd${OSREL}
+CONFIGURE_ARGS+=	--host=${ARCH}-w64-mingw32
 .endif
 
 .include <bsd.port.post.mk>
