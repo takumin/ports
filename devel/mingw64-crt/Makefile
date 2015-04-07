@@ -6,8 +6,8 @@ PKGNAMESUFFIX?=		-crt
 PORTVERSION=		4.0.1
 CATEGORIES=		devel
 MASTER_SITES=		SF
-MASTER_SITE_SUBDIR=	${PORTNAME}/${PORTNAME}/${PORTNAME}-release
-DISTNAME=		${PORTNAME}-v${PORTVERSION}
+MASTER_SITE_SUBDIR=	mingw-w64/mingw-w64/mingw-w64-release
+DISTNAME=		mingw-w64-v${PORTVERSION}
 
 MAINTAINER=		takumiiinn@gmail.com
 COMMENT?=		MinGW-w64 for runtime and w32api
