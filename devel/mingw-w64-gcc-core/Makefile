@@ -2,6 +2,7 @@
 # $FreeBSD$
 
 PKGNAMEPREFIX=	mingw-w64-
+PKGNAMESUFFIX=	-core
 MAINTAINER=	takumiiinn@gmail.com
 
 BUILD_DEPENDS+=	${LOCALBASE}/bin/x86_64-w64-mingw32-as:${PORTSDIR}/devel/mingw-w64-binutils
