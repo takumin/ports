@@ -1,10 +1,9 @@
-# Created by: stas
-# $FreeBSD: head/devel/mingw64-binutils/Makefile 367080 2014-09-02 20:35:33Z ak $
+# Created by: Takumi Takahashi <takumiiinn@gmail.com>
+# $FreeBSD$
 
-MAINTAINER= ports@FreeBSD.org
+MAINTAINER=	takumiiinn@gmail.com
 
-TGTARCH=	x86_64
-TGTABI=		w64-mingw32
+BUTARGET=	x86_64-w64-mingw32
 
-MASTERDIR=	${.CURDIR}/../cross-binutils
+MASTERDIR=	${.CURDIR}/../binutils
 .include "${MASTERDIR}/Makefile"
