@@ -6,14 +6,11 @@ PKGNAMESUFFIX=	-header
 
 COMMENT=	MinGW-w64 for header files
 
-MASTERDIR=	${.CURDIR}/../mingw-w64
-
-PLIST=		${.CURDIR}/pkg-plist
-
-CONFIGURE_ARGS+=	--enable-sdk=all \
-			--enable-secure-api \
-			--without-crt
+WRKSRC_SUBDIR=	mingw-w64-headers
 
 MINGW64_HEADER=	yes
+
+MASTERDIR=	${.CURDIR}/../mingw-w64
+PLIST=		${.CURDIR}/pkg-plist
 
 .include "${MASTERDIR}/Makefile"

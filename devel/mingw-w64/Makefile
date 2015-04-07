@@ -15,8 +15,6 @@ COMMENT?=		MinGW-w64 for runtime and w32api
 USES=			tar:bzip2 gmake
 GNU_CONFIGURE=		yes
 
-CONFIGURE_ARGS+=	--with-sysroot=/
-
 .if !defined(MINGW64_HEADER)
 BUILD_DEPENDS+=		${LOCALBASE}/include/_mingw.h:${PORTSDIR}/devel/mingw-w64-header
 CONFIGURE_ARGS+=	--with-tools=all \
