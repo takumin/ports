@@ -3,7 +3,7 @@
 
 PORTNAME?=		mingw-w64
 PKGNAMESUFFIX?=		-crt
-PORTVERSION=		3.3.0
+PORTVERSION=		4.0.1
 CATEGORIES=		devel
 MASTER_SITES=		SF
 MASTER_SITE_SUBDIR=	${PORTNAME}/${PORTNAME}/${PORTNAME}-release
@@ -18,7 +18,7 @@ GNU_CONFIGURE=		yes
 CONFIGURE_ARGS+=	--with-sysroot=/
 
 .if !defined(MINGW64_HEADER)
-BUILD_DEPENDS+=	${LOCALBASE}/include/_mingw.h:${PORTSDIR}/devel/mingw-w64-header
+BUILD_DEPENDS+=		${LOCALBASE}/include/_mingw.h:${PORTSDIR}/devel/mingw-w64-header
 CONFIGURE_ARGS+=	--with-tools=all \
 			--without-headers
 .endif
