@@ -73,7 +73,7 @@ CONFIGURE_ARGS+=--target=${CROSS_TARGET} \
 		--with-pkgversion="FreeBSD Ports Collection" \
 		--with-system-zlib
 MAKE_ARGS+=	MAKEINFOFLAGS="--no-split"
-USE_LDCONFIG=	yes
+USE_LDCONFIG=	${PREFIX}/lib/gcc/${CROSS_TARGET}
 PLIST_SUB=	GCC_VERSION=${PORTVERSION} \
 		GNU_HOST=${CONFIGURE_TARGET} \
 		CROSS_TARGET=${CROSS_TARGET}
