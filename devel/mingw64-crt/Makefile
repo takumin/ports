@@ -20,7 +20,7 @@ CONFIGURE_ARGS+=	--with-sysroot=${PREFIX}
 .include <bsd.port.pre.mk>
 
 .if ${PKGNAMESUFFIX} == "-crt"
-BUILD_DEPENDS+=		${LOCALBASE}/include/_mingw.h:${PORTSDIR}/devel/mingw64-header
+BUILD_DEPENDS+=		${LOCALBASE}/x86_64-w64-mingw32/include/_mingw.h:${PORTSDIR}/devel/mingw64-header
 WRKSRC_SUBDIR=		mingw-w64-crt
 .else
 WRKSRC_SUBDIR=		mingw-w64-headers
