@@ -31,6 +31,7 @@ IGBINARY_DESC=	Build with Igbinary serializer
 
 .if ${PORT_OPTIONS:MIGBINARY}
 USE_PHP+=	igbinary
+BUILD_DEPENDS+=	re2c:${PORTSDIR}/devel/re2c
 CONFIGURE_ARGS+=--enable-redis-igbinary
 .else
 CONFIGURE_ARGS+=--disable-redis-igbinary
