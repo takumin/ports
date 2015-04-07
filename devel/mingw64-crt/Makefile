@@ -15,7 +15,6 @@ COMMENT?=		MinGW-w64 for runtime and w32api
 USES=			tar:bzip2 gmake
 GNU_CONFIGURE=		yes
 GNU_CONFIGURE_PREFIX=	${PREFIX}/x86_64-w64-mingw32
-CONFIGURE_ARGS+=	--with-sysroot=${PREFIX}
 
 .include <bsd.port.pre.mk>
 
