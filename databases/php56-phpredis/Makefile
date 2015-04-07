@@ -12,8 +12,9 @@ COMMENT=	PHP5-Extension for Redis
 LICENSE=	PHP301
 
 USE_GITHUB=	yes
-GH_ACCOUNT=	nicolasff
-GH_COMMIT=	8dac89e
+GH_ACCOUNT=	phpredis
+GH_PROJECT=	phpredis
+GH_TAGNAME=	${PORTVERSION}
 
 USE_PHP=	session
 PHP_DEFAULT=	5.6
