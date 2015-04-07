@@ -1,7 +1,7 @@
 # Created by: Takumi Takahashi <takumiiinn@gmail.com>
 # $FreeBSD$
 
-PORTNAME=	phpredis
+PORTNAME=	redis
 PKGNAMEPREFIX=	php56-
 PORTVERSION=	2.2.7
 CATEGORIES=	databases
