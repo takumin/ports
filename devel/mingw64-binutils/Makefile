@@ -1,7 +1,7 @@
 # Created by: Takumi Takahashi <takumiiinn@gmail.com>
 # $FreeBSD$
 
-PKGNAMEPREFIX=	mingw-w64-
+PKGNAMEPREFIX=	mingw64-
 MAINTAINER=	takumiiinn@gmail.com
 
 BUTARGET=	x86_64-w64-mingw32
