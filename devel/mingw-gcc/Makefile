@@ -33,7 +33,7 @@ INSTALL_TARGET=	install-gcc
 .endif
 
 .ifndef CROSS_TARGET
-IGNORE=		Require CROSS_TARGET for "x86_64-pc-mingw32" or "i686-pc-mingw32"
+IGNORE=		Require CROSS_TARGET for "x86_64-w64-mingw32" or "i686-pc-mingw32"
 .else
 . if ${CROSS_TARGET} == "x86_64-w64-mingw32"
 PKGNAMEPREFIX=	mingw64-
@@ -44,7 +44,7 @@ PKGNAMEPREFIX=	mingw32-
 BUILD_DEPENDS+=	${LOCALBASE}/bin/${CROSS_TARGET}-as:${PORTSDIR}/devel/mingw32-binutils
 RUN_DEPENDS+=	${LOCALBASE}/bin/${CROSS_TARGET}-as:${PORTSDIR}/devel/mingw32-binutils
 . else
-IGNORE=		Require CROSS_TARGET for "x86_64-pc-mingw32" or "i686-pc-mingw32"
+IGNORE=		Require CROSS_TARGET for "x86_64-w64-mingw32" or "i686-pc-mingw32"
 . endif
 .endif
 
