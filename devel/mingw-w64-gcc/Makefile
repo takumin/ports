@@ -14,4 +14,6 @@ ALL_TARGET=	all-gcc
 INSTALL_TARGET=	install-gcc
 
 MASTERDIR=	${.CURDIR}/../../lang/gcc49
+PLIST=		${.CURDIR}/pkg-plist
+
 .include "${MASTERDIR}/Makefile"
