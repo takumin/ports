@@ -3,7 +3,7 @@
 
 PORTNAME=	phpredis
 PKGNAMEPREFIX=	php56-
-PORTVERSION=	2.2.5
+PORTVERSION=	2.2.7
 CATEGORIES=	databases
 
 MAINTAINER=	takumiiinn@gmail.com
