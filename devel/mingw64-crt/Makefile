@@ -14,13 +14,16 @@ COMMENT?=		MinGW-w64 for runtime and w32api
 
 USES=			tar:bzip2 gmake
 GNU_CONFIGURE=		yes
+GNU_CONFIGURE_PREFIX=	${PREFIX}/x86_64-w64-mingw32
+CONFIGURE_ARGS+=	--with-sysroot=${PREFIX}
 
 .include <bsd.port.pre.mk>
 
 .if ${PKGNAMESUFFIX} == "-crt"
 BUILD_DEPENDS+=		${LOCALBASE}/include/_mingw.h:${PORTSDIR}/devel/mingw-w64-header
-CONFIGURE_ARGS+=	--with-tools=all \
-			--without-headers
+WRKSRC_SUBDIR=		mingw-w64-crt
+.else
+WRKSRC_SUBDIR=		mingw-w64-headers
 .endif
 
 .if ${ARCH} == "amd64"
