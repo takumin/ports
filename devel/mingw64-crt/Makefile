@@ -1,7 +1,7 @@
 # Created by: Takumi Takahashi <takumiiinn@gmail.com>
 # $FreeBSD$
 
-PORTNAME?=		mingw-w64
+PORTNAME=		mingw64
 PKGNAMESUFFIX?=		-crt
 PORTVERSION=		4.0.1
 CATEGORIES=		devel
@@ -15,13 +15,13 @@ COMMENT?=		MinGW-w64 for runtime and w32api
 USES=			tar:bzip2 gmake
 GNU_CONFIGURE=		yes
 
-.if !defined(MINGW64_HEADER)
+.include <bsd.port.pre.mk>
+
+.if ${PKGNAMESUFFIX} == "-crt"
 BUILD_DEPENDS+=		${LOCALBASE}/include/_mingw.h:${PORTSDIR}/devel/mingw-w64-header
 CONFIGURE_ARGS+=	--with-tools=all \
 			--without-headers
 .endif
-
-.include <bsd.port.pre.mk>
 
 .if ${ARCH} == "amd64"
 CONFIGURE_ARGS+=	--host=x86_64-w64-mingw32 \
