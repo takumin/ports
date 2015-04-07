@@ -7,14 +7,12 @@ bin/x86_64-w64-mingw32-gcc-nm49
 bin/x86_64-w64-mingw32-gcc-ranlib49
 bin/x86_64-w64-mingw32-gcc49
 bin/x86_64-w64-mingw32-gcov49
-bin/x86_64-w64-mingw32-gfortran49
 info/gcc49/cpp.info
 info/gcc49/cppinternals.info
 info/gcc49/dir
 info/gcc49/gcc.info
 info/gcc49/gccinstall.info
 info/gcc49/gccint.info
-info/gcc49/gfortran.info
 lib/gcc49/gcc/x86_64-w64-mingw32/%%GCC_VERSION%%/include-fixed/README
 lib/gcc49/gcc/x86_64-w64-mingw32/%%GCC_VERSION%%/include-fixed/limits.h
 lib/gcc49/gcc/x86_64-w64-mingw32/%%GCC_VERSION%%/include-fixed/syslimits.h
@@ -288,10 +286,8 @@ lib/gcc49/gcc/x86_64-w64-mingw32/%%GCC_VERSION%%/plugin/include/varasm.h
 lib/gcc49/gcc/x86_64-w64-mingw32/%%GCC_VERSION%%/plugin/include/vec.h
 lib/gcc49/gcc/x86_64-w64-mingw32/%%GCC_VERSION%%/plugin/include/version.h
 libexec/gcc49/gcc/x86_64-w64-mingw32/%%GCC_VERSION%%/cc1
-libexec/gcc49/gcc/x86_64-w64-mingw32/%%GCC_VERSION%%/cc1obj
 libexec/gcc49/gcc/x86_64-w64-mingw32/%%GCC_VERSION%%/cc1plus
 libexec/gcc49/gcc/x86_64-w64-mingw32/%%GCC_VERSION%%/collect2
-libexec/gcc49/gcc/x86_64-w64-mingw32/%%GCC_VERSION%%/f951
 libexec/gcc49/gcc/x86_64-w64-mingw32/%%GCC_VERSION%%/install-tools/fixinc.sh
 libexec/gcc49/gcc/x86_64-w64-mingw32/%%GCC_VERSION%%/install-tools/fixincl
 libexec/gcc49/gcc/x86_64-w64-mingw32/%%GCC_VERSION%%/install-tools/mkheaders
@@ -306,5 +302,3 @@ man/man1/x86_64-w64-mingw32-cpp49.1.gz
 man/man1/x86_64-w64-mingw32-g++49.1.gz
 man/man1/x86_64-w64-mingw32-gcc49.1.gz
 man/man1/x86_64-w64-mingw32-gcov49.1.gz
-man/man1/x86_64-w64-mingw32-gfortran49.1.gz
-@dir lib/gcc49/gcc/x86_64-w64-mingw32/%%GCC_VERSION%%/finclude
