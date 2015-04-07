@@ -58,8 +58,10 @@ LANGUAGES:=	c,c++
 SRCDIR=		${WRKDIR}/gcc-${DISTVERSION}
 WRKSRC=		${WRKDIR}/build
 PATCH_WRKSRC=	${SRCDIR}
-CONFIGURE_SCRIPT=	../${SRCDIR:S/${WRKDIR}\///}/configure
+TARGLIB=	${PREFIX}/lib/gcc
+LIBEXEC=	${PREFIX}/libexec/gcc
 GNU_CONFIGURE=	yes
+CONFIGURE_SCRIPT=	../${SRCDIR:S/${WRKDIR}\///}/configure
 CONFIGURE_ARGS+=--target=${CROSS_TARGET} \
 		--enable-languages=${LANGUAGES} \
 		--disable-bootstrap \
@@ -73,7 +75,7 @@ CONFIGURE_ARGS+=--target=${CROSS_TARGET} \
 		--with-pkgversion="FreeBSD Ports Collection" \
 		--with-system-zlib
 MAKE_ARGS+=	MAKEINFOFLAGS="--no-split"
-USE_LDCONFIG=	${PREFIX}/lib/gcc/${CROSS_TARGET}
+USE_LDCONFIG=	${TARGLIB}
 PLIST_SUB=	GCC_VERSION=${PORTVERSION} \
 		GNU_HOST=${CONFIGURE_TARGET} \
 		CROSS_TARGET=${CROSS_TARGET}
@@ -83,6 +85,7 @@ INFO=		gcc/cpp \
 		gcc/gccinstall \
 		gcc/gccint
 SUB_FILES=	pkg-message
+SUB_LIST+=	TARGLIB=${TARGLIB}
 
 pre-everything::
 	@${ECHO_MSG} "Making GCC ${PORTVERSION}"
@@ -94,5 +97,16 @@ pre-configure:
 	cd ${SRCDIR} ; contrib/gcc_update --touch
 	@${RM} -f ${SRCDIR}/gcc/*/*.info*
 	@${MKDIR} ${CONFIGURE_WRKSRC}
+
+post-stage:
+	${RM} -f ${STAGEDIR}${PREFIX}/man/man7/*
+	# Add target libraries and include files to packaging list.
+	${RM} -f ${WRKDIR}/PLIST.lib
+.for d in ${TARGLIB:S/^${PREFIX}\///} ${LIBEXEC:S/^${PREFIX}\///}
+	cd ${STAGEDIR}${PREFIX} ; if [ -d $d ]; then \
+	    ${FIND} $d -type f -o -type l >>${WRKDIR}/PLIST.lib ;\
+	fi
+.endfor
+	cd ${WRKDIR} ; ${SED} -i -e "/PLIST.lib/ r PLIST.lib" ${TMPPLIST}
 
 .include <bsd.port.post.mk>
