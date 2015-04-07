@@ -7,12 +7,6 @@ bin/x86_64-w64-mingw32-gcc-nm49
 bin/x86_64-w64-mingw32-gcc-ranlib49
 bin/x86_64-w64-mingw32-gcc49
 bin/x86_64-w64-mingw32-gcov49
-info/gcc49/cpp.info
-info/gcc49/cppinternals.info
-info/gcc49/dir
-info/gcc49/gcc.info
-info/gcc49/gccinstall.info
-info/gcc49/gccint.info
 lib/gcc49/gcc/x86_64-w64-mingw32/%%GCC_VERSION%%/include-fixed/README
 lib/gcc49/gcc/x86_64-w64-mingw32/%%GCC_VERSION%%/include-fixed/limits.h
 lib/gcc49/gcc/x86_64-w64-mingw32/%%GCC_VERSION%%/include-fixed/syslimits.h
