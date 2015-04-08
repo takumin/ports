@@ -35,6 +35,11 @@ INSTALL_TARGET=	install-gcc
 BUILD_DEPENDS+=	${LOCALBASE}/${CROSS_TARGET}/lib/libmingw32.a:${PORTSDIR}/devel/mingw64-crt
 RUN_DEPENDS+=	${LOCALBASE}/${CROSS_TARGET}/lib/libmingw32.a:${PORTSDIR}/devel/mingw64-crt
 CONFIGURE_ARGS+=--with-sysroot=${LOCALBASE}/${CROSS_TARGET}
+CC=			${CROSS_TARGET}-gcc
+CXX=			${CROSS_TARGET}-c++
+CPP=			${CROSS_TARGET}-cpp
+AR=			${CROSS_TARGET}-ar
+RANLIB=			${CROSS_TARGET}-ranlib
 .endif
 
 .ifndef CROSS_TARGET
@@ -67,6 +72,8 @@ TARGLIB=	${PREFIX}/lib/${CROSS_TARGET}-gcc
 LIBEXEC=	${PREFIX}/libexec/${CROSS_TARGET}-gcc
 GNU_CONFIGURE=	yes
 CONFIGURE_SCRIPT=	../${SRCDIR:S/${WRKDIR}\///}/configure
+GNU_CONFIGURE_PREFIX=	${PREFIX}/${CROSS_TARGET}
+CONFIGURE_ARGS+=--with-sysroot=${PREFIX}
 CONFIGURE_ARGS+=--target=${CROSS_TARGET} \
 		--enable-targets=all \
 		--enable-languages=${LANGUAGES} \

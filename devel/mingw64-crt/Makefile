@@ -24,6 +24,8 @@ BUILD_DEPENDS+=		${LOCALBASE}/x86_64-w64-mingw32/include/_mingw.h:${PORTSDIR}/de
 CC=			x86_64-w64-mingw32-gcc
 CXX=			x86_64-w64-mingw32-c++
 CPP=			x86_64-w64-mingw32-cpp
+AR=			x86_64-w64-mingw32-ar
+RANLIB=			x86_64-w64-mingw32-ranlib
 WRKSRC_SUBDIR=		mingw-w64-crt
 .else
 WRKSRC_SUBDIR=		mingw-w64-headers
