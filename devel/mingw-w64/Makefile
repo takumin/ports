@@ -23,7 +23,7 @@ IGNORE=		build for 'devel/mingw-w64-i686-crt' or 'devel/mingw-w64-x86_64-crt'
 BUILD_ARCH=	${PKGNAMESUFFIX:C/^-(.*)-(.*)$/\1/}
 BUILD_TYPE=	${PKGNAMESUFFIX:C/^-(.*)-(.*)$/\2/}
 
-WRKSRC_SUBDIR=	${PORTNAME}${BUILD_TYPE}
+WRKSRC_SUBDIR=	${PORTNAME}-${BUILD_TYPE}
 GNU_CONFIGURE_PREFIX=	${PREFIX}/${BUILD_ARCH}-w64-mingw32
 
 .if ${ARCH} == "amd64"
