@@ -28,7 +28,7 @@ SSP_UNSAFE=	yes
 .include <bsd.port.pre.mk>
 
 .ifdef CROSS_CORE
-PKGNAMEPREFIX=	-core
+PKGNAMESUFFIX=	-core
 ALL_TARGET=	all-gcc
 INSTALL_TARGET=	install-gcc
 .else
