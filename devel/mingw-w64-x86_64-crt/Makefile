@@ -1,8 +1,8 @@
 # Created by: Takumi Takahashi <takumiiinn@gmail.com>
 # $FreeBSD$
 
-PKGNAMESUFFIX=	-i686-crt
-COMMENT=	MinGW-w64 for i686 runtime
+PKGNAMESUFFIX=	-x86_64-crt
+COMMENT=	MinGW-w64 for x86_64 runtime
 
 MASTERDIR=	${.CURDIR}/../mingw-w64
 PLIST=		${.CURDIR}/pkg-plist
