@@ -1,10 +1,12 @@
 # Created by: Takumi Takahashi <takumiiinn@gmail.com>
 # $FreeBSD$
 
-PKGNAMESUFFIX=	-header
+PKGNAMESUFFIX=	-headers
 COMMENT=	MinGW-w64 for header files
 
-MASTERDIR=	${.CURDIR}/../mingw64-crt
+WRKSRC_SUBDIR=	${PORTNAME}${PKGNAMESUFFIX}
+
+MASTERDIR=	${.CURDIR}/../mingw-w64
 PLIST=		${.CURDIR}/pkg-plist
 
 .include "${MASTERDIR}/Makefile"
