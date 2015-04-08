@@ -8,8 +8,8 @@ MASTER_SITES=	SF
 MASTER_SITE_SUBDIR=	${PORTNAME}/${PORTNAME}/${PORTNAME}-release
 DISTNAME=	${PORTNAME}-v${PORTVERSION}
 
-MAINTAINER=	takumiiinn@gmail.com
-COMMENT?=	MinGW-w64 for runtime and w32api
+MAINTAINER?=	takumiiinn@gmail.com
+COMMENT?=	MinGW-w64 for headers and runtime
 
 USES=		tar:bzip2 gmake
 GNU_CONFIGURE=	yes

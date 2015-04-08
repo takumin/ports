@@ -26,8 +26,8 @@ SSP_UNSAFE=	yes
 
 .include <bsd.port.pre.mk>
 
-.ifndef CROSS_TARGET
-IGNORE=		build for 'devel/mingw32-gcc' or 'devel/mingw64-gcc'
+.ifndef PKGNAMESUFFIX
+IGNORE=		build for 'devel/mingw-w64-i686-gcc' or 'devel/mingw-w64-x86_64-gcc'
 .endif
 
 LANGUAGES:=	c,c++
