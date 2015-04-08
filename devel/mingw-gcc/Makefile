@@ -39,8 +39,9 @@ LIBEXEC=	${PREFIX}/libexec/${CROSS_TARGET}-gcc
 GNU_CONFIGURE=	yes
 CONFIGURE_SCRIPT=	../${SRCDIR:S/${WRKDIR}\///}/configure
 CONFIGURE_ARGS+=--target=${CROSS_TARGET} \
-		--enable-targets=all \
 		--enable-languages=${LANGUAGES} \
+		--disable-shared \
+		--disable-multilib \
 		--disable-win32-registory \
 		--disable-nls \
 		--libdir=${TARGLIB} \
