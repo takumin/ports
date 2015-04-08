@@ -5,10 +5,10 @@ PORTNAME=	gcc
 PORTVERSION=	4.9.2
 CATEGORIES=	devel
 MASTER_SITES=	${MASTER_SITE_GCC}
-MASTER_SITE_SUBDIR=	releases/${PORTNAME}-${PORTVERSION}
+MASTER_SITE_SUBDIR=	releases/gcc-${DISTVERSION}
 
-MAINTAINER=	takumiiinn@gmail.com
-COMMENT=	GNU Compiler Collection 4.9 for MinGW-w64
+MAINTAINER?=	takumiiinn@gmail.com
+COMMENT?=	GNU Compiler Collection 4.9 for MinGW-w64
 
 LICENSE=	GPLv3 GPLv3RLE
 LICENSE_COMB=	multi
@@ -19,60 +19,83 @@ LIB_DEPENDS=	libgmp.so:${PORTSDIR}/math/gmp \
 
 CPE_VENDOR=	gnu
 
+# DISTVERSION relates to downloads, GCC_VERSION and SUFFIX to names
+# of executables and directories once installed.
+DISTVERSION=	${PORTVERSION}
+GCC_VERSION=	${PORTVERSION:C/(.+)\.[0-9]{8}/\1/}
+SUFFIX=		${PORTVERSION:C/([0-9]+).([0-9]+).*/\1\2/}
 ONLY_FOR_ARCHS=	amd64 i386
 USES=		cpe gmake iconv libtool makeinfo perl5 tar:bzip2
 USE_PERL5=	build
 SSP_UNSAFE=	yes
 
+PATCH_WRKSRC=	${SRCDIR}
+CONFIGURE_SCRIPT=	../${SRCDIR:S/${WRKDIR}\///}/configure
+
 .include <bsd.port.pre.mk>
 
-.ifndef PKGNAMESUFFIX
+.ifndef PKGNAMEPREFIX
 IGNORE=		build for 'devel/mingw-w64-i686-gcc' or 'devel/mingw-w64-x86_64-gcc'
+.endif
+
+.ifdef PKGNAMESUFFIX
+ALL_TARGET=	all-gcc
+INSTALL_TARGET=	install-gcc
+.endif
+
+TARGET_ARCH=	${PKGNAMEPREFIX:C/^mingw-w64-(.*)-$/\1/}-w64-mingw32
+
+.if ${TARGET_ARCH} == "i686-w64-mingw32"
+BUILD_DEPENDS+=	${LOCALBASE}/bin/${TARGET_ARCH}-as:${PORTSDIR}/devel/mingw-w64-i686-binutils
+.elif ${TARGET_ARCH} == "x86_64-w64-mingw32"
+BUILD_DEPENDS+=	${LOCALBASE}/bin/${TARGET_ARCH}-as:${PORTSDIR}/devel/mingw-w64-x86_64-binutils
+.else
+IGNORE=		support target arch for "i686-w64-mingw32" or "x86_64-w64-mingw32"
+.endif
+
+.if ${ARCH} == "amd64"
+CONFIGURE_TARGET=	x86_64-portbld-${OPSYS:tl}${OSREL}
+.else
+CONFIGURE_TARGET=	${ARCH}-portbld-${OPSYS:tl}${OSREL}
 .endif
 
 LANGUAGES:=	c,c++
 SRCDIR=		${WRKDIR}/gcc-${DISTVERSION}
 WRKSRC=		${WRKDIR}/build
-PATCH_WRKSRC=	${SRCDIR}
-TARGLIB=	${PREFIX}/lib/${CROSS_TARGET}-gcc
-LIBEXEC=	${PREFIX}/libexec/${CROSS_TARGET}-gcc
+TARGLIB=	${PREFIX}/lib/gcc${SUFFIX}
+LIBEXEC=	${PREFIX}/libexec/gcc${SUFFIX}
 GNU_CONFIGURE=	yes
-CONFIGURE_SCRIPT=	../${SRCDIR:S/${WRKDIR}\///}/configure
-CONFIGURE_ARGS+=--target=${CROSS_TARGET} \
+CONFIGURE_ARGS+=--target=${TARGET_ARCH} \
+		--enable-shared --enable-static \
 		--enable-languages=${LANGUAGES} \
-		--disable-shared \
 		--disable-multilib \
-		--disable-win32-registory \
+		--disable-bootstrap \
 		--disable-nls \
+		--program-suffix=${SUFFIX} \
 		--libdir=${TARGLIB} \
 		--libexecdir=${LIBEXEC} \
 		--with-gxx-include-dir=${TARGLIB}/include/c++ \
-		--with-as=${LOCALBASE}/bin/${CROSS_TARGET}-as \
-		--with-ld=${LOCALBASE}/bin/${CROSS_TARGET}-ld \
+		--with-as=${LOCALBASE}/bin/${TARGET_ARCH}-as \
+		--with-ld=${LOCALBASE}/bin/${TARGET_ARCH}-ld \
 		--with-gmp=${LOCALBASE} \
-		--with-mpfr=${LOCALBASE} \
-		--with-mpc=${LOCALBASE} \
 		${ICONV_CONFIGURE_ARG} \
-		--with-pkgversion="FreeBSD Ports Collection" \
+		--with-pkgversion="FreeBSD Ports Collection for Mingw-w64" \
 		--with-system-zlib
 MAKE_ARGS+=	MAKEINFOFLAGS="--no-split"
 USE_LDCONFIG=	${TARGLIB}
-PLIST_SUB=	GCC_VERSION=${PORTVERSION} \
+PLIST_SUB=	GCC_VERSION=${GCC_VERSION} \
 		GNU_HOST=${CONFIGURE_TARGET} \
-		CROSS_TARGET=${CROSS_TARGET}
-INFO=		${CROSS_TARGET}-gcc/cpp \
-		${CROSS_TARGET}-gcc/cppinternals \
-		${CROSS_TARGET}-gcc/gcc \
-		${CROSS_TARGET}-gcc/gccinstall \
-		${CROSS_TARGET}-gcc/gccint
+		SUFFIX=${SUFFIX}
+INFO=		gcc${SUFFIX}/cpp \
+		gcc${SUFFIX}/cppinternals \
+		gcc${SUFFIX}/gcc \
+		gcc${SUFFIX}/gccinstall \
+		gcc${SUFFIX}/gccint
 SUB_FILES=	pkg-message
 SUB_LIST+=	TARGLIB=${TARGLIB}
 
 pre-everything::
-	@${ECHO_MSG} "Making GCC ${PORTVERSION}"
-	@${ECHO_MSG} "Host:      [${CONFIGURE_TARGET}]"
-	@${ECHO_MSG} "Target:    [${CROSS_TARGET}]"
-	@${ECHO_MSG} "Languages: [${LANGUAGES}]"
+	@${ECHO_MSG} "Making GCC ${PORTVERSION} for ${CONFIGURE_TARGET} [${LANGUAGES}]"
 
 pre-configure:
 	cd ${SRCDIR} ; contrib/gcc_update --touch
@@ -83,7 +106,7 @@ post-stage:
 	${RM} -f ${STAGEDIR}${PREFIX}/man/man7/*
 	# Add target libraries and include files to packaging list.
 	${RM} -f ${WRKDIR}/PLIST.lib
-.for d in ${TARGLIB:S/^${PREFIX}\///} ${LIBEXEC:S/^${PREFIX}\///}
+.for d in ${TARGLIB:S/^${PREFIX}\///} ${LIBEXEC:S/^${PREFIX}\///} include/gnu
 	cd ${STAGEDIR}${PREFIX} ; if [ -d $d ]; then \
 	    ${FIND} $d -type f -o -type l >>${WRKDIR}/PLIST.lib ;\
 	fi
