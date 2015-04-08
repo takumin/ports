@@ -32,9 +32,9 @@ PKGNAMESUFFIX=	-core
 ALL_TARGET=	all-gcc
 INSTALL_TARGET=	install-gcc
 .else
-LIB_DEPENDS+=	${LOCALBASE}/${CROSS_TARGET}/lib/libmingw32.a:${PORTSDIR}/devel/mingw64-crt
-CONFIGURE_ARGS+=--with-libs=${LOCALBASE}/${CROSS_TARGET}/lib \
-		--with-headers=${LOCALBASE}/${CROSS_TARGET}/include
+BUILD_DEPENDS+=	${LOCALBASE}/${CROSS_TARGET}/lib/libmingw32.a:${PORTSDIR}/devel/mingw64-crt
+RUN_DEPENDS+=	${LOCALBASE}/${CROSS_TARGET}/lib/libmingw32.a:${PORTSDIR}/devel/mingw64-crt
+CONFIGURE_ARGS+=--with-sysroot=${LOCALBASE}/${CROSS_TARGET}
 .endif
 
 .ifndef CROSS_TARGET
@@ -88,11 +88,11 @@ USE_LDCONFIG=	${TARGLIB}
 PLIST_SUB=	GCC_VERSION=${PORTVERSION} \
 		GNU_HOST=${CONFIGURE_TARGET} \
 		CROSS_TARGET=${CROSS_TARGET}
-INFO=		gcc/cpp \
-		gcc/cppinternals \
-		gcc/gcc \
-		gcc/gccinstall \
-		gcc/gccint
+INFO=		${CROSS_TARGET}-gcc/cpp \
+		${CROSS_TARGET}-gcc/cppinternals \
+		${CROSS_TARGET}-gcc/gcc \
+		${CROSS_TARGET}-gcc/gccinstall \
+		${CROSS_TARGET}-gcc/gccint
 SUB_FILES=	pkg-message
 SUB_LIST+=	TARGLIB=${TARGLIB}
 
