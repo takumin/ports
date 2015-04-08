@@ -1,0 +1,15 @@
+bin/%%GNU_TARGET%%-c++49
+bin/%%GNU_TARGET%%-cpp49
+bin/%%GNU_TARGET%%-g++49
+bin/%%GNU_TARGET%%-gcc-%%GCC_VERSION%%
+bin/%%GNU_TARGET%%-gcc-ar49
+bin/%%GNU_TARGET%%-gcc-nm49
+bin/%%GNU_TARGET%%-gcc-ranlib49
+bin/%%GNU_TARGET%%-gcc49
+bin/%%GNU_TARGET%%-gcov49
+@comment info/%%GNU_TARGET%%-gcc49/dir
+man/man1/%%GNU_TARGET%%-cpp49.1.gz
+man/man1/%%GNU_TARGET%%-g++49.1.gz
+man/man1/%%GNU_TARGET%%-gcc49.1.gz
+man/man1/%%GNU_TARGET%%-gcov49.1.gz
+@comment Insert PLIST.lib here

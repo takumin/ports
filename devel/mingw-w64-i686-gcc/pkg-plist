@@ -1,0 +1,15 @@
+bin/%%CROSS_TARGET%%-c++
+bin/%%CROSS_TARGET%%-cpp
+bin/%%CROSS_TARGET%%-g++
+bin/%%CROSS_TARGET%%-gcc
+bin/%%CROSS_TARGET%%-gcc-%%GCC_VERSION%%
+bin/%%CROSS_TARGET%%-gcc-ar
+bin/%%CROSS_TARGET%%-gcc-nm
+bin/%%CROSS_TARGET%%-gcc-ranlib
+bin/%%CROSS_TARGET%%-gcov
+@comment info/%%CROSS_TARGET%%-gcc/dir
+man/man1/%%CROSS_TARGET%%-cpp.1.gz
+man/man1/%%CROSS_TARGET%%-g++.1.gz
+man/man1/%%CROSS_TARGET%%-gcc.1.gz
+man/man1/%%CROSS_TARGET%%-gcov.1.gz
+@comment Insert PLIST.lib here
