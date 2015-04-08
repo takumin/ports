@@ -37,6 +37,13 @@ CONFIGURE_ARGS+=--host=${TARGET_ARCH}
 
 .if ${BUILD_TYPE} == "headers"
 CONFIGURE_ARGS+=--enable-sdk=all --enable-secure-api
+.elif ${BUILD_TYPE} == "crt"
+CONFIGURE_ARGS+=--enable-wildcard
+. if ${BUILD_ARCH} == "i686"
+CONFIGURE_ARGS+=--disable-lib64 --enable-lib32
+. elif ${BUILD_ARCH} == "x86_64"
+CONFIGURE_ARGS+=--disable-lib32 --enable-lib64
+. endif
 .endif
 
 PLIST_SUB=	TARGET_ARCH=${TARGET_ARCH}
