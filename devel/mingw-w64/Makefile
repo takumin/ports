@@ -34,10 +34,10 @@ CONFIGURE_TARGET=	${ARCH}-portbld-${OPSYS:tl}${OSREL}
 .endif
 
 CC=		${TARGET_ARCH}-gcc${GCC_SUFFIX}
+GNU_CONFIGURE_PREFIX=	${PREFIX}/${TARGET_ARCH}
 CONFIGURE_ARGS+=--host=${TARGET_ARCH}
 
 .if ${BUILD_TYPE} == "headers"
-GNU_CONFIGURE_PREFIX=	${PREFIX}/${TARGET_ARCH}
 CONFIGURE_ARGS+=--enable-sdk=all --enable-secure-api
 .elif ${BUILD_TYPE} == "crt"
 BUILD_DEPENDS+=	${LOCALBASE}/${TARGET_ARCH}/include/_mingw.h:${PORTSDIR}/devel/${PORTNAME}-${BUILD_ARCH}-headers \
