@@ -15,6 +15,8 @@ ALL_TARGET=	all-gcc
 INSTALL_TARGET=	install-gcc
 
 MASTERDIR=	${.CURDIR}/../mingw-gcc
+
+# echo '@comment Insert PLIST.lib here' > pkg-plist
 PLIST=		${.CURDIR}/pkg-plist
 
 .include "${MASTERDIR}/Makefile"
