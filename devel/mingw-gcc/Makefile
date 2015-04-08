@@ -68,8 +68,8 @@ TARGLIB=	${PREFIX}/lib/gcc${SUFFIX}
 LIBEXEC=	${PREFIX}/libexec/gcc${SUFFIX}
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS+=--target=${TARGET_ARCH} \
-		--enable-shared --enable-static \
 		--enable-languages=${LANGUAGES} \
+		--enable-shared \
 		--disable-multilib \
 		--disable-bootstrap \
 		--disable-nls \
