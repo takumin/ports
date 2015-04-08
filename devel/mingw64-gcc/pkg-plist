@@ -7,7 +7,6 @@ bin/%%CROSS_TARGET%%-gcc-ar
 bin/%%CROSS_TARGET%%-gcc-nm
 bin/%%CROSS_TARGET%%-gcc-ranlib
 bin/%%CROSS_TARGET%%-gcov
-@comment info/gcc/dir
 man/man1/%%CROSS_TARGET%%-cpp.1.gz
 man/man1/%%CROSS_TARGET%%-g++.1.gz
 man/man1/%%CROSS_TARGET%%-gcc.1.gz
