@@ -63,8 +63,8 @@ LANGUAGES:=	c,c++
 SRCDIR=		${WRKDIR}/gcc-${DISTVERSION}
 WRKSRC=		${WRKDIR}/build
 PATCH_WRKSRC=	${SRCDIR}
-TARGLIB=	${PREFIX}/lib/gcc
-LIBEXEC=	${PREFIX}/libexec/gcc
+TARGLIB=	${PREFIX}/lib/${CROSS_TARGET}-gcc
+LIBEXEC=	${PREFIX}/libexec/${CROSS_TARGET}-gcc
 GNU_CONFIGURE=	yes
 CONFIGURE_SCRIPT=	../${SRCDIR:S/${WRKDIR}\///}/configure
 CONFIGURE_ARGS+=--target=${CROSS_TARGET} \
@@ -72,6 +72,9 @@ CONFIGURE_ARGS+=--target=${CROSS_TARGET} \
 		--enable-languages=${LANGUAGES} \
 		--disable-win32-registory \
 		--disable-nls \
+		--libdir=${TARGLIB} \
+		--libexecdir=${LIBEXEC} \
+		--with-gxx-include-dir=${TARGLIB}/include/c++/ \
 		--with-as=${LOCALBASE}/bin/${CROSS_TARGET}-as \
 		--with-ld=${LOCALBASE}/bin/${CROSS_TARGET}-ld \
 		--with-gmp=${LOCALBASE} \
