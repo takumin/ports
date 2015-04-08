@@ -40,7 +40,7 @@ CONFIGURE_ARGS+=--enable-sdk=all --enable-secure-api
 .elif ${BUILD_TYPE} == "crt"
 BUILD_DEPENDS+=	${LOCALBASE}/${TARGET_ARCH}/include/_mingw.h:${PORTSDIR}/devel/${PORTNAME}-${BUILD_ARCH}-headers \
 		${LOCALBASE}/bin/${TARGET_ARCH}-as:${PORTSDIR}/devel/${PORTNAME}-${BUILD_ARCH}-binutils \
-		${LOCALBASE}/bin/${TARGET_ARCH}-gcc:${PORTSDIR}/devel/${PORTNAME}-${BUILD_ARCH}-gcc
+		${LOCALBASE}/bin/${TARGET_ARCH}-gcc:${PORTSDIR}/devel/${PORTNAME}-${BUILD_ARCH}-gcc-core
 CONFIGURE_ARGS+=--enable-wildcard
 . if ${BUILD_ARCH} == "i686"
 CONFIGURE_ARGS+=--disable-lib64 --enable-lib32
