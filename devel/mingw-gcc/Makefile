@@ -79,7 +79,6 @@ CONFIGURE_ARGS+=--target=${TARGET_ARCH} \
 		--libdir=${TARGLIB} \
 		--libexecdir=${LIBEXEC} \
 		--with-gxx-include-dir=${TARGLIB}/include/c++ \
-		--with-native-system-header-dir=${LOCALBASE}/${TARGET_ARCH}/include \
 		--with-as=${LOCALBASE}/bin/${TARGET_ARCH}-as \
 		--with-ld=${LOCALBASE}/bin/${TARGET_ARCH}-ld \
 		--with-gmp=${LOCALBASE} \
