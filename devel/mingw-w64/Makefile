@@ -34,8 +34,6 @@ CONFIGURE_TARGET=	${ARCH}-portbld-${OPSYS:tl}${OSREL}
 .endif
 
 CC=		${TARGET_ARCH}-gcc${GCC_SUFFIX}
-CPP=		${TARGET_ARCH}-g++${GCC_SUFFIX}
-CXX=		${TARGET_ARCH}-gcc${GCC_SUFFIX} -E
 CONFIGURE_ARGS+=--host=${TARGET_ARCH}
 
 .if ${BUILD_TYPE} == "headers"
