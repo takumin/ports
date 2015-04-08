@@ -22,9 +22,10 @@ IGNORE=		build for 'devel/mingw-w64-i686-crt' or 'devel/mingw-w64-x86_64-crt'
 
 BUILD_ARCH=	${PKGNAMESUFFIX:C/^-(.*)-(.*)$/\1/}
 BUILD_TYPE=	${PKGNAMESUFFIX:C/^-(.*)-(.*)$/\2/}
+TARGET_ARCH=	${BUILD_ARCH}-w64-mingw32
 
 WRKSRC_SUBDIR=	${PORTNAME}-${BUILD_TYPE}
-GNU_CONFIGURE_PREFIX=	${PREFIX}/${BUILD_ARCH}-w64-mingw32
+GNU_CONFIGURE_PREFIX=	${PREFIX}/${TARGET_ARCH}
 
 .if ${ARCH} == "amd64"
 CONFIGURE_TARGET=	x86_64-portbld-${OPSYS:tl}${OSREL}
@@ -32,10 +33,12 @@ CONFIGURE_TARGET=	x86_64-portbld-${OPSYS:tl}${OSREL}
 CONFIGURE_TARGET=	${ARCH}-portbld-${OPSYS:tl}${OSREL}
 .endif
 
-CONFIGURE_ARGS+=--host=${BUILD_ARCH}-w64-mingw32
+CONFIGURE_ARGS+=--host=${TARGET_ARCH}
 
 .if ${BUILD_TYPE} == "headers"
 CONFIGURE_ARGS+=--enable-sdk=all --enable-secure-api
 .endif
+
+PLIST_SUB=	${TARGET_ARCH}
 
 .include <bsd.port.post.mk>
