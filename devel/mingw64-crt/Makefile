@@ -35,4 +35,9 @@ CONFIGURE_ARGS+=	--host=x86_64-w64-mingw32
 CONFIGURE_ARGS+=	--host=${ARCH}-w64-mingw32
 .endif
 
+post-stage:
+.if ${PKGNAMESUFFIX} == "-crt"
+	@${LN} -sf lib ${STAGEDIR}${PREFIX}/x86_64-w64-mingw32/lib64
+.endif
+
 .include <bsd.port.post.mk>
