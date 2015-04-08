@@ -91,11 +91,11 @@ PLIST_SUB=	GCC_VERSION=${GCC_VERSION} \
 		GNU_HOST=${CONFIGURE_TARGET} \
 		GNU_TARGET=${TARGET_ARCH} \
 		SUFFIX=${SUFFIX}
-INFO=		gcc${SUFFIX}/cpp \
-		gcc${SUFFIX}/cppinternals \
-		gcc${SUFFIX}/gcc \
-		gcc${SUFFIX}/gccinstall \
-		gcc${SUFFIX}/gccint
+INFO=		${TARGET_ARCH}-gcc${SUFFIX}/cpp \
+		${TARGET_ARCH}-gcc${SUFFIX}/cppinternals \
+		${TARGET_ARCH}-gcc${SUFFIX}/gcc \
+		${TARGET_ARCH}-gcc${SUFFIX}/gccinstall \
+		${TARGET_ARCH}-gcc${SUFFIX}/gccint
 SUB_FILES=	pkg-message
 SUB_LIST+=	TARGLIB=${TARGLIB}
 

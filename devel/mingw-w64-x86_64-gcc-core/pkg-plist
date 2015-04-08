@@ -1,15 +1,15 @@
-bin/%%CROSS_TARGET%%-c++
-bin/%%CROSS_TARGET%%-cpp
-bin/%%CROSS_TARGET%%-g++
-bin/%%CROSS_TARGET%%-gcc
-bin/%%CROSS_TARGET%%-gcc-%%GCC_VERSION%%
-bin/%%CROSS_TARGET%%-gcc-ar
-bin/%%CROSS_TARGET%%-gcc-nm
-bin/%%CROSS_TARGET%%-gcc-ranlib
-bin/%%CROSS_TARGET%%-gcov
-@comment info/%%CROSS_TARGET%%-gcc/dir
-man/man1/%%CROSS_TARGET%%-cpp.1.gz
-man/man1/%%CROSS_TARGET%%-g++.1.gz
-man/man1/%%CROSS_TARGET%%-gcc.1.gz
-man/man1/%%CROSS_TARGET%%-gcov.1.gz
+bin/%%GNU_TARGET%%-c++49
+bin/%%GNU_TARGET%%-cpp49
+bin/%%GNU_TARGET%%-g++49
+bin/%%GNU_TARGET%%-gcc-%%GCC_VERSION%%
+bin/%%GNU_TARGET%%-gcc-ar49
+bin/%%GNU_TARGET%%-gcc-nm49
+bin/%%GNU_TARGET%%-gcc-ranlib49
+bin/%%GNU_TARGET%%-gcc49
+bin/%%GNU_TARGET%%-gcov49
+@comment info/%%GNU_TARGET%%-gcc49/dir
+man/man1/%%GNU_TARGET%%-cpp49.1.gz
+man/man1/%%GNU_TARGET%%-g++49.1.gz
+man/man1/%%GNU_TARGET%%-gcc49.1.gz
+man/man1/%%GNU_TARGET%%-gcov49.1.gz
 @comment Insert PLIST.lib here
