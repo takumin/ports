@@ -28,10 +28,11 @@ SSP_UNSAFE=	yes
 .include <bsd.port.pre.mk>
 
 .ifdef CROSS_CORE
+PKGNAMEPREFIX=	-core
 ALL_TARGET=	all-gcc
 INSTALL_TARGET=	install-gcc
 .else
-LIB_DEPENDS+=	libmingw32.a:${PORTSDIR}/devel/mingw64-crt
+LIB_DEPENDS+=	${LOCALBASE}/${CROSS_TARGET}/lib/libmingw32.a:${PORTSDIR}/devel/mingw64-crt
 CONFIGURE_ARGS+=--with-libs=${LOCALBASE}/${CROSS_TARGET}/lib \
 		--with-headers=${LOCALBASE}/${CROSS_TARGET}/include
 .endif
@@ -41,10 +42,12 @@ IGNORE=		Require CROSS_TARGET for "x86_64-w64-mingw32" or "i686-pc-mingw32"
 .else
 . if ${CROSS_TARGET} == "x86_64-w64-mingw32"
 PKGNAMEPREFIX=	mingw64-
-RUN_DEPENDS+=	${CROSS_TARGET}-as:${PORTSDIR}/devel/mingw64-binutils
+BUILD_DEPENDS+=	${LOCALBASE}/bin/${CROSS_TARGET}-as:${PORTSDIR}/devel/mingw64-binutils
+RUN_DEPENDS+=	${LOCALBASE}/bin/${CROSS_TARGET}-as:${PORTSDIR}/devel/mingw64-binutils
 . elif ${CROSS_TARGET} == "i686-pc-mingw32"
 PKGNAMEPREFIX=	mingw32-
-RUN_DEPENDS+=	${CROSS_TARGET}-as:${PORTSDIR}/devel/mingw32-binutils
+BUILD_DEPENDS+=	${LOCALBASE}/bin/${CROSS_TARGET}-as:${PORTSDIR}/devel/mingw32-binutils
+RUN_DEPENDS+=	${LOCALBASE}/bin/${CROSS_TARGET}-as:${PORTSDIR}/devel/mingw32-binutils
 . else
 IGNORE=		Require CROSS_TARGET for "x86_64-w64-mingw32" or "i686-pc-mingw32"
 . endif
