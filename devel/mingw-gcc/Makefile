@@ -73,6 +73,7 @@ CONFIGURE_ARGS+=--target=${TARGET_ARCH} \
 		--disable-multilib \
 		--disable-bootstrap \
 		--disable-nls \
+		--disable-win32-registry \
 		--program-suffix=${SUFFIX} \
 		--libdir=${TARGLIB} \
 		--libexecdir=${LIBEXEC} \
