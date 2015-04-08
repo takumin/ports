@@ -38,21 +38,29 @@ CONFIGURE_SCRIPT=	../${SRCDIR:S/${WRKDIR}\///}/configure
 IGNORE=		build for 'devel/mingw-w64-i686-gcc' or 'devel/mingw-w64-x86_64-gcc'
 .endif
 
+TARGET_ARCH=	${PKGNAMEPREFIX:C/^mingw-w64-(.*)-$/\1/}-w64-mingw32
+
 .ifdef PKGNAMESUFFIX
 ALL_TARGET=	all-gcc
 INSTALL_TARGET=	install-gcc
+.else
+. if ${TARGET_ARCH} == "i686-w64-mingw32"
+LIB_DEPENDS+=	${LOCALBASE}/${TARGET_ARCH}/lib/libmingw32.a:${PORTSDIR}/devel/mingw-w64-i686-crt
+. else
+LIB_DEPENDS+=	${LOCALBASE}/${TARGET_ARCH}/lib/libmingw32.a:${PORTSDIR}/devel/mingw-w64-x86_64-crt
+. endif
 .endif
-
-TARGET_ARCH=	${PKGNAMEPREFIX:C/^mingw-w64-(.*)-$/\1/}-w64-mingw32
 
 .if ${TARGET_ARCH} == "i686-w64-mingw32"
 BUILD_DEPENDS+=	${LOCALBASE}/bin/${TARGET_ARCH}-as:${PORTSDIR}/devel/mingw-w64-i686-binutils \
 		${LOCALBASE}/${TARGET_ARCH}/include/_mingw.h:${PORTSDIR}/devel/mingw-w64-i686-headers
-RUN_DEPENDS+=	${LOCALBASE}/bin/${TARGET_ARCH}-as:${PORTSDIR}/devel/mingw-w64-i686-binutils
+RUN_DEPENDS+=	${LOCALBASE}/bin/${TARGET_ARCH}-as:${PORTSDIR}/devel/mingw-w64-i686-binutils \
+		${LOCALBASE}/${TARGET_ARCH}/include/_mingw.h:${PORTSDIR}/devel/mingw-w64-i686-headers
 .elif ${TARGET_ARCH} == "x86_64-w64-mingw32"
 BUILD_DEPENDS+=	${LOCALBASE}/bin/${TARGET_ARCH}-as:${PORTSDIR}/devel/mingw-w64-x86_64-binutils \
 		${LOCALBASE}/${TARGET_ARCH}/include/_mingw.h:${PORTSDIR}/devel/mingw-w64-x86_64-headers
-RUN_DEPENDS+=	${LOCALBASE}/bin/${TARGET_ARCH}-as:${PORTSDIR}/devel/mingw-w64-x86_64-binutils
+RUN_DEPENDS+=	${LOCALBASE}/bin/${TARGET_ARCH}-as:${PORTSDIR}/devel/mingw-w64-x86_64-binutils \
+		${LOCALBASE}/${TARGET_ARCH}/include/_mingw.h:${PORTSDIR}/devel/mingw-w64-x86_64-headers
 .else
 IGNORE=		support target arch for "i686-w64-mingw32" or "x86_64-w64-mingw32"
 .endif
