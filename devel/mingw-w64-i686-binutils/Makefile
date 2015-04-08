@@ -3,7 +3,7 @@
 
 PKGNAMEPREFIX=	mingw-w64-i686-
 MAINTAINER=	takumiiinn@gmail.com
-COMMENT=	GNU binary tools for Mingw-w64 i686
+COMMENT=	GNU binary tools for MinGW-w64 i686
 
 BUTARGET=	i686-w64-mingw32
 CONFIGURE_ARGS+=--disable-multilib

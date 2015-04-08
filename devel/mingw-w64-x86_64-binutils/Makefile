@@ -3,7 +3,7 @@
 
 PKGNAMEPREFIX=	mingw-w64-x86_64-
 MAINTAINER=	takumiiinn@gmail.com
-COMMENT=	GNU binary tools for Mingw-w64 x86_64
+COMMENT=	GNU binary tools for MinGW-w64 x86_64
 
 BUTARGET=	x86_64-w64-mingw32
 CONFIGURE_ARGS+=--disable-multilib

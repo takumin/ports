@@ -79,7 +79,7 @@ CONFIGURE_ARGS+=--target=${TARGET_ARCH} \
 		--with-ld=${LOCALBASE}/bin/${TARGET_ARCH}-ld \
 		--with-gmp=${LOCALBASE} \
 		${ICONV_CONFIGURE_ARG} \
-		--with-pkgversion="FreeBSD Ports Collection for Mingw-w64" \
+		--with-pkgversion="FreeBSD Ports Collection for MinGW-w64" \
 		--with-system-zlib
 MAKE_ARGS+=	MAKEINFOFLAGS="--no-split"
 USE_LDCONFIG=	${TARGLIB}
