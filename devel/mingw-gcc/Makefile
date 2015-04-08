@@ -46,10 +46,12 @@ INSTALL_TARGET=	install-gcc
 TARGET_ARCH=	${PKGNAMEPREFIX:C/^mingw-w64-(.*)-$/\1/}-w64-mingw32
 
 .if ${TARGET_ARCH} == "i686-w64-mingw32"
-BUILD_DEPENDS+=	${LOCALBASE}/bin/${TARGET_ARCH}-as:${PORTSDIR}/devel/mingw-w64-i686-binutils
+BUILD_DEPENDS+=	${LOCALBASE}/bin/${TARGET_ARCH}-as:${PORTSDIR}/devel/mingw-w64-i686-binutils \
+		${LOCALBASE}/${TARGET_ARCH}/include/_mingw.h:${PORTSDIR}/devel/mingw-w64-i686-headers
 RUN_DEPENDS+=	${LOCALBASE}/bin/${TARGET_ARCH}-as:${PORTSDIR}/devel/mingw-w64-i686-binutils
 .elif ${TARGET_ARCH} == "x86_64-w64-mingw32"
-BUILD_DEPENDS+=	${LOCALBASE}/bin/${TARGET_ARCH}-as:${PORTSDIR}/devel/mingw-w64-x86_64-binutils
+BUILD_DEPENDS+=	${LOCALBASE}/bin/${TARGET_ARCH}-as:${PORTSDIR}/devel/mingw-w64-x86_64-binutils \
+		${LOCALBASE}/${TARGET_ARCH}/include/_mingw.h:${PORTSDIR}/devel/mingw-w64-x86_64-headers
 RUN_DEPENDS+=	${LOCALBASE}/bin/${TARGET_ARCH}-as:${PORTSDIR}/devel/mingw-w64-x86_64-binutils
 .else
 IGNORE=		support target arch for "i686-w64-mingw32" or "x86_64-w64-mingw32"
