@@ -16,15 +16,14 @@ USES=			tar:bzip2 gmake
 GNU_CONFIGURE=		yes
 GNU_CONFIGURE_PREFIX=	${PREFIX}/x86_64-w64-mingw32
 
-CC=			x86_64-w64-mingw32-gcc
-CXX=			x86_64-w64-mingw32-c++
-CPP=			x86_64-w64-mingw32-cpp
-
 .include <bsd.port.pre.mk>
 
 .if ${PKGNAMESUFFIX} == "-crt"
 BUILD_DEPENDS+=		${LOCALBASE}/x86_64-w64-mingw32/include/_mingw.h:${PORTSDIR}/devel/mingw64-header \
 			x86_64-w64-mingw32-gcc:${PORTSDIR}/devel/mingw64-gcc-core
+CC=			x86_64-w64-mingw32-gcc
+CXX=			x86_64-w64-mingw32-c++
+CPP=			x86_64-w64-mingw32-cpp
 WRKSRC_SUBDIR=		mingw-w64-crt
 .else
 WRKSRC_SUBDIR=		mingw-w64-headers
