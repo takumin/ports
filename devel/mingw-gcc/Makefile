@@ -59,9 +59,11 @@ USE_LDCONFIG=	${TARGLIB}
 PLIST_SUB=	GCC_VERSION=${PORTVERSION} \
 		GNU_HOST=${CONFIGURE_TARGET} \
 		CROSS_TARGET=${CROSS_TARGET}
-PLIST_DIRS=	${PREFIX}/info/${CROSS_TARGET}-gcc
-INFO_PATH=	info/${CROSS_TARGET}-gcc
-INFO=		cpp cppinternals gcc gccinstall gccint
+INFO=		${CROSS_TARGET}-gcc/cpp \
+		${CROSS_TARGET}-gcc/cppinternals \
+		${CROSS_TARGET}-gcc/gcc \
+		${CROSS_TARGET}-gcc/gccinstall \
+		${CROSS_TARGET}-gcc/gccint
 SUB_FILES=	pkg-message
 SUB_LIST+=	TARGLIB=${TARGLIB}
 
