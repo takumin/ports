@@ -75,6 +75,7 @@ CONFIGURE_ARGS+=--target=${TARGET_ARCH} \
 		--disable-multilib \
 		--disable-bootstrap \
 		--disable-nls \
+		--disable-libssp \
 		--disable-win32-registry \
 		--program-prefix=${TARGET_ARCH}- \
 		--program-suffix=${SUFFIX} \
