@@ -10,5 +10,6 @@ CONFIGURE_ARGS+=--disable-multilib
 
 MASTERDIR=	${.CURDIR}/../binutils
 PLIST=		${.CURDIR}/pkg-plist
+PLIST_SUB=	BUTARGET=${BUTARGET}
 
 .include "${MASTERDIR}/Makefile"
