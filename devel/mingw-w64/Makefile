@@ -23,6 +23,7 @@ IGNORE=		build for 'devel/mingw-w64-i686-crt' or 'devel/mingw-w64-x86_64-crt'
 BUILD_ARCH=	${PKGNAMESUFFIX:C/^-(.*)-(.*)$/\1/}
 BUILD_TYPE=	${PKGNAMESUFFIX:C/^-(.*)-(.*)$/\2/}
 TARGET_ARCH=	${BUILD_ARCH}-w64-mingw32
+GCC_SUFFIX!=	${MAKE} -V SUFFIX -C ../${PORTNAME}-${BUILD_ARCH}-gcc-core
 
 WRKSRC_SUBDIR=	${PORTNAME}-${BUILD_TYPE}
 GNU_CONFIGURE_PREFIX=	${PREFIX}/${TARGET_ARCH}
@@ -33,6 +34,9 @@ CONFIGURE_TARGET=	x86_64-portbld-${OPSYS:tl}${OSREL}
 CONFIGURE_TARGET=	${ARCH}-portbld-${OPSYS:tl}${OSREL}
 .endif
 
+CC=		${TARGET_ARCH}-gcc${GCC_SUFFIX}
+CPP=		${TARGET_ARCH}-gpp${GCC_SUFFIX}
+CXX=		${TARGET_ARCH}-gpp${GCC_SUFFIX}
 CONFIGURE_ARGS+=--host=${TARGET_ARCH}
 
 .if ${BUILD_TYPE} == "headers"
