@@ -1687,3 +1687,4 @@ x86_64-w64-mingw32/lib32/libxinput1_3.a
 x86_64-w64-mingw32/lib32/libxinput1_4.a
 x86_64-w64-mingw32/lib32/libxinput9_1_0.a
 x86_64-w64-mingw32/lib32/txtmode.o
+x86_64-w64-mingw32/lib64
