@@ -16,7 +16,7 @@ GNU_CONFIGURE=	yes
 
 .include <bsd.port.pre.mk>
 
-.ifndef CROSS_TARGET
+.ifndef CROSS_HOST
 IGNORE=		build for 'devel/mingw32-crt' or 'devel/mingw64-crt'
 .endif
 
