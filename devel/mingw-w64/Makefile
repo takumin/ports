@@ -17,8 +17,14 @@ GNU_CONFIGURE=	yes
 .include <bsd.port.pre.mk>
 
 .ifndef PKGNAMESUFFIX
-IGNORE=		build for 'devel/mingw32-crt' or 'devel/mingw64-crt'
+IGNORE=		build for 'devel/mingw-w64-i686-crt' or 'devel/mingw-w64-x86_64-crt'
 .endif
+
+BUILD_ARCH=	${PKGNAMESUFFIX:C/^-(.*)-(.*)$/\1/}
+BUILD_TYPE=	${PKGNAMESUFFIX:C/^-(.*)-(.*)$/\2/}
+
+WRKSRC_SUBDIR=	${PORTNAME}${BUILD_TYPE}
+GNU_CONFIGURE_PREFIX=	${PREFIX}/${BUILD_ARCH}-w64-mingw32
 
 .if ${ARCH} == "amd64"
 CONFIGURE_TARGET=	x86_64-portbld-${OPSYS:tl}${OSREL}
@@ -26,8 +32,10 @@ CONFIGURE_TARGET=	x86_64-portbld-${OPSYS:tl}${OSREL}
 CONFIGURE_TARGET=	${ARCH}-portbld-${OPSYS:tl}${OSREL}
 .endif
 
-WRKSRC_SUBDIR=	${PORTNAME}${PKGNAMESUFFIX:C/-(i686|x86_64)//}
+CONFIGURE_ARGS+=--host=${BUILD_ARCH}-w64-mingw32
 
-CONFIGURE_ARGS+=--host=${PKGNAMESUFFIX:C/-(headers|crt)//}-w64-mingw32
+.if ${BUILD_TYPE} == "headers"
+CONFIGURE_ARGS+=--enable-sdk=all --enable-secure-api
+.endif
 
 .include <bsd.port.post.mk>
