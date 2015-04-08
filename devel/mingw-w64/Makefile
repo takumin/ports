@@ -44,7 +44,7 @@ CONFIGURE_ARGS+=--enable-sdk=all --enable-secure-api
 .elif ${BUILD_TYPE} == "crt"
 BUILD_DEPENDS+=	${LOCALBASE}/${TARGET_ARCH}/include/_mingw.h:${PORTSDIR}/devel/${PORTNAME}-${BUILD_ARCH}-headers \
 		${LOCALBASE}/bin/${TARGET_ARCH}-as:${PORTSDIR}/devel/${PORTNAME}-${BUILD_ARCH}-binutils \
-		${LOCALBASE}/bin/${TARGET_ARCH}-gcc:${PORTSDIR}/devel/${PORTNAME}-${BUILD_ARCH}-gcc-core
+		${LOCALBASE}/bin/${TARGET_ARCH}-gcc${GCC_SUFFIX}:${PORTSDIR}/devel/${PORTNAME}-${BUILD_ARCH}-gcc-core
 CFLAGS+=	-I${LOCALBASE}/${TARGET_ARCH}/include
 CONFIGURE_ARGS+=--enable-wildcard
 . if ${BUILD_ARCH} == "i686"
