@@ -39,6 +39,6 @@ CONFIGURE_ARGS+=--host=${TARGET_ARCH}
 CONFIGURE_ARGS+=--enable-sdk=all --enable-secure-api
 .endif
 
-PLIST_SUB=	${TARGET_ARCH}
+PLIST_SUB=	TARGET_ARCH=${TARGET_ARCH}
 
 .include <bsd.port.post.mk>
