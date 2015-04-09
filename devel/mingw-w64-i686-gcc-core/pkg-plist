@@ -1,15 +1,15 @@
-bin/%%GNU_TARGET%%-c++49
-bin/%%GNU_TARGET%%-cpp49
-bin/%%GNU_TARGET%%-g++49
+bin/%%GNU_TARGET%%-c++%%SUFFIX%%
+bin/%%GNU_TARGET%%-cpp%%SUFFIX%%
+bin/%%GNU_TARGET%%-g++%%SUFFIX%%
 bin/%%GNU_TARGET%%-gcc-%%GCC_VERSION%%
-bin/%%GNU_TARGET%%-gcc-ar49
-bin/%%GNU_TARGET%%-gcc-nm49
-bin/%%GNU_TARGET%%-gcc-ranlib49
-bin/%%GNU_TARGET%%-gcc49
-bin/%%GNU_TARGET%%-gcov49
-@comment info/%%GNU_TARGET%%-gcc49/dir
-man/man1/%%GNU_TARGET%%-cpp49.1.gz
-man/man1/%%GNU_TARGET%%-g++49.1.gz
-man/man1/%%GNU_TARGET%%-gcc49.1.gz
-man/man1/%%GNU_TARGET%%-gcov49.1.gz
+bin/%%GNU_TARGET%%-gcc-ar%%SUFFIX%%
+bin/%%GNU_TARGET%%-gcc-nm%%SUFFIX%%
+bin/%%GNU_TARGET%%-gcc-ranlib%%SUFFIX%%
+bin/%%GNU_TARGET%%-gcc%%SUFFIX%%
+bin/%%GNU_TARGET%%-gcov%%SUFFIX%%
+@comment info/%%GNU_TARGET%%-gcc%%SUFFIX%%/dir
+man/man1/%%GNU_TARGET%%-cpp%%SUFFIX%%.1.gz
+man/man1/%%GNU_TARGET%%-g++%%SUFFIX%%.1.gz
+man/man1/%%GNU_TARGET%%-gcc%%SUFFIX%%.1.gz
+man/man1/%%GNU_TARGET%%-gcov%%SUFFIX%%.1.gz
 @comment Insert PLIST.lib here
