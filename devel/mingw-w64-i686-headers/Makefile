@@ -6,6 +6,5 @@ MAINTAINER=	takumiiinn@gmail.com
 COMMENT=	MinGW-w64 for i686 header files
 
 MASTERDIR=	${.CURDIR}/../mingw-w64
-PLIST=		${.CURDIR}/pkg-plist
 
 .include "${MASTERDIR}/Makefile"
