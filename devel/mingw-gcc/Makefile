@@ -19,11 +19,6 @@ LIB_DEPENDS=	libgmp.so:${PORTSDIR}/math/gmp \
 
 CPE_VENDOR=	gnu
 
-# DISTVERSION relates to downloads, GCC_VERSION and SUFFIX to names
-# of executables and directories once installed.
-DISTVERSION=	${PORTVERSION}
-GCC_VERSION=	${PORTVERSION:C/(.+)\.[0-9]{8}/\1/}
-SUFFIX=		${PORTVERSION:C/([0-9]+).([0-9]+).*/\1\2/}
 ONLY_FOR_ARCHS=	amd64 i386
 USES=		cpe gmake iconv libtool makeinfo perl5 tar:bzip2
 USE_PERL5=	build
@@ -65,8 +60,6 @@ CONFIGURE_TARGET=	${ARCH}-portbld-${OPSYS:tl}${OSREL}
 LANGUAGES:=	c,c++
 SRCDIR=		${WRKDIR}/gcc-${DISTVERSION}
 WRKSRC=		${WRKDIR}/build
-TARGLIB=	${PREFIX}/lib/gcc${SUFFIX}
-LIBEXEC=	${PREFIX}/libexec/gcc${SUFFIX}
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS+=--target=${CROSS_TARGET} \
 		--enable-languages=${LANGUAGES} \
@@ -80,10 +73,6 @@ CONFIGURE_ARGS+=--target=${CROSS_TARGET} \
 		--disable-win32-registry \
 		--disable-libssp \
 		--program-prefix=${CROSS_TARGET}- \
-		--program-suffix=${SUFFIX} \
-		--libdir=${TARGLIB} \
-		--libexecdir=${LIBEXEC} \
-		--with-gxx-include-dir=${TARGLIB}/include/c++ \
 		--with-as=${LOCALBASE}/bin/${CROSS_TARGET}-as \
 		--with-ld=${LOCALBASE}/bin/${CROSS_TARGET}-ld \
 		--with-gmp=${LOCALBASE} \
@@ -91,21 +80,19 @@ CONFIGURE_ARGS+=--target=${CROSS_TARGET} \
 		--with-pkgversion="FreeBSD Ports Collection for MinGW-w64" \
 		--with-system-zlib
 MAKE_ARGS+=	MAKEINFOFLAGS="--no-split"
-USE_LDCONFIG=	${TARGLIB}
-PLIST_SUB=	GCC_VERSION=${GCC_VERSION} \
+USE_LDCONFIG=	${PREFIX}/lib/gcc/${CROSS_TARGET}/${PORTVERSION}
+PLIST_SUB=	GCC_VERSION=${PORTVERSION} \
 		GNU_HOST=${CONFIGURE_TARGET} \
-		GNU_TARGET=${CROSS_TARGET} \
-		SUFFIX=${SUFFIX}
-INFO=		${CROSS_TARGET}-gcc${SUFFIX}/cpp \
-		${CROSS_TARGET}-gcc${SUFFIX}/cppinternals \
-		${CROSS_TARGET}-gcc${SUFFIX}/gcc \
-		${CROSS_TARGET}-gcc${SUFFIX}/gccinstall \
-		${CROSS_TARGET}-gcc${SUFFIX}/gccint
+		GNU_TARGET=${CROSS_TARGET}
+INFO=		${CROSS_TARGET}-gcc/cpp \
+		${CROSS_TARGET}-gcc/cppinternals \
+		${CROSS_TARGET}-gcc/gcc \
+		${CROSS_TARGET}-gcc/gccinstall \
+		${CROSS_TARGET}-gcc/gccint
 SUB_FILES=	pkg-message
-SUB_LIST+=	TARGLIB=${TARGLIB}
 
 pre-everything::
-	@${ECHO_MSG} "Making GCC ${PORTVERSION} for ${CONFIGURE_TARGET} [${LANGUAGES}]"
+	@${ECHO_MSG} "Making GCC ${PORTVERSION} for Host:${CONFIGURE_TARGET} Target:${CROSS_TARGET} [${LANGUAGES}]"
 
 pre-configure:
 	cd ${SRCDIR} ; contrib/gcc_update --touch
@@ -114,13 +101,5 @@ pre-configure:
 
 post-stage:
 	${RM} -f ${STAGEDIR}${PREFIX}/man/man7/*
-	# Add target libraries and include files to packaging list.
-	${RM} -f ${WRKDIR}/PLIST.lib
-.for d in ${TARGLIB:S/^${PREFIX}\///} ${LIBEXEC:S/^${PREFIX}\///}
-	cd ${STAGEDIR}${PREFIX} ; if [ -d $d ]; then \
-	    ${FIND} $d -type f -o -type l >>${WRKDIR}/PLIST.lib ;\
-	fi
-.endfor
-	cd ${WRKDIR} ; ${SED} -i -e "/PLIST.lib/ r PLIST.lib" ${TMPPLIST}
 
 .include <bsd.port.post.mk>
