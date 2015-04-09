@@ -1305,3 +1305,4 @@
 %%TARGET_ARCH%%/lib/libxinput9_1_0.a
 %%TARGET_ARCH%%/lib/libzoneoc.a
 %%TARGET_ARCH%%/lib/txtmode.o
+%%TARGET_ARCH%%/lib64

@@ -56,4 +56,7 @@ CONFIGURE_ARGS+=--disable-lib32 --enable-lib64
 
 PLIST_SUB=	TARGET_ARCH=${TARGET_ARCH}
 
+post-stage:
+	${LN} -sf lib ${STAGEDIR}${PREFIX}/${TARGET_ARCH}/lib64
+
 .include <bsd.port.post.mk>
