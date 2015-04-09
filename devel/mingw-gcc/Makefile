@@ -72,7 +72,6 @@ CONFIGURE_ARGS+=--target=${CROSS_TARGET} \
 		--disable-nls \
 		--disable-win32-registry \
 		--disable-libssp \
-		--program-prefix=${CROSS_TARGET}- \
 		--with-as=${LOCALBASE}/bin/${CROSS_TARGET}-as \
 		--with-ld=${LOCALBASE}/bin/${CROSS_TARGET}-ld \
 		--with-gmp=${LOCALBASE} \
@@ -84,11 +83,8 @@ USE_LDCONFIG=	${PREFIX}/lib/gcc/${CROSS_TARGET}/${PORTVERSION}
 PLIST_SUB=	GCC_VERSION=${PORTVERSION} \
 		GNU_HOST=${CONFIGURE_TARGET} \
 		GNU_TARGET=${CROSS_TARGET}
-INFO=		${CROSS_TARGET}-gcc/cpp \
-		${CROSS_TARGET}-gcc/cppinternals \
-		${CROSS_TARGET}-gcc/gcc \
-		${CROSS_TARGET}-gcc/gccinstall \
-		${CROSS_TARGET}-gcc/gccint
+INFO_PATH=	info/${CROSS_TARGET}-gcc
+INFO=		cpp cppinternals gcc gccinstall gccint
 SUB_FILES=	pkg-message
 
 pre-everything::
