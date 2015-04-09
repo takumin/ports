@@ -13,6 +13,7 @@ COMMENT?=	MinGW-w64 for headers and runtime
 
 USES=		tar:bzip2 gmake
 GNU_CONFIGURE=	yes
+SSP_UNSAFE=	yes
 
 .include <bsd.port.pre.mk>
 
