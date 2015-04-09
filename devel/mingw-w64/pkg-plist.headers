@@ -1,4 +1,3 @@
-/you/have/to/check/what/makeplist/gives/you
 %%CROSS_TARGET%%/include/GL/gl.h
 %%CROSS_TARGET%%/include/GL/glaux.h
 %%CROSS_TARGET%%/include/GL/glcorearb.h
@@ -1465,4 +1464,3 @@
 %%CROSS_TARGET%%/include/ymath.h
 %%CROSS_TARGET%%/include/yvals.h
 %%CROSS_TARGET%%/include/zmouse.h
-%%CROSS_TARGET%%/lib64
