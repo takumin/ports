@@ -43,7 +43,7 @@ CONFIGURE_ARGS+=--disable-lib32 --enable-lib64
 . endif
 .endif
 SSP_UNSAFE=	yes
-PLIST=		${.CURDIR}/pkg-plist.${BUILD_TYPE}
+PLIST=		${.CURDIR}/../mingw-w64/pkg-plist.${BUILD_TYPE}
 PLIST_SUB=	CROSS_TARGET=${CROSS_TARGET}
 
 .include <bsd.port.pre.mk>
