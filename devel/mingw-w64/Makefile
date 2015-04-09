@@ -23,25 +23,10 @@ IGNORE=		support target for "i686-w64-mingw32" or "x86_64-w64-mingw32"
 .endif
 
 USES=		tar:bzip2 gmake
-.if ${BUILD_TYPE} == "crt"
-BUILD_DEPENDS+=	${LOCALBASE}/${CROSS_TARGET}/include/_mingw.h:${PORTSDIR}/devel/${PORTNAME}-${CROSS_ARCH}-headers \
-		${LOCALBASE}/${CROSS_TARGET}/bin/${CROSS_TARGET}-as:${PORTSDIR}/devel/${PORTNAME}-${CROSS_ARCH}-binutils \
-		${LOCALBASE}/${CROSS_TARGET}/bin/${CROSS_TARGET}-gcc:${PORTSDIR}/devel/${PORTNAME}-${CROSS_ARCH}-gcc-core
-.endif
 WRKSRC_SUBDIR=	${PORTNAME}-${BUILD_TYPE}
 GNU_CONFIGURE=	yes
 GNU_CONFIGURE_PREFIX=	${PREFIX}/${CROSS_TARGET}
 CONFIGURE_ARGS+=--host=${CROSS_TARGET}
-.if ${BUILD_TYPE} == "headers"
-CONFIGURE_ARGS+=--enable-sdk=all --enable-secure-api
-.elif ${BUILD_TYPE} == "crt"
-CONFIGURE_ARGS+=--enable-wildcard
-. if ${CROSS_ARCH} == "i686"
-CONFIGURE_ARGS+=--disable-lib64 --enable-lib32
-. elif ${CROSS_ARCH} == "x86_64"
-CONFIGURE_ARGS+=--disable-lib32 --enable-lib64
-. endif
-.endif
 SSP_UNSAFE=	yes
 PLIST=		${.CURDIR}/../mingw-w64/pkg-plist.${BUILD_TYPE}
 PLIST_SUB=	CROSS_TARGET=${CROSS_TARGET}
@@ -52,6 +37,23 @@ PLIST_SUB=	CROSS_TARGET=${CROSS_TARGET}
 CONFIGURE_TARGET=	x86_64-portbld-${OPSYS:tl}${OSREL}
 .else
 CONFIGURE_TARGET=	${ARCH}-portbld-${OPSYS:tl}${OSREL}
+.endif
+
+.if ${BUILD_TYPE} == "crt"
+BUILD_DEPENDS+=	${LOCALBASE}/${CROSS_TARGET}/include/_mingw.h:${PORTSDIR}/devel/${PORTNAME}-${CROSS_ARCH}-headers \
+		${LOCALBASE}/${CROSS_TARGET}/bin/${CROSS_TARGET}-as:${PORTSDIR}/devel/${PORTNAME}-${CROSS_ARCH}-binutils \
+		${LOCALBASE}/${CROSS_TARGET}/bin/${CROSS_TARGET}-gcc:${PORTSDIR}/devel/${PORTNAME}-${CROSS_ARCH}-gcc-core
+.endif
+
+.if ${BUILD_TYPE} == "headers"
+CONFIGURE_ARGS+=--enable-sdk=all --enable-secure-api
+.elif ${BUILD_TYPE} == "crt"
+CONFIGURE_ARGS+=--enable-wildcard
+. if ${CROSS_ARCH} == "i686"
+CONFIGURE_ARGS+=--disable-lib64 --enable-lib32
+. elif ${CROSS_ARCH} == "x86_64"
+CONFIGURE_ARGS+=--disable-lib32 --enable-lib64
+. endif
 .endif
 
 .if ${BUILD_TYPE} == "crt"
