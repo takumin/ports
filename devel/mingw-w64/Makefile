@@ -19,12 +19,12 @@ SSP_UNSAFE=	yes
 
 .ifndef PKGNAMESUFFIX
 IGNORE=		build for 'devel/mingw-w64-i686-crt' or 'devel/mingw-w64-x86_64-crt'
-.endif
-
+.else
 BUILD_ARCH=	${PKGNAMESUFFIX:C/^-(.*)-(.*)$/\1/}
 BUILD_TYPE=	${PKGNAMESUFFIX:C/^-(.*)-(.*)$/\2/}
 TARGET_ARCH=	${BUILD_ARCH}-w64-mingw32
 GCC_SUFFIX!=	${MAKE} -V SUFFIX -C ../${PORTNAME}-${BUILD_ARCH}-gcc-core
+.endif
 
 WRKSRC_SUBDIR=	${PORTNAME}-${BUILD_TYPE}
 
