@@ -80,6 +80,8 @@ CONFIGURE_ARGS+=--target=${TARGET_ARCH} \
 		--enable-languages=${LANGUAGES} \
 		--enable-shared \
 		--enable-static \
+		--enable-fully-dynamic-string \
+		--enable-libstdcxx-time=yes \
 		--disable-multilib \
 		--disable-bootstrap \
 		--disable-nls \
