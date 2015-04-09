@@ -44,8 +44,6 @@ TARGET_ARCH=	${PKGNAMEPREFIX:C/^mingw-w64-(.*)-$/\1/}-w64-mingw32
 ALL_TARGET=	all-gcc
 INSTALL_TARGET=	install-gcc
 .else
-CFLAGS+=	-I/usr/local/x86_64-w64-mingw32/include \
-		-Wl,-rpath=/usr/local/x86_64-w64-mingw32/lib
 . if ${TARGET_ARCH} == "i686-w64-mingw32"
 LIB_DEPENDS+=	${LOCALBASE}/${TARGET_ARCH}/lib/libmingw32.a:${PORTSDIR}/devel/mingw-w64-i686-crt
 . else
