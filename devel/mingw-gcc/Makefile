@@ -44,6 +44,10 @@ CROSS_TARGET=	${CROSS_ARCH}-w64-mingw32
 .ifdef PKGNAMESUFFIX
 ALL_TARGET=	all-gcc
 INSTALL_TARGET=	install-gcc
+BUILD_DEPENDS+=	${LOCALBASE}/${CROSS_TARGET}/include/_mingw.h:${PORTSDIR}/devel/${PORTNAME}-${BUILD_ARCH}-headers \
+		${LOCALBASE}/bin/${CROSS_TARGET}-as:${PORTSDIR}/devel/${PORTNAME}-${BUILD_ARCH}-binutils
+RUN_DEPENDS+=	${LOCALBASE}/${CROSS_TARGET}/include/_mingw.h:${PORTSDIR}/devel/${PORTNAME}-${BUILD_ARCH}-headers \
+		${LOCALBASE}/bin/${CROSS_TARGET}-as:${PORTSDIR}/devel/${PORTNAME}-${BUILD_ARCH}-binutils
 .else
 LIB_DEPENDS+=	${LOCALBASE}/${CROSS_TARGET}/lib/libmingw32.a:${PORTSDIR}/devel/mingw-w64-${CROSS_ARCH}-crt
 .endif
