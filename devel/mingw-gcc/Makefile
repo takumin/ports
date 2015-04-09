@@ -38,18 +38,18 @@ CONFIGURE_SCRIPT=	../${SRCDIR:S/${WRKDIR}\///}/configure
 IGNORE=		build for 'devel/mingw-w64-i686-gcc' or 'devel/mingw-w64-x86_64-gcc'
 .endif
 
-TARGET_ARCH=	${PKGNAMEPREFIX:C/^mingw-w64-(.*)-$/\1/}
-TARGET_ABI=	${TARGET_ARCH}-w64-mingw32
+CROSS_ARCH=	${PKGNAMEPREFIX:C/^mingw-w64-(.*)-$/\1/}
+CROSS_TARGET=	${CROSS_ARCH}-w64-mingw32
 
 .ifdef PKGNAMESUFFIX
 ALL_TARGET=	all-gcc
 INSTALL_TARGET=	install-gcc
 .else
-LIB_DEPENDS+=	${LOCALBASE}/${TARGET_ABI}/lib/libmingw32.a:${PORTSDIR}/devel/mingw-w64-${TARGET_ARCH}-crt
+LIB_DEPENDS+=	${LOCALBASE}/${CROSS_TARGET}/lib/libmingw32.a:${PORTSDIR}/devel/mingw-w64-${CROSS_ARCH}-crt
 .endif
 
-.if ! ( ${TARGET_ABI} == "i686-w64-mingw32" || ${TARGET_ABI} == "x86_64-w64-mingw32" )
-IGNORE=		support target abi for "i686-w64-mingw32" or "x86_64-w64-mingw32"
+.if ! ( ${CROSS_TARGET} == "i686-w64-mingw32" || ${CROSS_TARGET} == "x86_64-w64-mingw32" )
+IGNORE=		support target for "i686-w64-mingw32" or "x86_64-w64-mingw32"
 .endif
 
 .if ${ARCH} == "amd64"
@@ -64,7 +64,7 @@ WRKSRC=		${WRKDIR}/build
 TARGLIB=	${PREFIX}/lib/gcc${SUFFIX}
 LIBEXEC=	${PREFIX}/libexec/gcc${SUFFIX}
 GNU_CONFIGURE=	yes
-CONFIGURE_ARGS+=--target=${TARGET_ABI} \
+CONFIGURE_ARGS+=--target=${CROSS_TARGET} \
 		--enable-languages=${LANGUAGES} \
 		--enable-shared \
 		--enable-static \
@@ -75,13 +75,13 @@ CONFIGURE_ARGS+=--target=${TARGET_ABI} \
 		--disable-nls \
 		--disable-win32-registry \
 		--disable-libssp \
-		--program-prefix=${TARGET_ABI}- \
+		--program-prefix=${CROSS_TARGET}- \
 		--program-suffix=${SUFFIX} \
 		--libdir=${TARGLIB} \
 		--libexecdir=${LIBEXEC} \
 		--with-gxx-include-dir=${TARGLIB}/include/c++ \
-		--with-as=${LOCALBASE}/bin/${TARGET_ABI}-as \
-		--with-ld=${LOCALBASE}/bin/${TARGET_ABI}-ld \
+		--with-as=${LOCALBASE}/bin/${CROSS_TARGET}-as \
+		--with-ld=${LOCALBASE}/bin/${CROSS_TARGET}-ld \
 		--with-gmp=${LOCALBASE} \
 		${ICONV_CONFIGURE_ARG} \
 		--with-pkgversion="FreeBSD Ports Collection for MinGW-w64" \
@@ -90,13 +90,13 @@ MAKE_ARGS+=	MAKEINFOFLAGS="--no-split"
 USE_LDCONFIG=	${TARGLIB}
 PLIST_SUB=	GCC_VERSION=${GCC_VERSION} \
 		GNU_HOST=${CONFIGURE_TARGET} \
-		GNU_TARGET=${TARGET_ABI} \
+		GNU_TARGET=${CROSS_TARGET} \
 		SUFFIX=${SUFFIX}
-INFO=		${TARGET_ABI}-gcc${SUFFIX}/cpp \
-		${TARGET_ABI}-gcc${SUFFIX}/cppinternals \
-		${TARGET_ABI}-gcc${SUFFIX}/gcc \
-		${TARGET_ABI}-gcc${SUFFIX}/gccinstall \
-		${TARGET_ABI}-gcc${SUFFIX}/gccint
+INFO=		${CROSS_TARGET}-gcc${SUFFIX}/cpp \
+		${CROSS_TARGET}-gcc${SUFFIX}/cppinternals \
+		${CROSS_TARGET}-gcc${SUFFIX}/gcc \
+		${CROSS_TARGET}-gcc${SUFFIX}/gccinstall \
+		${CROSS_TARGET}-gcc${SUFFIX}/gccint
 SUB_FILES=	pkg-message
 SUB_LIST+=	TARGLIB=${TARGLIB}
 
