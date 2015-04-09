@@ -27,7 +27,7 @@ SUFFIX=		${PORTVERSION:C/([0-9]+).([0-9]+).*/\1\2/}
 ONLY_FOR_ARCHS=	amd64 i386
 USES=		cpe gmake iconv libtool makeinfo perl5 tar:bzip2
 USE_PERL5=	build
-SSP_UNSAFE=	yes
+SSP_CFLAGS=	"-fstack-protector --param ssp-buffer-size=4"
 
 PATCH_WRKSRC=	${SRCDIR}
 CONFIGURE_SCRIPT=	../${SRCDIR:S/${WRKDIR}\///}/configure
