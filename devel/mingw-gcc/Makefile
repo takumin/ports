@@ -80,6 +80,7 @@ GNU_CONFIGURE=	yes
 CONFIGURE_ARGS+=--target=${TARGET_ARCH} \
 		--enable-languages=${LANGUAGES} \
 		--enable-shared \
+		--enable-static \
 		--disable-multilib \
 		--disable-bootstrap \
 		--disable-nls \
