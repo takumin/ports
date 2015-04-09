@@ -39,6 +39,7 @@ CONFIGURE_TARGET=	x86_64-portbld-${OPSYS:tl}${OSREL}
 CONFIGURE_TARGET=	${ARCH}-portbld-${OPSYS:tl}${OSREL}
 .endif
 
+.if define(PKGNAMESUFFIX)
 .if ${BUILD_TYPE} == "crt"
 BUILD_DEPENDS+=	${LOCALBASE}/${CROSS_TARGET}/include/_mingw.h:${PORTSDIR}/devel/${PORTNAME}-${CROSS_ARCH}-headers \
 		${LOCALBASE}/${CROSS_TARGET}/bin/${CROSS_TARGET}-as:${PORTSDIR}/devel/${PORTNAME}-${CROSS_ARCH}-binutils \
@@ -59,6 +60,7 @@ CONFIGURE_ARGS+=--disable-lib32 --enable-lib64
 .if ${BUILD_TYPE} == "crt"
 post-stage:
 	${LN} -sf lib ${STAGEDIR}${PREFIX}/${CROSS_TARGET}/lib64
+.endif
 .endif
 
 .include <bsd.port.post.mk>
