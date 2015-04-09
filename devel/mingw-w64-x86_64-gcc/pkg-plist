@@ -1,2 +1,2 @@
-@comment info/%%CROSS_TARGET%%-gcc/dir
+@comment info/%%GNU_TARGET%%-gcc49/dir
 @comment Insert PLIST.lib here

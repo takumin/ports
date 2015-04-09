@@ -38,31 +38,18 @@ CONFIGURE_SCRIPT=	../${SRCDIR:S/${WRKDIR}\///}/configure
 IGNORE=		build for 'devel/mingw-w64-i686-gcc' or 'devel/mingw-w64-x86_64-gcc'
 .endif
 
-TARGET_ARCH=	${PKGNAMEPREFIX:C/^mingw-w64-(.*)-$/\1/}-w64-mingw32
+TARGET_ARCH=	${PKGNAMEPREFIX:C/^mingw-w64-(.*)-$/\1/}
+TARGET_ABI=	${TARGET_ARCH}-w64-mingw32
 
 .ifdef PKGNAMESUFFIX
 ALL_TARGET=	all-gcc
 INSTALL_TARGET=	install-gcc
 .else
-. if ${TARGET_ARCH} == "i686-w64-mingw32"
-LIB_DEPENDS+=	${LOCALBASE}/${TARGET_ARCH}/lib/libmingw32.a:${PORTSDIR}/devel/mingw-w64-i686-crt
-. else
-LIB_DEPENDS+=	${LOCALBASE}/${TARGET_ARCH}/lib/libmingw32.a:${PORTSDIR}/devel/mingw-w64-x86_64-crt
-. endif
+LIB_DEPENDS+=	${LOCALBASE}/${TARGET_ABI}/lib/libmingw32.a:${PORTSDIR}/devel/mingw-w64-${TARGET_ARCH}-crt
 .endif
 
-.if ${TARGET_ARCH} == "i686-w64-mingw32"
-BUILD_DEPENDS+=	${LOCALBASE}/bin/${TARGET_ARCH}-as:${PORTSDIR}/devel/mingw-w64-i686-binutils \
-		${LOCALBASE}/${TARGET_ARCH}/include/_mingw.h:${PORTSDIR}/devel/mingw-w64-i686-headers
-RUN_DEPENDS+=	${LOCALBASE}/bin/${TARGET_ARCH}-as:${PORTSDIR}/devel/mingw-w64-i686-binutils \
-		${LOCALBASE}/${TARGET_ARCH}/include/_mingw.h:${PORTSDIR}/devel/mingw-w64-i686-headers
-.elif ${TARGET_ARCH} == "x86_64-w64-mingw32"
-BUILD_DEPENDS+=	${LOCALBASE}/bin/${TARGET_ARCH}-as:${PORTSDIR}/devel/mingw-w64-x86_64-binutils \
-		${LOCALBASE}/${TARGET_ARCH}/include/_mingw.h:${PORTSDIR}/devel/mingw-w64-x86_64-headers
-RUN_DEPENDS+=	${LOCALBASE}/bin/${TARGET_ARCH}-as:${PORTSDIR}/devel/mingw-w64-x86_64-binutils \
-		${LOCALBASE}/${TARGET_ARCH}/include/_mingw.h:${PORTSDIR}/devel/mingw-w64-x86_64-headers
-.else
-IGNORE=		support target arch for "i686-w64-mingw32" or "x86_64-w64-mingw32"
+.if ! ( ${TARGET_ABI} == "i686-w64-mingw32" || ${TARGET_ABI} == "x86_64-w64-mingw32" )
+IGNORE=		support target abi for "i686-w64-mingw32" or "x86_64-w64-mingw32"
 .endif
 
 .if ${ARCH} == "amd64"
@@ -77,7 +64,7 @@ WRKSRC=		${WRKDIR}/build
 TARGLIB=	${PREFIX}/lib/gcc${SUFFIX}
 LIBEXEC=	${PREFIX}/libexec/gcc${SUFFIX}
 GNU_CONFIGURE=	yes
-CONFIGURE_ARGS+=--target=${TARGET_ARCH} \
+CONFIGURE_ARGS+=--target=${TARGET_ABI} \
 		--enable-languages=${LANGUAGES} \
 		--enable-shared \
 		--enable-static \
@@ -88,13 +75,13 @@ CONFIGURE_ARGS+=--target=${TARGET_ARCH} \
 		--disable-nls \
 		--disable-win32-registry \
 		--disable-libssp \
-		--program-prefix=${TARGET_ARCH}- \
+		--program-prefix=${TARGET_ABI}- \
 		--program-suffix=${SUFFIX} \
 		--libdir=${TARGLIB} \
 		--libexecdir=${LIBEXEC} \
 		--with-gxx-include-dir=${TARGLIB}/include/c++ \
-		--with-as=${LOCALBASE}/bin/${TARGET_ARCH}-as \
-		--with-ld=${LOCALBASE}/bin/${TARGET_ARCH}-ld \
+		--with-as=${LOCALBASE}/bin/${TARGET_ABI}-as \
+		--with-ld=${LOCALBASE}/bin/${TARGET_ABI}-ld \
 		--with-gmp=${LOCALBASE} \
 		${ICONV_CONFIGURE_ARG} \
 		--with-pkgversion="FreeBSD Ports Collection for MinGW-w64" \
@@ -103,13 +90,13 @@ MAKE_ARGS+=	MAKEINFOFLAGS="--no-split"
 USE_LDCONFIG=	${TARGLIB}
 PLIST_SUB=	GCC_VERSION=${GCC_VERSION} \
 		GNU_HOST=${CONFIGURE_TARGET} \
-		GNU_TARGET=${TARGET_ARCH} \
+		GNU_TARGET=${TARGET_ABI} \
 		SUFFIX=${SUFFIX}
-INFO=		${TARGET_ARCH}-gcc${SUFFIX}/cpp \
-		${TARGET_ARCH}-gcc${SUFFIX}/cppinternals \
-		${TARGET_ARCH}-gcc${SUFFIX}/gcc \
-		${TARGET_ARCH}-gcc${SUFFIX}/gccinstall \
-		${TARGET_ARCH}-gcc${SUFFIX}/gccint
+INFO=		${TARGET_ABI}-gcc${SUFFIX}/cpp \
+		${TARGET_ABI}-gcc${SUFFIX}/cppinternals \
+		${TARGET_ABI}-gcc${SUFFIX}/gcc \
+		${TARGET_ABI}-gcc${SUFFIX}/gccinstall \
+		${TARGET_ABI}-gcc${SUFFIX}/gccint
 SUB_FILES=	pkg-message
 SUB_LIST+=	TARGLIB=${TARGLIB}
 
