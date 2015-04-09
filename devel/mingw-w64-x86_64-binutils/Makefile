@@ -5,11 +5,6 @@ PKGNAMEPREFIX=	mingw-w64-x86_64-
 MAINTAINER=	takumiiinn@gmail.com
 COMMENT=	GNU binary tools for MinGW-w64 x86_64
 
-BUTARGET=	x86_64-w64-mingw32
-CONFIGURE_ARGS+=--disable-multilib
-
-MASTERDIR=	${.CURDIR}/../binutils
-PLIST=		${.CURDIR}/pkg-plist
-PLIST_SUB=	BUTARGET=${BUTARGET}
+MASTERDIR=	${.CURDIR}/../mingw-binutils
 
 .include "${MASTERDIR}/Makefile"
