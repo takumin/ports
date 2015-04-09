@@ -11,22 +11,41 @@ DISTNAME=	${PORTNAME}-v${PORTVERSION}
 MAINTAINER?=	takumiiinn@gmail.com
 COMMENT?=	MinGW-w64 for headers and runtime
 
-USES=		tar:bzip2 gmake
-GNU_CONFIGURE=	yes
-SSP_UNSAFE=	yes
-
-.include <bsd.port.pre.mk>
-
 .ifndef PKGNAMESUFFIX
 IGNORE=		build for 'devel/mingw-w64-i686-crt' or 'devel/mingw-w64-x86_64-crt'
 .else
-BUILD_ARCH=	${PKGNAMESUFFIX:C/^-(.*)-(.*)$/\1/}
+CROSS_ARCH=	${PKGNAMESUFFIX:C/^-(.*)-(.*)$/\1/}
 BUILD_TYPE=	${PKGNAMESUFFIX:C/^-(.*)-(.*)$/\2/}
-TARGET_ARCH=	${BUILD_ARCH}-w64-mingw32
-GCC_SUFFIX!=	${MAKE} -V SUFFIX -C ../${PORTNAME}-${BUILD_ARCH}-gcc-core
+CROSS_TARGET=	${CROSS_ARCH}-w64-mingw32
+. if ! ( ${CROSS_ARCH} == "i686" || ${CROSS_ARCH} == "x86_64" )
+IGNORE=		support target for "i686-w64-mingw32" or "x86_64-w64-mingw32"
+. endif
 .endif
 
+USES=		tar:bzip2 gmake
+.if ${BUILD_TYPE} == "crt"
+BUILD_DEPENDS+=	${LOCALBASE}/${CROSS_TARGET}/include/_mingw.h:${PORTSDIR}/devel/${PORTNAME}-${CROSS_ARCH}-headers \
+		${LOCALBASE}/${CROSS_TARGET}/bin/${CROSS_TARGET}-as:${PORTSDIR}/devel/${PORTNAME}-${CROSS_ARCH}-binutils \
+		${LOCALBASE}/${CROSS_TARGET}/bin/${CROSS_TARGET}-gcc:${PORTSDIR}/devel/${PORTNAME}-${CROSS_ARCH}-gcc-core
+.endif
 WRKSRC_SUBDIR=	${PORTNAME}-${BUILD_TYPE}
+GNU_CONFIGURE=	yes
+GNU_CONFIGURE_PREFIX=	${PREFIX}/${CROSS_TARGET}
+CONFIGURE_ARGS+=--host=${CROSS_TARGET}
+.if ${BUILD_TYPE} == "headers"
+CONFIGURE_ARGS+=--enable-sdk=all --enable-secure-api
+.elif ${BUILD_TYPE} == "crt"
+CONFIGURE_ARGS+=--enable-wildcard
+. if ${CROSS_ARCH} == "i686"
+CONFIGURE_ARGS+=--disable-lib64 --enable-lib32
+. elif ${CROSS_ARCH} == "x86_64"
+CONFIGURE_ARGS+=--disable-lib32 --enable-lib64
+. endif
+.endif
+SSP_UNSAFE=	yes
+PLIST_SUB=	CROSS_TARGET=${CROSS_TARGET}
+
+.include <bsd.port.pre.mk>
 
 .if ${ARCH} == "amd64"
 CONFIGURE_TARGET=	x86_64-portbld-${OPSYS:tl}${OSREL}
@@ -34,30 +53,9 @@ CONFIGURE_TARGET=	x86_64-portbld-${OPSYS:tl}${OSREL}
 CONFIGURE_TARGET=	${ARCH}-portbld-${OPSYS:tl}${OSREL}
 .endif
 
-CC=		${TARGET_ARCH}-gcc${GCC_SUFFIX}
-GNU_CONFIGURE_PREFIX=	${PREFIX}/${TARGET_ARCH}
-CONFIGURE_ARGS+=--host=${TARGET_ARCH}
-
-.if ${BUILD_TYPE} == "headers"
-CONFIGURE_ARGS+=--enable-sdk=all --enable-secure-api
-.elif ${BUILD_TYPE} == "crt"
-BUILD_DEPENDS+=	${LOCALBASE}/${TARGET_ARCH}/include/_mingw.h:${PORTSDIR}/devel/${PORTNAME}-${BUILD_ARCH}-headers \
-		${LOCALBASE}/bin/${TARGET_ARCH}-as:${PORTSDIR}/devel/${PORTNAME}-${BUILD_ARCH}-binutils \
-		${LOCALBASE}/bin/${TARGET_ARCH}-gcc${GCC_SUFFIX}:${PORTSDIR}/devel/${PORTNAME}-${BUILD_ARCH}-gcc-core
-RUN_DEPENDS+=	${LOCALBASE}/${TARGET_ARCH}/include/_mingw.h:${PORTSDIR}/devel/${PORTNAME}-${BUILD_ARCH}-headers \
-		${LOCALBASE}/bin/${TARGET_ARCH}-as:${PORTSDIR}/devel/${PORTNAME}-${BUILD_ARCH}-binutils \
-		${LOCALBASE}/bin/${TARGET_ARCH}-gcc${GCC_SUFFIX}:${PORTSDIR}/devel/${PORTNAME}-${BUILD_ARCH}-gcc-core
-CONFIGURE_ARGS+=--enable-wildcard
-. if ${BUILD_ARCH} == "i686"
-CONFIGURE_ARGS+=--disable-lib64 --enable-lib32
-. elif ${BUILD_ARCH} == "x86_64"
-CONFIGURE_ARGS+=--disable-lib32 --enable-lib64
-. endif
-.endif
-
-PLIST_SUB=	TARGET_ARCH=${TARGET_ARCH}
-
+.if ${BUILD_TYPE} == "crt"
 post-stage:
-	${LN} -sf lib ${STAGEDIR}${PREFIX}/${TARGET_ARCH}/lib64
+	${LN} -sf lib ${STAGEDIR}${PREFIX}/${CROSS_TARGET}/lib64
+.endif
 
 .include <bsd.port.post.mk>
