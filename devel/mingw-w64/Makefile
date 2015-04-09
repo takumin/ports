@@ -13,7 +13,7 @@ COMMENT?=	MinGW-w64 for headers and runtime
 
 USES=		tar:bzip2 gmake
 GNU_CONFIGURE=	yes
-SSP_CFLAGS=	"-fstack-protector --param ssp-buffer-size=4"
+SSP_CFLAGS=	-fstack-protector --param ssp-buffer-size=4
 
 .include <bsd.port.pre.mk>
 
