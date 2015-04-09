@@ -60,7 +60,7 @@ GNU_CONFIGURE=		yes
 CONFIGURE_SCRIPT=	../${SRCDIR:S/${WRKDIR}\///}/configure
 GNU_CONFIGURE_PREFIX=	${PREFIX}/${CROSS_TARGET}
 .ifdef PKGNAMESUFFIX
-CONFIGURE_ARGS+=	--with-sysroot=${PREFIX}/${CROSS_TARGET}/bootstrap
+CONFIGURE_ARGS+=	--with-sysroot=${PREFIX}/${CROSS_TARGET}/${PKGNAMESUFFIX:C/^-//}
 .else
 CONFIGURE_ARGS+=	--with-sysroot=${PREFIX}/${CROSS_TARGET}
 .endif
@@ -86,6 +86,7 @@ USE_LDCONFIG=		${PREFIX}/lib/gcc/${CROSS_TARGET}/${PORTVERSION}
 PLIST_SUB=		GCC_VERSION=${PORTVERSION} \
 			GNU_HOST=${CONFIGURE_TARGET} \
 			GNU_TARGET=${CROSS_TARGET}
+PLIST=			${.CURDIR}/../mingw-gcc/pkg-plist${PKGNAMESUFFIX:C/^-/\./}
 INFO_PATH=		info/${CROSS_TARGET}-gcc
 INFO=			cpp cppinternals gcc gccinstall gccint
 SUB_FILES=		pkg-message
