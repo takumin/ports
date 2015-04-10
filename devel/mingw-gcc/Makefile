@@ -59,7 +59,6 @@ LANGUAGES:=		c,c++
 GNU_CONFIGURE=		yes
 CONFIGURE_SCRIPT=	../${SRCDIR:S/${WRKDIR}\///}/configure
 GNU_CONFIGURE_PREFIX=	${PREFIX}/${CROSS_TARGET}
-CONFIGURE_ARGS+=	--with-sysroot=${PREFIX}
 CONFIGURE_ARGS+=	--target=${CROSS_TARGET} \
 			--enable-languages=${LANGUAGES} \
 			--enable-shared \
