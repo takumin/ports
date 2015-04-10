@@ -1,4 +1,3 @@
-/you/have/to/check/what/makeplist/gives/you
 %%GNU_TARGET%%/bootstrap/bin/%%GNU_TARGET%%-c++
 %%GNU_TARGET%%/bootstrap/bin/%%GNU_TARGET%%-cpp
 %%GNU_TARGET%%/bootstrap/bin/%%GNU_TARGET%%-g++
