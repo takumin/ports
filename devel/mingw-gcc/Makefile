@@ -95,7 +95,7 @@ PLIST_SUB=		GCC_VERSION=${PORTVERSION} \
 PLIST=			${.CURDIR}/../mingw-gcc/pkg-plist${PKGNAMESUFFIX:C/^-/\./}
 .ifndef PKGNAMESUFFIX
 INFO_PATH=		info/${CROSS_TARGET}-gcc
-INFO=			cpp cppinternals gcc gccinstall gccint libquadmath
+INFO=			cpp cppinternals gcc gccinstall gccint
 .endif
 SUB_FILES=		pkg-message
 
