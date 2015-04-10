@@ -1305,4 +1305,3 @@
 %%CROSS_TARGET%%/lib/libxinput9_1_0.a
 %%CROSS_TARGET%%/lib/libzoneoc.a
 %%CROSS_TARGET%%/lib/txtmode.o
-%%CROSS_TARGET%%/lib64
