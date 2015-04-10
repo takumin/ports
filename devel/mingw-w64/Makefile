@@ -45,8 +45,8 @@ CC=		${CROSS_TARGET}-gcc-bootstrap
 CPP=		${CROSS_TARGET}-gcc-bootstrap -E
 CXX=		${CROSS_TARGET}-g++-bootstrap
 BUILD_DEPENDS+=	${LOCALBASE}/${CROSS_TARGET}/include/_mingw.h:${PORTSDIR}/devel/${PORTNAME}-${CROSS_ARCH}-headers \
-		${LOCALBASE}/${CROSS_TARGET}/bin/${CROSS_TARGET}-as:${PORTSDIR}/devel/${PORTNAME}-${CROSS_ARCH}-binutils \
-		${LOCALBASE}/${CROSS_TARGET}/bin/${CROSS_TARGET}-gcc:${PORTSDIR}/devel/${PORTNAME}-${CROSS_ARCH}-gcc-core
+		${LOCALBASE}/bin/${CROSS_TARGET}-as:${PORTSDIR}/devel/${PORTNAME}-${CROSS_ARCH}-binutils \
+		${LOCALBASE}/bin/${CROSS_TARGET}-gcc-bootstrap:${PORTSDIR}/devel/${PORTNAME}-${CROSS_ARCH}-gcc-bootstrap
 .endif
 
 .if ${BUILD_TYPE} == "headers"
