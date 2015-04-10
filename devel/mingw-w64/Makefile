@@ -24,9 +24,6 @@ IGNORE=		support target for "i686-w64-mingw32" or "x86_64-w64-mingw32"
 
 USES=		tar:bzip2 gmake
 WRKSRC_SUBDIR=	${PORTNAME}-${BUILD_TYPE}
-CC=		${CROSS_TARGET}-gcc-bootstrap
-CPP=		${CROSS_TARGET}-gpp-bootstrap
-CXX=		${CROSS_TARGET}-g++-bootstrap
 GNU_CONFIGURE=	yes
 GNU_CONFIGURE_PREFIX=	${PREFIX}/${CROSS_TARGET}
 CONFIGURE_ARGS+=--host=${CROSS_TARGET}
@@ -42,8 +39,11 @@ CONFIGURE_TARGET=	x86_64-portbld-${OPSYS:tl}${OSREL}
 CONFIGURE_TARGET=	${ARCH}-portbld-${OPSYS:tl}${OSREL}
 .endif
 
-.if define(PKGNAMESUFFIX)
+.ifdef PKGNAMESUFFIX
 .if ${BUILD_TYPE} == "crt"
+CC=		${CROSS_TARGET}-gcc-bootstrap
+CPP=		${CROSS_TARGET}-gcc-bootstrap -E
+CXX=		${CROSS_TARGET}-g++-bootstrap
 BUILD_DEPENDS+=	${LOCALBASE}/${CROSS_TARGET}/include/_mingw.h:${PORTSDIR}/devel/${PORTNAME}-${CROSS_ARCH}-headers \
 		${LOCALBASE}/${CROSS_TARGET}/bin/${CROSS_TARGET}-as:${PORTSDIR}/devel/${PORTNAME}-${CROSS_ARCH}-binutils \
 		${LOCALBASE}/${CROSS_TARGET}/bin/${CROSS_TARGET}-gcc:${PORTSDIR}/devel/${PORTNAME}-${CROSS_ARCH}-gcc-core
