@@ -30,7 +30,7 @@ IGNORE=		support target for "i686-w64-mingw32" or "x86_64-w64-mingw32"
 USES=		cpe gmake iconv libtool makeinfo perl5 tar:bzip2
 USE_PERL5=	build
 BUILD_DEPENDS+=	${LOCALBASE}/${CROSS_TARGET}/include/_mingw.h:${PORTSDIR}/devel/mingw-w64-${CROSS_ARCH}-headers \
-		${LOCALBASE}/${CROSS_TARGET}/${CROSS_TARGET}-as:${PORTSDIR}/devel/mingw-w64-${CROSS_ARCH}-binutils
+		${LOCALBASE}/${CROSS_TARGET}/bin/${CROSS_TARGET}-as:${PORTSDIR}/devel/mingw-w64-${CROSS_ARCH}-binutils
 LIB_DEPENDS+=	libgmp.so:${PORTSDIR}/math/gmp \
 		libmpfr.so:${PORTSDIR}/math/mpfr \
 		libmpc.so:${PORTSDIR}/math/mpc
@@ -75,8 +75,8 @@ CONFIGURE_ARGS+=	--target=${CROSS_TARGET} \
 			--disable-nls \
 			--disable-win32-registry \
 			--disable-libssp \
-			--with-as=${LOCALBASE}/bin/${CROSS_TARGET}-as \
-			--with-ld=${LOCALBASE}/bin/${CROSS_TARGET}-ld \
+			--with-as=${LOCALBASE}/${CROSS_TARGET}/bin/${CROSS_TARGET}-as \
+			--with-ld=${LOCALBASE}/${CROSS_TARGET}/bin/${CROSS_TARGET}-ld \
 			--with-gmp=${LOCALBASE} \
 			${ICONV_CONFIGURE_ARG} \
 			--with-pkgversion="FreeBSD Ports Collection for MinGW-w64" \
