@@ -49,6 +49,10 @@ lib/mingw-w64/gcc/%%GNU_TARGET%%/%%GCC_VERSION%%/include/rdseedintrin.h
 lib/mingw-w64/gcc/%%GNU_TARGET%%/%%GCC_VERSION%%/include/rtmintrin.h
 lib/mingw-w64/gcc/%%GNU_TARGET%%/%%GCC_VERSION%%/include/shaintrin.h
 lib/mingw-w64/gcc/%%GNU_TARGET%%/%%GCC_VERSION%%/include/smmintrin.h
+lib/mingw-w64/gcc/%%GNU_TARGET%%/%%GCC_VERSION%%/include/ssp/ssp.h
+lib/mingw-w64/gcc/%%GNU_TARGET%%/%%GCC_VERSION%%/include/ssp/stdio.h
+lib/mingw-w64/gcc/%%GNU_TARGET%%/%%GCC_VERSION%%/include/ssp/string.h
+lib/mingw-w64/gcc/%%GNU_TARGET%%/%%GCC_VERSION%%/include/ssp/unistd.h
 lib/mingw-w64/gcc/%%GNU_TARGET%%/%%GCC_VERSION%%/include/stdalign.h
 lib/mingw-w64/gcc/%%GNU_TARGET%%/%%GCC_VERSION%%/include/stdarg.h
 lib/mingw-w64/gcc/%%GNU_TARGET%%/%%GCC_VERSION%%/include/stdatomic.h
@@ -1000,6 +1004,10 @@ man/man1/%%GNU_TARGET%%-gcov.1.gz
 %%GNU_TARGET%%/lib/libquadmath-0.dll
 %%GNU_TARGET%%/lib/libquadmath.a
 %%GNU_TARGET%%/lib/libquadmath.dll.a
+%%GNU_TARGET%%/lib/libssp-0.dll
+%%GNU_TARGET%%/lib/libssp.a
+%%GNU_TARGET%%/lib/libssp.dll.a
+%%GNU_TARGET%%/lib/libssp_nonshared.a
 %%GNU_TARGET%%/lib/libstdc++-6.dll
 %%GNU_TARGET%%/lib/libstdc++.a
 %%GNU_TARGET%%/lib/libstdc++.dll.a
