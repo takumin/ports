@@ -88,7 +88,7 @@ USE_LDCONFIG=		${PREFIX}/lib/mingw-w64${PKGNAMESUFFIX}
 PLIST_SUB=		GCC_VERSION=${PORTVERSION} \
 			GNU_HOST=${CONFIGURE_TARGET} \
 			GNU_TARGET=${CROSS_TARGET}
-PLIST=			${.CURDIR}/../mingw-gcc/pkg-plist${PKGNAMESUFFIX:C/^-/\./}
+#PLIST=			${.CURDIR}/../mingw-gcc/pkg-plist${PKGNAMESUFFIX:C/^-/\./}
 .ifndef PKGNAMESUFFIX
 INFO_PATH=		info/${CROSS_TARGET}-gcc
 INFO=			cpp cppinternals gcc gccinstall gccint
@@ -103,14 +103,12 @@ pre-configure:
 	@${RM} -f ${SRCDIR}/gcc/*/*.info*
 	@${MKDIR} ${CONFIGURE_WRKSRC}
 
-post-install:
+post-stage:
 .ifdef PKGNAMESUFFIX
 	${RM} -rf ${STAGEDIR}${PREFIX}/include
 	${RM} -rf ${STAGEDIR}${PREFIX}/info
 	${RM} -f ${STAGEDIR}${PREFIX}/man/man1/*
 .endif
-
-post-stage:
 	${RM} -f ${STAGEDIR}${PREFIX}/man/man7/*
 
 .include <bsd.port.post.mk>
