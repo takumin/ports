@@ -33,13 +33,13 @@ BUILD_DEPENDS=		${LOCALBASE}/lib/libgmp.so:${PORTSDIR}/math/gmp \
 			${LOCALBASE}/lib/libmpfr.so:${PORTSDIR}/math/mpfr
 
 GNU_CONFIGURE=		yes
-GNU_CONFIGURE_PREFIX=	${PREFIX}/${CROSS_TARGET}
-CONFIGURE_ARGS+=	--with-sysroot=${PREFIX}/${CROSS_TARGET} \
-			--target=${CROSS_TARGET} \
+CONFIGURE_ARGS+=	--target=${CROSS_TARGET} \
 			--disable-nls \
 			--disable-multilib
 
 PLIST_SUB=		CROSS_TARGET=${CROSS_TARGET}
+INFO_PATH=		info/${CROSS_TARGET}
+INFO=			as bfd binutils gprof ld
 
 .include <bsd.port.pre.mk>
 
