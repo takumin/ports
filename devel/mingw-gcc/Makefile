@@ -97,7 +97,6 @@ PLIST=			${.CURDIR}/../mingw-gcc/pkg-plist${PKGNAMESUFFIX:C/^-/\./}
 INFO_PATH=		info/${CROSS_TARGET}-gcc
 INFO=			cpp cppinternals gcc gccinstall gccint libquadmath
 .endif
-SUB_FILES=		pkg-message
 
 pre-everything::
 	@${ECHO_MSG} "Making GCC ${PORTVERSION} for Host:${CONFIGURE_TARGET} Target:${CROSS_TARGET} [${LANGUAGES}]"
