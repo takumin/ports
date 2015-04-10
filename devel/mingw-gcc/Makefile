@@ -92,7 +92,7 @@ USE_LDCONFIG=		${PREFIX}/lib/mingw-w64${PKGNAMESUFFIX}
 PLIST_SUB=		GCC_VERSION=${PORTVERSION} \
 			GNU_HOST=${CONFIGURE_TARGET} \
 			GNU_TARGET=${CROSS_TARGET}
-#PLIST=			${.CURDIR}/../mingw-gcc/pkg-plist${PKGNAMESUFFIX:C/^-/\./}
+PLIST=			${.CURDIR}/../mingw-gcc/pkg-plist${PKGNAMESUFFIX:C/^-/\./}
 .ifndef PKGNAMESUFFIX
 INFO_PATH=		info/${CROSS_TARGET}-gcc
 INFO=			cpp cppinternals gcc gccinstall gccint
