@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PKGNAMEPREFIX=	mingw-w64-x86_64-
-PKGNAMESUFFIX=	-core
+PKGNAMESUFFIX=	-bootstrap
 MAINTAINER=	takumiiinn@gmail.com
 COMMENT=	GNU Compiler Collection 4.9 for MinGW-w64 x86_64
 
