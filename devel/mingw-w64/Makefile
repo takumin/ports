@@ -59,11 +59,6 @@ CONFIGURE_ARGS+=--disable-lib64 --enable-lib32
 CONFIGURE_ARGS+=--disable-lib32 --enable-lib64
 . endif
 .endif
-
-.if ${BUILD_TYPE} == "crt"
-post-stage:
-	${LN} -sf lib ${STAGEDIR}${PREFIX}/${CROSS_TARGET}/lib64
-.endif
 .endif
 
 .include <bsd.port.post.mk>
