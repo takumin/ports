@@ -307,6 +307,11 @@ man/man1/%%GNU_TARGET%%-gcov.1.gz
 %%DATADIR%%-%%GCC_VERSION%%/python/libstdcxx/__init__.py
 %%DATADIR%%-%%GCC_VERSION%%/python/libstdcxx/v6/__init__.py
 %%DATADIR%%-%%GCC_VERSION%%/python/libstdcxx/v6/printers.py
+%%GNU_TARGET%%/bin/c++
+%%GNU_TARGET%%/bin/cpp
+%%GNU_TARGET%%/bin/g++
+%%GNU_TARGET%%/bin/gcc
+%%GNU_TARGET%%/bin/gcov
 %%GNU_TARGET%%/include/c++/%%GCC_VERSION%%/algorithm
 %%GNU_TARGET%%/include/c++/%%GCC_VERSION%%/array
 %%GNU_TARGET%%/include/c++/%%GCC_VERSION%%/atomic

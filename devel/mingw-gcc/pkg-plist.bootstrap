@@ -292,3 +292,8 @@ libexec/mingw-w64-bootstrap/gcc/%%GNU_TARGET%%/%%GCC_VERSION%%/liblto_plugin.so.
 libexec/mingw-w64-bootstrap/gcc/%%GNU_TARGET%%/%%GCC_VERSION%%/lto-wrapper
 libexec/mingw-w64-bootstrap/gcc/%%GNU_TARGET%%/%%GCC_VERSION%%/lto1
 libexec/mingw-w64-bootstrap/gcc/%%GNU_TARGET%%/%%GCC_VERSION%%/plugin/gengtype
+%%GNU_TARGET%%/bin/c++
+%%GNU_TARGET%%/bin/cpp
+%%GNU_TARGET%%/bin/g++
+%%GNU_TARGET%%/bin/gcc
+%%GNU_TARGET%%/bin/gcov
