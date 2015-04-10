@@ -51,8 +51,8 @@ CONFIGURE_TARGET=	${ARCH}-portbld-${OPSYS:tl}${OSREL}
 .endif
 
 .ifdef PKGNAMESUFFIX
-ALL_TARGET=	all-gcc
-INSTALL_TARGET=	install-gcc
+ALL_TARGET=	all-gcc all-target-libgcc
+INSTALL_TARGET=	install-gcc install-target-libgcc
 UNIQUENAME=	${PKGNAMEPREFIX}${PORTNAME}${PKGNAMESUFFIX}
 .endif
 
