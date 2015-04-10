@@ -33,13 +33,12 @@ SSP_UNSAFE=	yes
 LIB_DEPENDS+=	libgmp.so:${PORTSDIR}/math/gmp \
 		libmpfr.so:${PORTSDIR}/math/mpfr \
 		libmpc.so:${PORTSDIR}/math/mpc
-.ifdef PKGNAMESUFFIX
-BUILD_DEPENDS+=	${LOCALBASE}/${CROSS_TARGET}/include/_mingw.h:${PORTSDIR}/devel/mingw-w64-${CROSS_ARCH}-headers \
-		${LOCALBASE}/bin/${CROSS_TARGET}-as:${PORTSDIR}/devel/mingw-w64-${CROSS_ARCH}-binutils
-.else
-BUILD_DEPENDS+=	${LOCALBASE}/${CROSS_TARGET}/include/_mingw.h:${PORTSDIR}/devel/mingw-w64-${CROSS_ARCH}-headers \
-		${LOCALBASE}/bin/${CROSS_TARGET}-as:${PORTSDIR}/devel/mingw-w64-${CROSS_ARCH}-binutils \
-		${LOCALBASE}/${CROSS_TARGET}/lib/libmingw32.a:${PORTSDIR}/devel/mingw-w64-${CROSS_ARCH}-crt
+BUILD_DEPENDS+=	${LOCALBASE}/bin/${CROSS_TARGET}-as:${PORTSDIR}/devel/mingw-w64-${CROSS_ARCH}-binutils \
+		${LOCALBASE}/${CROSS_TARGET}/include/_mingw.h:${PORTSDIR}/devel/mingw-w64-${CROSS_ARCH}-headers
+RUN_DEPENDS+=	${LOCALBASE}/bin/${CROSS_TARGET}-as:${PORTSDIR}/devel/mingw-w64-${CROSS_ARCH}-binutils \
+		${LOCALBASE}/${CROSS_TARGET}/include/_mingw.h:${PORTSDIR}/devel/mingw-w64-${CROSS_ARCH}-headers
+.ifndef PKGNAMESUFFIX
+BUILD_DEPENDS+=	${LOCALBASE}/${CROSS_TARGET}/lib/libmingw32.a:${PORTSDIR}/devel/mingw-w64-${CROSS_ARCH}-crt
 RUN_DEPENDS+=	${LOCALBASE}/${CROSS_TARGET}/lib/libmingw32.a:${PORTSDIR}/devel/mingw-w64-${CROSS_ARCH}-crt
 .endif
 
@@ -61,6 +60,7 @@ SRCDIR=			${WRKDIR}/gcc-${DISTVERSION}
 WRKSRC=			${WRKDIR}/build
 PATCH_WRKSRC=		${SRCDIR}
 LANGUAGES:=		c,c++
+BINARIES=		c++ cpp g++ gcc gcov
 GNU_CONFIGURE=		yes
 CONFIGURE_SCRIPT=	../${SRCDIR:S/${WRKDIR}\///}/configure
 .ifdef PKGNAMESUFFIX
@@ -113,5 +113,15 @@ post-stage:
 	${RM} -f ${STAGEDIR}${PREFIX}/man/man1/*
 .endif
 	${RM} -f ${STAGEDIR}${PREFIX}/man/man7/*
+	${MKDIR} ${STAGEDIR}${PREFIX}/${CROSS_TARGET}/bin
+.for F in ${BINARIES}
+. ifdef PKGNAMESUFFIX
+	${LN} -f ${STAGEDIR}${PREFIX}/bin/${CROSS_TARGET}-$F${PKGNAMESUFFIX} \
+		${STAGEDIR}${PREFIX}/${CROSS_TARGET}/bin/$F${PKGNAMESUFFIX}
+. else
+	${LN} -f ${STAGEDIR}${PREFIX}/bin/${CROSS_TARGET}-$F \
+		${STAGEDIR}${PREFIX}/${CROSS_TARGET}/bin/$F
+. endif
+.endfor
 
 .include <bsd.port.post.mk>
