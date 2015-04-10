@@ -2,10 +2,9 @@
 # $FreeBSD$
 
 PKGNAMEPREFIX=	mingw-w64-x86_64-
+MAINTAINER=	takumiiinn@gmail.com
+COMMENT=	GCC 4.9 for MinGW-w64 x86_64
 
 MASTERDIR=	${.CURDIR}/../mingw-gcc
-
-# echo '@comment Insert PLIST.lib here' > pkg-plist
-PLIST=		${.CURDIR}/pkg-plist
 
 .include "${MASTERDIR}/Makefile"
