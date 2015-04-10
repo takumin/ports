@@ -59,6 +59,10 @@ LANGUAGES:=		c,c++
 GNU_CONFIGURE=		yes
 CONFIGURE_SCRIPT=	../${SRCDIR:S/${WRKDIR}\///}/configure
 GNU_CONFIGURE_PREFIX=	${PREFIX}/${CROSS_TARGET}
+.ifdef PKGNAMESUFFIX
+BOOTSTRAP_PREFIX=	${PREFIX}/${CROSS_TARGET}/${PKGNAMESUFFIX:C/^-//}
+CONFIGURE_ARGS+=	--exec-prefix=${BOOTSTRAP_PREFIX}
+.endif
 CONFIGURE_ARGS+=	--target=${CROSS_TARGET} \
 			--enable-languages=${LANGUAGES} \
 			--enable-shared \
@@ -77,7 +81,11 @@ CONFIGURE_ARGS+=	--target=${CROSS_TARGET} \
 			--with-pkgversion="FreeBSD Ports Collection for MinGW-w64" \
 			--with-system-zlib
 MAKE_ARGS+=		MAKEINFOFLAGS="--no-split"
-USE_LDCONFIG=		${PREFIX}/lib/gcc/${CROSS_TARGET}/${PORTVERSION}
+.ifdef PKGNAMESUFFIX
+USE_LDCONFIG=		${BOOTSTRAP_PREFIX}/lib/gcc
+.else
+USE_LDCONFIG=		${PREFIX}/${CROSS_TARGET}/lib/gcc
+.endif
 PLIST_SUB=		GCC_VERSION=${PORTVERSION} \
 			GNU_HOST=${CONFIGURE_TARGET} \
 			GNU_TARGET=${CROSS_TARGET}
@@ -93,6 +101,13 @@ pre-configure:
 	cd ${SRCDIR} ; contrib/gcc_update --touch
 	@${RM} -f ${SRCDIR}/gcc/*/*.info*
 	@${MKDIR} ${CONFIGURE_WRKSRC}
+
+post-install:
+.ifdef PKGNAMESUFFIX
+	${RM} -rf ${STAGEDIR}${GNU_CONFIGURE_PREFIX}/include
+	${RM} -rf ${STAGEDIR}${GNU_CONFIGURE_PREFIX}/info
+	${RM} -f ${STAGEDIR}${PREFIX}/man/man1/*
+.endif
 
 post-stage:
 	${RM} -f ${STAGEDIR}${PREFIX}/man/man7/*
