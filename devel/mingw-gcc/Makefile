@@ -103,9 +103,12 @@ pre-configure:
 
 post-install:
 .ifdef PKGNAMESUFFIX
-	${RM} -rf ${STAGEDIR}${GNU_CONFIGURE_PREFIX}/include
-	${RM} -rf ${STAGEDIR}${GNU_CONFIGURE_PREFIX}/info
+	${RM} -rf ${STAGEDIR}${PREFIX}/include
+	${RM} -rf ${STAGEDIR}${PREFIX}/info
 	${RM} -f ${STAGEDIR}${PREFIX}/man/man1/*
+. for f in c++ cpp g++ gcc gcc-ar gcc-nm gcc-ranlib gcov
+	${LN} -sf ../../../bin/${CROSS_TARGET}-${f}${PKGNAMESUFFIX} ${STAGEDIR}${PREFIX}/${CROSS_TARGET}/bin/${f}${PKGNAMESUFFIX}
+. endfor
 .endif
 
 post-stage:
