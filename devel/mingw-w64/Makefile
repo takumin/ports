@@ -44,6 +44,8 @@ CONFIGURE_TARGET=	${ARCH}-portbld-${OPSYS:tl}${OSREL}
 CC=		${CROSS_TARGET}-gcc-bootstrap
 CPP=		${CROSS_TARGET}-gcc-bootstrap -E
 CXX=		${CROSS_TARGET}-g++-bootstrap
+AR=		${CROSS_TARGET}-ar
+AS=		${CROSS_TARGET}-as
 BUILD_DEPENDS+=	${LOCALBASE}/${CROSS_TARGET}/include/_mingw.h:${PORTSDIR}/devel/${PORTNAME}-${CROSS_ARCH}-headers \
 		${LOCALBASE}/bin/${CROSS_TARGET}-as:${PORTSDIR}/devel/${PORTNAME}-${CROSS_ARCH}-binutils \
 		${LOCALBASE}/bin/${CROSS_TARGET}-gcc-bootstrap:${PORTSDIR}/devel/${PORTNAME}-${CROSS_ARCH}-gcc-bootstrap
