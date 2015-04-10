@@ -4,7 +4,7 @@
 PKGNAMEPREFIX=	mingw-w64-x86_64-
 PKGNAMESUFFIX=	-bootstrap
 MAINTAINER=	takumiiinn@gmail.com
-COMMENT=	GNU Compiler Collection 4.9 for MinGW-w64 x86_64
+COMMENT=	GCC 4.9 for MinGW-w64 x86_64 bootstrap
 
 MASTERDIR=	${.CURDIR}/../mingw-gcc
 
