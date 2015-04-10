@@ -3,10 +3,9 @@
 
 PKGNAMEPREFIX=	mingw-w64-i686-
 PKGNAMESUFFIX=	-core
+MAINTAINER=	takumiiinn@gmail.com
+COMMENT=	GNU Compiler Collection 4.9 for MinGW-w64 i686
 
 MASTERDIR=	${.CURDIR}/../mingw-gcc
-
-# echo '@comment Insert PLIST.lib here' > pkg-plist
-PLIST=		${.CURDIR}/pkg-plist
 
 .include "${MASTERDIR}/Makefile"
