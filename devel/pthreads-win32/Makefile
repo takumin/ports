@@ -1,12 +1,12 @@
 # Created by: Takumi Takahashi <takumiiinn@gmail.com>
 # $FreeBSD$
 
-PORTNAME=	pthreads
+PORTNAME=	pthreads-win32
 PORTVERSION=	2.9.1
 CATEGORIES=	devel
 MASTER_SITES=	${MASTER_SITE_SOURCEWARE}
-MASTER_SITE_SUBDIR=	${PORTNAME}-win32
-DISTNAME=	${PORTNAME}-w32-${PORTVERSION:S/./-/g}-release
+MASTER_SITE_SUBDIR=	${PORTNAME}
+DISTNAME=	${PORTNAME:C/in//}-${PORTVERSION:S/./-/g}-release
 
 MAINTAINER?=	takumiiinn@gmail.com
 COMMENT?=	POSIX threads library for Windows compiled with MinGW-w64
@@ -24,7 +24,7 @@ IGNORE=		support target for "i686-w64-mingw32" or "x86_64-w64-mingw32"
 .endif
 
 USES=		gmake
-BUILD_DEPENDS+=	${CROSS_TARGET}-gcc:${PORTSDIR}/devel/mingw-w64-${CROSS_ARCH}-gcc
+BUILD_DEPENDS+=	${CROSS_TARGET}-gcc-bootstrap:${PORTSDIR}/devel/mingw-w64-${CROSS_ARCH}-gcc-bootstrap
 
 MAKEFILE=	${WRKSRC}/GNUmakefile
 MAKE_ARGS=	CROSS='${CROSS_TARGET}-'
