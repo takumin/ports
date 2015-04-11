@@ -75,9 +75,9 @@ post-stage:
 	${RM} ${STAGEDIR}${PREFIX}/${CROSS_TARGET}/include/pthread_unistd.h
 . elif ${BUILD_TYPE} == "crt"
 pre-configure:
-	${ECHO_CMD} '# Dummy' > ${LOCALBASE}/${CROSS_TARGET}/include/pthread_signal.h
-	${ECHO_CMD} '# Dummy' > ${LOCALBASE}/${CROSS_TARGET}/include/pthread_time.h
-	${ECHO_CMD} '# Dummy' > ${LOCALBASE}/${CROSS_TARGET}/include/pthread_unistd.h
+	${ECHO_CMD} '/* Dummy header */' > ${LOCALBASE}/${CROSS_TARGET}/include/pthread_signal.h
+	${ECHO_CMD} '/* Dummy header */' > ${LOCALBASE}/${CROSS_TARGET}/include/pthread_time.h
+	${ECHO_CMD} '/* Dummy header */' > ${LOCALBASE}/${CROSS_TARGET}/include/pthread_unistd.h
 post-install:
 	${RM} ${LOCALBASE}/${CROSS_TARGET}/include/pthread_signal.h
 	${RM} ${LOCALBASE}/${CROSS_TARGET}/include/pthread_time.h
