@@ -14,7 +14,7 @@ COMMENT?=	POSIX threads library for Windows compiled with MinGW-w64
 LICENSE=	LGPL21
 
 .ifndef PKGNAMEPREFIX
-IGNORE=		build for 'devel/mingw-w64-i686-pthreads' or 'devel/mingw-w64-x86_64-pthreads'
+IGNORE=		build for 'devel/mingw-w64-i686-pthreads-win32' or 'devel/mingw-w64-x86_64-pthreads-win32'
 .else
 CROSS_ARCH=	${PKGNAMEPREFIX:C/^mingw-w64-(.*)-$/\1/}
 CROSS_TARGET=	${CROSS_ARCH}-w64-mingw32
