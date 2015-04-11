@@ -89,7 +89,6 @@ CONFIGURE_ARGS+=	--libdir=${PREFIX}/lib/mingw-w64${PKGNAMESUFFIX} \
 			--with-mpfr=${LOCALBASE} \
 			--with-mpc=${LOCALBASE} \
 			--with-isl=${LOCALBASE} \
-			--with-cloog=${LOCALBASE} \
 			${ICONV_CONFIGURE_ARG} \
 			--with-pkgversion="FreeBSD Ports Collection for MinGW-w64" \
 			--with-system-zlib
