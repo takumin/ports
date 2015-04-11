@@ -39,8 +39,10 @@ BUILD_DEPENDS+=	${CROSS_TARGET}-as:${PORTSDIR}/devel/mingw-w64-${CROSS_ARCH}-bin
 RUN_DEPENDS+=	${CROSS_TARGET}-as:${PORTSDIR}/devel/mingw-w64-${CROSS_ARCH}-binutils \
 		${LOCALBASE}/${CROSS_TARGET}/include/_mingw.h:${PORTSDIR}/devel/mingw-w64-${CROSS_ARCH}-headers
 .ifndef PKGNAMESUFFIX
-BUILD_DEPENDS+=	${LOCALBASE}/${CROSS_TARGET}/lib/libmingw32.a:${PORTSDIR}/devel/mingw-w64-${CROSS_ARCH}-crt
-RUN_DEPENDS+=	${LOCALBASE}/${CROSS_TARGET}/lib/libmingw32.a:${PORTSDIR}/devel/mingw-w64-${CROSS_ARCH}-crt
+BUILD_DEPENDS+=	${LOCALBASE}/${CROSS_TARGET}/lib/libmingw32.a:${PORTSDIR}/devel/mingw-w64-${CROSS_ARCH}-crt \
+		${LOCALBASE}/${CROSS_TARGET}/lib/libpthread.a:${PORTSDIR}/devel/mingw-w64-${CROSS_ARCH}-pthreads
+RUN_DEPENDS+=	${LOCALBASE}/${CROSS_TARGET}/lib/libmingw32.a:${PORTSDIR}/devel/mingw-w64-${CROSS_ARCH}-crt \
+		${LOCALBASE}/${CROSS_TARGET}/lib/libpthread.a:${PORTSDIR}/devel/mingw-w64-${CROSS_ARCH}-pthreads
 .endif
 
 .include <bsd.port.pre.mk>
