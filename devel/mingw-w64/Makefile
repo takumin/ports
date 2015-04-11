@@ -23,11 +23,6 @@ IGNORE=		support target for "i686-w64-mingw32" or "x86_64-w64-mingw32"
 .endif
 
 USES=		tar:bzip2 gmake libtool
-.if ${BUILD_TYPE} == "pthreads"
-WRKSRC_SUBDIR=	${PORTNAME}-libraries/win${BUILD_TYPE}
-.else
-WRKSRC_SUBDIR=	${PORTNAME}-${BUILD_TYPE}
-.endif
 GNU_CONFIGURE=	yes
 GNU_CONFIGURE_PREFIX=	${PREFIX}/${CROSS_TARGET}
 CONFIGURE_ARGS+=--host=${CROSS_TARGET}
@@ -44,6 +39,12 @@ CONFIGURE_TARGET=	${ARCH}-portbld-${OPSYS:tl}${OSREL}
 .endif
 
 .ifdef PKGNAMESUFFIX
+.if ${BUILD_TYPE} == "pthreads"
+WRKSRC_SUBDIR=	${PORTNAME}-libraries/win${BUILD_TYPE}
+.else
+WRKSRC_SUBDIR=	${PORTNAME}-${BUILD_TYPE}
+.endif
+
 . if ${BUILD_TYPE} == "crt" || ${BUILD_TYPE} == "pthreads"
 CC:=		${CROSS_TARGET}-gcc-bootstrap
 CPP:=		${CROSS_TARGET}-cpp-bootstrap
