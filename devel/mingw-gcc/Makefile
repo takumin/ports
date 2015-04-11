@@ -33,7 +33,7 @@ SSP_UNSAFE=	yes
 LIB_DEPENDS+=	libgmp.so:${PORTSDIR}/math/gmp \
 		libmpfr.so:${PORTSDIR}/math/mpfr \
 		libmpc.so:${PORTSDIR}/math/mpc \
-		libisl.so:${PORTSDIR}/devel/isl \
+		libisl.so:${PORTSDIR}/devel/isl12 \
 		libcloog-isl.so:${PORTSDIR}/math/cloog
 BUILD_DEPENDS+=	${LOCALBASE}/bin/${CROSS_TARGET}-as:${PORTSDIR}/devel/mingw-w64-${CROSS_ARCH}-binutils \
 		${LOCALBASE}/${CROSS_TARGET}/include/_mingw.h:${PORTSDIR}/devel/mingw-w64-${CROSS_ARCH}-headers
@@ -81,7 +81,6 @@ CONFIGURE_ARGS+=	--libdir=${PREFIX}/lib/mingw-w64${PKGNAMESUFFIX} \
 			--disable-bootstrap \
 			--disable-nls \
 			--disable-win32-registry \
-			--disable-isl-version-check \
 			--without-headers \
 			--with-as=${LOCALBASE}/bin/${CROSS_TARGET}-as \
 			--with-ld=${LOCALBASE}/bin/${CROSS_TARGET}-ld \
