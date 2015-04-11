@@ -32,7 +32,9 @@ USE_PERL5=	build
 SSP_UNSAFE=	yes
 LIB_DEPENDS+=	libgmp.so:${PORTSDIR}/math/gmp \
 		libmpfr.so:${PORTSDIR}/math/mpfr \
-		libmpc.so:${PORTSDIR}/math/mpc
+		libmpc.so:${PORTSDIR}/math/mpc \
+		libisl.so:${PORTSDIR}/devel/isl \
+		libcloog-isl.so:${PORTSDIR}/math/cloog
 BUILD_DEPENDS+=	${LOCALBASE}/bin/${CROSS_TARGET}-as:${PORTSDIR}/devel/mingw-w64-${CROSS_ARCH}-binutils \
 		${LOCALBASE}/${CROSS_TARGET}/include/_mingw.h:${PORTSDIR}/devel/mingw-w64-${CROSS_ARCH}-headers
 RUN_DEPENDS+=	${LOCALBASE}/bin/${CROSS_TARGET}-as:${PORTSDIR}/devel/mingw-w64-${CROSS_ARCH}-binutils \
@@ -83,6 +85,9 @@ CONFIGURE_ARGS+=	--libdir=${PREFIX}/lib/mingw-w64${PKGNAMESUFFIX} \
 			--with-as=${LOCALBASE}/bin/${CROSS_TARGET}-as \
 			--with-ld=${LOCALBASE}/bin/${CROSS_TARGET}-ld \
 			--with-gmp=${LOCALBASE} \
+			--with-mpfr=${LOCALBASE} \
+			--with-mpc=${LOCALBASE} \
+			--with-isl=${LOCALBASE} \
 			${ICONV_CONFIGURE_ARG} \
 			--with-pkgversion="FreeBSD Ports Collection for MinGW-w64" \
 			--with-system-zlib
