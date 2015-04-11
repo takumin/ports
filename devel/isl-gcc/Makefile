@@ -17,10 +17,8 @@ CONFLICTS=	isl-0.14*
 USES=		libtool tar:lzma
 LIB_DEPENDS=	libgmp.so:${PORTSDIR}/math/gmp
 GNU_CONFIGURE=	yes
+CONFIGURE_ENV=	pkgconfig_libdir=${PREFIX}/libdata/pkgconfig/
 CONFIGURE_ARGS+=--with-gmp-prefix=${LOCALBASE}
 USE_LDCONFIG=	yes
-
-post-patch:
-	${REINPLACE_CMD} -e 's@pkgconfig_libdir=.*@pkgconfig_libdir=$${prefix}/libdata/pkgconfig@' ${WRKSRC}/configure
 
 .include <bsd.port.mk>
