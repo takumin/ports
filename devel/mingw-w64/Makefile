@@ -22,7 +22,7 @@ IGNORE=		support target for "i686-w64-mingw32" or "x86_64-w64-mingw32"
 . endif
 .endif
 
-USES=		tar:bzip2 gmake libtool
+USES=		gmake libtool tar:bzip2
 GNU_CONFIGURE=	yes
 GNU_CONFIGURE_PREFIX=	${PREFIX}/${CROSS_TARGET}
 CONFIGURE_ARGS+=--host=${CROSS_TARGET}
