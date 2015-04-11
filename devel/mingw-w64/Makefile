@@ -52,6 +52,9 @@ CXX:=		${CROSS_TARGET}-g++-bootstrap
 BUILD_DEPENDS+=	${CROSS_TARGET}-as:${PORTSDIR}/devel/${PORTNAME}-${CROSS_ARCH}-binutils \
 		${CROSS_TARGET}-gcc-bootstrap:${PORTSDIR}/devel/${PORTNAME}-${CROSS_ARCH}-gcc-bootstrap \
 		${LOCALBASE}/${CROSS_TARGET}/include/_mingw.h:${PORTSDIR}/devel/${PORTNAME}-${CROSS_ARCH}-headers
+.  if ${BUILD_TYPE} == "pthreads"
+BUILD_DEPENDS+=	${LOCALBASE}/${CROSS_TARGET}/lib/libmingw32.a:${PORTSDIR}/devel/mingw-w64-${CROSS_ARCH}-crt
+.  endif
 . endif
 
 . if ${BUILD_TYPE} == "headers"
@@ -63,6 +66,11 @@ CONFIGURE_ARGS+=--disable-lib64 --enable-lib32
 .  elif ${CROSS_ARCH} == "x86_64"
 CONFIGURE_ARGS+=--disable-lib32 --enable-lib64
 .  endif
+. endif
+
+. if ${BUILD_TYPE} == "pthreads"
+post-configure:
+	${REINPLACE_CMD} -e 's@^RCFLAGS.*$$@RCFLAGS = --preprocessor=${CROSS_TARGET}-cpp-bootstrap@' ${WRKSRC}/Makefile
 . endif
 .endif
 
