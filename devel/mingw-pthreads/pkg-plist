@@ -1,0 +1,6 @@
+%%CROSS_TARGET%%/include/pthread.h
+%%CROSS_TARGET%%/include/sched.h
+%%CROSS_TARGET%%/include/semaphore.h
+%%CROSS_TARGET%%/lib/libpthread.a
+%%CROSS_TARGET%%/lib/libpthreadGC2.a
+%%CROSS_TARGET%%/lib/pthreadGC2.dll
