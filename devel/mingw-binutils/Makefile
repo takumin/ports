@@ -49,7 +49,7 @@ CONFIGURE_TARGET=	x86_64-portbld-${OPSYS:tl}${OSREL}
 CONFIGURE_TARGET=	${ARCH}-portbld-${OPSYS:tl}${OSREL}
 .endif
 
-post-install:
-	${LN} -fs ../../bin/${CROSS_TARGET}-size ${STAGEDIR}${PREFIX}/${CROSS_TARGET}/bin/size
+post-stage:
+	${LN} -f ${STAGEDIR}${PREFIX}/bin/${CROSS_TARGET}-size ${STAGEDIR}${PREFIX}/${CROSS_TARGET}/bin/size
 
 .include <bsd.port.post.mk>
