@@ -81,6 +81,8 @@ CONFIGURE_ARGS+=	--libdir=${PREFIX}/lib/mingw-w64${PKGNAMESUFFIX} \
 			--disable-bootstrap \
 			--disable-nls \
 			--disable-win32-registry \
+			--disable-isl-version-check \
+			--disable-cloog-version-check \
 			--without-headers \
 			--with-as=${LOCALBASE}/bin/${CROSS_TARGET}-as \
 			--with-ld=${LOCALBASE}/bin/${CROSS_TARGET}-ld \
