@@ -12,6 +12,8 @@ COMMENT=	Integer Set Library
 
 LICENSE=	MIT
 
+CONFLICTS=	isl-0.14*
+
 USES=		libtool tar:lzma
 LIB_DEPENDS=	libgmp.so:${PORTSDIR}/math/gmp
 GNU_CONFIGURE=	yes
