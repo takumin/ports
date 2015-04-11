@@ -65,14 +65,18 @@ BINARIES=		c++ cpp g++ gcc gcov
 GNU_CONFIGURE=		yes
 CONFIGURE_SCRIPT=	../${SRCDIR:S/${WRKDIR}\///}/configure
 .ifdef PKGNAMESUFFIX
-CONFIGURE_ARGS+=	--program-prefix=${CROSS_TARGET}- \
-			--program-suffix=${PKGNAMESUFFIX}
-.endif
 CONFIGURE_ARGS+=	--libdir=${PREFIX}/lib/mingw-w64${PKGNAMESUFFIX} \
 			--libexecdir=${PREFIX}/libexec/mingw-w64${PKGNAMESUFFIX} \
-			--target=${CROSS_TARGET} \
+			--program-prefix=${CROSS_TARGET}- \
+			--program-suffix=${PKGNAMESUFFIX} \
+			--without-headers
+.else
+CONFIGURE_ARGS+=	--libdir=${PREFIX}/lib/mingw-w64 \
+			--libexecdir=${PREFIX}/libexec/mingw-w64 \
+			--enable-threads=posix
+.endif
+CONFIGURE_ARGS+=	--target=${CROSS_TARGET} \
 			--enable-languages=${LANGUAGES} \
-			--enable-threads=posix \
 			--enable-version-specific-runtime-libs \
 			--enable-fully-dynamic-string \
 			--enable-libstdcxx-time=yes \
@@ -81,7 +85,6 @@ CONFIGURE_ARGS+=	--libdir=${PREFIX}/lib/mingw-w64${PKGNAMESUFFIX} \
 			--disable-nls \
 			--disable-win32-registry \
 			--disable-isl-version-check \
-			--without-headers \
 			--with-as=${LOCALBASE}/bin/${CROSS_TARGET}-as \
 			--with-ld=${LOCALBASE}/bin/${CROSS_TARGET}-ld \
 			--with-gmp=${LOCALBASE} \
