@@ -68,7 +68,12 @@ CONFIGURE_ARGS+=--disable-lib32 --enable-lib64
 .  endif
 . endif
 
-. if ${BUILD_TYPE} == "pthreads"
+. if ${BUILD_TYPE} == "headers"
+post-stage:
+	${RM} ${STAGEDIR}${PREFIX}/${CROSS_TARGET}/include/pthread_signal.h
+	${RM} ${STAGEDIR}${PREFIX}/${CROSS_TARGET}/include/pthread_time.h
+	${RM} ${STAGEDIR}${PREFIX}/${CROSS_TARGET}/include/pthread_unistd.h
+. elif ${BUILD_TYPE} == "pthreads"
 post-configure:
 	${REINPLACE_CMD} -e 's@^RCFLAGS.*$$@RCFLAGS = --preprocessor=${CROSS_TARGET}-cpp-bootstrap@' ${WRKSRC}/Makefile
 . endif
