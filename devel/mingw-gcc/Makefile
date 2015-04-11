@@ -3,8 +3,6 @@
 
 PORTNAME=	gcc
 PORTVERSION=	4.9.2
-ISL_VERSION=	0.12.2
-CLOOG_VERSION=	0.18.1
 CATEGORIES=	devel
 MASTER_SITES=	${MASTER_SITE_GCC}releases/${PORTNAME}-${DISTVERSION}/:gcc \
 		${MASTER_SITE_GCC}infrastructure/:isl_cloog
@@ -106,10 +104,6 @@ INFO=			cpp cppinternals gcc gccinstall gccint libquadmath
 
 pre-everything::
 	@${ECHO_MSG} "Making GCC ${PORTVERSION} for Host:${CONFIGURE_TARGET} Target:${CROSS_TARGET} [${LANGUAGES}]"
-
-post-extract:
-	@${MV} ${WRKDIR}/isl-${ISL_VERSION} ${SRCDIR}/isl
-	@${MV} ${WRKDIR}/cloog-${CLOOG_VERSION} ${SRCDIR}/cloog
 
 pre-configure:
 	cd ${SRCDIR} ; contrib/gcc_update --touch
