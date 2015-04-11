@@ -74,12 +74,14 @@ post-stage:
 	${RM} ${STAGEDIR}${PREFIX}/${CROSS_TARGET}/include/pthread_time.h
 	${RM} ${STAGEDIR}${PREFIX}/${CROSS_TARGET}/include/pthread_unistd.h
 . elif ${BUILD_TYPE} == "crt"
-CFLAGS+=	-I${WRKDIR}/include
 pre-configure:
-	${MKDIR} ${WRKDIR}/include
-	${ECHO_CMD} '# Dummy' > ${WRKDIR}/include/pthread_signal.h
-	${ECHO_CMD} '# Dummy' > ${WRKDIR}/include/pthread_time.h
-	${ECHO_CMD} '# Dummy' > ${WRKDIR}/include/pthread_unistd.h
+	${ECHO_CMD} '# Dummy' > ${LOCALBASE}/${CROSS_TARGET}/include/pthread_signal.h
+	${ECHO_CMD} '# Dummy' > ${LOCALBASE}/${CROSS_TARGET}/include/pthread_time.h
+	${ECHO_CMD} '# Dummy' > ${LOCALBASE}/${CROSS_TARGET}/include/pthread_unistd.h
+post-install:
+	${RM} ${LOCALBASE}/${CROSS_TARGET}/include/pthread_signal.h
+	${RM} ${LOCALBASE}/${CROSS_TARGET}/include/pthread_time.h
+	${RM} ${LOCALBASE}/${CROSS_TARGET}/include/pthread_unistd.h
 . elif ${BUILD_TYPE} == "pthreads"
 post-configure:
 	${REINPLACE_CMD} -e 's@^RCFLAGS.*$$@RCFLAGS = --preprocessor=${CROSS_TARGET}-cpp-bootstrap@' ${WRKSRC}/Makefile
