@@ -87,7 +87,7 @@ CONFIGURE_ARGS+=	--libdir=${PREFIX}/lib/mingw-w64${PKGNAMESUFFIX} \
 			--with-pkgversion="FreeBSD Ports Collection for MinGW-w64" \
 			--with-system-zlib
 MAKE_ARGS+=		MAKEINFOFLAGS="--no-split"
-USE_LDCONFIG=		${PREFIX}/lib/mingw-w64${PKGNAMESUFFIX}
+USE_LDCONFIG=		yes
 PLIST_SUB=		GCC_VERSION=${PORTVERSION} \
 			GNU_HOST=${CONFIGURE_TARGET} \
 			GNU_TARGET=${CROSS_TARGET}
@@ -114,13 +114,8 @@ post-stage:
 	${RM} -f ${STAGEDIR}${PREFIX}/man/man7/*
 	${MKDIR} ${STAGEDIR}${PREFIX}/${CROSS_TARGET}/bin
 .for F in ${BINARIES}
-. ifdef PKGNAMESUFFIX
 	${LN} -f ${STAGEDIR}${PREFIX}/bin/${CROSS_TARGET}-$F${PKGNAMESUFFIX} \
 		${STAGEDIR}${PREFIX}/${CROSS_TARGET}/bin/$F${PKGNAMESUFFIX}
-. else
-	${LN} -f ${STAGEDIR}${PREFIX}/bin/${CROSS_TARGET}-$F \
-		${STAGEDIR}${PREFIX}/${CROSS_TARGET}/bin/$F
-. endif
 .endfor
 
 .include <bsd.port.post.mk>
