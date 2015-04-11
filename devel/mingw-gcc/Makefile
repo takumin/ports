@@ -52,9 +52,9 @@ CONFIGURE_TARGET=	${ARCH}-portbld-${OPSYS:tl}${OSREL}
 .endif
 
 .ifdef PKGNAMESUFFIX
-ALL_TARGET=	all-gcc
-INSTALL_TARGET=	install-gcc
-UNIQUENAME=	${PKGNAMEPREFIX}${PORTNAME}${PKGNAMESUFFIX}
+ALL_TARGET=		all-gcc
+INSTALL_TARGET=		install-gcc
+UNIQUENAME=		${PKGNAMEPREFIX}${PORTNAME}${PKGNAMESUFFIX}
 .endif
 
 SRCDIR=			${WRKDIR}/gcc-${DISTVERSION}
@@ -80,6 +80,7 @@ CONFIGURE_ARGS+=	--libdir=${PREFIX}/lib/mingw-w64${PKGNAMESUFFIX} \
 			--disable-bootstrap \
 			--disable-nls \
 			--disable-win32-registry \
+			--disable-isl-version-check \
 			--without-headers \
 			--with-as=${LOCALBASE}/bin/${CROSS_TARGET}-as \
 			--with-ld=${LOCALBASE}/bin/${CROSS_TARGET}-ld \
