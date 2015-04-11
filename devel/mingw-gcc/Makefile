@@ -73,7 +73,7 @@ CONFIGURE_ARGS+=	--libdir=${PREFIX}/lib/mingw-w64${PKGNAMESUFFIX} \
 			--libexecdir=${PREFIX}/libexec/mingw-w64${PKGNAMESUFFIX} \
 			--target=${CROSS_TARGET} \
 			--enable-languages=${LANGUAGES} \
-			--enable-shared \
+			--enable-threads=posix \
 			--enable-version-specific-runtime-libs \
 			--enable-fully-dynamic-string \
 			--enable-libstdcxx-time=yes \
