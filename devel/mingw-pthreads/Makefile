@@ -11,6 +11,8 @@ DISTNAME=	${PORTNAME}-w32-${PORTVERSION:S/./-/g}-release
 MAINTAINER?=	takumiiinn@gmail.com
 COMMENT?=	POSIX threads library for Windows compiled with MinGW-w64
 
+LICENSE=	LGPL21
+
 .ifndef PKGNAMEPREFIX
 IGNORE=		build for 'devel/mingw-w64-i686-pthreads' or 'devel/mingw-w64-x86_64-pthreads'
 .else
@@ -25,7 +27,7 @@ USES=		gmake
 BUILD_DEPENDS+=	${CROSS_TARGET}-gcc:${PORTSDIR}/devel/mingw-w64-${CROSS_ARCH}-gcc
 
 MAKEFILE=	${WRKSRC}/GNUmakefile
-MAKE_ARGS=	CROSS=${CROSS_TARGET}-
+MAKE_ARGS=	CROSS='${CROSS_TARGET}-'
 ALL_TARGET=	GC
 
 PLIST_SUB=	CROSS_TARGET=${CROSS_TARGET}
