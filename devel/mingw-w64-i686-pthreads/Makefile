@@ -1,10 +1,10 @@
 # Created by: Takumi Takahashi <takumiiinn@gmail.com>
 # $FreeBSD$
 
-PKGNAMEPREFIX=	mingw-w64-i686-
+PKGNAMESUFFIX=	-i686-pthreads
 MAINTAINER=	takumiiinn@gmail.com
-COMMENT?=	POSIX threads library for Windows compiled with MinGW-w64 i686
+COMMENT?=	POSIX threads library for MinGW-w64 i686
 
-MASTERDIR=	${.CURDIR}/../mingw-pthreads
+MASTERDIR=	${.CURDIR}/../mingw-w64
 
 .include "${MASTERDIR}/Makefile"
