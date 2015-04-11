@@ -1,6 +1,6 @@
-diff -Naur ../gcc.orig/gcc/graphite-clast-to-gimple.c ../gcc/gcc/graphite-clast-to-gimple.c
---- ../gcc.orig/gcc/graphite-clast-to-gimple.c	2014-03-03 21:39:22.000000000 +1000
-+++ ../gcc/gcc/graphite-clast-to-gimple.c	2014-06-25 15:07:57.958697105 +1000
+diff -uNr ../gcc-4.9.2.orig/gcc/graphite-clast-to-gimple.c ./gcc/graphite-clast-to-gimple.c
+--- ../gcc-4.9.2.orig/gcc/graphite-clast-to-gimple.c	2015-04-12 04:09:34.955959000 +0900
++++ ./gcc/graphite-clast-to-gimple.c	2015-04-12 04:12:25.617134000 +0900
 @@ -28,6 +28,8 @@
  #include <isl/constraint.h>
  #include <isl/ilp.h>
@@ -10,9 +10,9 @@ diff -Naur ../gcc.orig/gcc/graphite-clast-to-gimple.c ../gcc/gcc/graphite-clast-
  #include <cloog/cloog.h>
  #include <cloog/isl/domain.h>
  #endif
-diff -Naur ../gcc.orig/gcc/graphite-interchange.c ../gcc/gcc/graphite-interchange.c
---- ../gcc.orig/gcc/graphite-interchange.c	2014-01-03 08:23:26.000000000 +1000
-+++ ../gcc/gcc/graphite-interchange.c	2014-06-25 15:10:06.882899243 +1000
+diff -uNr ../gcc-4.9.2.orig/gcc/graphite-interchange.c ./gcc/graphite-interchange.c
+--- ../gcc-4.9.2.orig/gcc/graphite-interchange.c	2015-04-12 04:09:34.973612000 +0900
++++ ./gcc/graphite-interchange.c	2015-04-12 04:12:58.968402000 +0900
 @@ -29,6 +29,9 @@
  #include <isl/map.h>
  #include <isl/union_map.h>
@@ -23,9 +23,9 @@ diff -Naur ../gcc.orig/gcc/graphite-interchange.c ../gcc/gcc/graphite-interchang
  #include <cloog/cloog.h>
  #include <cloog/isl/domain.h>
  #endif
-diff -Naur ../gcc.orig/gcc/graphite-optimize-isl.c ../gcc/gcc/graphite-optimize-isl.c
---- ../gcc.orig/gcc/graphite-optimize-isl.c	2014-01-03 08:23:26.000000000 +1000
-+++ ../gcc/gcc/graphite-optimize-isl.c	2014-06-25 15:16:57.038386166 +1000
+diff -uNr ../gcc-4.9.2.orig/gcc/graphite-optimize-isl.c ./gcc/graphite-optimize-isl.c
+--- ../gcc-4.9.2.orig/gcc/graphite-optimize-isl.c	2015-04-12 04:09:34.943117000 +0900
++++ ./gcc/graphite-optimize-isl.c	2015-04-12 04:13:40.380980000 +0900
 @@ -28,6 +28,8 @@
  #include <isl/band.h>
  #include <isl/aff.h>
@@ -44,9 +44,9 @@ diff -Naur ../gcc.orig/gcc/graphite-optimize-isl.c ../gcc/gcc/graphite-optimize-
  		{
  		  isl_map *TileMap;
  		  isl_union_map *TileUMap;
-diff -Naur ../gcc.orig/gcc/graphite-poly.c ../gcc/gcc/graphite-poly.c
---- ../gcc.orig/gcc/graphite-poly.c	2014-01-03 08:23:26.000000000 +1000
-+++ ../gcc/gcc/graphite-poly.c	2014-06-25 15:18:01.207157796 +1000
+diff -uNr ../gcc-4.9.2.orig/gcc/graphite-poly.c ./gcc/graphite-poly.c
+--- ../gcc-4.9.2.orig/gcc/graphite-poly.c	2015-04-12 04:09:34.956073000 +0900
++++ ./gcc/graphite-poly.c	2015-04-12 04:14:07.057839000 +0900
 @@ -28,6 +28,8 @@
  #include <isl/constraint.h>
  #include <isl/ilp.h>
@@ -56,9 +56,9 @@ diff -Naur ../gcc.orig/gcc/graphite-poly.c ../gcc/gcc/graphite-poly.c
  #include <cloog/cloog.h>
  #include <cloog/isl/domain.h>
  #endif
-diff -Naur ../gcc.orig/gcc/graphite-sese-to-poly.c ../gcc/gcc/graphite-sese-to-poly.c
---- ../gcc.orig/gcc/graphite-sese-to-poly.c	2014-04-08 20:59:40.000000000 +1000
-+++ ../gcc/gcc/graphite-sese-to-poly.c	2014-06-25 15:19:46.575140398 +1000
+diff -uNr ../gcc-4.9.2.orig/gcc/graphite-sese-to-poly.c ./gcc/graphite-sese-to-poly.c
+--- ../gcc-4.9.2.orig/gcc/graphite-sese-to-poly.c	2015-04-12 04:09:35.003200000 +0900
++++ ./gcc/graphite-sese-to-poly.c	2015-04-12 04:14:36.505654000 +0900
 @@ -26,6 +26,9 @@
  #include <isl/union_map.h>
  #include <isl/constraint.h>
