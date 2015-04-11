@@ -4,11 +4,7 @@
 PORTNAME=	gcc
 PORTVERSION=	4.9.2
 CATEGORIES=	devel
-MASTER_SITES=	${MASTER_SITE_GCC}releases/${PORTNAME}-${DISTVERSION}/:gcc \
-		${MASTER_SITE_GCC}infrastructure/:isl_cloog
-DISTFILES=	${DISTNAME}${EXTRACT_SUFX}:gcc \
-		isl-${ISL_VERSION}.tar.bz2:isl_cloog \
-		cloog-${CLOOG_VERSION}.tar.gz:isl_cloog
+MASTER_SITES=	GCC
 
 MAINTAINER?=	takumiiinn@gmail.com
 COMMENT?=	GNU Compiler Collection 4.9 for MinGW-w64
@@ -35,7 +31,9 @@ USE_PERL5=	build
 SSP_UNSAFE=	yes
 LIB_DEPENDS+=	libgmp.so:${PORTSDIR}/math/gmp \
 		libmpfr.so:${PORTSDIR}/math/mpfr \
-		libmpc.so:${PORTSDIR}/math/mpc
+		libmpc.so:${PORTSDIR}/math/mpc \
+		libisl.so:${PORTSDIR}/devel/isl-gcc \
+		libcloog.so:${PORTSDIR}/devel/cloog-gcc \
 BUILD_DEPENDS+=	${LOCALBASE}/bin/${CROSS_TARGET}-as:${PORTSDIR}/devel/mingw-w64-${CROSS_ARCH}-binutils \
 		${LOCALBASE}/${CROSS_TARGET}/include/_mingw.h:${PORTSDIR}/devel/mingw-w64-${CROSS_ARCH}-headers
 RUN_DEPENDS+=	${LOCALBASE}/bin/${CROSS_TARGET}-as:${PORTSDIR}/devel/mingw-w64-${CROSS_ARCH}-binutils \
@@ -88,6 +86,8 @@ CONFIGURE_ARGS+=	--libdir=${PREFIX}/lib/mingw-w64${PKGNAMESUFFIX} \
 			--with-gmp=${LOCALBASE} \
 			--with-mpfr=${LOCALBASE} \
 			--with-mpc=${LOCALBASE} \
+			--with-isl=${LOCALBASE} \
+			--with-cloog=${LOCALBASE} \
 			${ICONV_CONFIGURE_ARG} \
 			--with-pkgversion="FreeBSD Ports Collection for MinGW-w64" \
 			--with-system-zlib
