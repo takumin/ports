@@ -47,6 +47,7 @@ man/man1/%%CROSS_TARGET%%-windres.1.gz
 %%CROSS_TARGET%%/bin/objcopy
 %%CROSS_TARGET%%/bin/objdump
 %%CROSS_TARGET%%/bin/ranlib
+%%CROSS_TARGET%%/bin/size
 %%CROSS_TARGET%%/bin/strip
 %%CROSS_TARGET%%/lib/ldscripts/i386pe.x
 %%CROSS_TARGET%%/lib/ldscripts/i386pe.xa
