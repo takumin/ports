@@ -2,20 +2,21 @@
 # $FreeBSD$
 
 PORTNAME=	softethervpn
-PORTVERSION=	4.08.9449
+PORTVERSION=	4.08.9449.20140608
 CATEGORIES=	security net
+MASTER_SITES=	http://www.softether-download.com/files/softether/v${RELEASEVER}-${RELEASEREV}-rtm-${RELEASEDATE}-tree/Source%20Code/
+DISTNAME=	softether-src-v${RELEASEVER}-${RELEASEREV}-rtm
 
 MAINTAINER=	takumiiinn@gmail.com
 COMMENT=	Cross-platform Multi-protocol VPN Program
 
 LICENSE=	GPLv2
 
-CONFLICTS_INSTALL=	softethervpn-devel-[0-9]*
+RELEASEVER=	${PORTVERSION:C/^([0-9]+\.[0-9]+)\.[0-9]+\.[0-9]+$/\1/}
+RELEASEREV=	${PORTVERSION:C/^[0-9]+\.[0-9]+\.([0-9]+)\.[0-9]+$/\1/}
+RELEASEDATE=	${PORTVERSION:C/^[0-9]+\.[0-9]+\.[0-9]+\.([0-9]{4})([0-9]{2})([0-9]{2})$/\1.\2.\3/}
 
-USE_GITHUB=	yes
-GH_ACCOUNT=	SoftEtherVPN
-GH_PROJECT=	SoftEtherVPN
-GH_TAGNAME=	ea38eef
+CONFLICTS=	softethervpn-devel-[0-9]*
 
 ONLY_FOR_ARCHS=	i386 amd64
 USES=		gmake iconv:wchar_t readline ncurses
