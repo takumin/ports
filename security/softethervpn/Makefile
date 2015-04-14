@@ -23,6 +23,12 @@ USES=		gmake iconv:wchar_t readline ncurses
 USE_OPENSSL=	yes
 USE_RC_SUBR=	vpnserver vpnbridge vpnclient
 WRKSRC=		${WRKDIR}/v${RELEASEVER}-${RELEASEREV}
+ALL_TARGET=	build
+MAKE_ARGS+=	INSTALL_BINDIR=${STAGEDIR}${PREFIX}/bin/
+MAKE_ARGS+=	INSTALL_VPNSERVER_DIR=${STAGEDIR}${DATADIR}/vpnserver/
+MAKE_ARGS+=	INSTALL_VPNBRIDGE_DIR=${STAGEDIR}${DATADIR}/vpnbridge/
+MAKE_ARGS+=	INSTALL_VPNCLIENT_DIR=${STAGEDIR}${DATADIR}/vpnclient/
+MAKE_ARGS+=	INSTALL_VPNCMD_DIR=${STAGEDIR}${DATADIR}/vpncmd/
 
 .include <bsd.port.pre.mk>
 
@@ -32,13 +38,6 @@ MAKEFILE=	${WRKSRC}/src/makefiles/freebsd_32bit.mak
 .if ${ARCH} == "amd64"
 MAKEFILE=	${WRKSRC}/src/makefiles/freebsd_64bit.mak
 .endif
-
-ALL_TARGET=	build
-MAKE_ARGS+=	INSTALL_BINDIR=${STAGEDIR}${PREFIX}/bin/
-MAKE_ARGS+=	INSTALL_VPNSERVER_DIR=${STAGEDIR}${DATADIR}/vpnserver/
-MAKE_ARGS+=	INSTALL_VPNBRIDGE_DIR=${STAGEDIR}${DATADIR}/vpnbridge/
-MAKE_ARGS+=	INSTALL_VPNCLIENT_DIR=${STAGEDIR}${DATADIR}/vpnclient/
-MAKE_ARGS+=	INSTALL_VPNCMD_DIR=${STAGEDIR}${DATADIR}/vpncmd/
 
 post-patch:
 	@${REINPLACE_CMD} -e 's@/usr/local@${LOCALBASE}@' ${MAKEFILE}
