@@ -41,8 +41,9 @@ MAKE_ARGS+=	INSTALL_VPNCLIENT_DIR=${STAGEDIR}${DATADIR}/vpnclient/
 MAKE_ARGS+=	INSTALL_VPNCMD_DIR=${STAGEDIR}${DATADIR}/vpncmd/
 
 post-patch:
-	@${REINPLACE_CMD} -e 's@-liconv@${ICONV_LIB}@' ${MAKEFILE}
 	@${REINPLACE_CMD} -e 's@/usr/local@${LOCALBASE}@' ${MAKEFILE}
+	@${REINPLACE_CMD} -e 's@-liconv@${ICONV_LIB}@' ${MAKEFILE}
+	@${REINPLACE_CMD} -e 's@-O2@${CFLAGS}@' ${MAKEFILE}
 
 post-install:
 .for f in vpnserver vpnbridge vpnclient vpncmd
