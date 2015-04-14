@@ -22,6 +22,7 @@ ONLY_FOR_ARCHS=	i386 amd64
 USES=		gmake iconv:wchar_t readline ncurses
 USE_OPENSSL=	yes
 USE_RC_SUBR=	vpnserver vpnbridge vpnclient
+WRKSRC=		${WRKDIR}/v${RELEASEVER}-${RELEASEREV}
 
 .include <bsd.port.pre.mk>
 
@@ -38,6 +39,10 @@ MAKE_ARGS+=	INSTALL_VPNSERVER_DIR=${STAGEDIR}${DATADIR}/vpnserver/
 MAKE_ARGS+=	INSTALL_VPNBRIDGE_DIR=${STAGEDIR}${DATADIR}/vpnbridge/
 MAKE_ARGS+=	INSTALL_VPNCLIENT_DIR=${STAGEDIR}${DATADIR}/vpnclient/
 MAKE_ARGS+=	INSTALL_VPNCMD_DIR=${STAGEDIR}${DATADIR}/vpncmd/
+
+post-patch:
+	@${REINPLACE_CMD} -e 's@-liconv@${ICONV_LIB}@' ${MAKEFILE}
+	@${REINPLACE_CMD} -e 's@/usr/local@${LOCALBASE}@' ${MAKEFILE}
 
 post-install:
 .for f in vpnserver vpnbridge vpnclient vpncmd
