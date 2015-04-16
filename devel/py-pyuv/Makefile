@@ -10,9 +10,14 @@ PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 MAINTAINER=	takumiiinn@gmail.com
 COMMENT=	Python interface for libuv
 
+LICENSE=	MIT
+
 LIB_DEPENDS=	libuv.so:${PORTSDIR}/devel/libuv
 
 USES=		python
 USE_PYTHON=	autoplist distutils
+CFLAGS+=	-I${LOCALBASE}/include
+PYDISTUTILS_BUILD_TARGET=	build_ext
+PYDISTUTILS_BUILDARGS=		--use-system-libuv
 
 .include <bsd.port.mk>
