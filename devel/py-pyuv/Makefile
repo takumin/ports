@@ -16,8 +16,8 @@ LIB_DEPENDS=	libuv.so:${PORTSDIR}/devel/libuv
 
 USES=		python
 USE_PYTHON=	autoplist distutils
-CFLAGS+=	-I${LOCALBASE}/include
 PYDISTUTILS_BUILD_TARGET=	build_ext
-PYDISTUTILS_BUILDARGS=		--use-system-libuv
+PYDISTUTILS_BUILDARGS=		-I${LOCALBASE}/include --use-system-libuv
+PYDISTUTILS_INSTALLARGS=	-c -O1 --prefix=${PREFIX} --skip-build
 
 .include <bsd.port.mk>
