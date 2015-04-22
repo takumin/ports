@@ -3,7 +3,7 @@
 
 PORTNAME=	cpp-netlib
 PORTVERSION=	0.11.1
-CATEGORIES=	devel
+CATEGORIES=	net devel
 
 MAINTAINER=	takumiiinn@gmail.com
 COMMENT=	C++ Network Library Project
