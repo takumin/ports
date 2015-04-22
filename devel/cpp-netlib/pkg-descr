@@ -1,0 +1,13 @@
+The project aims to build upon the latest C++ standard (currently C++11) to
+provide easy to use libraries for network programming.
+We use the latest compiler versions and features with an eye on pushing the
+boundaries on leveraging what's available in C++.
+
+Currently the library contains an HTTP client and server implementation,
+a stand-alone URI library, a network message framework,
+and some concurrency tools.
+
+The project welcomes contributions from people interested in joining the effort.
+See the section on Project Policies for more information on getting involved.
+
+WWW: http://cpp-netlib.org/
