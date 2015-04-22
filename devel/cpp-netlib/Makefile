@@ -18,6 +18,7 @@ LIB_DEPENDS+=	libboost_thread.so:${PORTSDIR}/devel/boost-libs \
 
 USES=		cmake compiler:c++11-lib
 USE_OPENSSL=	yes
+USE_LDCONFIG=	yes
 CMAKE_ARGS=	-DCPP-NETLIB_BUILD_SHARED_LIBS=ON \
 		-DCPP-NETLIB_DISABLE_LIBCXX=ON
 
