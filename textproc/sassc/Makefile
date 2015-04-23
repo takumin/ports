@@ -17,6 +17,9 @@ GH_ACCOUNT=	sass
 LIB_DEPENDS+=	libsass.so:${PORTSDIR}/textproc/libsass
 
 USES=		autoreconf gmake compiler:c++0x
+CFLAGS+=	-I${LOCALBASE}/include
+CPPFLAGS+=	${CFLAGS}
+LDFLAGS+=	-L${LOCALBASE}/lib
 GNU_CONFIGURE=	yes
 CONFIGURE_ENV+=	SASSC_VERSION=${PORTVERSION}
 
