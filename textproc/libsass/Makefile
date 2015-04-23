@@ -20,4 +20,8 @@ GNU_CONFIGURE=	yes
 INSTALL_TARGET=	install-strip
 
 .include <bsd.port.pre.mk>
+
+pre-configure:
+	${REINPLACE_CMD} -e 's@ -lstdc++@@' ${WRKSRC}/Makefile.am
+
 .include <bsd.port.post.mk>
