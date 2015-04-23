@@ -14,8 +14,10 @@ LICENSE=	MIT
 USE_GITHUB=	yes
 GH_ACCOUNT=	sass
 
-USES=		autoreconf gmake libtool compiler:c++0x
+USES=		pathfix autoreconf libtool gmake compiler:c++11-lib
 USE_LDCONFIG=	yes
+GNU_CONFIGURE=	yes
+INSTALL_TARGET=	install-strip
 
 .include <bsd.port.pre.mk>
 .include <bsd.port.post.mk>
