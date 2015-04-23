@@ -16,7 +16,7 @@ GH_ACCOUNT=	sass
 
 LIB_DEPENDS+=	libsass.so:${PORTSDIR}/textproc/libsass
 
-USE_AUTOTOOLS=	aclocal autoconf autoheader automake libtoolize
+USES=		autoreconf
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 AUTOMAKE_ARGS+=	--add-missing
