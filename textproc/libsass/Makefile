@@ -14,16 +14,8 @@ LICENSE=	MIT
 USE_GITHUB=	yes
 GH_ACCOUNT=	sass
 
-USES=		autoreconf libtool pathfix
+USES=		autoreconf gmake libtool compiler:c++0x
 USE_LDCONFIG=	yes
 
-PATHFIX_MAKEFILEIN=	Makefile.am
-AUTOMAKE_ARGS=	--add-missing
-INSTALL_TARGET=	install-strip
-
 .include <bsd.port.pre.mk>
-
-pre-configure:
-	${REINPLACE_CMD} -e 's@ -lstdc++@@' ${WRKSRC}/Makefile.am
-
 .include <bsd.port.post.mk>
