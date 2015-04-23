@@ -14,8 +14,7 @@ LICENSE=	MIT
 USE_GITHUB=	yes
 GH_ACCOUNT=	sass
 
-USES=		libtool pathfix
-USE_AUTOTOOLS=	aclocal autoconf autoheader automake libtoolize
+USES=		autoreconf libtool pathfix
 USE_LDCONFIG=	yes
 
 PATHFIX_MAKEFILEIN=	Makefile.am
