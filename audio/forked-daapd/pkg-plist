@@ -1,4 +1,4 @@
-%%ETCDIR%%.conf.sample
+@sample etc/forked-daapd.conf.sample
 lib/forked-daapd/forked-daapd-sqlext.so
 man/man8/forked-daapd.8.gz
 sbin/forked-daapd
