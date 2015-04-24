@@ -28,11 +28,12 @@ LIB_DEPENDS+=	libantlr3c.so:${PORTSDIR}/devel/libantlr3c \
 		libgcrypt.so:${PORTSDIR}/security/libgcrypt \
 		libunistring.so:${PORTSDIR}/devel/libunistring
 
-OPTIONS_DEFINE=	FLAC MUSEPACK ITUNES LASTFM
-OPTIONS_DEFAULT=FLAC MUSEPACK ITUNES LASTFM
+OPTIONS_DEFINE=	FLAC MUSEPACK ITUNES LASTFM MPD
+OPTIONS_DEFAULT=FLAC MUSEPACK ITUNES LASTFM MPD
 
 ITUNES_DESC=	iTunes XML support
 LASTFM_DESC=	LastFM support
+MPD_DESC=	MPD protocol support
 
 FLAC_CONFIGURE_WITH=	flac
 FLAC_LIB_DEPENDS=	libFLAC.so:${PORTSDIR}/audio/flac
@@ -42,6 +43,7 @@ ITUNES_CONFIGURE_WITH=	itunes
 ITUNES_LIB_DEPENDS=	libplist.so:${PORTSDIR}/devel/libplist
 LASTFM_CONFIGURE_WITH=	lastfm
 LASTFM_LIB_DEPENDS=	libcurl.so:${PORTSDIR}/ftp/curl
+MPD_CONFIGURE_WITH=	mpd
 
 CFLAGS+=	-I${LOCALBASE}/include
 CPPFLAGS+=	-I${LOCALBASE}/include
@@ -68,9 +70,9 @@ post-install:
 	# pkg-plist for @sample ...
 	${MV} ${STAGEDIR}${PREFIX}/etc/${PORTNAME}.conf ${STAGEDIR}${PREFIX}/etc/${PORTNAME}.conf.sample
 	# pkg-plist for @dir(daapd,daapd,700) ...
-	${CHMOD} 0700 ${STAGEDIR}/var/cache/${PORTNAME}
-	${CHMOD} 0700 ${STAGEDIR}/var/cache/${PORTNAME}/libspotify
-	${CHOWN} daapd:daapd ${STAGEDIR}/var/cache/${PORTNAME}
-	${CHOWN} daapd:daapd ${STAGEDIR}/var/cache/${PORTNAME}/libspotify
+	#${CHMOD} 0700 ${STAGEDIR}/var/cache/${PORTNAME}
+	#${CHMOD} 0700 ${STAGEDIR}/var/cache/${PORTNAME}/libspotify
+	#${CHOWN} -f 337:337 ${STAGEDIR}/var/cache/${PORTNAME}
+	#${CHOWN} -f 337:337 ${STAGEDIR}/var/cache/${PORTNAME}/libspotify
 
 .include <bsd.port.post.mk>
