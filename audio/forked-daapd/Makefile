@@ -49,7 +49,9 @@ post-patch:
 	${REINPLACE_CMD} -e 's@antlr3AsciiFileStreamNew((pANTLR3_UINT8) file)@antlr3FileStreamNew((pANTLR3_UINT8) file, ANTLR3_ENC_8BIT)@' ${WRKSRC}/src/filescanner_smartpl.c
 
 post-install:
+	# pkg-plist for @sample ...
 	${MV} ${STAGEDIR}${PREFIX}/etc/${PORTNAME}.conf ${STAGEDIR}${PREFIX}/etc/${PORTNAME}.conf.sample
+	# pkg-plist for @dir(daapd,daapd,700) ...
 	${CHMOD} 0700 ${STAGEDIR}/var/cache/${PORTNAME}
 	${CHMOD} 0700 ${STAGEDIR}/var/cache/${PORTNAME}/libspotify
 	${CHOWN} daapd:daapd ${STAGEDIR}/var/cache/${PORTNAME}
