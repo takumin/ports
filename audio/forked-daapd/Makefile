@@ -51,6 +51,6 @@ post-patch:
 post-install:
 	${MV} ${STAGEDIR}${PREFIX}/etc/${PORTNAME}.conf ${STAGEDIR}${PREFIX}/etc/${PORTNAME}.conf.sample
 	${CHMOD} -R 0700 ${STAGEDIR}/var/cache/${PORTNAME}
-	${CHOWN} -R 337:337 ${STAGEDIR}/var/cache/${PORTNAME}
+	${CHOWN} -R ${USERS}:${GROUPS} ${STAGEDIR}/var/cache/${PORTNAME}
 
 .include <bsd.port.post.mk>
