@@ -16,7 +16,7 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	ejurgensen
 GH_TAGNAME=	0e1de8e0bbce728748e7ed9de1f3e4346a3b1dce
 
-USES+=		autoreconf compiler gettext gmake gperf iconv libtool pathfix pkgconfig
+USES+=		autoreconf compiler gettext-runtime gmake gperf iconv libtool pathfix pkgconfig
 BUILD_DEPENDS+=	antlr3:${PORTSDIR}/devel/antlr3
 LIB_DEPENDS+=	libantlr3c.so:${PORTSDIR}/devel/libantlr3c \
 		libavahi-client.so:${PORTSDIR}/net/avahi-app \
@@ -27,6 +27,21 @@ LIB_DEPENDS+=	libantlr3c.so:${PORTSDIR}/devel/libantlr3c \
 		libmxml.so:${PORTSDIR}/textproc/mxml \
 		libgcrypt.so:${PORTSDIR}/security/libgcrypt \
 		libunistring.so:${PORTSDIR}/devel/libunistring
+
+OPTIONS_DEFINE=	FLAC MUSEPACK ITUNES LASTFM
+OPTIONS_DEFAULT=FLAC MUSEPACK ITUNES LASTFM
+
+ITUNES_DESC=	iTunes XML support
+LASTFM_DESC=	LastFM support
+
+FLAC_CONFIGURE_WITH=	flac
+FLAC_LIB_DEPENDS=	libFLAC.so:${PORTSDIR}/audio/flac
+MUSEPACK_CONFIGURE_WITH=musepack
+MUSEPACK_LIB_DEPENDS=	libtag_c.so:${PORTSDIR}/audio/taglib
+ITUNES_CONFIGURE_WITH=	itunes
+ITUNES_LIB_DEPENDS=	libplist.so:${PORTSDIR}/devel/libplist
+LASTFM_CONFIGURE_WITH=	lastfm
+LASTFM_LIB_DEPENDS=	libcurl.so:${PORTSDIR}/ftp/curl
 
 CFLAGS+=	-I${LOCALBASE}/include
 CPPFLAGS+=	-I${LOCALBASE}/include
