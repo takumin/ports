@@ -29,16 +29,12 @@ LIB_DEPENDS+=	libantlr3c.so:${PORTSDIR}/devel/libantlr3c \
 		libgcrypt.so:${PORTSDIR}/security/libgcrypt \
 		libunistring.so:${PORTSDIR}/devel/libunistring
 
-#CFLAGS+=	-I${LOCALBASE}/include
-#CPPFLAGS+=	-I${LOCALBASE}/include
-#LDFLAGS+=	-L${LOCALBASE}/lib
-
 GNU_CONFIGURE=	yes
 CONFIGURE_TARGET=${ARCH:S/amd64/x86_64/}-portbld-${OPSYS:tl}${OSREL}
-#CONFIGURE_ENV+=	LIBUNISTRING_CFLAGS="-I${LOCALBASE}/include" \
-#		LIBUNISTRING_LIBS="-L${LOCALBASE}/lib"
-#CONFIGURE_ENV+=	CFLAGS="-I${LOCALBASE}/include -I/usr/include" \
-#		LIBS="-L${LOCALBASE}/lib -L/usr/lib"
+CONFIGURE_ARGS+=CFLAGS="-I${LOCALBASE}/include -I/usr/include" \
+		CPPFLAGS="-I${LOCALBASE}/include -I/usr/include" \
+		LDFLAGS="-L${LOCALBASE}/lib -L/usr/lib" \
+		LIBS="-L${LOCALBASE}/lib -L/usr/lib"
 INSTALL_TARGET=	install-strip
 USE_LDCONFIG=	yes
 
