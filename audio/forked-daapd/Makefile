@@ -29,12 +29,19 @@ LIB_DEPENDS+=	libantlr3c.so:${PORTSDIR}/devel/libantlr3c \
 		libgcrypt.so:${PORTSDIR}/security/libgcrypt \
 		libunistring.so:${PORTSDIR}/devel/libunistring
 
+LIBUNISTRING_CFLAGS="-I${LOCALBASE}/include"
+LIBUNISTRING_LIBS="-L${LOCALBASE}/lib"
+LIBAV_CFLAGS="-I${LOCALBASE}/include/libav"
+LIBAV_LIBS="-L${LOCALBASE}/lib/libav"
+
 GNU_CONFIGURE=	yes
 CONFIGURE_TARGET=${ARCH:S/amd64/x86_64/}-portbld-${OPSYS:tl}${OSREL}
-CONFIGURE_ARGS+=CFLAGS="-I${LOCALBASE}/include -I/usr/include" \
-		CPPFLAGS="-I${LOCALBASE}/include -I/usr/include" \
-		LDFLAGS="-L${LOCALBASE}/lib -L/usr/lib" \
-		LIBS="-L${LOCALBASE}/lib -L/usr/lib"
+#CONFIGURE_ARGS+=CFLAGS="-I${LOCALBASE}/include -I/usr/include" \
+#		CPPFLAGS="-I${LOCALBASE}/include -I/usr/include" \
+#		LDFLAGS="-L${LOCALBASE}/lib -L/usr/lib" \
+#		LIBS="-L${LOCALBASE}/lib -L/usr/lib" \
+#		LIBAV_CFLAGS="-I${LOCALBASE}/include/libav" \
+#		LIBAV_LIBS="-L${LOCALBASE}/lib/libav"
 INSTALL_TARGET=	install-strip
 USE_LDCONFIG=	yes
 
