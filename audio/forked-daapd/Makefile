@@ -4,7 +4,6 @@
 PORTNAME=	forked-daapd
 PORTVERSION=	22.3
 CATEGORIES=	audio
-PKGNAMESUFFIX=	-devel
 
 MAINTAINER=	takumiiinn@gmail.com
 COMMENT=	DAAP (iTunes) and RSP (Roku) media server
@@ -13,7 +12,6 @@ LICENSE=	GPLv2
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	ejurgensen
-GH_TAGNAME=	072810c4aa7dbc30f01f9bf5ae3665e580c1d406
 
 USES+=		autoreconf compiler gettext gmake gperf iconv libtool pathfix pkgconfig
 BUILD_DEPENDS+=	antlr34:${PORTSDIR}/devel/antlr34
