@@ -1,0 +1,42 @@
+#!/bin/sh
+
+# $FreeBSD$
+#
+# PROVIDE: forked_daapd
+# REQUIRE: avahi_daemon dbus
+# KEYWORD: shutdown
+#
+# Add these lines to /etc/rc.conf.local or /etc/rc.conf
+# to enable this service:
+#
+# forked_daapd_enable (bool): Set to NO by default.
+#                             Set it to YES to enable forked_daapd.
+# forked_daapd_config (path): Set to %%PREFIX%%/etc/forked-daapd.conf
+#                             by default.
+# forked_daapd_flags (str):   Set to "" by default
+# forked_daapd_user (str):    Set to "daapd" by default
+# forked_daapd_group (str):   Set to "daapd" by default
+
+. /etc/rc.subr
+
+name=forked_daapd
+rcvar=forked_daapd_enable
+
+load_rc_config $name
+
+: ${forked_daapd_enable:="NO"}
+: ${forked_daapd_config:="%%PREFIX%%/etc/forked-daapd.conf"}
+: ${forked_daapd_flags:=""}
+: ${forked_daapd_user:="daapd"}
+: ${forked_daapd_group:="daapd"}
+
+${name}_user="$forked_daapd_user"
+${name}_group="$forked_daapd_group"
+
+pidfile="/var/run/${name}.pid"
+required_files="$forked_daapd_config"
+
+command="%%PREFIX%%/sbin/forked-daapd"
+command_args="-P $pidfile -c $forked_daapd_config $forked_daapd_flags"
+
+run_rc_command "$1"

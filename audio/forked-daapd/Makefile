@@ -16,8 +16,7 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	ejurgensen
 GH_TAGNAME=	0e1de8e0bbce728748e7ed9de1f3e4346a3b1dce
 
-USES+=		autoreconf compiler gettext gmake gperf iconv \
-		libtool pathfix pkgconfig
+USES+=		autoreconf compiler gettext gmake gperf iconv libtool pathfix pkgconfig
 BUILD_DEPENDS+=	antlr3:${PORTSDIR}/devel/antlr3
 LIB_DEPENDS+=	libantlr3c.so:${PORTSDIR}/devel/libantlr3c \
 		libavahi-client.so:${PORTSDIR}/net/avahi-app \
@@ -32,11 +31,15 @@ LIB_DEPENDS+=	libantlr3c.so:${PORTSDIR}/devel/libantlr3c \
 CFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 
+USERS=		daapd
+GROUPS=		daapd
+
 GNU_CONFIGURE=	yes
 CONFIGURE_TARGET=${ARCH:S/amd64/x86_64/}-portbld-${OPSYS:tl}${OSREL}
 CONFIGURE_ARGS+=CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
 INSTALL_TARGET=	install-strip
 USE_LDCONFIG=	yes
+USE_RC_SUBR=	${PORTNAME}
 
 .include <bsd.port.pre.mk>
 
