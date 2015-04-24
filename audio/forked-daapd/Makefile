@@ -39,7 +39,7 @@ MPD_DESC=	MPD protocol support
 
 OSS_CONFIGURE_WITH=	oss4
 ALSA_CONFIGURE_WITH=	alsa
-ALSA_LIB_DEPENDS=	libasound.so:${PORTSDIR}/alsa-lib
+ALSA_LIB_DEPENDS=	libasound.so:${PORTSDIR}/audio/alsa-lib
 FLAC_CONFIGURE_ENABLE=	flac
 FLAC_LIB_DEPENDS=	libFLAC.so:${PORTSDIR}/audio/flac
 MUSEPACK_CONFIGURE_ENABLE=musepack
