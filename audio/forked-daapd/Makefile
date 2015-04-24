@@ -16,7 +16,7 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	ejurgensen
 GH_TAGNAME=	0e1de8e0bbce728748e7ed9de1f3e4346a3b1dce
 
-USES+=		autoreconf compiler gettext-runtime gmake gperf iconv libtool pathfix pkgconfig
+USES+=		autoreconf compiler gettext gmake gperf iconv libtool pathfix pkgconfig
 BUILD_DEPENDS+=	antlr3:${PORTSDIR}/devel/antlr3
 LIB_DEPENDS+=	libantlr3c.so:${PORTSDIR}/devel/libantlr3c \
 		libavahi-client.so:${PORTSDIR}/net/avahi-app \
