@@ -28,10 +28,14 @@ LIB_DEPENDS+=	libantlr3c.so:${PORTSDIR}/devel/libantlr3c \
 		libgcrypt.so:${PORTSDIR}/security/libgcrypt \
 		libunistring.so:${PORTSDIR}/devel/libunistring
 
-USE_LDCONFIG=	yes
+CFLAGS+=	-I${LOCALBASE}/include
+CPPFLAGS+=	-I${LOCALBASE}/include
+LDFLAGS+=	-L${LOCALBASE}/lib
+
 GNU_CONFIGURE=	yes
 CONFIGURE_TARGET=${ARCH:S/amd64/x86_64/}-portbld-${OPSYS:tl}${OSREL}
 INSTALL_TARGET=	install-strip
+USE_LDCONFIG=	yes
 
 .include <bsd.port.pre.mk>
 
