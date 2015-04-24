@@ -1,4 +1,4 @@
-# Created by: Geoffrey Mainland <mainland@apeiron.net>
+# Created by: Takumi Takahashi <takumiiinn@gmail.com>
 # $FreeBSD$
 
 PORTNAME=	antlr34
@@ -9,8 +9,8 @@ DISTNAME=	antlr-${PORTVERSION}-complete
 EXTRACT_SUFX=	.jar
 EXTRACT_ONLY=
 
-MAINTAINER=	makc@FreeBSD.org
-COMMENT=	ANother Tool for Language Recognition
+MAINTAINER=	takumiiinn@gmail.com
+COMMENT=	ANother Tool for Language Recognition for Version 3.4
 
 LICENSE=	BSD
 
