@@ -34,10 +34,15 @@ LIB_DEPENDS+=	libantlr3c.so:${PORTSDIR}/devel/libantlr3c \
 #LIBAV_CFLAGS="-I${LOCALBASE}/include/libav"
 #LIBAV_LIBS="-L${LOCALBASE}/lib/libav"
 
-CPATH+=		-I${LOCALBASE}/include
+#CPATH+=		-I${LOCALBASE}/include
+
+CFLAGS+=	-I${LOCALBASE}/include
+LDFLAGS+=	-L${LOCALBASE}/lib
 
 GNU_CONFIGURE=	yes
 CONFIGURE_TARGET=${ARCH:S/amd64/x86_64/}-portbld-${OPSYS:tl}${OSREL}
+CONFIGURE_ARGS+=CFLAGS="${CFLAGS}" \
+		LDFLAGS="${LDFLAGS}"
 #CONFIGURE_ARGS+=CFLAGS="-I${LOCALBASE}/include -I/usr/include" \
 #		CPPFLAGS="-I${LOCALBASE}/include -I/usr/include" \
 #		LDFLAGS="-L${LOCALBASE}/lib -L/usr/lib" \
