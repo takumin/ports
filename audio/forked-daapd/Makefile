@@ -17,7 +17,7 @@ GH_ACCOUNT=	ejurgensen
 GH_TAGNAME=	0e1de8e0bbce728748e7ed9de1f3e4346a3b1dce
 
 USES+=		autoreconf compiler gettext gmake gperf iconv libtool pathfix pkgconfig
-BUILD_DEPENDS+=	antlr3:${PORTSDIR}/devel/antlr3
+BUILD_DEPENDS+=	antlr34:${PORTSDIR}/devel/antlr34
 LIB_DEPENDS+=	libantlr3c.so:${PORTSDIR}/devel/libantlr3c \
 		libavahi-client.so:${PORTSDIR}/net/avahi-app \
 		libsqlite3.so:${PORTSDIR}/databases/sqlite3 \
@@ -55,7 +55,10 @@ GROUPS=		daapd
 
 GNU_CONFIGURE=	yes
 CONFIGURE_TARGET=${ARCH:S/amd64/x86_64/}-portbld-${OPSYS:tl}${OSREL}
-CONFIGURE_ARGS+=CFLAGS="${CFLAGS}" CPPFLAGS="${CPPFLAGS}" LDFLAGS="${LDFLAGS}"
+CONFIGURE_ARGS+=ANTLR="antlr34" \
+		CFLAGS="${CFLAGS}" \
+		CPPFLAGS="${CPPFLAGS}" \
+		LDFLAGS="${LDFLAGS}"
 INSTALL_TARGET=	install-strip
 USE_LDCONFIG=	yes
 USE_RC_SUBR=	forked_daapd
