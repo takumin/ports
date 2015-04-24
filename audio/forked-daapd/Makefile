@@ -67,7 +67,10 @@ post-patch:
 	${REINPLACE_CMD} -e 's@antlr3AsciiFileStreamNew((pANTLR3_UINT8) file)@antlr3FileStreamNew((pANTLR3_UINT8) file, ANTLR3_ENC_8BIT)@' ${WRKSRC}/src/filescanner_smartpl.c
 
 post-install:
-	# pkg-plist for @sample ...
-	${MV} ${STAGEDIR}${PREFIX}/etc/${PORTNAME}.conf ${STAGEDIR}${PREFIX}/etc/${PORTNAME}.conf.sample
+	# pkg-plist for @sample etc/forked-daapd.conf.sample
+	${MV} ${STAGEDIR}${PREFIX}/etc/forked-daapd.conf ${STAGEDIR}${PREFIX}/etc/forked-daapd.conf.sample
+	# pkg-plist for @dir(daapd,daapd,700) /var/cache/forked-daapd/libspotify
+	# pkg-plist for @dir(daapd,daapd,700) /var/cache/forked-daapd
+	# pkg-plist for other `make makeplist`
 
 .include <bsd.port.post.mk>
