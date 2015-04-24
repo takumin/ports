@@ -39,7 +39,7 @@ CONFIGURE_TARGET=${ARCH:S/amd64/x86_64/}-portbld-${OPSYS:tl}${OSREL}
 CONFIGURE_ARGS+=CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
 INSTALL_TARGET=	install-strip
 USE_LDCONFIG=	yes
-USE_RC_SUBR=	${PORTNAME:S/-/_/}
+USE_RC_SUBR=	forked_daapd
 
 .include <bsd.port.pre.mk>
 
@@ -49,6 +49,8 @@ post-patch:
 	${REINPLACE_CMD} -e 's@antlr3AsciiFileStreamNew((pANTLR3_UINT8) file)@antlr3FileStreamNew((pANTLR3_UINT8) file, ANTLR3_ENC_8BIT)@' ${WRKSRC}/src/filescanner_smartpl.c
 
 post-install:
-	${MV} ${STAGEDIR}${ETCDIR}.conf ${STAGEDIR}${ETCDIR}.conf.sample
+	${MV} ${STAGEDIR}${PREFIX}/${PORTNAME}.conf ${STAGEDIR}${PREFIX}/${PORTNAME}.conf.sample
+	${CHMOD} -R 0700 ${STAGEDIR}/var/cache/${PORTNAME}
+	${CHOWN} -R 337:337 ${STAGEDIR}/var/cache/${PORTNAME}
 
 .include <bsd.port.post.mk>

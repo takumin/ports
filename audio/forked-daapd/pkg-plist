@@ -2,5 +2,5 @@
 lib/forked-daapd/forked-daapd-sqlext.so
 man/man8/forked-daapd.8.gz
 sbin/forked-daapd
-@dir /var/cache/forked-daapd/libspotify
-@dir /var/cache/forked-daapd
+@dir(337,337,700) /var/cache/forked-daapd/libspotify
+@dir(337,337,700) /var/cache/forked-daapd
