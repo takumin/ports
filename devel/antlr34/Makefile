@@ -19,7 +19,7 @@ USE_JAVA=	yes
 JAVA_VERSION=	1.7+
 SUB_FILES=	antlr.sh
 PLIST_FILES=	bin/${PORTNAME} \
-		${JAVAJARDIR}/${PORTNAME}.jar
+		${JAVAJARDIR}/${DISTFILES}
 
 .include <bsd.port.options.mk>
 
