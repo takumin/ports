@@ -12,7 +12,7 @@ EXTRACT_ONLY=
 MAINTAINER=	takumiiinn@gmail.com
 COMMENT=	ANother Tool for Language Recognition for Version 3.4
 
-LICENSE=	BSD
+LICENSE=	BSD3CLAUSE
 
 NO_BUILD=	yes
 USE_JAVA=	yes
