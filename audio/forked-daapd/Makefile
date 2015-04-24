@@ -63,8 +63,8 @@ USE_RC_SUBR=	forked_daapd
 .include <bsd.port.pre.mk>
 
 post-patch:
-	# http://www.antlr3.org/pipermail/antlr-interest/2011-June/041924.html
 	# antlr3AsciiFileStreamNew() for old function.
+	# see http://www.antlr3.org/pipermail/antlr-interest/2011-June/041924.html
 	${REINPLACE_CMD} -e 's@antlr3AsciiFileStreamNew((pANTLR3_UINT8) file)@antlr3FileStreamNew((pANTLR3_UINT8) file, ANTLR3_ENC_8BIT)@' ${WRKSRC}/src/filescanner_smartpl.c
 
 post-install:
