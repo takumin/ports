@@ -69,10 +69,5 @@ post-patch:
 post-install:
 	# pkg-plist for @sample ...
 	${MV} ${STAGEDIR}${PREFIX}/etc/${PORTNAME}.conf ${STAGEDIR}${PREFIX}/etc/${PORTNAME}.conf.sample
-	# pkg-plist for @dir(daapd,daapd,700) ...
-	#${CHMOD} 0700 ${STAGEDIR}/var/cache/${PORTNAME}
-	#${CHMOD} 0700 ${STAGEDIR}/var/cache/${PORTNAME}/libspotify
-	#${CHOWN} -f 337:337 ${STAGEDIR}/var/cache/${PORTNAME}
-	#${CHOWN} -f 337:337 ${STAGEDIR}/var/cache/${PORTNAME}/libspotify
 
 .include <bsd.port.post.mk>
