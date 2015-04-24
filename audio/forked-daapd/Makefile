@@ -16,7 +16,8 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	ejurgensen
 GH_TAGNAME=	0e1de8e0bbce728748e7ed9de1f3e4346a3b1dce
 
-USES+=		autoreconf compiler gettext gmake gperf iconv libtool pathfix
+USES+=		autoreconf compiler gettext gmake gperf iconv \
+		libtool pathfix pkgconfig
 BUILD_DEPENDS+=	antlr3:${PORTSDIR}/devel/antlr3
 LIB_DEPENDS+=	libantlr3c.so:${PORTSDIR}/devel/libantlr3c \
 		libavahi-client.so:${PORTSDIR}/net/avahi-app \
@@ -36,8 +37,8 @@ GNU_CONFIGURE=	yes
 CONFIGURE_TARGET=${ARCH:S/amd64/x86_64/}-portbld-${OPSYS:tl}${OSREL}
 #CONFIGURE_ENV+=	LIBUNISTRING_CFLAGS="-I${LOCALBASE}/include" \
 #		LIBUNISTRING_LIBS="-L${LOCALBASE}/lib"
-CONFIGURE_ENV+=	CFLAGS="-I${LOCALBASE}/include -I/usr/include" \
-		LIBS="-L${LOCALBASE}/lib -L/usr/lib"
+#CONFIGURE_ENV+=	CFLAGS="-I${LOCALBASE}/include -I/usr/include" \
+#		LIBS="-L${LOCALBASE}/lib -L/usr/lib"
 INSTALL_TARGET=	install-strip
 USE_LDCONFIG=	yes
 
