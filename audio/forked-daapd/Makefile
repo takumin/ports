@@ -29,10 +29,12 @@ LIB_DEPENDS+=	libantlr3c.so:${PORTSDIR}/devel/libantlr3c \
 		libgcrypt.so:${PORTSDIR}/security/libgcrypt \
 		libunistring.so:${PORTSDIR}/devel/libunistring
 
-LIBUNISTRING_CFLAGS="-I${LOCALBASE}/include"
-LIBUNISTRING_LIBS="-L${LOCALBASE}/lib"
-LIBAV_CFLAGS="-I${LOCALBASE}/include/libav"
-LIBAV_LIBS="-L${LOCALBASE}/lib/libav"
+#LIBUNISTRING_CFLAGS="-I${LOCALBASE}/include"
+#LIBUNISTRING_LIBS="-L${LOCALBASE}/lib"
+#LIBAV_CFLAGS="-I${LOCALBASE}/include/libav"
+#LIBAV_LIBS="-L${LOCALBASE}/lib/libav"
+
+CPATH+=		-I${LOCALBASE}/include
 
 GNU_CONFIGURE=	yes
 CONFIGURE_TARGET=${ARCH:S/amd64/x86_64/}-portbld-${OPSYS:tl}${OSREL}
