@@ -22,22 +22,19 @@ BUILD_DEPENDS+=	antlr3:${PORTSDIR}/devel/antlr3
 LIB_DEPENDS+=	libantlr3c.so:${PORTSDIR}/devel/libantlr3c \
 		libavahi-client.so:${PORTSDIR}/net/avahi-app \
 		libsqlite3.so:${PORTSDIR}/databases/sqlite3 \
-		libavcodec.so:${PORTSDIR}/multimedia/libav \
+		libavcodec.so:${PORTSDIR}/multimedia/ffmpeg \
 		libconfuse.so:${PORTSDIR}/devel/libconfuse \
 		libevent.so:${PORTSDIR}/devel/libevent2 \
 		libmxml.so:${PORTSDIR}/textproc/mxml \
 		libgcrypt.so:${PORTSDIR}/security/libgcrypt \
 		libunistring.so:${PORTSDIR}/devel/libunistring
 
-CFLAGS+=	-I${LOCALBASE}/include \
-		-I${LOCALBASE}/include/libav
-LDFLAGS+=	-L${LOCALBASE}/lib \
-		-L${LOCALBASE}/lib/libav
+CFLAGS+=	-I${LOCALBASE}/include
+LDFLAGS+=	-L${LOCALBASE}/lib
 
 GNU_CONFIGURE=	yes
 CONFIGURE_TARGET=${ARCH:S/amd64/x86_64/}-portbld-${OPSYS:tl}${OSREL}
-CONFIGURE_ARGS+=CFLAGS="${CFLAGS}" \
-		LDFLAGS="${LDFLAGS}"
+CONFIGURE_ARGS+=CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
 INSTALL_TARGET=	install-strip
 USE_LDCONFIG=	yes
 
