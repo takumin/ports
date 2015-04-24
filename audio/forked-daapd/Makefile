@@ -39,7 +39,7 @@ CONFIGURE_TARGET=${ARCH:S/amd64/x86_64/}-portbld-${OPSYS:tl}${OSREL}
 CONFIGURE_ARGS+=CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
 INSTALL_TARGET=	install-strip
 USE_LDCONFIG=	yes
-USE_RC_SUBR=	${PORTNAME}
+USE_RC_SUBR=	${PORTNAME:S/-/_/}
 
 .include <bsd.port.pre.mk>
 
