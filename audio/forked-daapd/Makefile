@@ -5,7 +5,6 @@ PORTNAME=	forked-daapd
 PORTVERSION=	22.3
 CATEGORIES=	audio
 PKGNAMESUFFIX=	-devel
-DISTNAME=	${PORTNAME}${PKGNAMESUFFIX}-${PORTVERSION}
 
 MAINTAINER=	takumiiinn@gmail.com
 COMMENT=	DAAP (iTunes) and RSP (Roku) media server
