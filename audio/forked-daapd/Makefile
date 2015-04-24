@@ -36,15 +36,15 @@ LASTFM_DESC=	LastFM support
 MPD_DESC=	MPD protocol support
 
 OSS_CONFIGURE_WITH=	oss4
-FLAC_CONFIGURE_WITH=	flac
+FLAC_CONFIGURE_ON=	--enable-flac
 FLAC_LIB_DEPENDS=	libFLAC.so:${PORTSDIR}/audio/flac
-MUSEPACK_CONFIGURE_WITH=musepack
+MUSEPACK_CONFIGURE_ON=	--enable-musepack
 MUSEPACK_LIB_DEPENDS=	libtag_c.so:${PORTSDIR}/audio/taglib
-ITUNES_CONFIGURE_WITH=	itunes
+ITUNES_CONFIGURE_ON=	--enable-itunes
 ITUNES_LIB_DEPENDS=	libplist.so:${PORTSDIR}/devel/libplist
-LASTFM_CONFIGURE_WITH=	lastfm
+LASTFM_CONFIGURE_ON=	--enable-lastfm
 LASTFM_LIB_DEPENDS=	libcurl.so:${PORTSDIR}/ftp/curl
-MPD_CONFIGURE_WITH=	mpd
+MPD_CONFIGURE_ON=	--enable-mpd
 
 CFLAGS+=	-I${LOCALBASE}/include
 CPPFLAGS+=	-I${LOCALBASE}/include
