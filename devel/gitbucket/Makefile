@@ -27,11 +27,11 @@ GITBUCKET_USER?=	gitbucket
 GITBUCKET_GROUP?=	gitbucket
 
 .if ${GITBUCKET_USER} == "gitbucket"
-UID_FILES=	${.CURDIR}/UIDs
+UID_FILES=	${FILESDIR}/UIDs
 USERS=	gitbucket
 .endif
 .if ${GITBUCKET_GROUP} == "gitbucket"
-GID_FILES=	${.CURDIR}/GIDs
+GID_FILES=	${FILESDIR}/GIDs
 GROUPS=	gitbucket
 .endif
 
