@@ -1,2 +1,2 @@
 # $FreeBSD$
-gitbucket:*:690:690::0:0:Gitbucket User:/nonexistent:/nonexistent
+gitbucket:*:690:690::0:0:Gitbucket User:/usr/local/jenkins:/bin/sh
