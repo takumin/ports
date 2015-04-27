@@ -6,11 +6,10 @@ PORTVERSION=	0.19.0
 CATEGORIES=	www
 MASTER_SITES=	https://github.com/wp-cli/wp-cli/releases/download/v${PORTVERSION}/
 PKGNAMEPREFIX=	php-
-DISTNAME=	${PORTNAME}-${PORTVERSION}
 EXTRACT_SUFX=	.phar
 
 MAINTAINER=	takumiiinn@gmail.com
-COMMENT=	command line interface for WordPress
+COMMENT=	Command line interface for WordPress
 
 LICENSE=	MIT
 
