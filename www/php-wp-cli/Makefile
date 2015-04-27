@@ -2,12 +2,11 @@
 # $FreeBSD$
 
 PORTNAME=	wp-cli
-PORTVERSION=	0.17.1
+PORTVERSION=	0.19.0
 CATEGORIES=	www
 MASTER_SITES=	https://github.com/wp-cli/wp-cli/releases/download/v${PORTVERSION}/
 PKGNAMEPREFIX=	php-
-DISTNAME=	${PORTNAME}
-DIST_SUBDIR=	${PORTNAME}/${PORTVERSION}
+DISTNAME=	${PORTNAME}-${PORTVERSION}
 EXTRACT_SUFX=	.phar
 
 MAINTAINER=	takumiiinn@gmail.com
@@ -25,7 +24,7 @@ PLIST_FILES=	bin/wp
 
 do-extract:
 	${MKDIR} ${WRKSRC}/
-	${CP} ${_DISTDIR}/wp-cli.phar ${WRKSRC}/
+	${CP} ${_DISTDIR}/${DISTFILES} ${WRKSRC}/wp-cli.phar
 
 do-install:
 	${INSTALL_SCRIPT} ${WRKSRC}/wp-cli.phar ${STAGEDIR}${PREFIX}/bin/wp
