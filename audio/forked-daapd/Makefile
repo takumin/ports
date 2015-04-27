@@ -64,14 +64,6 @@ USE_RC_SUBR=	forked_daapd
 
 .include <bsd.port.pre.mk>
 
-# Smart Playlist for git repository
-.ifdef PKGNAMESUFFIX
-post-patch:
-	# antlr3AsciiFileStreamNew() for old function.
-	# see http://www.antlr3.org/pipermail/antlr-interest/2011-June/041924.html
-	${REINPLACE_CMD} -e 's@antlr3AsciiFileStreamNew((pANTLR3_UINT8) file)@antlr3FileStreamNew((pANTLR3_UINT8) file, ANTLR3_ENC_8BIT)@' ${WRKSRC}/src/filescanner_smartpl.c
-.endif
-
 post-install:
 	# pkg-plist for @sample etc/forked-daapd.conf.sample
 	${MV} ${STAGEDIR}${PREFIX}/etc/forked-daapd.conf ${STAGEDIR}${PREFIX}/etc/forked-daapd.conf.sample
