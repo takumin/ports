@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	forked-daapd
-PORTVERSION=	22.3
+PORTVERSION=	23.0
 CATEGORIES=	audio
 
 MAINTAINER=	takumiiinn@gmail.com
@@ -49,26 +49,30 @@ LASTFM_CONFIGURE_ENABLE=lastfm
 LASTFM_LIB_DEPENDS=	libcurl.so:${PORTSDIR}/ftp/curl
 MPD_CONFIGURE_ENABLE=	mpd
 
-CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
-
 USERS=		daapd
 GROUPS=		daapd
+
+CPPFLAGS+=	-I${LOCALBASE}/include
+LDFLAGS+=	-L${LOCALBASE}/lib
 
 GNU_CONFIGURE=	yes
 CONFIGURE_TARGET=${ARCH:S/amd64/x86_64/}-portbld-${OPSYS:tl}${OSREL}
 CONFIGURE_ENV+=	ANTLR="${LOCALBASE}/bin/antlr34"
 INSTALL_TARGET=	install-strip
-USE_LDCONFIG=	yes
+USE_LDCONFIG=	${LOCALBASE}/lib/forked-daapd
 USE_RC_SUBR=	forked_daapd
 
 .include <bsd.port.pre.mk>
 
-post-install:
-	# pkg-plist for @sample etc/forked-daapd.conf.sample
-	${MV} ${STAGEDIR}${PREFIX}/etc/forked-daapd.conf ${STAGEDIR}${PREFIX}/etc/forked-daapd.conf.sample
+post-patch:
+	# respect hier(7)
 	# pkg-plist for @dir(daapd,daapd,700) /var/cache/forked-daapd/libspotify
 	# pkg-plist for @dir(daapd,daapd,700) /var/cache/forked-daapd
+	@${REINPLACE_CMD} -e 's@$$(DESTDIR)$$(localstatedir)@${STAGEDIR}/var@' ${WRKSRC}/Makefile.am
+
+post-install:
+	# pkg-plist for @sample etc/forked-daapd.conf.sample
+	@${MV} ${STAGEDIR}${PREFIX}/etc/forked-daapd.conf ${STAGEDIR}${PREFIX}/etc/forked-daapd.conf.sample
 	# pkg-plist for other `make makeplist`
 
 .include <bsd.port.post.mk>
