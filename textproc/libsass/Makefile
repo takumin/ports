@@ -19,5 +19,7 @@ USE_LDCONFIG=	yes
 HAS_CONFIGURE=	yes
 INSTALL_TARGET=	install-strip
 
-.include <bsd.port.pre.mk>
-.include <bsd.port.post.mk>
+post-extract:
+	@${ECHO_CMD} 'echo ${PORTVERSION}' > ${WRKSRC}/version.sh
+
+.include <bsd.port.mk>
