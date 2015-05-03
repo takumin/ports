@@ -18,6 +18,8 @@ LIB_DEPENDS+=	libsass.so:${PORTSDIR}/textproc/libsass
 
 USES=		pathfix autoreconf gmake libtool compiler:c++0x
 HAS_CONFIGURE=	yes
+CONFIGURE_ARGS+=--with-libsass-include=${LOCALBASE}/include \
+		--with-libsass-lib=${LOCALBASE}/lib
 PLIST_FILES=	bin/sassc
 
 post-extract:
