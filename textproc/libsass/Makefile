@@ -14,7 +14,7 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	sass
 
 USES=		autoreconf compiler:c++11-lib libtool pathfix
-HAS_CONFIGURE=	yes
+GNU_CONFIGURE=	yes
 INSTALL_TARGET=	install-strip
 USE_LDCONFIG=	yes
 
