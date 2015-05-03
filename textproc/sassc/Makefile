@@ -2,7 +2,7 @@
 # $FreeBSD: head/textproc/sassc/Makefile 360717 2014-07-05 03:23:35Z nivit $
 
 PORTNAME=	sassc
-PORTVERSION=	3.1.0
+PORTVERSION=	3.2.1
 CATEGORIES=	textproc
 DISTFILES=	${PORTNAME}-${PORTVERSION}${EXTRACT_SUFX}
 
@@ -17,15 +17,13 @@ GH_ACCOUNT=	sass
 LIB_DEPENDS+=	libsass.so:${PORTSDIR}/textproc/libsass
 
 USES=		pathfix autoreconf gmake libtool compiler:c++0x
-CFLAGS+=	-I${LOCALBASE}/include
-CPPFLAGS+=	${CFLAGS}
-LDFLAGS+=	-L${LOCALBASE}/lib
-GNU_CONFIGURE=	yes
-CONFIGURE_ENV+=	SASSC_VERSION=${PORTVERSION}
-CONFIGURE_ARGS+=CFLAGS="${CFLAGS}" \
-		CPPFLAGS="${CPPFLAGS}" \
-		LDFLAGS="${LDFLAGS}"
-
+HAS_CONFIGURE=	yes
 PLIST_FILES=	bin/sassc
+
+post-extract:
+	@${ECHO_CMD} 'echo ${PORTVERSION}' > ${WRKSRC}/version.sh
+
+post-patch:
+	@${REINPLACE_CMD} -e 's@ -ldl@@' ${WRKSRC}/Makefile.am
 
 .include <bsd.port.mk>
