@@ -22,4 +22,7 @@ INSTALL_TARGET=	install-strip
 post-extract:
 	@${ECHO_CMD} 'echo ${PORTVERSION}' > ${WRKSRC}/version.sh
 
+post-patch:
+	@${REINPLACE_CMD} -e 's@^\(pkgconfigdir\).*@\1 = \$$$\{prefix\}/libdata/pkgconfig@' ${WRKSRC}/Makefile.am
+
 .include <bsd.port.mk>

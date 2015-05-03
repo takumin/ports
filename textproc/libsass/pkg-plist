@@ -8,4 +8,4 @@ lib/libsass.a
 lib/libsass.so
 lib/libsass.so.0
 lib/libsass.so.0.0.9
-lib/pkgconfig/libsass.pc
+libdata/pkgconfig/libsass.pc
