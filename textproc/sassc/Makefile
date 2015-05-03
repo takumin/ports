@@ -1,10 +1,9 @@
 # Created by: Nicola Vitale <nivit@FreeBSD.org>
-# $FreeBSD: head/textproc/sassc/Makefile 360717 2014-07-05 03:23:35Z nivit $
+# $FreeBSD: head/textproc/sassc/Makefile 384225 2015-04-18 12:58:34Z tijl $
 
 PORTNAME=	sassc
 PORTVERSION=	3.2.1
 CATEGORIES=	textproc
-DISTFILES=	${PORTNAME}-${PORTVERSION}${EXTRACT_SUFX}
 
 MAINTAINER=	nivit@FreeBSD.org
 COMMENT=	Wrapper around libsass
@@ -16,8 +15,8 @@ GH_ACCOUNT=	sass
 
 LIB_DEPENDS+=	libsass.so:${PORTSDIR}/textproc/libsass
 
-USES=		pathfix autoreconf gmake libtool compiler:c++0x
-HAS_CONFIGURE=	yes
+USES=		autoreconf compiler:c++0x libtool
+GNU_CONFIGURE=	yes
 CONFIGURE_ARGS+=--with-libsass-include=${LOCALBASE}/include \
 		--with-libsass-lib=${LOCALBASE}/lib
 PLIST_FILES=	bin/sassc
