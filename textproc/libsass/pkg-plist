@@ -3,6 +3,7 @@ include/sass2scss.h
 include/sass_context.h
 include/sass_functions.h
 include/sass_values.h
+include/sass_version.h
 lib/libsass.a
 lib/libsass.so
 lib/libsass.so.0

@@ -2,7 +2,7 @@
 # $FreeBSD: head/textproc/libsass/Makefile 360716 2014-07-05 02:58:20Z nivit $
 
 PORTNAME=	libsass
-PORTVERSION=	3.1.0
+PORTVERSION=	3.2.2
 CATEGORIES=	textproc
 DISTFILES=	${PORTNAME}-${PORTVERSION}${EXTRACT_SUFX}
 
@@ -16,12 +16,8 @@ GH_ACCOUNT=	sass
 
 USES=		pathfix autoreconf libtool gmake compiler:c++11-lib
 USE_LDCONFIG=	yes
-GNU_CONFIGURE=	yes
+HAS_CONFIGURE=	yes
 INSTALL_TARGET=	install-strip
 
 .include <bsd.port.pre.mk>
-
-pre-configure:
-	${REINPLACE_CMD} -e 's@ -lstdc++@@' ${WRKSRC}/Makefile.am
-
 .include <bsd.port.post.mk>
