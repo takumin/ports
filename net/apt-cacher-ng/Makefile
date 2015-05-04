@@ -13,7 +13,7 @@ COMMENT=	Caching package proxy server
 LICENSE_FILE=	${WRKSRC}/COPYING
 
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
-USES+=		cmake pkgconfig tar:xz
+USES+=		cmake compiler:c++11-lib pkgconfig tar:xz
 USE_OPENSSL=	yes
 LIB_DEPENDS+=	libboost_thread.so:${PORTSDIR}/devel/boost-libs \
 		libdaemon.so:${PORTSDIR}/net/apt-cacher-ng
