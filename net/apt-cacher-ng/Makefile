@@ -12,6 +12,9 @@ COMMENT=	Caching package proxy server
 
 LICENSE_FILE=	${WRKSRC}/COPYING
 
+CPPFLAGS+=	-I${LOCALBASE}/include
+LDFLAGS+=	-L${LOCALBASE}/lib
+
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
 USES+=		cmake compiler:c++11-lib pkgconfig tar:xz
 USE_OPENSSL=	yes
