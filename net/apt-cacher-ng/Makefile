@@ -12,12 +12,12 @@ COMMENT=	Caching package proxy server
 
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-CFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
+#CFLAGS+=	-I${LOCALBASE}/include
+#LDFLAGS+=	-L${LOCALBASE}/lib
 
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
 USES+=		cmake compiler:c++11-lib pkgconfig tar:xz
-USE_GCC=	yes
+USE_GCC=	4.9+
 USE_OPENSSL=	yes
 LIB_DEPENDS+=	libboost_thread.so:${PORTSDIR}/devel/boost-libs \
 		libdaemon.so:${PORTSDIR}/devel/libdaemon
