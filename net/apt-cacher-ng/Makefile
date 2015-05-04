@@ -16,12 +16,16 @@ CFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
+#USES+=		cmake compiler:c++11-lib pkgconfig tar:xz
 USES+=		cmake pkgconfig tar:xz
 USE_OPENSSL=	yes
 #LIB_DEPENDS+=	libboost_thread.so:${PORTSDIR}/devel/boost-libs \
 #		libdaemon.so:${PORTSDIR}/devel/libdaemon
 PLIST_FILES=	sbin/apt-cacher-ng \
 		sbin/in.acng
+
+post-patch:
+	@${SED} -i "" -e 's@^\(CHECK_CXX_COMPILER_FLAG.*COMPILER_SUPPORTS_GNU11.*\)$$@#\1@' ${WRKSRC}/CMakeLists.txt
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/apt-cacher-ng ${STAGEDIR}${PREFIX}/sbin
