@@ -16,11 +16,12 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 #LDFLAGS+=	-L${LOCALBASE}/lib
 
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
-USES+=		cmake compiler:c++11-lib pkgconfig tar:xz
-USE_GCC=	4.9+
+#USES+=		cmake compiler:c++11-lib pkgconfig tar:xz
+USES+=		cmake tar:xz
+#USE_GCC=	4.9+
 USE_OPENSSL=	yes
-LIB_DEPENDS+=	libboost_thread.so:${PORTSDIR}/devel/boost-libs \
-		libdaemon.so:${PORTSDIR}/devel/libdaemon
+#LIB_DEPENDS+=	libboost_thread.so:${PORTSDIR}/devel/boost-libs \
+#		libdaemon.so:${PORTSDIR}/devel/libdaemon
 PLIST_FILES=	sbin/apt-cacher-ng \
 		sbin/in.acng
 
