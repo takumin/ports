@@ -15,7 +15,7 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
 USES+=		cmake compiler:c++11-lib tar:xz
 USE_OPENSSL=	yes
-USE_RC_SUBR=	acng
+USE_RC_SUBR=	apt-cacher-ng
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/apt-cacher-ng ${STAGEDIR}${PREFIX}/sbin
