@@ -11,7 +11,7 @@
 #
 # acng_enable (bool): Set to NO by default.
 #                     Set it to YES to enable acng.
-# acng_config (path): Set to %%PREFIX%%/etc/apt-cacher-ng/acng.conf
+# acng_config (path): Set to %%PREFIX%%/etc/apt-cacher-ng
 #                     by default.
 # acng_flags (str):   Set to "" by default
 
@@ -23,7 +23,7 @@ rcvar=acng_enable
 load_rc_config $name
 
 : ${acng_enable:="NO"}
-: ${acng_config:="%%PREFIX%%/etc/apt-cacher-ng/acng.conf"}
+: ${acng_config:="%%PREFIX%%/etc/apt-cacher-ng"}
 : ${acng_flags:=""}
 
 pidfile="/var/run/${name}.pid"
