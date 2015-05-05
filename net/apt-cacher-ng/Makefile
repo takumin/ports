@@ -18,6 +18,9 @@ USE_OPENSSL=	yes
 PLIST_FILES=	sbin/apt-cacher-ng \
 		sbin/in.acng
 
+CFLAGS+=	-I${LOCALBASE}/include
+LDFLAGS+=	-L${LOCALBASE}/lib
+
 OPTIONS_DEFINE=	BOOST FUSE
 OPTIONS_DEFAULT=BOOST FUSE
 BOOST_LIB_DEPENDS=libboost_thread.so:${PORTSDIR}/devel/boost-libs
