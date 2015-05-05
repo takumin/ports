@@ -18,6 +18,10 @@ USE_OPENSSL=	yes
 PLIST_FILES=	sbin/apt-cacher-ng \
 		sbin/in.acng
 
+OPTIONS_DEFINE=	FUSE
+OPTIONS_DEFAULT=FUSE
+FUSE_USES=	fuse
+
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/apt-cacher-ng ${STAGEDIR}${PREFIX}/sbin
 	${INSTALL_PROGRAM} ${WRKSRC}/in.acng ${STAGEDIR}${PREFIX}/sbin
