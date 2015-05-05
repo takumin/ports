@@ -2,34 +2,33 @@
 
 # $FreeBSD$
 #
-# PROVIDE: acng
+# PROVIDE: apt_cacher_ng
 # REQUIRE: avahi_daemon dbus
 # KEYWORD: shutdown
 #
 # Add these lines to /etc/rc.conf.local or /etc/rc.conf
 # to enable this service:
 #
-# acng_enable (bool): Set to NO by default.
-#                     Set it to YES to enable acng.
-# acng_config (path): Set to %%PREFIX%%/etc/apt-cacher-ng
-#                     by default.
-# acng_flags (str):   Set to "" by default
+# apt_cacher_ng_enable (bool):  Set to NO by default.
+#                               Set it to YES to enable apt_cacher_ng.
+# apt_cacher_ng_confdir (path): Set to %%PREFIX%%/etc/apt_cacher_ng
+#                               by default.
+# apt_cacher_ng_flags (str):    Set to "" by default
 
 . /etc/rc.subr
 
-name=acng
-rcvar=acng_enable
+name=apt_cacher_ng
+rcvar=apt_cacher_ng_enable
 
 load_rc_config $name
 
-: ${acng_enable:="NO"}
-: ${acng_config:="%%PREFIX%%/etc/apt-cacher-ng"}
-: ${acng_flags:=""}
+: ${apt_cacher_ng_enable:="NO"}
+: ${apt_cacher_ng_confdir:="%%PREFIX%%/etc/apt-cacher-ng"}
+: ${apt_cacher_ng_flags:=""}
 
-pidfile="/var/run/${name}.pid"
-required_files="$acng_config"
+required_files="$apt_cacher_ng_confdir/acng.conf"
 
 command="%%PREFIX%%/sbin/apt-cacher-ng"
-command_args="-c $acng_config $acng_flags"
+command_args="-c $apt_cacher_ng_confdir $apt_cacher_ng_flags"
 
 run_rc_command "$1"
