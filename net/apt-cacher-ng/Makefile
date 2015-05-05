@@ -21,5 +21,6 @@ PLIST_FILES=	sbin/apt-cacher-ng \
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/apt-cacher-ng ${STAGEDIR}${PREFIX}/sbin
 	${INSTALL_PROGRAM} ${WRKSRC}/in.acng ${STAGEDIR}${PREFIX}/sbin
+	${INSTALL_MAN} ${WRKSRC}/doc/man/apt-cacher-ng.8 ${MAN8PREFIX}
 
 .include <bsd.port.mk>
