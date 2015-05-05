@@ -15,12 +15,13 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
 USES+=		cmake compiler:c++11-lib tar:xz
 USE_OPENSSL=	yes
-PLIST_FILES=	sbin/apt-cacher-ng \
+PLIST_FILES=	man/man8/apt-cacher-ng.8.gz \
+		sbin/apt-cacher-ng \
 		sbin/in.acng
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/apt-cacher-ng ${STAGEDIR}${PREFIX}/sbin
 	${INSTALL_PROGRAM} ${WRKSRC}/in.acng ${STAGEDIR}${PREFIX}/sbin
-	${INSTALL_MAN} ${WRKSRC}/doc/man/apt-cacher-ng.8 ${MAN8PREFIX}
+	${INSTALL_MAN} ${WRKSRC}/doc/man/apt-cacher-ng.8 ${STAGEDIR}${MANPREFIX}/man/man8
 
 .include <bsd.port.mk>
