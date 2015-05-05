@@ -23,5 +23,7 @@ do-install:
 	${MKDIR} ${STAGEDIR}${ETCDIR}
 	(cd ${WRKSRC}/conf && ${COPYTREE_SHARE} . ${STAGEDIR}${ETCDIR})
 	${INSTALL_MAN} ${WRKSRC}/doc/man/apt-cacher-ng.8 ${STAGEDIR}${MANPREFIX}/man/man8
+	${MKDIR} ${STAGEDIR}/var/log/apt-cacher-ng
+	${MKDIR} ${STAGEDIR}/var/cache/apt-cacher-ng
 
 .include <bsd.port.mk>

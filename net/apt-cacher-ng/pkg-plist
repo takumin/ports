@@ -23,3 +23,5 @@
 man/man8/apt-cacher-ng.8.gz
 sbin/apt-cacher-ng
 sbin/in.acng
+@dir /var/cache/apt-cacher-ng
+@dir /var/log/apt-cacher-ng
