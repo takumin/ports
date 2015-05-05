@@ -1,0 +1,35 @@
+#!/bin/sh
+
+# $FreeBSD$
+#
+# PROVIDE: acng
+# REQUIRE: avahi_daemon dbus
+# KEYWORD: shutdown
+#
+# Add these lines to /etc/rc.conf.local or /etc/rc.conf
+# to enable this service:
+#
+# acng_enable (bool): Set to NO by default.
+#                     Set it to YES to enable acng.
+# acng_config (path): Set to %%PREFIX%%/etc/apt-cacher-ng/acng.conf
+#                     by default.
+# acng_flags (str):   Set to "" by default
+
+. /etc/rc.subr
+
+name=acng
+rcvar=acng_enable
+
+load_rc_config $name
+
+: ${acng_enable:="NO"}
+: ${acng_config:="%%PREFIX%%/etc/apt-cacher-ng/acng.conf"}
+: ${acng_flags:=""}
+
+pidfile="/var/run/${name}.pid"
+required_files="$acng_config"
+
+command="%%PREFIX%%/sbin/apt-cacher-ng"
+command_args="-c $acng_config $acng_flags"
+
+run_rc_command "$1"
