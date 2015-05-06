@@ -20,6 +20,7 @@ USE_RC_SUBR=	apt-cacher-ng
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/apt-cacher-ng ${STAGEDIR}${PREFIX}/sbin
 	${INSTALL_PROGRAM} ${WRKSRC}/in.acng ${STAGEDIR}${PREFIX}/sbin
+	${RM} ${WRKSRC}/conf/acng.conf.orig
 	${MKDIR} ${STAGEDIR}${ETCDIR}
 	(cd ${WRKSRC}/conf && ${COPYTREE_SHARE} . ${STAGEDIR}${ETCDIR})
 	${INSTALL_MAN} ${WRKSRC}/doc/man/apt-cacher-ng.8 ${STAGEDIR}${MANPREFIX}/man/man8
