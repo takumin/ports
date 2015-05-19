@@ -13,7 +13,7 @@
  		"|[a-f0-9]+-(susedata|updateinfo|primary|deltainfo).xml.gz" //opensuse, index data, hash in filename
  		"|fonts/(final/)?[a-z]+32.exe(\\?download.*)?" // msttcorefonts, fonts/final/comic32.exe /corefonts/comic32.exe plus SF's parameters
  		"|/dists/.*/installer-[^/]+/[0-9][^/]+/images/.*" // d-i stuff with revision
-+		"|/(All|Latest)/[0-9a-zA-Z-_\\.]+\\.txz(\\.sig)?" // FreeBSD pkgng
++		"|/(All|Latest)/[^/]+\\.txz(\\.sig)?" // FreeBSD pkgng
  ")$");
  
  string svfilepat("/development/rawhide/.*");
