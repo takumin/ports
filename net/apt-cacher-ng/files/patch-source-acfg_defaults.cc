@@ -1,5 +1,5 @@
---- ./source/acfg_defaults.cc.orig	2015-05-06 11:31:35.359177000 +0900
-+++ ./source/acfg_defaults.cc	2015-05-06 11:52:30.405728000 +0900
+--- source/acfg_defaults.cc.orig	2015-05-03 00:19:23.000000000 +0900
++++ source/acfg_defaults.cc	2015-05-20 02:49:38.133755000 +0900
 @@ -13,7 +13,7 @@
  
  string cachedir("/var/tmp"), logdir("/var/tmp"), fifopath, pidfile, reportpage,
@@ -9,16 +9,15 @@
  
  #define INFOLDER "(^|.*/)"
  #define COMPRLIST "(\\.gz|\\.bz2|\\.lzma|\\.xz)"
-@@ -24,7 +24,7 @@
- 
- string spfilepat(INFOLDER ".*(\\.d?deb|\\.rpm|\\.drpm|\\.dsc|\\.tar" COMPRLIST ")\\.gpg$");
- 
--string pfilepat(".*(\\.d?deb|\\.rpm|\\.drpm|\\.dsc|\\.tar" COMPRLIST
-+string pfilepat(".*(\\.d?deb|\\.rpm|\\.drpm|\\.dsc|\\.tar|\\.txz" COMPRLIST
- 		"|\\.diff" COMPRLIST "|\\.jigdo|\\.template|changelog|copyright"
- 		"|\\.udeb|\\.debdelta|\\.diff/.*\\.gz|(Devel)?ReleaseAnnouncement(\\?.*)?"
+@@ -30,6 +30,7 @@
  		"|[a-f0-9]+-(susedata|updateinfo|primary|deltainfo).xml.gz" //opensuse, index data, hash in filename
-@@ -47,6 +47,7 @@
+ 		"|fonts/(final/)?[a-z]+32.exe(\\?download.*)?" // msttcorefonts, fonts/final/comic32.exe /corefonts/comic32.exe plus SF's parameters
+ 		"|/dists/.*/installer-[^/]+/[0-9][^/]+/images/.*" // d-i stuff with revision
++		"|/(All|Latest)/[0-9a-zA-Z-_\\.]+\\.txz(\\.sig)?" // FreeBSD pkgng
+ ")$");
+ 
+ string svfilepat("/development/rawhide/.*");
+@@ -47,6 +48,7 @@
  		"|" ALXPATTERN // Arch Linux
  		"|metalink\\?repo|.*prestodelta\\.xml\\.gz|repodata/.*\\.(xml|sqlite)" COMPOPT // CentOS
  		"|\\.treeinfo|vmlinuz|(initrd|product|squashfs|updates)\\.img" // Fedora
