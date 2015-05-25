@@ -1,4 +1,4 @@
-# $FreeBSD: head/lang/python27/Makefile 386312 2015-05-14 10:15:04Z mat $
+# $FreeBSD$
 
 PORTNAME=	python27
 PORTVERSION=	2.7.10
