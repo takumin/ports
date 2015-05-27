@@ -4,6 +4,7 @@
 PORTNAME=	cli
 PORTVERSION=	20150528
 CATEGORIES=	devel
+PKGNAMEPREFIX=	go-
 
 MAINTAINER=	takumiiinn@gmail.com
 COMMENT=	Small package for building command line apps in Go
