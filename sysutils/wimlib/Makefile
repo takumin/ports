@@ -18,7 +18,7 @@ GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--without-libcrypto \
 		--without-ntfs-3g
 INSTALL_TARGET=	install-strip
-CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
+#CPPFLAGS+=	-I${LOCALBASE}/include
+#LDFLAGS+=	-L${LOCALBASE}/lib
 
 .include <bsd.port.mk>
