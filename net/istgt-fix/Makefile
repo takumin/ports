@@ -33,7 +33,7 @@ CONFIGURE_ARGS+=--enable-symlink-device
 .if ${PORT_OPTIONS:MVBOXVD}
 RUN_DEPENDS+=	${LOCALBASE}/lib/virtualbox/VBoxRT.so:${PORTSDIR}/emulators/virtualbox-ose
 BUILD_DEPENDS+=	${LOCALBASE}/lib/virtualbox/VBoxRT.so:${PORTSDIR}/emulators/virtualbox-ose
-CONFIGURE_ARGS+=--with-vbox=${LOCALBASE}/include \
+CONFIGURE_ARGS+=--with-vbox=${LOCALBASE}/include/virtualbox \
 		--with-vboxlib=${LOCALBASE}/lib/virtualbox
 .endif
 
