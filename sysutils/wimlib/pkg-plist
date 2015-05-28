@@ -20,7 +20,7 @@ include/wimlib.h
 lib/libwim.a
 lib/libwim.so
 lib/libwim.so.15
-lib/libwim.so.15.2.0
+lib/libwim.so.15.6.0
 lib/pkgconfig/wimlib.pc
 man/man1/mkwinpeimg.1.gz
 man/man1/wimappend.1.gz
@@ -56,4 +56,3 @@ man/man1/wimsplit.1.gz
 man/man1/wimunmount.1.gz
 man/man1/wimupdate.1.gz
 man/man1/wimverify.1.gz
-@dir lib/pkgconfig
