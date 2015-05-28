@@ -27,15 +27,14 @@ VBOXVD_DESC=	Build with VBox VD support (no X11 required)
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MSYMLNKDEV}
-CONFIGURE_ARGS+=	--enable-symlink-device
+CONFIGURE_ARGS+=--enable-symlink-device
 .endif
 
 .if ${PORT_OPTIONS:MVBOXVD}
-VBOX_WRKSRC=	`${MAKE} -C ${PORTSDIR}/emulators/virtualbox-ose -V WRKSRC`
 RUN_DEPENDS+=	${LOCALBASE}/lib/virtualbox/VBoxRT.so:${PORTSDIR}/emulators/virtualbox-ose
-BUILD_DEPENDS+=	${NONEXISTENT}:${PORTSDIR}/emulators/virtualbox-ose:patch
-CONFIGURE_ARGS+=	--with-vbox=${VBOX_WRKSRC}/include \
-			--with-vboxlib=${LOCALBASE}/lib/virtualbox
+BUILD_DEPENDS+=	${LOCALBASE}/lib/virtualbox/VBoxRT.so:${PORTSDIR}/emulators/virtualbox-ose
+CONFIGURE_ARGS+=--with-vbox=${LOCALBASE}/include \
+		--with-vboxlib=${LOCALBASE}/lib/virtualbox
 .endif
 
 post-extract:
