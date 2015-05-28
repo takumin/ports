@@ -1,0 +1,34 @@
+#!/bin/sh
+
+# $FreeBSD$
+#
+# PROVIDE: apt_cacher_ng
+# REQUIRE: avahi_daemon dbus
+# KEYWORD: shutdown
+#
+# Add these lines to /etc/rc.conf.local or /etc/rc.conf
+# to enable this service:
+#
+# apt_cacher_ng_enable (bool):  Set to NO by default.
+#                               Set it to YES to enable apt_cacher_ng.
+# apt_cacher_ng_confdir (path): Set to %%PREFIX%%/etc/apt_cacher_ng
+#                               by default.
+# apt_cacher_ng_flags (str):    Set to "" by default
+
+. /etc/rc.subr
+
+name=apt_cacher_ng
+rcvar=apt_cacher_ng_enable
+
+load_rc_config $name
+
+: ${apt_cacher_ng_enable:="NO"}
+: ${apt_cacher_ng_confdir:="%%PREFIX%%/etc/apt-cacher-ng"}
+: ${apt_cacher_ng_flags:=""}
+
+required_files="$apt_cacher_ng_confdir/acng.conf"
+
+command="%%PREFIX%%/sbin/apt-cacher-ng"
+command_args="-c $apt_cacher_ng_confdir $apt_cacher_ng_flags"
+
+run_rc_command "$1"
