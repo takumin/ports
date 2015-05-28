@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	middleman-core
-PORTVERSION=	3.3.7
+PORTVERSION=	3.3.12
 CATEGORIES=	www rubygems
 MASTER_SITES=	RG
 
@@ -15,7 +15,7 @@ RUN_DEPENDS=	rubygem-activesupport4>=4.1.0:${PORTSDIR}/devel/rubygem-activesuppo
 		rubygem-bundler>=1.1:${PORTSDIR}/sysutils/rubygem-bundler \
 		rubygem-erubis>=0:${PORTSDIR}/www/rubygem-erubis \
 		rubygem-hooks>=0.3:${PORTSDIR}/devel/rubygem-hooks \
-		rubygem-i18n>=0.6.9:${PORTSDIR}/devel/rubygem-i18n \
+		rubygem-i18n>=0.7.0:${PORTSDIR}/devel/rubygem-i18n \
 		rubygem-listen>=2.7.9:${PORTSDIR}/devel/rubygem-listen \
 		rubygem-padrino-helpers>=0.12.3:${PORTSDIR}/www/rubygem-padrino-helpers \
 		rubygem-rack>=1.4.5:${PORTSDIR}/www/rubygem-rack \
