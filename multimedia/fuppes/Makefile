@@ -14,7 +14,7 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	u-voelkel
 GH_TAGNAME=	1c9b4cc78e2dd3f424face74d06ac3918ea38180
 
-USES=		autoreconf compiler iconv gmake libtool pathfix pkgconfig
+USES=		autoreconf compiler iconv:wchar_t gmake libtool pathfix pkgconfig
 LIB_DEPENDS+=	libpcre.so:${PORTSDIR}/devel/pcre \
 		libxml2.so:${PORTSDIR}/textproc/libxml2 \
 		libsqlite3.so:${PORTSDIR}/databases/sqlite3 \
@@ -28,7 +28,7 @@ GNU_CONFIGURE=	yes
 CONFIGURE_TARGET=${ARCH:S/amd64/x86_64/}-portbld-${OPSYS:tl}${OSREL}
 
 CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib ${ICONV_LIB}
+LDFLAGS+=	-L${LOCALBASE}/lib
 
 INSTALL_TARGET=	install-strip
 USE_LDCONFIG=	yes
