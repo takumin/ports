@@ -22,12 +22,11 @@ LIB_DEPENDS+=	libpcre.so:${PORTSDIR}/devel/pcre \
 		libev.so:${PORTSDIR}/devel/libev \
 		libuuid.so:${PORTSDIR}/misc/e2fsprogs-libuuid
 
-OPTIONS_DEFINE=	INOTIFY
-OPTIONS_DEFAULT=INOTIFY
-
-INOTIFY_DESC=			libinotify support
-INOTIFY_LIB_DEPENDS=		libinotify.so:${PORTSDIR}/devel/libinotify
-INOTIFY_CONFIGURE_ENABLE=	inotify
+# TODO: fix inotify
+#OPTIONS_DEFINE+=		INOTIFY
+#INOTIFY_DESC=			libinotify support
+#INOTIFY_LIB_DEPENDS=		libinotify.so:${PORTSDIR}/devel/libinotify
+#INOTIFY_CONFIGURE_ENABLE=	inotify
 
 USERS=		dlna
 GROUPS=		dlna
