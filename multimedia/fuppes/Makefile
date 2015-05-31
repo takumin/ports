@@ -25,8 +25,9 @@ LIB_DEPENDS+=	libpcre.so:${PORTSDIR}/devel/pcre \
 OPTIONS_DEFINE=	INOTIFY
 OPTIONS_DEFAULT=INOTIFY
 
-INOTIFY_DESC=		libinotify support
-INOTIFY_DEPENDS=	libinotify.so:${PORTSDIR}/devel/libinotify
+INOTIFY_DESC=			libinotify support
+INOTIFY_DEPENDS=		libinotify.so:${PORTSDIR}/devel/libinotify
+INOTIFY_CONFIGURE_ENABLE=	inotify
 
 USERS=		dlna
 GROUPS=		dlna
