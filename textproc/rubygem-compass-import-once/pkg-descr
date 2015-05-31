@@ -1,3 +1,0 @@
-Changes the behavior of Sass's @import directive to only import a file once.
-
-WWW: http://compass-style.org/
