@@ -26,7 +26,6 @@ OPTIONS_DEFINE=	INOTIFY
 OPTIONS_DEFAULT=INOTIFY
 
 INOTIFY_DESC=			libinotify support
-INOTIFY_BUILD_DEPENDS=		libinotify.so:${PORTSDIR}/devel/libinotify
 INOTIFY_LIB_DEPENDS=		libinotify.so:${PORTSDIR}/devel/libinotify
 INOTIFY_CONFIGURE_ENABLE=	inotify
 
