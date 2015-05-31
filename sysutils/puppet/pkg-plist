@@ -1180,22 +1180,22 @@ man/man8/puppet-resource.8.gz
 man/man8/puppet-resource_type.8.gz
 man/man8/puppet-status.8.gz
 man/man8/puppet.8.gz
-%%PORTDOCS%%%%DOCSDIR%%/LICENSE
-%%PORTDOCS%%%%DOCSDIR%%/README.md
-%%PORTEXAMPLES%%%%EXAMPLESDIR%%/hiera/README.md
-%%PORTEXAMPLES%%%%EXAMPLESDIR%%/hiera/etc/hiera.yaml
-%%PORTEXAMPLES%%%%EXAMPLESDIR%%/hiera/etc/hieradb/common.yaml
-%%PORTEXAMPLES%%%%EXAMPLESDIR%%/hiera/etc/hieradb/dc1.yaml
-%%PORTEXAMPLES%%%%EXAMPLESDIR%%/hiera/etc/hieradb/development.yaml
-%%PORTEXAMPLES%%%%EXAMPLESDIR%%/hiera/%%ETCDIR%%.conf
-%%PORTEXAMPLES%%%%EXAMPLESDIR%%/hiera/modules/data/manifests/common.pp
-%%PORTEXAMPLES%%%%EXAMPLESDIR%%/hiera/modules/ntp/manifests/config.pp
-%%PORTEXAMPLES%%%%EXAMPLESDIR%%/hiera/modules/ntp/manifests/data.pp
-%%PORTEXAMPLES%%%%EXAMPLESDIR%%/hiera/modules/ntp/templates/ntp.conf.erb
-%%PORTEXAMPLES%%%%EXAMPLESDIR%%/hiera/modules/users/manifests/common.pp
-%%PORTEXAMPLES%%%%EXAMPLESDIR%%/hiera/modules/users/manifests/dc1.pp
-%%PORTEXAMPLES%%%%EXAMPLESDIR%%/hiera/modules/users/manifests/development.pp
-%%PORTEXAMPLES%%%%EXAMPLESDIR%%/hiera/site.pp
+%%DOCS%%%%PORTDOCS%%%%DOCSDIR%%/LICENSE
+%%DOCS%%%%PORTDOCS%%%%DOCSDIR%%/README.md
+%%EXAMPLES%%%%PORTEXAMPLES%%%%EXAMPLESDIR%%/hiera/README.md
+%%EXAMPLES%%%%PORTEXAMPLES%%%%EXAMPLESDIR%%/hiera/etc/hiera.yaml
+%%EXAMPLES%%%%PORTEXAMPLES%%%%EXAMPLESDIR%%/hiera/etc/hieradb/common.yaml
+%%EXAMPLES%%%%PORTEXAMPLES%%%%EXAMPLESDIR%%/hiera/etc/hieradb/dc1.yaml
+%%EXAMPLES%%%%PORTEXAMPLES%%%%EXAMPLESDIR%%/hiera/etc/hieradb/development.yaml
+%%EXAMPLES%%%%PORTEXAMPLES%%%%EXAMPLESDIR%%/hiera/%%ETCDIR%%.conf
+%%EXAMPLES%%%%PORTEXAMPLES%%%%EXAMPLESDIR%%/hiera/modules/data/manifests/common.pp
+%%EXAMPLES%%%%PORTEXAMPLES%%%%EXAMPLESDIR%%/hiera/modules/ntp/manifests/config.pp
+%%EXAMPLES%%%%PORTEXAMPLES%%%%EXAMPLESDIR%%/hiera/modules/ntp/manifests/data.pp
+%%EXAMPLES%%%%PORTEXAMPLES%%%%EXAMPLESDIR%%/hiera/modules/ntp/templates/ntp.conf.erb
+%%EXAMPLES%%%%PORTEXAMPLES%%%%EXAMPLESDIR%%/hiera/modules/users/manifests/common.pp
+%%EXAMPLES%%%%PORTEXAMPLES%%%%EXAMPLESDIR%%/hiera/modules/users/manifests/dc1.pp
+%%EXAMPLES%%%%PORTEXAMPLES%%%%EXAMPLESDIR%%/hiera/modules/users/manifests/development.pp
+%%EXAMPLES%%%%PORTEXAMPLES%%%%EXAMPLESDIR%%/hiera/site.pp
 @dir %%ETCDIR%%/manifests
 @dir %%ETCDIR%%/modules
 @dir(puppet,puppet,) /var/log/puppet
