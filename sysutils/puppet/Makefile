@@ -48,6 +48,7 @@ do-install:
 	@cd ${WRKSRC} && ${SETENV} PREFIX=${PREFIX} ${RUBY} ${WRKSRC}/install.rb --no-configs --destdir=${STAGEDIR}
 
 post-install:
+	@${MKDIR} ${STAGEDIR}/var/puppet
 	@${MKDIR} ${STAGEDIR}${ETCDIR}/manifests
 	@${MKDIR} ${STAGEDIR}${ETCDIR}/modules
 	@${INSTALL_DATA} ${WRKSRC}/conf/auth.conf ${STAGEDIR}${ETCDIR}/auth.conf-dist
