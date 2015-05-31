@@ -24,14 +24,10 @@ NO_BUILD=	yes
 USE_RUBY=	yes
 USE_RUBY_FEATURES=	iconv
 USE_RC_SUBR=	puppet puppetmaster
-PORTDOCS=	LICENSE README.md
-PORTEXAMPLES=	*
 USERS=		puppet
 GROUPS=		puppet
 SUB_FILES+=	pkg-message
 SUB_LIST=	RUBY=${RUBY}
-
-OPTIONS_DEFINE=		DOCS EXAMPLES
 
 .include <bsd.port.options.mk>
 .include <bsd.port.pre.mk>
@@ -64,9 +60,5 @@ post-install:
 		--rundir=/var/run/puppet \
 		--logdir=/var/log/puppet \
 		> ${STAGEDIR}${ETCDIR}/puppet.conf-dist
-	@${MKDIR} ${STAGEDIR}${DOCSDIR}
-	@cd ${WRKSRC} && ${INSTALL_DATA} ${PORTDOCS} ${STAGEDIR}${DOCSDIR}
-	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
-	@cd ${WRKSRC}/examples/ && ${COPYTREE_SHARE} . ${STAGEDIR}${EXAMPLESDIR}
 
 .include <bsd.port.post.mk>
