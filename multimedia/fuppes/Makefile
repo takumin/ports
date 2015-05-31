@@ -14,7 +14,7 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	u-voelkel
 GH_TAGNAME=	1c9b4cc78e2dd3f424face74d06ac3918ea38180
 
-USES=		autoreconf compiler iconv:wchar_t gmake libtool pathfix pkgconfig
+USES=		autoreconf compiler gettext-tools gmake iconv:wchar_t libtool pathfix pkgconfig
 LIB_DEPENDS+=	libpcre.so:${PORTSDIR}/devel/pcre \
 		libxml2.so:${PORTSDIR}/textproc/libxml2 \
 		libsqlite3.so:${PORTSDIR}/databases/sqlite3 \
