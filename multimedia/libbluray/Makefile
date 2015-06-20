@@ -3,6 +3,7 @@
 
 PORTNAME=	libbluray
 PORTVERSION=	0.8.1
+PORTEPOCH=	1
 CATEGORIES=	multimedia
 MASTER_SITES=	ftp://ftp.videolan.org/pub/videolan/${PORTNAME}/${PORTVERSION}/ \
 		http://blu.opsec.eu/
