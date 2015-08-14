@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gitbucket
-PORTVERSION=	3.2
+PORTVERSION=	3.5
 CATEGORIES=	devel java
 MASTER_SITES=	https://github.com/takezoe/gitbucket/releases/download/${PORTVERSION}/
 DISTNAME=	${PORTNAME}
