@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	forked-daapd
-PORTVERSION=	23.0
+PORTVERSION=	23.2
 CATEGORIES=	audio
 
 MAINTAINER=	takumiiinn@gmail.com
