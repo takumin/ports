@@ -2,9 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	softethervpn
-PORTVERSION?=	4.08.9449.20140608
+PORTVERSION?=	4.18.9570.20150726
 CATEGORIES=	security net
-MASTER_SITES?=	http://www.softether-download.com/files/softether/v${RELEASEVER}-${RELEASEREV}-${RELEASETYPE}-${RELEASEDATE}-tree/Source%20Code/
+MASTER_SITES?=	http://www.softether-download.com/files/softether/v${RELEASEVER}-${RELEASEREV}-${RELEASETYPE}-${RELEASEDATE}-tree/Source_Code/
 DISTNAME?=	softether-src-v${RELEASEVER}-${RELEASEREV}-${RELEASETYPE}
 
 MAINTAINER=	takumiiinn@gmail.com
