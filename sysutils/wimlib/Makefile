@@ -4,14 +4,14 @@
 PORTNAME=	wimlib
 PORTVERSION=	1.8.1
 CATEGORIES=	sysutils devel
-MASTER_SITES=	SF/${PORTNAME}
+MASTER_SITES=	http://wimlib.net/downloads/
 
 MAINTAINER=	takumiiinn@gmail.com
 COMMENT=	Library to create, extract, and modify Windows Imaging (WIM) files
 
 LICENSE=	GPLv3
 
-USES=		gmake libtool pkgconfig iconv
+USES=		gmake iconv libtool pkgconfig
 USE_GNOME=	libxml2
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes

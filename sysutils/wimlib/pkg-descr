@@ -3,4 +3,4 @@ in the Windows Imaging Format (WIM files).  wimlib and its command-line frontend
 'wimlib-imagex' provide a free and cross-platform alternative to
 Microsoft's WIMGAPI, ImageX, and DISM.
 
-WWW: http://wimlib.sourceforge.net/
+WWW: http://wimlib.net/
