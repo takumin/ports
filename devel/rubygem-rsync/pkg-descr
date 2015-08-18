@@ -1,4 +1,0 @@
-Ruby/Rsync is a Ruby library that can syncronize files between
-remote hosts by wrapping a call to the rsync binary.
-
-WWW: https://rubygems.org/gems/rsync
