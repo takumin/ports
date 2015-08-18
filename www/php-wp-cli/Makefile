@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	wp-cli
-PORTVERSION=	0.19.0
+PORTVERSION=	0.19.2
 CATEGORIES=	www
 MASTER_SITES=	https://github.com/wp-cli/wp-cli/releases/download/v${PORTVERSION}/
 PKGNAMEPREFIX=	php-
