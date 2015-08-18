@@ -611,6 +611,7 @@ bin/puppet
 %%RUBY_SITELIBDIR%%/puppet/provider/package/opkg.rb
 %%RUBY_SITELIBDIR%%/puppet/provider/package/pacman.rb
 %%RUBY_SITELIBDIR%%/puppet/provider/package/pip.rb
+%%RUBY_SITELIBDIR%%/puppet/provider/package/pip3.rb
 %%RUBY_SITELIBDIR%%/puppet/provider/package/pkg.rb
 %%RUBY_SITELIBDIR%%/puppet/provider/package/pkgdmg.rb
 %%RUBY_SITELIBDIR%%/puppet/provider/package/pkgin.rb
@@ -884,6 +885,7 @@ bin/puppet
 %%RUBY_SITELIBDIR%%/puppet/util/rubygems.rb
 %%RUBY_SITELIBDIR%%/puppet/util/run_mode.rb
 %%RUBY_SITELIBDIR%%/puppet/util/selinux.rb
+%%RUBY_SITELIBDIR%%/puppet/util/splayer.rb
 %%RUBY_SITELIBDIR%%/puppet/util/ssl.rb
 %%RUBY_SITELIBDIR%%/puppet/util/storage.rb
 %%RUBY_SITELIBDIR%%/puppet/util/suidmanager.rb
