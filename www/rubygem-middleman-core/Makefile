@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	middleman-core
-PORTVERSION=	3.3.12
+PORTVERSION=	3.4.0
 CATEGORIES=	www rubygems
 MASTER_SITES=	RG
 
@@ -13,10 +13,11 @@ LICENSE=	MIT
 
 RUN_DEPENDS=	rubygem-activesupport4>=4.1.0:${PORTSDIR}/devel/rubygem-activesupport4 \
 		rubygem-bundler>=1.1:${PORTSDIR}/sysutils/rubygem-bundler \
+		rubygem-capybara>=2.4.4:${PORTSDIR}/devel/rubygem-capybara \
 		rubygem-erubis>=0:${PORTSDIR}/www/rubygem-erubis \
 		rubygem-hooks>=0.3:${PORTSDIR}/devel/rubygem-hooks \
 		rubygem-i18n>=0.7.0:${PORTSDIR}/devel/rubygem-i18n \
-		rubygem-listen>=2.7.9:${PORTSDIR}/devel/rubygem-listen \
+		rubygem-listen>=3.0.3:${PORTSDIR}/devel/rubygem-listen \
 		rubygem-padrino-helpers>=0.12.3:${PORTSDIR}/www/rubygem-padrino-helpers \
 		rubygem-rack>=1.4.5:${PORTSDIR}/www/rubygem-rack \
 		rubygem-rack-test>=0.6.2:${PORTSDIR}/www/rubygem-rack-test \
@@ -24,9 +25,9 @@ RUN_DEPENDS=	rubygem-activesupport4>=4.1.0:${PORTSDIR}/devel/rubygem-activesuppo
 		rubygem-tilt1>=1.4.1:${PORTSDIR}/devel/rubygem-tilt1
 
 # rubygem-listen for FreeBSD
-RUN_DEPENDS+=	rubygem-rb-kqueue>=0.2:${PORTSDIR}/devel/rubygem-rb-kqueue \
-		rubygem-ffi>=0:${PORTSDIR}/devel/rubygem-ffi \
-		rubygem-celluloid>=0:${PORTSDIR}/devel/rubygem-celluloid
+# RUN_DEPENDS+=	rubygem-rb-kqueue>=0.2:${PORTSDIR}/devel/rubygem-rb-kqueue \
+# 		rubygem-ffi>=0:${PORTSDIR}/devel/rubygem-ffi \
+# 		rubygem-celluloid>=0:${PORTSDIR}/devel/rubygem-celluloid
 
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes
