@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	middleman
-PORTVERSION=	3.3.12
+PORTVERSION=	3.4.0
 CATEGORIES=	www rubygems
 MASTER_SITES=	RG
 
@@ -17,7 +17,7 @@ RUN_DEPENDS=	rubygem-coffee-script>=2.2:${PORTSDIR}/devel/rubygem-coffee-script 
 		rubygem-execjs>=2.0:${PORTSDIR}/devel/rubygem-execjs \
 		rubygem-haml>=4.0.5:${PORTSDIR}/www/rubygem-haml \
 		rubygem-kramdown>=1.2:${PORTSDIR}/textproc/rubygem-kramdown \
-		rubygem-middleman-core>=3.3.12:${PORTSDIR}/www/rubygem-middleman-core \
+		rubygem-middleman-core>=${PORTVERSION}:${PORTSDIR}/www/rubygem-middleman-core \
 		rubygem-middleman-sprockets>=3.1.2:${PORTSDIR}/devel/rubygem-middleman-sprockets \
 		rubygem-sass>=3.4.0:${PORTSDIR}/textproc/rubygem-sass \
 		rubygem-uglifier>=2.5:${PORTSDIR}/www/rubygem-uglifier
