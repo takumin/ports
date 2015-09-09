@@ -1,6 +1,6 @@
---- ./CMakeLists.txt.orig	2015-05-05 13:06:17.766717000 +0900
-+++ ./CMakeLists.txt	2015-05-05 13:06:27.137791000 +0900
-@@ -230,7 +230,7 @@
+--- CMakeLists.txt.orig	2015-07-30 21:42:27 UTC
++++ CMakeLists.txt
+@@ -239,7 +239,7 @@ if(NOT HAVE_BOOST_SMARTPTR)
     endif(NOT HAVE_TR1_MEMORY)
  endif(NOT HAVE_BOOST_SMARTPTR)
  
@@ -9,3 +9,15 @@
  FILE(READ test/build/HAVE_DLOPEN.cc TESTSRC)
  CHECK_CXX_SOURCE_COMPILES("${TESTSRC}" HAVE_DLOPEN)
  
+@@ -303,9 +303,9 @@ if(fuse_FOUND AND HAVE_FUSE_25)
+    #message("uhm: ${fuse_CFLAGS} -- ${acngfs_cflags} -- ${fuse_LDFLAGS} -- ${HAVE_DLOPEN}")
+    SET_TARGET_PROPERTIES(acngfs PROPERTIES COMPILE_FLAGS "${acngfs_cflags}" )
+    if(HAVE_DLOPEN)
+-      TARGET_LINK_LIBRARIES(acngfs dl pthread  ${NetworkLibs} ${SSL_LIB_LIST} ${EXTRA_LIBS_ACNGFS})
++      TARGET_LINK_LIBRARIES(acngfs pthread ${NetworkLibs} ${SSL_LIB_LIST} ${EXTRA_LIBS_ACNGFS})
+    else(HAVE_DLOPEN)
+-      TARGET_LINK_LIBRARIES(acngfs ${fuse_LDFLAGS}  ${NetworkLibs} ${SSL_LIB_LIST} ${EXTRA_LIBS_ACNGFS})
++      TARGET_LINK_LIBRARIES(acngfs ${fuse_LDFLAGS} ${NetworkLibs} ${SSL_LIB_LIST} ${EXTRA_LIBS_ACNGFS})
+    endif(HAVE_DLOPEN)
+ 
+ else(fuse_FOUND AND HAVE_FUSE_25)
