@@ -13,7 +13,7 @@ COMMENT=	Caching package proxy server
 LICENSE_FILE=	${WRKSRC}/COPYING
 
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
-USES+=		cmake compiler:c++11-lib fuse pkgconfig tar:xz
+USES+=		cmake compiler:c++11-lib fuse tar:xz
 USE_GCC=	yes
 USE_OPENSSL=	yes
 USE_RC_SUBR=	apt-cacher-ng
