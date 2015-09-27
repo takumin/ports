@@ -21,10 +21,11 @@ LIB_DEPENDS+=	libgmp.so:${PORTSDIR}/math/gmp \
 		libmpfr.so:${PORTSDIR}/math/mpfr \
 		libmpc.so:${PORTSDIR}/math/mpc
 BUILD_DEPENDS+=	${PKGNAMEPREFIX}as:${PORTSDIR}/devel/${PKGNAMEPREFIX}binutils
+RUN_DEPENDS+=	${PKGNAMEPREFIX}as:${PORTSDIR}/devel/${PKGNAMEPREFIX}binutils
+
 .ifndef PKGNAMESUFFIX
 BUILD_DEPENDS+=	${PKGNAMEPREFIX}${PORTNAME}-bootstrap:${PORTSDIR}/devel/${PKGNAMEPREFIX}${PORTNAME}-bootstrap
 .endif
-RUN_DEPENDS+=	${PKGNAMEPREFIX}as:${PORTSDIR}/devel/${PKGNAMEPREFIX}binutils
 
 CPE_VENDOR=	gnu
 SSP_UNSAFE=	yes
@@ -64,8 +65,8 @@ PLIST_SUB=	GCC_TARGET=${GCC_TARGET} \
 		GCC_VERSION=${PORTVERSION}
 
 .ifdef PKGNAMESUFFIX
-ALL_TARGET=	all-gcc
-INSTALL_TARGET=	install-gcc
+ALL_TARGET=	all-gcc all-target-libgcc
+INSTALL_TARGET=	install-gcc install-target-libgcc
 .endif
 
 .include <bsd.port.pre.mk>

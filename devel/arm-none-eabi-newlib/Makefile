@@ -24,6 +24,8 @@ CONFIGURE_ARGS+=--target=${GCC_TARGET}
 CC:=		${PKGNAMEPREFIX}gcc-bootstrap
 CXX:=		${PKGNAMEPREFIX}g++-bootstrap
 CPP:=		${PKGNAMEPREFIX}cpp-bootstrap
+CFLAGS:=	${CFLAGS:C/-march=.*//}
+SSP_UNSAFE=	yes
 
 .include <bsd.port.pre.mk>
 
