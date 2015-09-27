@@ -55,11 +55,11 @@ CONFIGURE_ARGS+=--target=${GCC_TARGET} \
 		--with-pkgversion="FreeBSD Ports Collection for ${GCC_TARGET}" \
 		--with-as=${LOCALBASE}/bin/${PKGNAMEPREFIX}as \
 		--with-ld=${LOCALBASE}/bin/${PKGNAMEPREFIX}ld \
-		--libdir=${PREFIX}/lib/${PKGNAMEPREFIX:C/-$//}${PKGNAMESUFFIX} \
-		--libexecdir=${PREFIX}/libexec/${PKGNAMEPREFIX:C/-$//}${PKGNAMESUFFIX} \
 		--program-prefix=${PKGNAMEPREFIX}
 .ifdef PKGNAMESUFFIX
-CONFIGURE_ARGS+=--program-suffix=${PKGNAMESUFFIX} \
+CONFIGURE_ARGS+=--libdir=${PREFIX}/lib/${PKGNAMEPREFIX:C/-$//}${PKGNAMESUFFIX} \
+		--libexecdir=${PREFIX}/libexec/${PKGNAMEPREFIX:C/-$//}${PKGNAMESUFFIX} \
+		--program-suffix=${PKGNAMESUFFIX} \
 		--without-headers
 .endif
 INFO_PATH=	info/${PKGNAMESUFFIX}gcc
