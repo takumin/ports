@@ -18,6 +18,11 @@ GCC_TARGET=	${PKGNAMEPREFIX:C/-$//g}
 
 USES=		gmake makeinfo
 GNU_CONFIGURE=	yes
+GNU_CONFIGURE_PREFIX=${PREFIX}/${GCC_TARGET}
 CONFIGURE_ARGS+=--target=${GCC_TARGET}
+
+CC:=		${PKGNAMEPREFIX}gcc-bootstrap
+CXX:=		${PKGNAMEPREFIX}g++-bootstrap
+CPP:=		${PKGNAMEPREFIX}cpp-bootstrap
 
 .include <bsd.port.mk>
