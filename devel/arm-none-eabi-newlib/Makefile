@@ -1,0 +1,23 @@
+# Created by: Takumi Takahashi <takumiiinn@gmail.com>
+# $FreeBSD$
+
+PORTNAME=	newlib
+PORTVERSION=	2.2.0
+CATEGORIES=	devel
+MASTER_SITES=	ftp://sources.redhat.com/pub/ \
+		SOURCEWARE/${PORTNAME}
+PKGNAMEPREFIX=	arm-none-eabi-
+
+MAINTAINER=	takumiiinn@gmail.com
+COMMENT=	Cross Newlib C library for ${GCC_TARGET}
+
+BUILD_DEPENDS+=	${PKGNAMEPREFIX}as:${PORTSDIR}/devel/${PKGNAMEPREFIX}binutils \
+		${PKGNAMEPREFIX}gcc-bootstrap:${PORTSDIR}/devel/${PKGNAMEPREFIX}gcc-bootstrap
+
+GCC_TARGET=	${PKGNAMEPREFIX:C/-$//g}
+
+USES=		gmake makeinfo
+GNU_CONFIGURE=	yes
+CONFIGURE_ARGS+=--target=${GCC_TARGET}
+
+.include <bsd.port.mk>
