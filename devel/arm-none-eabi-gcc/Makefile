@@ -55,6 +55,8 @@ CONFIGURE_ARGS+=--target=${GCC_TARGET} \
 		--with-pkgversion="FreeBSD Ports Collection for ${GCC_TARGET}" \
 		--with-as=${LOCALBASE}/bin/${PKGNAMEPREFIX}as \
 		--with-ld=${LOCALBASE}/bin/${PKGNAMEPREFIX}ld \
+		--libdir=${PREFIX}/lib/${PKGNAMEPREFIX:C/-$//}${PKGNAMESUFFIX} \
+		--libexecdir=${PREFIX}/libexec/${PKGNAMEPREFIX:C/-$//}${PKGNAMESUFFIX} \
 		--program-prefix=${PKGNAMEPREFIX}
 .ifdef PKGNAMESUFFIX
 CONFIGURE_ARGS+=--program-suffix=${PKGNAMESUFFIX} \
@@ -89,6 +91,7 @@ post-extract:
 
 .ifdef PKGNAMESUFFIX
 post-stage:
+	${RM} -f ${STAGEDIR}${PREFIX}/bin/${PKGNAMEPREFIX}gcc-${PORTVERSION}
 	${RM} -f ${STAGEDIR}${PREFIX}/man/man1/*
 	${RM} -f ${STAGEDIR}${PREFIX}/man/man7/*
 	${RM} -fr ${STAGEDIR}${PREFIX}/info/${PKGNAMESUFFIX}gcc

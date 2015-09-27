@@ -8,6 +8,16 @@ bin/%%GCC_TARGET%%-gcc-nm-bootstrap
 bin/%%GCC_TARGET%%-gcc-ranlib-bootstrap
 bin/%%GCC_TARGET%%-gcov-bootstrap
 bin/%%GCC_TARGET%%-gcov-tool-bootstrap
+lib/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/crtbegin.o
+lib/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/crtend.o
+lib/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/crti.o
+lib/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/crtn.o
+lib/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/fpu/crtbegin.o
+lib/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/fpu/crtend.o
+lib/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/fpu/crti.o
+lib/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/fpu/crtn.o
+lib/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/fpu/libgcc.a
+lib/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/fpu/libgcov.a
 lib/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/include-fixed/README
 lib/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/include-fixed/limits.h
 lib/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/include-fixed/syslimits.h
@@ -27,6 +37,7 @@ lib/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/include/stdint.h
 lib/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/include/stdnoreturn.h
 lib/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/include/tgmath.h
 lib/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/include/unwind-arm-common.h
+lib/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/include/unwind.h
 lib/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/include/varargs.h
 lib/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/install-tools/fixinc_list
 lib/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/install-tools/gsyslimits.h
@@ -34,6 +45,8 @@ lib/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/install-tools/include/README
 lib/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/install-tools/include/limits.h
 lib/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/install-tools/macro_list
 lib/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/install-tools/mkheaders.conf
+lib/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/libgcc.a
+lib/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/libgcov.a
 lib/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/plugin/gtype.state
 lib/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/plugin/include/ada/gcc-interface/ada-tree.def
 lib/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/plugin/include/addresses.h
@@ -389,6 +402,12 @@ lib/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/plugin/include/wide-int-print.h
 lib/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/plugin/include/wide-int.h
 lib/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/plugin/include/xcoff.h
 lib/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/plugin/include/xcoffout.h
+lib/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/thumb/crtbegin.o
+lib/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/thumb/crtend.o
+lib/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/thumb/crti.o
+lib/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/thumb/crtn.o
+lib/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/thumb/libgcc.a
+lib/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/thumb/libgcov.a
 libexec/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/cc1
 libexec/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/cc1plus
 libexec/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/collect2
