@@ -39,9 +39,13 @@ GNU_CONFIGURE=	yes
 CONFIGURE_SCRIPT=../${PORTNAME}-${PORTVERSION}/configure
 CONFIGURE_ARGS+=--target=${GCC_TARGET} \
 		--enable-languages=${LANGUAGES} \
-		--disable-bootstrap \
-		--disable-multilib \
+		--enable-interwork \
+		--enable-multilib \
+		--enable-lto \
+		--disable-shared \
+		--disable-thread \
 		--disable-nls \
+		--with-newlib \
 		--with-gmp=${LOCALBASE} \
 		--with-mpfr=${LOCALBASE} \
 		--with-mpc=${LOCALBASE} \
