@@ -1,2 +1,4 @@
 SHA256 (gcc-5.2.0.tar.bz2) = 5f835b04b5f7dd4f4d2dc96190ec1621b8d89f2dc6f638f9f8bc1b1014ba8cad
 SIZE (gcc-5.2.0.tar.bz2) = 95221552
+SHA256 (newlib-2.2.0.tar.gz) = f8add263b0737591aff451b12a00c262c2efac4fa87d741fa1c318fc3bb335be
+SIZE (newlib-2.2.0.tar.gz) = 16521910
