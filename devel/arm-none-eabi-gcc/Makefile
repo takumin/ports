@@ -21,10 +21,10 @@ LIB_DEPENDS+=	libgmp.so:${PORTSDIR}/math/gmp \
 		libmpfr.so:${PORTSDIR}/math/mpfr \
 		libmpc.so:${PORTSDIR}/math/mpc
 BUILD_DEPENDS+=	${PKGNAMEPREFIX}as:${PORTSDIR}/devel/${PKGNAMEPREFIX}binutils
-RUN_DEPENDS+=	${PKGNAMEPREFIX}as:${PORTSDIR}/devel/${PKGNAMEPREFIX}binutils
 .ifndef PKGNAMESUFFIX
 BUILD_DEPENDS+=	${PKGNAMEPREFIX}${PORTNAME}-bootstrap:${PORTSDIR}/devel/${PKGNAMEPREFIX}${PORTNAME}-bootstrap
 .endif
+RUN_DEPENDS+=	${PKGNAMEPREFIX}as:${PORTSDIR}/devel/${PKGNAMEPREFIX}binutils
 
 CPE_VENDOR=	gnu
 SSP_UNSAFE=	yes
@@ -51,6 +51,9 @@ CONFIGURE_ARGS+=--target=${GCC_TARGET} \
 .ifdef PKGNAMESUFFIX
 CONFIGURE_ARGS+=--program-suffix=${PKGNAMESUFFIX} \
 		--without-headers
+.endif
+.ifdef PKGNAMESUFFIX
+PLIST=		${.CURDIR}/../${PKGNAMEPREFIX}${PORTNAME}/pkg-plist.${PKGNAMESUFFIX}
 .endif
 PLIST_SUB=	GCC_TARGET=${GCC_TARGET} \
 		GCC_VERSION=${PORTVERSION}
