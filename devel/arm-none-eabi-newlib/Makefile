@@ -25,4 +25,12 @@ CC:=		${PKGNAMEPREFIX}gcc-bootstrap
 CXX:=		${PKGNAMEPREFIX}g++-bootstrap
 CPP:=		${PKGNAMEPREFIX}cpp-bootstrap
 
-.include <bsd.port.mk>
+.include <bsd.port.pre.mk>
+
+.if ${ARCH} == "amd64"
+CONFIGURE_TARGET=	x86_64-portbld-${OPSYS:tl}${OSREL}
+.else
+CONFIGURE_TARGET=	${ARCH}-portbld-${OPSYS:tl}${OSREL}
+.endif
+
+.include <bsd.port.post.mk>
