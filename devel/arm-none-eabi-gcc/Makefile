@@ -32,10 +32,13 @@ SSP_UNSAFE=	yes
 WRKSRC=		${WRKDIR}/build-gcc
 PATCH_WRKSRC=	${WRKDIR}/${PORTNAME}-${PORTVERSION}
 
+GCC_TARGET=	${PKGNAMEPREFIX:C/-$//g}
+LANGUAGES=	c,c++
+
 GNU_CONFIGURE=	yes
 CONFIGURE_SCRIPT=../${PORTNAME}-${PORTVERSION}/configure
 CONFIGURE_ARGS+=--target=${GCC_TARGET} \
-		--enable-languages=c,c++ \
+		--enable-languages=${LANGUAGES} \
 		--disable-bootstrap \
 		--disable-multilib \
 		--disable-nls \
@@ -52,10 +55,9 @@ CONFIGURE_ARGS+=--target=${GCC_TARGET} \
 CONFIGURE_ARGS+=--program-suffix=${PKGNAMESUFFIX} \
 		--without-headers
 .endif
+INFO_PATH=	info/${PKGNAMESUFFIX}gcc
 PLIST_SUB=	GCC_TARGET=${GCC_TARGET} \
 		GCC_VERSION=${PORTVERSION}
-
-GCC_TARGET=	${PKGNAMEPREFIX:C/-$//g}
 
 .ifdef PKGNAMESUFFIX
 ALL_TARGET=	all-gcc
@@ -70,11 +72,21 @@ CONFIGURE_TARGET=	x86_64-portbld-${OPSYS:tl}${OSREL}
 CONFIGURE_TARGET=	${ARCH}-portbld-${OPSYS:tl}${OSREL}
 .endif
 
-.if ${COMPILER_TYPE} == clang
+.if ${COMPILER_TYPE} == "clang"
 MAKE_ARGS+=	CXXFLAGS=-fbracket-depth=512
 .endif
 
+pre-everything::
+	@${ECHO_MSG} "Making GCC ${PORTVERSION} for Host:${CONFIGURE_TARGET} Target:${GCC_TARGET} [${LANGUAGES}]"
+
 post-extract:
 	@${MKDIR} ${WRKSRC}
+
+.ifdef PKGNAMESUFFIX
+post-stage:
+	${RM} -f ${STAGEDIR}${PREFIX}/man/man1/*
+	${RM} -f ${STAGEDIR}${PREFIX}/man/man7/*
+	${RM} -fr ${STAGEDIR}${PREFIX}/info/${PKGNAMESUFFIX}gcc
+.endif
 
 .include <bsd.port.post.mk>
