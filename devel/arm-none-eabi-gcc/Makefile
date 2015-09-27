@@ -52,9 +52,6 @@ CONFIGURE_ARGS+=--target=${GCC_TARGET} \
 CONFIGURE_ARGS+=--program-suffix=${PKGNAMESUFFIX} \
 		--without-headers
 .endif
-.ifdef PKGNAMESUFFIX
-PLIST=		${.CURDIR}/../${PKGNAMEPREFIX}${PORTNAME}/pkg-plist.${PKGNAMESUFFIX}
-.endif
 PLIST_SUB=	GCC_TARGET=${GCC_TARGET} \
 		GCC_VERSION=${PORTVERSION}
 
