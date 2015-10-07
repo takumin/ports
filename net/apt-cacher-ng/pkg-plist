@@ -1,5 +1,5 @@
-%%ETCDIR%%/acng.conf
-%%ETCDIR%%/security.conf
+@sample %%ETCDIR%%/acng.conf.sample
+@sample %%ETCDIR%%/security.conf.sample
 etc/avahi/services/apt-cacher-ng.service
 lib/apt-cacher-ng/acngtool
 lib/apt-cacher-ng/archlx_mirrors

@@ -25,4 +25,9 @@ post-install:
 	${MKDIR} ${STAGEDIR}/var/log/apt-cacher-ng
 	${MKDIR} ${STAGEDIR}/var/cache/apt-cacher-ng
 
+	# pkg-plist for @sample %%ETCDIR%%/acng.conf.sample
+	# pkg-plist for @sample %%ETCDIR%%/security.conf.sample
+	${MV} ${STAGEDIR}${ETCDIR}/acng.conf ${STAGEDIR}${ETCDIR}/acng.conf.sample
+	${MV} ${STAGEDIR}${ETCDIR}/security.conf ${STAGEDIR}${ETCDIR}/security.conf.sample
+
 .include <bsd.port.mk>
