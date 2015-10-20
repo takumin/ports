@@ -21,7 +21,21 @@ GH_TAGNAME=	f36c17a5ee1cdd1990ed65a64fe8bbbd0ef76da8
 
 WRKSRC=		${WRKDIR}/${PORTNAME}-${GH_TAGNAME}
 
-USES=		iconv
+USES=		autoreconf gmake
 GNU_CONFIGURE=	yes
+CONFIGURE_ARGS+=--enable-readlib --enable-macro-patterns
+
+OPTIONS_DEFINE=		ICONV
+OPTIONS_DEFAULT=	ICONV
+
+.include <bsd.port.options.mk>
+
+ICONV_USE=		iconv
+ICONV_CONFIGURE_ENABLE=	iconv
+
+post-stage:
+	@${RMDIR} ${STAGEDIR}${ETCDIR}/optlib
+	@${RMDIR} ${STAGEDIR}${ETCDIR}/preload
+	@${RMDIR} ${STAGEDIR}${ETCDIR}
 
 .include <bsd.port.mk>
