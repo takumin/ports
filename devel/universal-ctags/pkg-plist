@@ -1,1 +1,12 @@
 @comment $FreeBSD$
+bin/ctags
+bin/readtags
+include/readtags.h
+lib/readtags.o
+libexec/ctags/drivers/coffeetags
+man/man1/ctags.1.gz
+%%DATADIR%%/optlib/coffee.ctags
+%%DATADIR%%/optlib/ctags.ctags
+%%DATADIR%%/optlib/gdbinit.ctags
+%%DATADIR%%/optlib/m4.ctags
+%%DATADIR%%/preload/default.ctags
