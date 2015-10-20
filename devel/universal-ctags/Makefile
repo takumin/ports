@@ -19,6 +19,8 @@ GH_ACCOUNT=	universal-ctags
 GH_PROJECT=	ctags
 GH_TAGNAME=	f36c17a5ee1cdd1990ed65a64fe8bbbd0ef76da8
 
+WRKSRC=		${WRKDIR}/${PORTNAME}-${GH_TAGNAME}
+
 USES=		iconv
 GNU_CONFIGURE=	yes
 
