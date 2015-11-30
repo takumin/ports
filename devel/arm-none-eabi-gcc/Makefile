@@ -3,10 +3,9 @@
 
 PORTNAME=	gcc
 PORTVERSION=	5.2.0
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	devel
 MASTER_SITES=	GCC:gcc \
-		ftp://sources.redhat.com/pub/:newlib \
 		SOURCEWARE/${PORTNAME}:newlib
 PKGNAMEPREFIX=	arm-none-eabi-
 DISTFILES=	${PORTNAME}-${PORTVERSION}.tar.bz2:gcc \
