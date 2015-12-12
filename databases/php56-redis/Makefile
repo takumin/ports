@@ -4,6 +4,7 @@
 PORTNAME=	redis
 PKGNAMEPREFIX=	php56-
 PORTVERSION=	2.2.7
+PORTREVISION=	1
 CATEGORIES=	databases
 
 MAINTAINER=	takumiiinn@gmail.com
