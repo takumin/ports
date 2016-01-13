@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	apt-cacher-ng
-PORTVERSION=	0.8.6
+PORTVERSION=	0.8.8
 CATEGORIES=	net
 MASTER_SITES=	http://ftp.debian.org/debian/pool/main/a/apt-cacher-ng/
 DISTNAME=	${PORTNAME}_${PORTVERSION}.orig
@@ -13,11 +13,11 @@ COMMENT=	Caching package proxy server
 LICENSE_FILE=	${WRKSRC}/COPYING
 
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
-USES+=		cmake compiler:c++11-lib pathfix tar:xz
+USES+=		cmake:outsource compiler:c++11-lang pathfix pkgconfig tar:xz
+CMAKE_ARGS=	-DBZIP2_NEED_PREFIX=/usr/include
 USE_OPENSSL=	yes
-CPPFLAGS+=	-I${OPENSSLINC}
-LDFLAGS+=	-L${OPENSSLLIB} -lpthread -lssl -lcrypto
 USE_RC_SUBR=	apt-cacher-ng
+LIB_DEPENDS+=	libfuse.so:${PORTSDIR}/sysutils/fusefs-libs
 
 post-install:
 	${RMDIR} ${STAGEDIR}${ETCDIR}/CMakeFiles
