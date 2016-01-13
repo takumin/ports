@@ -2,11 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	libbluray
-PORTVERSION=	0.8.1
-PORTEPOCH=	1
+PORTVERSION=	0.9.2
 CATEGORIES=	multimedia
-MASTER_SITES=	ftp://ftp.videolan.org/pub/videolan/${PORTNAME}/${PORTVERSION}/ \
-		http://blu.opsec.eu/
+MASTER_SITES=	http://ftp.videolan.org/pub/videolan/${PORTNAME}/${PORTVERSION}/
 
 MAINTAINER=	kami@FreeBSD.org
 COMMENT=	Blu-Ray discs playback library for media players
