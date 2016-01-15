@@ -15,7 +15,7 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
 USES+=		cmake:outsource compiler:c++11-lang pathfix pkgconfig tar:xz
 LDFLAGS+=	-lpthread -lcrypto -lssl
-CMAKE_ARGS+=	-DBZIP2_NEED_PREFIX=/usr/include
+CMAKE_ARGS+=	-DLIBDIR=${PREFIX}/libdata/${PORTNAME} -DBZIP2_NEED_PREFIX=/usr/include
 USE_OPENSSL=	yes
 USE_RC_SUBR=	apt-cacher-ng
 LIB_DEPENDS+=	libfuse.so:${PORTSDIR}/sysutils/fusefs-libs
