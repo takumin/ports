@@ -14,14 +14,13 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
 USES+=		cmake:outsource compiler:c++11-lang pathfix pkgconfig tar:xz
-CMAKE_ARGS=	-DBZIP2_NEED_PREFIX=/usr/include
+LDFLAGS+=	-lpthread -lcrypto -lssl
+CMAKE_ARGS+=	-DBZIP2_NEED_PREFIX=/usr/include
 USE_OPENSSL=	yes
 USE_RC_SUBR=	apt-cacher-ng
 LIB_DEPENDS+=	libfuse.so:${PORTSDIR}/sysutils/fusefs-libs
 
 post-install:
-	${RMDIR} ${STAGEDIR}${ETCDIR}/CMakeFiles
-	${RMDIR} ${STAGEDIR}${PREFIX}/lib/apt-cacher-ng/CMakeFiles
 	${MKDIR} ${STAGEDIR}/var/log/apt-cacher-ng
 	${MKDIR} ${STAGEDIR}/var/cache/apt-cacher-ng
 
