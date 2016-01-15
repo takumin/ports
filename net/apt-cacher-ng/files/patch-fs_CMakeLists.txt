@@ -1,0 +1,11 @@
+--- fs/CMakeLists.txt.orig	2016-01-15 15:58:58 UTC
++++ fs/CMakeLists.txt
+@@ -27,7 +27,7 @@ if(fuse_FOUND AND HAVE_FUSE_25)
+ 	#message("uhm: ${fuse_CFLAGS} -- ${acngfs_cflags} -- ${fuse_LDFLAGS} -- ${HAVE_DLOPEN}")
+ 	SET_TARGET_PROPERTIES(acngfs PROPERTIES COMPILE_FLAGS "${acngfs_cflags}" )
+ 	if(HAVE_DLOPEN)
+-		TARGET_LINK_LIBRARIES(acngfs dl pthread ${BaseNetworkLibs} ${SSL_LIB_LIST} ${EXTRA_LIBS_ACNGFS})
++		TARGET_LINK_LIBRARIES(acngfs pthread ${BaseNetworkLibs} ${SSL_LIB_LIST} ${EXTRA_LIBS_ACNGFS})
+ 	else(HAVE_DLOPEN)
+ 		TARGET_LINK_LIBRARIES(acngfs ${fuse_LDFLAGS} ${BaseNetworkLibs} ${SSL_LIB_LIST} ${EXTRA_LIBS_ACNGFS})
+ 	endif(HAVE_DLOPEN)
