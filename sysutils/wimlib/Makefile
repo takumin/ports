@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	wimlib
-PORTVERSION=	1.8.1
+PORTVERSION=	1.8.3
 CATEGORIES=	sysutils devel
 MASTER_SITES=	http://wimlib.net/downloads/
 
@@ -18,6 +18,7 @@ GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--without-libcrypto \
 		--without-ntfs-3g
 INSTALL_TARGET=	install-strip
+CFLAGS+=	-I${LOCALBASE}/include
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 
