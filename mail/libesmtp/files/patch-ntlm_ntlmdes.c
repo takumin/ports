@@ -1,4 +1,4 @@
---- ntlm/ntlmdes.c.orig	2016-01-16 12:55:37 UTC
+--- ntlm/ntlmdes.c.orig	2010-08-08 15:45:56 UTC
 +++ ntlm/ntlmdes.c
 @@ -30,10 +30,10 @@
  #include "ntlm.h"
@@ -14,7 +14,7 @@
    unsigned char key_56[8];
    size_t len;
  
-@@ -55,9 +55,9 @@ lm_deshash (void *result, const_des_cblo
+@@ -55,12 +55,12 @@ lm_deshash (void *result, const_des_cblo
    key[6] = (key_56[5] << 2) | (key_56[6] >> 6);
    key[7] = (key_56[6] << 1);
  
@@ -22,11 +22,15 @@
 -  des_set_key (&key, ks);
 -  des_ecb_encrypt (iv, result, ks, DES_ENCRYPT);
 +  DES_set_odd_parity (&key);
-+  DES_set_key (&key, ks);
-+  DES_ecb_encrypt (iv, result, ks, DES_ENCRYPT);
++  DES_set_key (&key, &ks);
++  DES_ecb_encrypt (iv, result, &ks, DES_ENCRYPT);
  
    /* paranoia */
-   memset (key, 0, sizeof key);
+-  memset (key, 0, sizeof key);
++  memset (&key, 0, sizeof key);
+   memset (&ks, 0, sizeof ks);
+ }
+ 
 @@ -85,7 +85,7 @@ lm_uccpy (char *dst, size_t dstlen, cons
  void
  lm_hash_password (unsigned char *hash, const char *pass)
