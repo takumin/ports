@@ -20,7 +20,7 @@ CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 
 OPTIONS_DEFINE=	FUSE NTFS_3G OPENSSL
-OPTIONS_DEFAULT=NTFS_3G OPENSSL
+OPTIONS_DEFAULT=OPENSSL
 
 NTFS_3G_DESC=	Support for capturing/extracting
 
@@ -29,6 +29,11 @@ FUSE_LIB_DEPENDS=	libfuse.so:${PORTSDIR}/sysutils/fusefs-libs
 NTFS_3G_CONFIGURE_WITH=	ntfs-3g
 NTFS_3G_LIB_DEPENDS=	libntfs-3g.so:${PORTSDIR}/sysutils/fusefs-ntfs
 OPENSSL_CONFIGURE_WITH=	libcrypto
-OPENSSL_USE=		openssl=yes
 
-.include <bsd.port.mk>
+.include <bsd.port.pre.mk>
+
+.if ${PORT_OPTIONS:MOPENSSL}
+USE_OPENSSL=	yes
+.endif
+
+.include <bsd.port.post.mk>
