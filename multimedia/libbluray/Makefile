@@ -3,6 +3,7 @@
 
 PORTNAME=	libbluray
 PORTVERSION=	0.9.2
+PORTEPOCH=	1
 CATEGORIES=	multimedia
 MASTER_SITES=	http://ftp.videolan.org/pub/videolan/${PORTNAME}/${PORTVERSION}/
 
