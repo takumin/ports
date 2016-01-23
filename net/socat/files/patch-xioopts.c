@@ -1,5 +1,14 @@
 --- xioopts.c.orig	2015-01-24 10:15:22 UTC
 +++ xioopts.c
+@@ -296,7 +296,7 @@ const struct optname optionnames[] = {
+ #if WITH_EXT2 && defined(EXT2_COMPR_FL)
+ 	IF_ANY    ("compr",	&opt_ext2_compr)
+ #endif
+-#if OPENSSL_VERSION_NUMBER >= 0x00908000L
++#if (OPENSSL_VERSION_NUMBER >= 0x00908000L) && !defined(OPENSSL_NO_COMP)
+ 	IF_OPENSSL("compress",	&opt_openssl_compress)
+ #endif
+ #ifdef TCP_CONN_ABORT_THRESHOLD  /* HP_UX */
 @@ -412,7 +412,6 @@ const struct optname optionnames[] = {
  #ifdef ECHOPRT
  	IF_TERMIOS("echoprt",	&opt_echoprt)

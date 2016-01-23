@@ -1,4 +1,4 @@
---- xioopts.h.orig	2016-01-23 08:59:31 UTC
+--- xioopts.h.orig	2015-01-24 10:15:22 UTC
 +++ xioopts.h
 @@ -474,11 +474,10 @@ enum e_optcode {
     OPT_OPENSSL_CERTIFICATE,
