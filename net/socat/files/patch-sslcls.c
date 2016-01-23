@@ -26,7 +26,22 @@
  
  const SSL_METHOD *sycSSLv23_client_method(void) {
     const SSL_METHOD *result;
-@@ -375,7 +379,7 @@ int sycFIPS_mode_set(int onoff) {
+@@ -331,14 +335,6 @@ void sycSSL_free(SSL *ssl) {
+    return;
+ }
+ 
+-int sycRAND_egd(const char *path) {
+-   int result;
+-   Debug1("RAND_egd(\"%s\")", path);
+-   result = RAND_egd(path);
+-   Debug1("RAND_egd() -> %d", result);
+-   return result;
+-}
+-
+ DH *sycPEM_read_bio_DHparams(BIO *bp, DH **x, pem_password_cb *cb, void *u) {
+    DH *result;
+    Debug4("PEM_read_bio_DHparams(%p, %p, %p, %p)",
+@@ -375,7 +371,7 @@ int sycFIPS_mode_set(int onoff) {
  }
  #endif /* WITH_FIPS */
  

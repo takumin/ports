@@ -1,6 +1,27 @@
 --- xioopts.c.orig	2015-01-24 10:15:22 UTC
 +++ xioopts.c
-@@ -2971,6 +2971,25 @@ int retropt_bind(struct opt *opts,
+@@ -412,7 +412,6 @@ const struct optname optionnames[] = {
+ #ifdef ECHOPRT
+ 	IF_TERMIOS("echoprt",	&opt_echoprt)
+ #endif
+-	IF_OPENSSL("egd",	&opt_openssl_egd)
+ 	IF_ANY    ("end-close",	&opt_end_close)
+ 	IF_TERMIOS("eof",	&opt_veof)
+ 	IF_TERMIOS("eol",	&opt_veol)
+@@ -1098,11 +1097,10 @@ const struct optname optionnames[] = {
+ 	IF_OPENSSL("openssl-certificate",	&opt_openssl_certificate)
+ 	IF_OPENSSL("openssl-cipherlist",	&opt_openssl_cipherlist)
+ 	IF_OPENSSL("openssl-commonname",	&opt_openssl_commonname)
+-#if OPENSSL_VERSION_NUMBER >= 0x00908000L
++#if (OPENSSL_VERSION_NUMBER >= 0x00908000L) && !defined(OPENSSL_NO_COMP)
+ 	IF_OPENSSL("openssl-compress",	&opt_openssl_compress)
+ #endif
+ 	IF_OPENSSL("openssl-dhparam",	&opt_openssl_dhparam)
+-	IF_OPENSSL("openssl-egd",	&opt_openssl_egd)
+ #if WITH_FIPS
+ 	IF_OPENSSL("openssl-fips",	&opt_openssl_fips)
+ #endif
+@@ -2971,6 +2969,25 @@ int retropt_bind(struct opt *opts,
     OFUNC_TERMIOS_FLAG, OFUNC_TERMIOS_PATTERN, and some OFUNC_SPEC */
  int applyopts(int fd, struct opt *opts, enum e_phase phase) {
     struct opt *opt;
@@ -26,7 +47,7 @@
  
     opt = opts; while (opt && opt->desc != ODESC_END) {
        if (opt->desc == ODESC_DONE ||
-@@ -3605,21 +3624,29 @@ int applyopts(int fd, struct opt *opts, 
+@@ -3605,21 +3622,29 @@ int applyopts(int fd, struct opt *opts, 
  
  #ifdef HAVE_TERMIOS_ISPEED
        } else if (opt->desc->func == OFUNC_TERMIOS_SPEED) {
