@@ -1,4 +1,4 @@
---- xio-openssl.h.orig	2016-01-23 08:56:38 UTC
+--- xio-openssl.h.orig	2015-01-24 10:15:22 UTC
 +++ xio-openssl.h
 @@ -23,7 +23,7 @@ extern const struct optdesc opt_openssl_
  extern const struct optdesc opt_openssl_capath;
