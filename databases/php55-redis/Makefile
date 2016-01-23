@@ -1,12 +1,13 @@
-# Created by: Arjan Koole <arjan@blackoak.net>
-# $FreeBSD: head/databases/php55-redis/Makefile 356472 2014-06-04 11:49:48Z miwi $
+# Created by: Takumi Takahashi <takumiiinn@gmail.com>
+# $FreeBSD$
 
 PORTNAME=	redis
-PORTVERSION=	2.2.7
-CATEGORIES=	databases
 PKGNAMEPREFIX=	php55-
+PORTVERSION=	2.2.7
+PORTREVISION=	1
+CATEGORIES=	databases
 
-MAINTAINER=	m.tsatsenko@gmail.com
+MAINTAINER=	takumiiinn@gmail.com
 COMMENT=	PHP5-Extension for Redis
 
 LICENSE=	PHP301
@@ -19,7 +20,6 @@ GH_TAGNAME=	${PORTVERSION}
 USE_PHP=	session
 DEFAULT_VERSIONS=php=55
 IGNORE_WITH_PHP=52 53 54 56 5
-USE_PHPIZE=	yes
 USE_PHPEXT=	yes
 USE_PHP_BUILD=	yes
 PHP_MODNAME=	${PORTNAME}
@@ -27,14 +27,8 @@ PHP_MODNAME=	${PORTNAME}
 OPTIONS_DEFINE=	IGBINARY
 IGBINARY_DESC=	Build with Igbinary serializer
 
-.include <bsd.port.options.mk>
-
-.if ${PORT_OPTIONS:MIGBINARY}
-USE_PHP+=	igbinary
-BUILD_DEPENDS+=	re2c:${PORTSDIR}/devel/re2c
-CONFIGURE_ARGS+=--enable-redis-igbinary
-.else
-CONFIGURE_ARGS+=--disable-redis-igbinary
-.endif
+IGBINARY_CONFIGURE_ENABLE=	redis-igbinary
+IGBINARY_DEPENDS+=		re2c:${PORTSDIR}/devel/re2c
+IGBINARY_USE=			php=igbinary
 
 .include <bsd.port.mk>

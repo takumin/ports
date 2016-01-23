@@ -20,7 +20,6 @@ GH_TAGNAME=	${PORTVERSION}
 USE_PHP=	session
 DEFAULT_VERSIONS=php=56
 IGNORE_WITH_PHP=52 53 54 55 5
-USE_PHPIZE=	yes
 USE_PHPEXT=	yes
 USE_PHP_BUILD=	yes
 PHP_MODNAME=	${PORTNAME}
@@ -28,14 +27,8 @@ PHP_MODNAME=	${PORTNAME}
 OPTIONS_DEFINE=	IGBINARY
 IGBINARY_DESC=	Build with Igbinary serializer
 
-.include <bsd.port.options.mk>
-
-.if ${PORT_OPTIONS:MIGBINARY}
-USE_PHP+=	igbinary
-BUILD_DEPENDS+=	re2c:${PORTSDIR}/devel/re2c
-CONFIGURE_ARGS+=--enable-redis-igbinary
-.else
-CONFIGURE_ARGS+=--disable-redis-igbinary
-.endif
+IGBINARY_CONFIGURE_ENABLE=	redis-igbinary
+IGBINARY_DEPENDS+=		re2c:${PORTSDIR}/devel/re2c
+IGBINARY_USE=			php=igbinary
 
 .include <bsd.port.mk>
