@@ -25,7 +25,7 @@
  
  
 -#if OPENSSL_VERSION_NUMBER >= 0x00908000L
-+#if (OPENSSL_VERSION_NUMBER >= 0x00908000L)) && !defined(OPENSSL_NO_COMP)
++#if (OPENSSL_VERSION_NUMBER >= 0x00908000L) && !defined(OPENSSL_NO_COMP)
  /* In OpenSSL 0.9.7 compression methods could be added using
   * SSL_COMP_add_compression_method(3), but the implemntation is not compatible
   * with the standard (RFC3749).
@@ -61,6 +61,15 @@
     if (opt_pseudo) {
        long int randdata;
        /* initialize libc random from actual microseconds */
+@@ -984,7 +977,7 @@ int
+    }
+ #endif /* !defined(EC_KEY) */
+ 
+-#if OPENSSL_VERSION_NUMBER >= 0x00908000L
++#if (OPENSSL_VERSION_NUMBER >= 0x00908000L) && !defined(OPENSSL_NO_COMP)
+    if (opt_compress) {
+       int result;
+       result = openssl_setup_compression(*ctx, opt_compress);
 @@ -1098,7 +1091,7 @@ static int openssl_SSL_ERROR_SSL(int lev
        if (e == ((ERR_LIB_RAND<<24)|
  		(RAND_F_SSLEAY_RAND_BYTES<<12)|

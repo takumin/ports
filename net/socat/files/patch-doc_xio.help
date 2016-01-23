@@ -1,4 +1,4 @@
---- doc/xio.help.orig	2016-01-23 08:45:06 UTC
+--- doc/xio.help.orig	2013-06-23 06:16:48 UTC
 +++ doc/xio.help
 @@ -4566,19 +4566,6 @@ must contain certificates in PEM format 
  documentation) 
