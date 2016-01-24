@@ -15,7 +15,6 @@ GH_ACCOUNT=	sass
 
 USES=		autoreconf compiler:c++11-lib gmake libtool pathfix
 GNU_CONFIGURE=	yes
-INSTALL_TARGET=	install-strip
 USE_LDCONFIG=	yes
 
 PATHFIX_MAKEFILEIN=	Makefile.am
