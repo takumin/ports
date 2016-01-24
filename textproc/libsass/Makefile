@@ -17,7 +17,8 @@ USES=		autoreconf compiler:c++11-lib gmake libtool pathfix
 GNU_CONFIGURE=	yes
 USE_LDCONFIG=	yes
 
-PATHFIX_MAKEFILEIN=	Makefile.am
+PATHFIX_MAKEFILEIN=	GNUmakefile.am
+MAKEFILE=		GNUmakefile
 
 post-extract:
 	@${ECHO_CMD} 'echo ${PORTVERSION}' > ${WRKSRC}/version.sh
