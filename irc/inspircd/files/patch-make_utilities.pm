@@ -1,4 +1,4 @@
---- make/utilities.pm.orig	2016-01-24 08:48:56 UTC
+--- make/utilities.pm.orig	2015-05-10 05:24:10 UTC
 +++ make/utilities.pm
 @@ -29,6 +29,7 @@ use warnings FATAL => qw(all);
  
@@ -13,7 +13,7 @@
  		{
  			print "Evaluating perl code for module \e[1;32m$module\e[0m ... ";
 -			my $tmpfile;
-+			my $tmpfile, $tmpfh;
++			my ($tmpfile, $tmpfh);
  			do
  			{
 -				$tmpfile = tmpnam();
