@@ -13,7 +13,7 @@ LICENSE=	MIT
 USE_GITHUB=	yes
 GH_ACCOUNT=	sass
 
-USES=		autoreconf compiler:c++11-lib gmake libtool pathfix
+USES=		autoreconf compiler:c++0x gmake libtool pathfix
 GNU_CONFIGURE=	yes
 USE_LDCONFIG=	yes
 
