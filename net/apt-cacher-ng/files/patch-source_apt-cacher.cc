@@ -1,4 +1,4 @@
---- source/apt-cacher.cc.orig	2016-01-24 08:32:43 UTC
+--- source/apt-cacher.cc.orig	2016-01-21 19:31:34 UTC
 +++ source/apt-cacher.cc
 @@ -5,6 +5,7 @@
  #include <stddef.h>

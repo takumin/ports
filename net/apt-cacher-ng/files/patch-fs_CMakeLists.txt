@@ -1,4 +1,4 @@
---- fs/CMakeLists.txt.orig	2016-01-24 08:30:28 UTC
+--- fs/CMakeLists.txt.orig	2016-01-24 08:41:04 UTC
 +++ fs/CMakeLists.txt
 @@ -27,7 +27,7 @@ if(fuse_FOUND AND HAVE_FUSE_25)
  	#message("uhm: ${fuse_CFLAGS} -- ${acngfs_cflags} -- ${fuse_LDFLAGS} -- ${HAVE_DLOPEN}")
