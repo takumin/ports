@@ -14,7 +14,7 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	ejurgensen
 
 USES+=		autoreconf compiler gettext gmake gperf iconv libtool pathfix pkgconfig
-BUILD_DEPENDS+=	antlr34:${PORTSDIR}/devel/antlr34
+BUILD_DEPENDS+=	antlr3:${PORTSDIR}/devel/antlr3
 LIB_DEPENDS+=	libantlr3c.so:${PORTSDIR}/devel/libantlr3c \
 		libavahi-client.so:${PORTSDIR}/net/avahi-app \
 		libsqlite3.so:${PORTSDIR}/databases/sqlite3 \
