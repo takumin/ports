@@ -2,7 +2,7 @@
 # $FreeBSD: head/textproc/sassc/Makefile 384225 2015-04-18 12:58:34Z tijl $
 
 PORTNAME=	sassc
-PORTVERSION=	3.2.5
+PORTVERSION=	3.3.0
 CATEGORIES=	textproc
 
 MAINTAINER=	nivit@FreeBSD.org
