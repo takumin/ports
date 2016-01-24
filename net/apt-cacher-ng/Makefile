@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	apt-cacher-ng
-PORTVERSION=	0.8.8
+PORTVERSION=	0.8.9
 CATEGORIES=	net
 MASTER_SITES=	http://ftp.debian.org/debian/pool/main/a/apt-cacher-ng/
 DISTNAME=	${PORTNAME}_${PORTVERSION}.orig
