@@ -17,7 +17,7 @@
  			do
  			{
 -				$tmpfile = tmpnam();
-+				($tmpfile, $tmpfh) = tempfile();
++				($tmpfile, $tmpfh) = File::Temp::tempfile();
 +				close $tmpfh;
  			} until sysopen(TF, $tmpfile, O_RDWR|O_CREAT|O_EXCL|O_NOFOLLOW, 0700);
  			print "(Created and executed \e[1;32m$tmpfile\e[0m)\n";
