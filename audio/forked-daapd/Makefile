@@ -53,7 +53,6 @@ LDFLAGS+=	-L${LOCALBASE}/lib
 
 GNU_CONFIGURE=	yes
 CONFIGURE_TARGET=${ARCH:S/amd64/x86_64/}-portbld-${OPSYS:tl}${OSREL}
-# CONFIGURE_ENV+=	ANTLR="${LOCALBASE}/bin/antlr3"
 INSTALL_TARGET=	install-strip
 USE_LDCONFIG=	${LOCALBASE}/lib/forked-daapd
 USE_RC_SUBR=	forked_daapd
