@@ -2,9 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	wp-cli
-PORTVERSION=	0.19.2
+PORTVERSION=	0.22.0
 CATEGORIES=	www
-MASTER_SITES=	https://github.com/wp-cli/wp-cli/releases/download/v${PORTVERSION}/
+MASTER_SITES=	GH GHC
 PKGNAMEPREFIX=	php-
 EXTRACT_SUFX=	.phar
 
@@ -12,6 +12,9 @@ MAINTAINER=	takumiiinn@gmail.com
 COMMENT=	Command line interface for WordPress
 
 LICENSE=	MIT
+
+USE_GITHUB=	yes
+GH_TAGNAME=	v${DISTVERSION}
 
 NO_BUILD=	yes
 NO_WRKSUBDIR=	yes
