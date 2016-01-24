@@ -25,7 +25,7 @@ RUN_DEPENDS=	rubygem-actionpack-action_caching>=0:${PORTSDIR}/devel/rubygem-acti
 		rubygem-protected_attributes>=0:${PORTSDIR}/devel/rubygem-protected_attributes \
 		rubygem-rack-openid>=0:${PORTSDIR}/www/rubygem-rack-openid \
 		rubygem-ruby-openid>=2.3.0:${PORTSDIR}/net/rubygem-ruby-openid \
-		rubygem-rails>=4.2.5:${PORTSDIR}/www/rubygem-rails \
+		rubygem-rails>=4.2.5:${PORTSDIR}/www/rubygem-rails4 \
 		rubygem-rake>=0:${PORTSDIR}/devel/rubygem-rake \
 		rubygem-rbpdf>=0:${PORTSDIR}/print/rubygem-rbpdf \
 		rubygem-redcarpet>=3.3.2:${PORTSDIR}/textproc/rubygem-redcarpet \
