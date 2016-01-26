@@ -2,22 +2,22 @@
 # $FreeBSD$
 
 PORTNAME=	gitbucket
-PORTVERSION=	3.5
+PORTVERSION=	3.10.1
 CATEGORIES=	devel java
-MASTER_SITES=	https://github.com/takezoe/gitbucket/releases/download/${PORTVERSION}/
+MASTER_SITES=	https://github.com/gitbucket/gitbucket/releases/download/${PORTVERSION}/
 DISTNAME=	${PORTNAME}
-DIST_SUBDIR=	${PORTNAME}/${PORTVERSION}
 EXTRACT_SUFX=	.war
-EXTRACT_ONLY=
+DIST_SUBDIR=	${PORTNAME}/${PORTVERSION}
 
 MAINTAINER=	takumiiinn@gmail.com
-COMMENT=	GitBucket is the easily installable Github clone written with Scala.
+COMMENT=	GitHub clone powered by Scala
 
 LICENSE=	APACHE20
 
 USE_JAVA=	yes
 JAVA_VERSION=	1.7+
 
+NO_EXTRACT=	yes
 NO_BUILD=	yes
 
 USE_RC_SUBR=	gitbucket
@@ -46,7 +46,6 @@ PLIST_SUB+=	GITBUCKET_USER=${GITBUCKET_USER} \
 
 do-install:
 	${MKDIR} ${STAGEDIR}${DATADIR} ${STAGEDIR}${GITBUCKET_HOME}
-	${INSTALL_DATA} ${DISTDIR}/${DIST_SUBDIR}/${DISTNAME}${EXTRACT_SUFX} \
-		${STAGEDIR}${DATADIR}
+	${INSTALL_DATA} ${DISTDIR}/${DIST_SUBDIR}/${DISTFILES} ${STAGEDIR}${DATADIR}
 
 .include <bsd.port.post.mk>
