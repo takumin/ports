@@ -4,7 +4,7 @@
    ssize_t r;
    va_list args;
  
-+  fflush(stderr);^/* Ensure pending errors are written before the question */
++  fflush(stderr); /* Ensure pending errors are written before the question */
 +
    va_start (args, format);
    vfprintf (stdout, format, args);
