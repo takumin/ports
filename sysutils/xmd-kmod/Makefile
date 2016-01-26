@@ -12,4 +12,8 @@ COMMENT=	Real-time Compression Memory Disk
 
 LICENSE=	BSD2CLAUSE
 
+USES=		kmod uidfix
+
+WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}/${PORTNAME}
+
 .include <bsd.port.mk>
