@@ -13,8 +13,8 @@
    {"reject-format", required_argument, NULL, CHAR_MAX + 9},
    {"read-only", required_argument, NULL, CHAR_MAX + 10},
    {"follow-symlinks", no_argument, NULL, CHAR_MAX + 11},
-+  {"crlf", no_argument, NULL, CHAR_MAX + 9},
-+  {"dont-strip-crlf", no_argument, NULL, CHAR_MAX + 10},
++  {"crlf", no_argument, NULL, CHAR_MAX + 12},
++  {"dont-strip-crlf", no_argument, NULL, CHAR_MAX + 13},
    {NULL, no_argument, NULL, 0}
  };
  
@@ -32,10 +32,10 @@
  	    case CHAR_MAX + 11:
  		follow_symlinks = true;
  		break;
-+	    case CHAR_MAX + 9:
++	    case CHAR_MAX + 12:
 +	      crlf_flag = false;
 +	      break;
-+	    case CHAR_MAX + 10:
++	    case CHAR_MAX + 13:
 +	      dont_strip_cr = false;
 +	      break;
  	    default:
