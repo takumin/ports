@@ -8,6 +8,7 @@ MASTER_SITES=	https://github.com/gitbucket/gitbucket/releases/download/${PORTVER
 DISTNAME=	${PORTNAME}
 EXTRACT_SUFX=	.war
 DIST_SUBDIR=	${PORTNAME}/${PORTVERSION}
+EXTRACT_ONLY=
 
 MAINTAINER=	takumiiinn@gmail.com
 COMMENT=	GitHub clone powered by Scala
@@ -17,7 +18,7 @@ LICENSE=	APACHE20
 USE_JAVA=	yes
 JAVA_VERSION=	1.7+
 
-NO_EXTRACT=	yes
+NO_ARCH=	yes
 NO_BUILD=	yes
 
 USE_RC_SUBR=	gitbucket
