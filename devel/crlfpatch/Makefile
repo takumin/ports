@@ -5,6 +5,7 @@ PORTNAME=	patch
 PORTVERSION=	2.7.5
 CATEGORIES=	devel
 MASTER_SITES=	GNU
+PKGNAMESUFFIX=	crlf
 
 MAINTAINER=	takumiiinn@gmail.com
 COMMENT=	GNU patch utility (CRLF patch)

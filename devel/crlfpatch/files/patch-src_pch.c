@@ -1,4 +1,4 @@
---- src/pch.c.orig	2016-01-26 14:37:47 UTC
+--- src/pch.c.orig	2015-03-07 00:34:20 UTC
 +++ src/pch.c
 @@ -91,6 +91,8 @@ static void next_intuit_at (file_offset,
  static void skip_to (file_offset, lin);

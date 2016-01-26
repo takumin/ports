@@ -1,4 +1,4 @@
---- src/util.c.orig	2016-01-26 14:37:35 UTC
+--- src/util.c.orig	2015-03-07 00:34:20 UTC
 +++ src/util.c
 @@ -985,6 +985,8 @@ ask (char const *format, ...)
    ssize_t r;

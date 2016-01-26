@@ -1,4 +1,4 @@
---- src/patch.c.orig	2016-01-26 14:37:28 UTC
+--- src/patch.c.orig	2015-03-07 00:34:20 UTC
 +++ src/patch.c
 @@ -80,6 +80,8 @@ static char const *version_control_conte
  static bool remove_empty_files;
