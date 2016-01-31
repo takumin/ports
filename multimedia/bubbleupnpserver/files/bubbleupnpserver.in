@@ -1,0 +1,87 @@
+#!/bin/sh
+
+# $FreeBSD$
+#
+# PROVIDE: bubbleupnpserver
+# REQUIRE: LOGIN
+# KEYWORD: shutdown
+
+#
+# Configuration settings for bubbleupnpserver in /etc/rc.conf:
+#
+# bubbleupnpserver_enable (bool):
+#   Set to "NO" by default.
+#   Set it to "YES" to enable bubbleupnpserver
+#
+# bubbleupnpserver_user (str):
+#   Set to "%%bubbleupnpserver_USER%%" by default.
+#   User to run bubbleupnpserver as.
+#
+# bubbleupnpserver_group (str):
+#   Set to "%%bubbleupnpserver_GROUP%%" by default.
+#   Group for data file ownership.
+#
+# bubbleupnpserver_home (str)
+#   Set to "%%bubbleupnpserver_HOME%%" by default.
+#   Set the bubbleupnpserver_HOME variable for bubbleupnpserver process
+#
+# bubbleupnpserver_args (str):
+#   Extra arguments passed to start command
+#
+# bubbleupnpserver_java_home (str):
+#   Set to "%%JAVA_HOME%%" by default.
+#   Set the Java virtual machine to run bubbleupnpserver
+#
+# bubbleupnpserver_java_opts (str):
+#   Set to "-Xss256k -Djava.awt.headless=true -Djava.net.preferIPv4Stack=true -Dfile.encoding=\"UTF-8\"" by default.
+#   Java VM args to use.
+#
+# bubbleupnpserver_log_file (str):
+#   Set to "/var/log/bubbleupnpserver.log" by default.
+#   Log file location.
+#
+
+. /etc/rc.subr
+
+name="bubbleupnpserver"
+rcvar=bubbleupnpserver_enable
+
+load_rc_config "${name}"
+
+: ${bubbleupnpserver_enable="NO"}
+: ${bubbleupnpserver_user="%%bubbleupnpserver_USER%%"}
+: ${bubbleupnpserver_group="%%bubbleupnpserver_GROUP%%"}
+: ${bubbleupnpserver_home="%%bubbleupnpserver_HOME%%"}
+: ${bubbleupnpserver_args="--host=0.0.0.0 --port=8280 --prefix=/bubbleupnpserver --bubbleupnpserver.home=%%bubbleupnpserver_HOME%%"}
+: ${bubbleupnpserver_java_home="%%JAVA_HOME%%"}
+: ${bubbleupnpserver_java_opts="-Xss256k -Djava.awt.headless=true -Djava.net.preferIPv4Stack=true -Dfile.encoding=\"UTF-8\""}
+: ${bubbleupnpserver_log_file="/var/log/bubbleupnpserver.log"}
+
+pidfile="/var/run/bubbleupnpserver/bubbleupnpserver.pid"
+command="/usr/sbin/daemon"
+java_cmd="${bubbleupnpserver_java_home}/bin/java"
+procname="${java_cmd}"
+command_args="-p ${pidfile} ${java_cmd} ${bubbleupnpserver_java_opts} -jar %%DATADIR%%/bubbleupnpserver.war ${bubbleupnpserver_args} > ${bubbleupnpserver_log_file} 2>&1"
+required_files="${java_cmd}"
+
+start_precmd="bubbleupnpserver_prestart"
+start_cmd="bubbleupnpserver_start"
+
+bubbleupnpserver_prestart() {
+	if [ ! -f "${bubbleupnpserver_log_file}" ]; then
+		touch "${bubbleupnpserver_log_file}"
+		chown "${bubbleupnpserver_user}:${bubbleupnpserver_group}" "${bubbleupnpserver_log_file}"
+		chmod 640 "${bubbleupnpserver_log_file}"
+	fi
+	if [ ! -d "/var/run/bubbleupnpserver" ]; then
+		install -d -o "${bubbleupnpserver_user}" -g "${bubbleupnpserver_group}" -m 750 "/var/run/bubbleupnpserver"
+	fi
+}
+
+bubbleupnpserver_start()
+{
+	check_startmsgs && echo "Starting ${name}."
+	su -l ${bubbleupnpserver_user} -c "exec ${command} ${command_args} ${rc_arg}"
+}
+
+run_rc_command "$1"
