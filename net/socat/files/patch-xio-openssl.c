@@ -1,4 +1,4 @@
---- xio-openssl.c.orig	2016-02-13 07:33:21 UTC
+--- xio-openssl.c.orig	2016-01-29 10:28:38 UTC
 +++ xio-openssl.c
 @@ -110,7 +110,7 @@ const struct optdesc opt_openssl_cafile 
  const struct optdesc opt_openssl_capath      = { "openssl-capath",     "capath", OPT_OPENSSL_CAPATH,      GROUP_OPENSSL, PH_SPEC, TYPE_FILENAME, OFUNC_SPEC };

@@ -1,4 +1,4 @@
---- sslcls.h.orig	2016-02-13 07:33:03 UTC
+--- sslcls.h.orig	2015-01-24 10:15:22 UTC
 +++ sslcls.h
 @@ -55,7 +55,7 @@ BIO *sycBIO_new_file(const char *filenam
  
