@@ -4,7 +4,7 @@
 PORTNAME=	newlib
 PORTVERSION=	2.3.0.20160104
 CATEGORIES=	devel
-MASTER_SITES=	ftp://sources.redhat.com/pub/ \
+MASTER_SITES=	ftp://sourceware.org/pub/newlib \
 		SOURCEWARE/${PORTNAME}
 PKGNAMEPREFIX=	arm-none-eabi-
 
