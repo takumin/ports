@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gitbucket
-PORTVERSION=	3.12
+PORTVERSION=	4.0
 CATEGORIES=	devel java
 MASTER_SITES=	https://github.com/gitbucket/gitbucket/releases/download/${PORTVERSION}/
 DISTNAME=	${PORTNAME}
