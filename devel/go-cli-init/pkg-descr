@@ -1,6 +1,0 @@
-cli-init is the easy way to start building Golang command-line application
-with codegangsta/cli. All you need to do is to set application name and its
-subcommand. cli-init generates its templates (scaffold) which you need to write
-when using codegangsta/cli. You can focus on core functionality of application.
-
-WWW: http://tcnksm.github.io/cli-init/

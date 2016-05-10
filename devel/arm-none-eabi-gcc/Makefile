@@ -2,14 +2,14 @@
 # $FreeBSD$
 
 PORTNAME=	gcc
-PORTVERSION=	5.3.0
-PORTREVISION=	1
+PORTVERSION=	6.1.0
+PORTREVISION=	0
 CATEGORIES=	devel
 MASTER_SITES=	GCC:gcc \
 		SOURCEWARE/${PORTNAME}:newlib
 PKGNAMEPREFIX=	arm-none-eabi-
 DISTFILES=	${PORTNAME}-${PORTVERSION}.tar.bz2:gcc \
-		newlib-2.3.0.20160104.tar.gz:newlib
+		newlib-2.4.0.tar.gz:newlib
 
 MAINTAINER=	takumiiinn@gmail.com
 COMMENT=	Cross GNU Compiler Collection for ${GCC_TARGET}
@@ -91,8 +91,8 @@ pre-everything::
 
 post-extract:
 	@${MKDIR} ${WRKSRC}
-	@${MV} ${WRKDIR}/newlib-2.3.0.20160104/libgloss ${WRKDIR}/gcc-${PORTVERSION}/libgloss
-	@${MV} ${WRKDIR}/newlib-2.3.0.20160104/newlib ${WRKDIR}/gcc-${PORTVERSION}/newlib
+	@${MV} ${WRKDIR}/newlib-2.4.0/libgloss ${WRKDIR}/gcc-${PORTVERSION}/libgloss
+	@${MV} ${WRKDIR}/newlib-2.4.0/newlib ${WRKDIR}/gcc-${PORTVERSION}/newlib
 
 # .ifdef PKGNAMESUFFIX
 # post-stage:

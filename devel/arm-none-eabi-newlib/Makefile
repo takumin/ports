@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	newlib
-PORTVERSION=	2.3.0.20160226
+PORTVERSION=	2.4.0
 CATEGORIES=	devel
 MASTER_SITES=	ftp://sourceware.org/pub/newlib/ \
 		SOURCEWARE/${PORTNAME}
