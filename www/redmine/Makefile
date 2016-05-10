@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	redmine
-PORTVERSION=	3.2.0
-PORTREVISION=	0
+PORTVERSION=	3.2.2
 CATEGORIES=	www
 MASTER_SITES=	http://www.redmine.org/releases/
 
@@ -19,8 +18,8 @@ RUN_DEPENDS=	rubygem-actionpack-action_caching>=0:${PORTSDIR}/devel/rubygem-acti
 		rubygem-bundler>=0:${PORTSDIR}/sysutils/rubygem-bundler \
 		rubygem-coderay>=1.1.0:${PORTSDIR}/textproc/rubygem-coderay \
 		rubygem-i18n>=0.7.0:${PORTSDIR}/devel/rubygem-i18n \
-		rubygem-jquery-rails4>=0:${PORTSDIR}/www/rubygem-jquery-rails4 \
-		rubygem-mime-types>=0:${PORTSDIR}/misc/rubygem-mime-types \
+		rubygem-jquery-rails4>=3.1.4:${PORTSDIR}/www/rubygem-jquery-rails4 \
+		rubygem-mime-types>=3.0:${PORTSDIR}/misc/rubygem-mime-types \
 		rubygem-net-ldap>=0.12.0:${PORTSDIR}/net/rubygem-net-ldap \
 		rubygem-protected_attributes>=0:${PORTSDIR}/devel/rubygem-protected_attributes \
 		rubygem-rack-openid>=0:${PORTSDIR}/www/rubygem-rack-openid \

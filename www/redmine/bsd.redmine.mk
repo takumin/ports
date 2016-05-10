@@ -3,7 +3,7 @@
 # Date created:                      2010-09-12
 # Whom:                              Eygene Ryabinkin <rea-fbsd@codelabs.ru>
 #
-# $FreeBSD: head/www/redmine/bsd.redmine.mk 389551 2015-06-13 20:17:03Z sunpoet $
+# $FreeBSD: head/www/redmine/bsd.redmine.mk 412351 2016-04-01 14:33:55Z mat $
 #
 # We're assuming standard plugin installation sequence that is described
 # in the http://www.redmine.org/wiki/redmine/Plugins
@@ -45,7 +45,7 @@
 
 PKGNAMEPREFIX?=	redmine-
 
-RUN_DEPENDS+=	redmine>=2.0:${PORTSDIR}/www/redmine
+RUN_DEPENDS+=	redmine>=2.0:www/redmine
 
 USE_RUBY=	yes
 .if !defined(PLIST)
