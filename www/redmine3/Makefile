@@ -12,24 +12,20 @@ COMMENT=	Flexible project management web application
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/doc/COPYING
 
-RUN_DEPENDS=	rubygem-actionpack-action_caching>=0:${PORTSDIR}/devel/rubygem-actionpack-action_caching \
-		rubygem-actionpack-xml_parser>=0:${PORTSDIR}/textproc/rubygem-actionpack-xml_parser \
-		rubygem-builder>=3.0.4:${PORTSDIR}/devel/rubygem-builder \
-		rubygem-bundler>=0:${PORTSDIR}/sysutils/rubygem-bundler \
-		rubygem-coderay>=1.1.0:${PORTSDIR}/textproc/rubygem-coderay \
-		rubygem-i18n>=0.7.0:${PORTSDIR}/devel/rubygem-i18n \
-		rubygem-jquery-rails4>=3.1.4:${PORTSDIR}/www/rubygem-jquery-rails4 \
-		rubygem-mime-types>=3.0:${PORTSDIR}/misc/rubygem-mime-types \
-		rubygem-net-ldap>=0.12.0:${PORTSDIR}/net/rubygem-net-ldap \
-		rubygem-protected_attributes>=0:${PORTSDIR}/devel/rubygem-protected_attributes \
-		rubygem-rack-openid>=0:${PORTSDIR}/www/rubygem-rack-openid \
-		rubygem-ruby-openid>=2.3.0:${PORTSDIR}/net/rubygem-ruby-openid \
-		rubygem-rails4>=4.2.5:${PORTSDIR}/www/rubygem-rails4 \
-		rubygem-rake>=0:${PORTSDIR}/devel/rubygem-rake \
-		rubygem-rbpdf>=0:${PORTSDIR}/print/rubygem-rbpdf \
-		rubygem-redcarpet>=3.3.2:${PORTSDIR}/textproc/rubygem-redcarpet \
-		rubygem-request_store>=1.0.5:${PORTSDIR}/devel/rubygem-request_store \
-		rubygem-rubytree>=0:${PORTSDIR}/devel/rubygem-rubytree
+RUN_DEPENDS=	rubygem-rails4>=4.2.5.2:www/rubygem-rails4 \
+		rubygem-jquery-rails>=3.1.4:www/rubygem-jquery-rails \
+		rubygem-coderay>=1.1.0:textproc/rubygem-coderay \
+		rubygem-builder>=3.0.4:devel/rubygem-builder \
+		rubygem-request_store>=1.0.5:devel/rubygem-request_store \
+		rubygem-mime-types>=3.0:misc/rubygem-mime-types \
+		rubygem-protected_attributes>=0:devel/rubygem-protected_attributes \
+		rubygem-actionpack-action_caching>=0:devel/rubygem-actionpack-action_caching \
+		rubygem-actionpack-xml_parser>=0:textproc/rubygem-actionpack-xml_parser \
+		rubygem-roadie-rails>=0:mail/rubygem-roadie-rails \
+		rubygem-mimemagic>=0:misc/rubygem-mimemagic \
+		rubygem-nokogiri>=1.6.7.2:textproc/rubygem-nokogiri \
+		rubygem-rails-html-sanitizer>=1.0.3:textproc/rubygem-rails-html-sanitizer \
+		rubygem-rbpdf>=1.19.0:print/rubygem-rbpdf
 
 NO_ARCH=	yes
 NO_BUILD=	yes
@@ -42,10 +38,7 @@ PLIST_SUB=	WWWOWN=${WWWOWN} WWWGRP=${WWWGRP}
 SUB_LIST=	RUBY_NAME=${RUBY_NAME}
 
 post-extract:
-	@${RM} ${WRKSRC}/.gitignore ${WRKSRC}/.hgignore ${WRKSRC}/.travis.yml
-
-post-patch:
-	@${FIND} ${WRKSRC} -name '*.bak' -o -name '*.orig' -delete
+	@${RM} ${WRKSRC}/.gitignore ${WRKSRC}/.hgignore
 
 do-install:
 	${MKDIR} ${STAGEDIR}${WWWDIR}
