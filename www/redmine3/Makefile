@@ -13,7 +13,7 @@ LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/doc/COPYING
 
 RUN_DEPENDS=	rubygem-rails4>=4.2.5.2:www/rubygem-rails4 \
-		rubygem-jquery-rails>=3.1.4:www/rubygem-jquery-rails \
+		rubygem-jquery-rails4>=3.1.4:www/rubygem-jquery-rails \
 		rubygem-coderay>=1.1.0:textproc/rubygem-coderay \
 		rubygem-builder>=3.0.4:devel/rubygem-builder \
 		rubygem-request_store>=1.0.5:devel/rubygem-request_store \
