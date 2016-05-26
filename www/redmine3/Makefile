@@ -17,7 +17,7 @@ RUN_DEPENDS=	rubygem-rails4>=4.2.5.2:www/rubygem-rails4 \
 		rubygem-coderay>=1.1.0:textproc/rubygem-coderay \
 		rubygem-builder>=3.0.4:devel/rubygem-builder \
 		rubygem-request_store>=1.0.5:devel/rubygem-request_store \
-		rubygem-mime-types>=3.0:misc/rubygem-mime-types \
+		rubygem-mime-types3>=3.0:misc/rubygem-mime-types3 \
 		rubygem-protected_attributes>=0:devel/rubygem-protected_attributes \
 		rubygem-actionpack-action_caching>=0:devel/rubygem-actionpack-action_caching \
 		rubygem-actionpack-xml_parser>=0:textproc/rubygem-actionpack-xml_parser \
