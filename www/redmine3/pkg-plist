@@ -1894,9 +1894,8 @@
 %%WWWDIR%%/test/mocks/open_id_authentication_mock.rb
 %%WWWDIR%%/test/object_helpers.rb
 %%WWWDIR%%/test/test_helper.rb
-%%WWWDIR%%/test/travis/install-openldap.sh
-%%WWWDIR%%/test/travis/mariadb.pref
 %%WWWDIR%%/test/ui/base.rb
+%%WWWDIR%%/test/ui/custom_fields_test_ui.rb
 %%WWWDIR%%/test/ui/issues_test_ui.rb
 %%WWWDIR%%/test/ui/sudo_mode_test_ui.rb
 %%WWWDIR%%/test/ui/timelog_test_ui.rb
