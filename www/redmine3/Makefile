@@ -37,6 +37,19 @@ GROUPS=		${WWWGRP}
 PLIST_SUB=	WWWOWN=${WWWOWN} WWWGRP=${WWWGRP}
 SUB_LIST=	RUBY_NAME=${RUBY_NAME}
 
+OPTIONS_DEFINE=	MYSQL POSTGRESQL MARKDOWN RMAGIC
+OPTIONS_DEFAULT=MYSQL RMAGIC
+MYSQL_DESC=	MySQL database support
+POSTGRESQL_DESC=PostgreSQL support
+MARKDOWN_DESC=	Markdown support
+RMAGIC_DESC=	Gantt charts support
+NO_OPTIONS_SORT=yes
+
+MYSQL_RUN_DEPENDS=	rubygem-mysql2>=0.3.11:databases/rubygem-mysql2
+POSTGRESQL_RUN_DEPENDS=	rubygem-pg>=0.18.1:databases/rubygem-pg
+MARKDOWN_RUN_DEPENDS=	rubygem-redcarpet>=3.3.2:textproc/rubygem-redcarpet
+RMAGIC_RUN_DEPENDS=	rubygem-rmagick>=2.14:graphics/rubygem-rmagick
+
 post-extract:
 	@${RM} ${WRKSRC}/.gitignore ${WRKSRC}/.hgignore
 
