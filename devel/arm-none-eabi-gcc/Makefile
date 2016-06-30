@@ -5,11 +5,9 @@ PORTNAME=	gcc
 PORTVERSION=	6.1.0
 PORTREVISION=	0
 CATEGORIES=	devel
-MASTER_SITES=	GCC:gcc \
-		SOURCEWARE/${PORTNAME}:newlib
+MASTER_SITES=	GCC:gcc
 PKGNAMEPREFIX=	arm-none-eabi-
-DISTFILES=	${PORTNAME}-${PORTVERSION}.tar.bz2:gcc \
-		newlib-2.4.0.tar.gz:newlib
+DISTFILES=	${PORTNAME}-${PORTVERSION}.tar.bz2:gcc
 
 MAINTAINER=	takumiiinn@gmail.com
 COMMENT=	Cross GNU Compiler Collection for ${GCC_TARGET}
@@ -26,9 +24,9 @@ LIB_DEPENDS+=	libgmp.so:${PORTSDIR}/math/gmp \
 BUILD_DEPENDS+=	${PKGNAMEPREFIX}as:${PORTSDIR}/devel/${PKGNAMEPREFIX}binutils
 RUN_DEPENDS+=	${PKGNAMEPREFIX}as:${PORTSDIR}/devel/${PKGNAMEPREFIX}binutils
 
-# .ifndef PKGNAMESUFFIX
-# BUILD_DEPENDS+=	${PKGNAMEPREFIX}${PORTNAME}-bootstrap:${PORTSDIR}/devel/${PKGNAMEPREFIX}${PORTNAME}-bootstrap
-# .endif
+.ifndef PKGNAMESUFFIX
+BUILD_DEPENDS+=	${PKGNAMEPREFIX}${PORTNAME}-bootstrap:${PORTSDIR}/devel/${PKGNAMEPREFIX}${PORTNAME}-bootstrap
+.endif
 
 CPE_VENDOR=	gnu
 SSP_UNSAFE=	yes
@@ -59,20 +57,20 @@ CONFIGURE_ARGS+=--target=${GCC_TARGET} \
 		--with-as=${LOCALBASE}/bin/${PKGNAMEPREFIX}as \
 		--with-ld=${LOCALBASE}/bin/${PKGNAMEPREFIX}ld \
 		--program-prefix=${PKGNAMEPREFIX}
-# .ifdef PKGNAMESUFFIX
-# CONFIGURE_ARGS+=--libdir=${PREFIX}/lib/${PKGNAMEPREFIX:C/-$//}${PKGNAMESUFFIX} \
-# 		--libexecdir=${PREFIX}/libexec/${PKGNAMEPREFIX:C/-$//}${PKGNAMESUFFIX} \
-# 		--program-suffix=${PKGNAMESUFFIX} \
-# 		--without-headers
-# .endif
+.ifdef PKGNAMESUFFIX
+CONFIGURE_ARGS+=--libdir=${PREFIX}/lib/${PKGNAMEPREFIX:C/-$//}${PKGNAMESUFFIX} \
+		--libexecdir=${PREFIX}/libexec/${PKGNAMEPREFIX:C/-$//}${PKGNAMESUFFIX} \
+		--program-suffix=${PKGNAMESUFFIX} \
+		--without-headers
+.endif
 INFO_PATH=	info/${PKGNAMESUFFIX}gcc
 PLIST_SUB=	GCC_TARGET=${GCC_TARGET} \
 		GCC_VERSION=${PORTVERSION}
 
-# .ifdef PKGNAMESUFFIX
-# ALL_TARGET=	all-gcc all-target-libgcc
-# INSTALL_TARGET=	install-gcc install-target-libgcc
-# .endif
+.ifdef PKGNAMESUFFIX
+ALL_TARGET=	all-gcc all-target-libgcc
+INSTALL_TARGET=	install-gcc install-target-libgcc
+.endif
 
 .include <bsd.port.pre.mk>
 
@@ -82,24 +80,15 @@ CONFIGURE_TARGET=	x86_64-portbld-${OPSYS:tl}${OSREL}
 CONFIGURE_TARGET=	${ARCH}-portbld-${OPSYS:tl}${OSREL}
 .endif
 
-.if ${COMPILER_TYPE} == "clang"
-MAKE_ARGS+=	CXXFLAGS=-fbracket-depth=512
-.endif
-
 pre-everything::
 	@${ECHO_MSG} "Making GCC ${PORTVERSION} for Host:${CONFIGURE_TARGET} Target:${GCC_TARGET} [${LANGUAGES}]"
 
-post-extract:
-	@${MKDIR} ${WRKSRC}
-	@${MV} ${WRKDIR}/newlib-2.4.0/libgloss ${WRKDIR}/gcc-${PORTVERSION}/libgloss
-	@${MV} ${WRKDIR}/newlib-2.4.0/newlib ${WRKDIR}/gcc-${PORTVERSION}/newlib
-
-# .ifdef PKGNAMESUFFIX
-# post-stage:
-# 	@${RM} -f ${STAGEDIR}${PREFIX}/bin/${PKGNAMEPREFIX}gcc-${PORTVERSION}
-# 	@${RM} -f ${STAGEDIR}${PREFIX}/man/man1/*
-# 	@${RM} -f ${STAGEDIR}${PREFIX}/man/man7/*
-# 	@${RM} -fr ${STAGEDIR}${PREFIX}/info/${PKGNAMESUFFIX}gcc
-# .endif
+.ifdef PKGNAMESUFFIX
+post-stage:
+	@${RM} -f ${STAGEDIR}${PREFIX}/bin/${PKGNAMEPREFIX}gcc-${PORTVERSION}
+	@${RM} -f ${STAGEDIR}${PREFIX}/man/man1/*
+	@${RM} -f ${STAGEDIR}${PREFIX}/man/man7/*
+	@${RM} -fr ${STAGEDIR}${PREFIX}/info/${PKGNAMESUFFIX}gcc
+.endif
 
 .include <bsd.port.post.mk>
