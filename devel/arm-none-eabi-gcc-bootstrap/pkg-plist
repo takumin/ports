@@ -189,10 +189,6 @@ lib/%%GCC_TARGET%%-bootstrap/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/plugin/include/g
 lib/%%GCC_TARGET%%-bootstrap/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/plugin/include/glimits.h
 lib/%%GCC_TARGET%%-bootstrap/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/plugin/include/graph.h
 lib/%%GCC_TARGET%%-bootstrap/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/plugin/include/graphds.h
-lib/%%GCC_TARGET%%-bootstrap/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/plugin/include/graphite-isl-ast-to-gimple.h
-lib/%%GCC_TARGET%%-bootstrap/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/plugin/include/graphite-poly.h
-lib/%%GCC_TARGET%%-bootstrap/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/plugin/include/graphite-scop-detection.h
-lib/%%GCC_TARGET%%-bootstrap/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/plugin/include/graphite-sese-to-poly.h
 lib/%%GCC_TARGET%%-bootstrap/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/plugin/include/gsstruct.def
 lib/%%GCC_TARGET%%-bootstrap/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/plugin/include/gstab.h
 lib/%%GCC_TARGET%%-bootstrap/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/plugin/include/gsyms.h
@@ -256,7 +252,6 @@ lib/%%GCC_TARGET%%-bootstrap/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/plugin/include/m
 lib/%%GCC_TARGET%%-bootstrap/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/plugin/include/mode-classes.def
 lib/%%GCC_TARGET%%-bootstrap/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/plugin/include/objc/objc-tree.def
 lib/%%GCC_TARGET%%-bootstrap/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/plugin/include/obstack.h
-lib/%%GCC_TARGET%%-bootstrap/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/plugin/include/omega.h
 lib/%%GCC_TARGET%%-bootstrap/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/plugin/include/omp-builtins.def
 lib/%%GCC_TARGET%%-bootstrap/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/plugin/include/omp-low.h
 lib/%%GCC_TARGET%%-bootstrap/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/plugin/include/optabs.def
@@ -338,7 +333,6 @@ lib/%%GCC_TARGET%%-bootstrap/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/plugin/include/t
 lib/%%GCC_TARGET%%-bootstrap/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/plugin/include/toplev.h
 lib/%%GCC_TARGET%%-bootstrap/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/plugin/include/trans-mem.h
 lib/%%GCC_TARGET%%-bootstrap/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/plugin/include/tree-affine.h
-lib/%%GCC_TARGET%%-bootstrap/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/plugin/include/tree-browser.def
 lib/%%GCC_TARGET%%-bootstrap/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/plugin/include/tree-cfg.h
 lib/%%GCC_TARGET%%-bootstrap/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/plugin/include/tree-cfgcleanup.h
 lib/%%GCC_TARGET%%-bootstrap/gcc/%%GCC_TARGET%%/%%GCC_VERSION%%/plugin/include/tree-check.h
