@@ -80,6 +80,10 @@ CONFIGURE_TARGET=	x86_64-portbld-${OPSYS:tl}${OSREL}
 CONFIGURE_TARGET=	${ARCH}-portbld-${OPSYS:tl}${OSREL}
 .endif
 
+.if ${COMPILER_TYPE} == "clang"
+MAKE_ARGS+=	CXXFLAGS=-fbracket-depth=512
+.endif
+
 pre-everything::
 	@${ECHO_MSG} "Making GCC ${PORTVERSION} for Host:${CONFIGURE_TARGET} Target:${GCC_TARGET} [${LANGUAGES}]"
 
