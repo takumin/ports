@@ -65,7 +65,7 @@ CONFIGURE_ARGS+=--target=${GCC_TARGET} \
 		--with-mpc=${LOCALBASE} \
 		--with-isl=${LOCALBASE} \
 		--with-pkgversion="FreeBSD Ports Collection for ${GCC_TARGET}" \
-		--with-multilib-list=armv6-m,armv7-m,armv7e-m,armv7-r,armv7-a \
+		--with-multilib-list=armv6-m,armv7-m,armv7e-m,armv7-r,aprofile \
 		${ICONV_CONFIGURE_ARG}
 .ifdef PKGNAMESUFFIX
 CONFIGURE_ARGS+=--libdir=${PREFIX}/lib/${PKGNAMEPREFIX:C/-$//}${PKGNAMESUFFIX} \
