@@ -21,9 +21,7 @@ USE_PERL5=	build
 LIB_DEPENDS+=	libgmp.so:math/gmp \
 		libmpfr.so:math/mpfr \
 		libmpc.so:math/mpc \
-		libisl.so:devel/isl \
-		libcloog-isl.so:math/cloog \
-		libelf.so:devel/libelf
+		libisl.so:devel/isl
 BUILD_DEPENDS+=	${PKGNAMEPREFIX}as:devel/${PKGNAMEPREFIX}binutils
 RUN_DEPENDS+=	${PKGNAMEPREFIX}as:devel/${PKGNAMEPREFIX}binutils
 
@@ -34,32 +32,41 @@ BUILD_DEPENDS+=	${PKGNAMEPREFIX}newlib:devel/${PKGNAMEPREFIX}newlib
 CPE_VENDOR=	gnu
 SSP_UNSAFE=	yes
 
-WRKSRC=		${WRKDIR}/build-gcc
-PATCH_WRKSRC=	${WRKDIR}/${PORTNAME}-${PORTVERSION}
-
 GCC_TARGET=	${PKGNAMEPREFIX:C/-$//g}
 LANGUAGES=	c,c++
 
 GNU_CONFIGURE=	yes
+CONFIGURE_OUTSOURCE=	yes
 CONFIGURE_SCRIPT=../${PORTNAME}-${PORTVERSION}/configure
 CONFIGURE_ARGS+=--target=${GCC_TARGET} \
+		--program-prefix=${PKGNAMEPREFIX} \
 		--enable-languages=${LANGUAGES} \
 		--enable-interwork \
 		--enable-multilib \
 		--enable-lto \
-		--disable-shared \
-		--disable-thread \
+		--enable-gnu-indirect-function \
+		--disable-decimal-float \
+		--disable-libffi \
+		--disable-libgomp \
+		--disable-libmudflap \
+		--disable-libquadmath \
+		--disable-libssp \
+		--disable-libstdcxx-pch \
 		--disable-nls \
+		--disable-shared \
+		--disable-threads \
+		--disable-tls \
+		--with-system-zlib \
 		--with-newlib \
+		--with-as=${LOCALBASE}/bin/${PKGNAMEPREFIX}as \
+		--with-ld=${LOCALBASE}/bin/${PKGNAMEPREFIX}ld \
 		--with-gmp=${LOCALBASE} \
 		--with-mpfr=${LOCALBASE} \
 		--with-mpc=${LOCALBASE} \
-		--with-system-zlib \
-		${ICONV_CONFIGURE_ARG} \
+		--with-isl=${LOCALBASE} \
 		--with-pkgversion="FreeBSD Ports Collection for ${GCC_TARGET}" \
-		--with-as=${LOCALBASE}/bin/${PKGNAMEPREFIX}as \
-		--with-ld=${LOCALBASE}/bin/${PKGNAMEPREFIX}ld \
-		--program-prefix=${PKGNAMEPREFIX}
+		--with-multilib-list=armv6-m,armv7-m,armv7e-m,armv7-r,armv7-a \
+		${ICONV_CONFIGURE_ARG}
 .ifdef PKGNAMESUFFIX
 CONFIGURE_ARGS+=--libdir=${PREFIX}/lib/${PKGNAMEPREFIX:C/-$//}${PKGNAMESUFFIX} \
 		--libexecdir=${PREFIX}/libexec/${PKGNAMEPREFIX:C/-$//}${PKGNAMESUFFIX} \
