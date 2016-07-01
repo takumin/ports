@@ -14,25 +14,12 @@ COMMENT=	Cross Newlib C library for ${GCC_TARGET}
 BUILD_DEPENDS+=	${PKGNAMEPREFIX}as:${PORTSDIR}/devel/${PKGNAMEPREFIX}binutils \
 		${PKGNAMEPREFIX}gcc-bootstrap:${PORTSDIR}/devel/${PKGNAMEPREFIX}gcc-bootstrap
 
-GCC_TARGET=	${PKGNAMEPREFIX:C/-$//g}
-
 USES=		gmake makeinfo
-HAS_CONFIGURE=	yes
-GNU_CONFIGURE_PREFIX=${PREFIX}/${GCC_TARGET}
-CONFIGURE_ARGS+=--target=${GCC_TARGET}
-
-CC:=		${PKGNAMEPREFIX}gcc-bootstrap
-CXX:=		${PKGNAMEPREFIX}g++-bootstrap
-CPP:=		${PKGNAMEPREFIX}cpp-bootstrap
-CFLAGS:=	${CFLAGS:C/-march=.*//}
-SSP_UNSAFE=	yes
+GNU_CONFIGURE=	yes
+CONFIGURE_ARGS+=--target=${PKGNAMEPREFIX:C/-$//g}
+MAKE_ARGS+=	CC_FOR_TARGET=${PKGNAMEPREFIX}gcc-bootstrap \
+		CXX_FOR_TARGET=${PKGNAMEPREFIX}g++-bootstrap \
+		GCC_FOR_TARGET=${PKGNAMEPREFIX}gcc-bootstrap
 
 .include <bsd.port.pre.mk>
-
-.if ${ARCH} == "amd64"
-CONFIGURE_TARGET=	x86_64-portbld-${OPSYS:tl}${OSREL}
-.else
-CONFIGURE_TARGET=	${ARCH}-portbld-${OPSYS:tl}${OSREL}
-.endif
-
 .include <bsd.port.post.mk>
