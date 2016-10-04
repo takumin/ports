@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	apt-cacher-ng
-PORTVERSION=	0.9.1
+PORTVERSION=	0.9.3.2
 CATEGORIES=	net
 MASTER_SITES=	${MASTER_SITE_DEBIAN_POOL}
 DISTNAME=	${PORTNAME}_${PORTVERSION}.orig
@@ -14,10 +14,10 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
 USES+=		cmake:outsource compiler:c++11-lang pathfix pkgconfig tar:xz
-CMAKE_ARGS+=	-DBZIP2_NEED_PREFIX=/usr/include
+CXXFLAGS+=	-std=c++11
 USE_OPENSSL=	yes
 USE_RC_SUBR=	apt-cacher-ng
-LIB_DEPENDS+=	libfuse.so:${PORTSDIR}/sysutils/fusefs-libs
+LIB_DEPENDS+=	libfuse.so:sysutils/fusefs-libs
 
 post-install:
 	${MKDIR} ${STAGEDIR}/var/log/apt-cacher-ng

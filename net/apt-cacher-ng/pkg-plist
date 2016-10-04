@@ -22,8 +22,8 @@ lib/apt-cacher-ng/sl_mirrors
 lib/apt-cacher-ng/style.css
 lib/apt-cacher-ng/ubuntu_mirrors
 lib/apt-cacher-ng/userinfo.html
-man/man8/acngfs.8.gz
-man/man8/apt-cacher-ng.8.gz
+man/man8/acngfs.8
+man/man8/apt-cacher-ng.8
 sbin/apt-cacher-ng
 %%PORTDOCS%%%%DOCSDIR%%/README
 %%PORTDOCS%%%%DOCSDIR%%/apt-cacher-ng.pdf
