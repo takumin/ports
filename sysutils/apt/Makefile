@@ -22,13 +22,8 @@ CMAKE_ARGS=	-DCMAKE_INSTALL_MANDIR:PATH=man \
 		-DUSE_NLS=OFF
 
 post-install:
-	${RM} -r ${STAGEDIR}${MANPREFIX}/man/de*
-	${RM} -r ${STAGEDIR}${MANPREFIX}/man/es*
-	${RM} -r ${STAGEDIR}${MANPREFIX}/man/fr*
-	${RM} -r ${STAGEDIR}${MANPREFIX}/man/it*
-	${RM} -r ${STAGEDIR}${MANPREFIX}/man/ja*
-	${RM} -r ${STAGEDIR}${MANPREFIX}/man/nl*
-	${RM} -r ${STAGEDIR}${MANPREFIX}/man/pl*
-	${RM} -r ${STAGEDIR}${MANPREFIX}/man/pt*
+.for d in de es fr it ja nl pl pt
+	${RM} -r ${STAGEDIR}${MANPREFIX}/man/${d}*
+.endfor
 
 .include <bsd.port.mk>
