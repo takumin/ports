@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	apt-cacher-ng
-PORTVERSION=	1
+PORTVERSION=	0.9.1
 CATEGORIES=	net
 MASTER_SITES=	${MASTER_SITE_DEBIAN_POOL}
 DISTNAME=	${PORTNAME}_${PORTVERSION}.orig
@@ -15,7 +15,6 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
 USES+=		cmake:outsource compiler:c++11-lang pathfix pkgconfig tar:xz
 CXXFLAGS+=	-std=c++11
-CMAKE_ARGS=	-DCMAKE_INSTALL_MANDIR:PATH=man
 USE_OPENSSL=	yes
 USE_RC_SUBR=	apt-cacher-ng
 LIB_DEPENDS+=	libfuse.so:sysutils/fusefs-libs
@@ -28,5 +27,11 @@ post-install:
 	# pkg-plist for @sample %%ETCDIR%%/security.conf.sample
 	${MV} ${STAGEDIR}${ETCDIR}/acng.conf ${STAGEDIR}${ETCDIR}/acng.conf.sample
 	${MV} ${STAGEDIR}${ETCDIR}/security.conf ${STAGEDIR}${ETCDIR}/security.conf.sample
+
+	# man
+	${MV} ${STAGEDIR}${PREFIX}/share/man/man8/acngfs.8 ${STAGEDIR}${PREFIX}/man/man8/acngfs.8
+	${MV} ${STAGEDIR}${PREFIX}/share/man/man8/apt-cacher-ng.8 ${STAGEDIR}${PREFIX}/man/man8/apt-cacher-ng.8
+	${RMDIR} ${STAGEDIR}${PREFIX}/share/man/man8
+	${RMDIR} ${STAGEDIR}${PREFIX}/share/man
 
 .include <bsd.port.mk>
