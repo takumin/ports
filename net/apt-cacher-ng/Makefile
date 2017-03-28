@@ -14,8 +14,8 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
 USES+=		cmake:outsource compiler:c++11-lang pkgconfig ssl tar:xz
-CXXFLAGS+=	-std=c++11
-CMAKE_ARGS+=	-Dopenssl_FOUND=on -Dopenssl_LDFLAGS="-lcrypto -lssl"
+# CXXFLAGS+=	-std=c++11
+# CMAKE_ARGS+=	-Dopenssl_FOUND=on -Dopenssl_LDFLAGS="-lcrypto -lssl"
 USE_RC_SUBR=	apt-cacher-ng
 
 post-install:
