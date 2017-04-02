@@ -1,7 +1,6 @@
 @sample %%ETCDIR%%/acng.conf.sample
 @sample %%ETCDIR%%/security.conf.sample
 etc/avahi/services/apt-cacher-ng.service
-lib/apt-cacher-ng/acngfs
 lib/apt-cacher-ng/acngtool
 lib/apt-cacher-ng/archlx_mirrors
 lib/apt-cacher-ng/backends_debian.default
@@ -22,7 +21,6 @@ lib/apt-cacher-ng/sl_mirrors
 lib/apt-cacher-ng/style.css
 lib/apt-cacher-ng/ubuntu_mirrors
 lib/apt-cacher-ng/userinfo.html
-man/man8/acngfs.8.gz
 man/man8/apt-cacher-ng.8.gz
 sbin/apt-cacher-ng
 %%PORTDOCS%%%%DOCSDIR%%/README
