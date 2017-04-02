@@ -25,9 +25,9 @@ OPTIONS_DEFAULT=OPENSSL
 NTFS_3G_DESC=	Support for capturing/extracting
 
 FUSE_CONFIGURE_WITH=	fuse
-FUSE_LIB_DEPENDS=	libfuse.so:${PORTSDIR}/sysutils/fusefs-libs
+FUSE_LIB_DEPENDS=	libfuse.so:sysutils/fusefs-libs
 NTFS_3G_CONFIGURE_WITH=	ntfs-3g
-NTFS_3G_LIB_DEPENDS=	libntfs-3g.so:${PORTSDIR}/sysutils/fusefs-ntfs
+NTFS_3G_LIB_DEPENDS=	libntfs-3g.so:sysutils/fusefs-ntfs
 OPENSSL_CONFIGURE_WITH=	libcrypto
 
 .include <bsd.port.pre.mk>

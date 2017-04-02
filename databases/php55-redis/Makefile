@@ -28,7 +28,7 @@ OPTIONS_DEFINE=	IGBINARY
 IGBINARY_DESC=	Build with Igbinary serializer
 
 IGBINARY_CONFIGURE_ENABLE=	redis-igbinary
-IGBINARY_DEPENDS+=		re2c:${PORTSDIR}/devel/re2c
+IGBINARY_DEPENDS+=		re2c:devel/re2c
 IGBINARY_USE=			php=igbinary
 
 .include <bsd.port.mk>
