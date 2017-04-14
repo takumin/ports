@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	ctags
-PORTVERSION=	20151017
+PORTVERSION=	20170415
 CATEGORIES=	devel
 MASTER_SITES=	GH GHC
 PKGNAMEPREFIX=	universal-
@@ -17,7 +17,7 @@ LICENSE=	GPLv2
 USE_GITHUB=	yes
 GH_ACCOUNT=	universal-ctags
 GH_PROJECT=	ctags
-GH_TAGNAME=	f36c17a5ee1cdd1990ed65a64fe8bbbd0ef76da8
+GH_TAGNAME=	b96b04e698374fe6fdf205f0a856d72e651a292e
 
 WRKSRC=		${WRKDIR}/${PORTNAME}-${GH_TAGNAME}
 
@@ -33,9 +33,12 @@ OPTIONS_DEFAULT=	ICONV
 ICONV_USE=		iconv
 ICONV_CONFIGURE_ENABLE=	iconv
 
+pre-configure:
+	@cd ${WRKSRC} && ./autogen.sh
+
 post-stage:
-	@${RMDIR} ${STAGEDIR}${ETCDIR}/optlib
-	@${RMDIR} ${STAGEDIR}${ETCDIR}/preload
-	@${RMDIR} ${STAGEDIR}${ETCDIR}
+	@${RM} ${STAGEDIR}${PREFIX}/libexec/ctags/drivers/*
+	@${RMDIR} ${STAGEDIR}${PREFIX}/libexec/ctags/drivers
+	@${RMDIR} ${STAGEDIR}${PREFIX}/libexec/ctags
 
 .include <bsd.port.mk>
